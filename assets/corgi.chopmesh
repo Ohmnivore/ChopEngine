@@ -1,0 +1,1182 @@
+<?xml version="1.0" ?>
+<chopmesh>
+    <materials>
+        <material ID="0" ambient_intensity="100" diffuse_b="2" diffuse_g="19" diffuse_intensity="80" diffuse_r="34" emit="0" name="Material.002" shadows_cast="True" shadows_receive="True" specular_b="100" specular_g="100" specular_intensity="50" specular_r="100" transparency="100" use_shading="True"/>
+        <material ID="1" ambient_intensity="100" diffuse_b="80" diffuse_g="80" diffuse_intensity="80" diffuse_r="80" emit="0" name="Material.003" shadows_cast="True" shadows_receive="True" specular_b="100" specular_g="100" specular_intensity="50" specular_r="100" transparency="100" use_shading="True"/>
+        <material ID="2" ambient_intensity="100" diffuse_b="2" diffuse_g="2" diffuse_intensity="80" diffuse_r="2" emit="0" name="Material.004" shadows_cast="True" shadows_receive="True" specular_b="100" specular_g="100" specular_intensity="50" specular_r="100" transparency="100" use_shading="True"/>
+        <material ID="3" ambient_intensity="100" diffuse_b="1" diffuse_g="5" diffuse_intensity="80" diffuse_r="19" emit="0" name="Material.006" shadows_cast="True" shadows_receive="True" specular_b="100" specular_g="100" specular_intensity="50" specular_r="100" transparency="100" use_shading="True"/>
+    </materials>
+    <faces>
+        <face material_id="1" vertex1_id="6" vertex2_id="4" vertex3_id="5"/>
+        <face material_id="0" vertex1_id="56" vertex2_id="57" vertex3_id="3"/>
+        <face material_id="1" vertex1_id="154" vertex2_id="151" vertex3_id="141"/>
+        <face material_id="1" vertex1_id="11" vertex2_id="10" vertex3_id="8"/>
+        <face material_id="0" vertex1_id="58" vertex2_id="59" vertex3_id="0"/>
+        <face material_id="0" vertex1_id="59" vertex2_id="61" vertex3_id="16"/>
+        <face material_id="1" vertex1_id="9" vertex2_id="8" vertex3_id="6"/>
+        <face material_id="1" vertex1_id="4" vertex2_id="14" vertex3_id="15"/>
+        <face material_id="0" vertex1_id="60" vertex2_id="2" vertex3_id="3"/>
+        <face material_id="1" vertex1_id="15" vertex2_id="14" vertex3_id="12"/>
+        <face material_id="0" vertex1_id="58" vertex2_id="1" vertex3_id="2"/>
+        <face material_id="1" vertex1_id="61" vertex2_id="56" vertex3_id="17"/>
+        <face material_id="1" vertex1_id="13" vertex2_id="12" vertex3_id="10"/>
+        <face material_id="1" vertex1_id="22" vertex2_id="23" vertex3_id="195"/>
+        <face material_id="1" vertex1_id="22" vertex2_id="194" vertex3_id="193"/>
+        <face material_id="0" vertex1_id="2" vertex2_id="1" vertex3_id="18"/>
+        <face material_id="0" vertex1_id="19" vertex2_id="18" vertex3_id="20"/>
+        <face material_id="0" vertex1_id="21" vertex2_id="20" vertex3_id="200"/>
+        <face material_id="1" vertex1_id="16" vertex2_id="22" vertex3_id="24"/>
+        <face material_id="1" vertex1_id="16" vertex2_id="17" vertex3_id="23"/>
+        <face material_id="0" vertex1_id="24" vertex2_id="131" vertex3_id="132"/>
+        <face material_id="0" vertex1_id="0" vertex2_id="24" vertex3_id="25"/>
+        <face material_id="0" vertex1_id="25" vertex2_id="132" vertex3_id="130"/>
+        <face material_id="0" vertex1_id="18" vertex2_id="1" vertex3_id="25"/>
+        <face material_id="1" vertex1_id="17" vertex2_id="28" vertex3_id="31"/>
+        <face material_id="0" vertex1_id="21" vertex2_id="201" vertex3_id="212"/>
+        <face material_id="0" vertex1_id="19" vertex2_id="21" vertex3_id="30"/>
+        <face material_id="0" vertex1_id="2" vertex2_id="19" vertex3_id="29"/>
+        <face material_id="1" vertex1_id="23" vertex2_id="31" vertex3_id="209"/>
+        <face material_id="1" vertex1_id="17" vertex2_id="3" vertex3_id="27"/>
+        <face material_id="0" vertex1_id="3" vertex2_id="2" vertex3_id="26"/>
+        <face material_id="0" vertex1_id="39" vertex2_id="46" vertex3_id="47"/>
+        <face material_id="1" vertex1_id="35" vertex2_id="37" vertex3_id="36"/>
+        <face material_id="0" vertex1_id="41" vertex2_id="47" vertex3_id="48"/>
+        <face material_id="1" vertex1_id="37" vertex2_id="39" vertex3_id="38"/>
+        <face material_id="0" vertex1_id="33" vertex2_id="27" vertex3_id="26"/>
+        <face material_id="1" vertex1_id="43" vertex2_id="48" vertex3_id="49"/>
+        <face material_id="1" vertex1_id="38" vertex2_id="39" vertex3_id="41"/>
+        <face material_id="0" vertex1_id="37" vertex2_id="35" vertex3_id="33"/>
+        <face material_id="0" vertex1_id="212" vertex2_id="238" vertex3_id="53"/>
+        <face material_id="1" vertex1_id="40" vertex2_id="41" vertex3_id="43"/>
+        <face material_id="1" vertex1_id="35" vertex2_id="45" vertex3_id="49"/>
+        <face material_id="1" vertex1_id="45" vertex2_id="35" vertex3_id="34"/>
+        <face material_id="1" vertex1_id="42" vertex2_id="43" vertex3_id="45"/>
+        <face material_id="0" vertex1_id="39" vertex2_id="37" vertex3_id="32"/>
+        <face material_id="1" vertex1_id="163" vertex2_id="164" vertex3_id="157"/>
+        <face material_id="1" vertex1_id="50" vertex2_id="232" vertex3_id="233"/>
+        <face material_id="1" vertex1_id="48" vertex2_id="50" vertex3_id="51"/>
+        <face material_id="1" vertex1_id="209" vertex2_id="31" vertex3_id="51"/>
+        <face material_id="1" vertex1_id="28" vertex2_id="49" vertex3_id="51"/>
+        <face material_id="1" vertex1_id="28" vertex2_id="27" vertex3_id="33"/>
+        <face material_id="0" vertex1_id="30" vertex2_id="53" vertex3_id="52"/>
+        <face material_id="0" vertex1_id="29" vertex2_id="52" vertex3_id="32"/>
+        <face material_id="0" vertex1_id="238" vertex2_id="241" vertex3_id="55"/>
+        <face material_id="0" vertex1_id="53" vertex2_id="55" vertex3_id="54"/>
+        <face material_id="0" vertex1_id="32" vertex2_id="52" vertex3_id="54"/>
+        <face material_id="1" vertex1_id="6" vertex2_id="56" vertex3_id="61"/>
+        <face material_id="0" vertex1_id="10" vertex2_id="12" vertex3_id="58"/>
+        <face material_id="0" vertex1_id="8" vertex2_id="10" vertex3_id="60"/>
+        <face material_id="0" vertex1_id="4" vertex2_id="61" vertex3_id="59"/>
+        <face material_id="0" vertex1_id="12" vertex2_id="14" vertex3_id="59"/>
+        <face material_id="0" vertex1_id="8" vertex2_id="57" vertex3_id="56"/>
+        <face material_id="0" vertex1_id="54" vertex2_id="66" vertex3_id="62"/>
+        <face material_id="0" vertex1_id="241" vertex2_id="255" vertex3_id="67"/>
+        <face material_id="0" vertex1_id="55" vertex2_id="67" vertex3_id="66"/>
+        <face material_id="1" vertex1_id="65" vertex2_id="251" vertex3_id="232"/>
+        <face material_id="1" vertex1_id="64" vertex2_id="65" vertex3_id="50"/>
+        <face material_id="0" vertex1_id="46" vertex2_id="62" vertex3_id="63"/>
+        <face material_id="0" vertex1_id="48" vertex2_id="47" vertex3_id="63"/>
+        <face material_id="0" vertex1_id="66" vertex2_id="72" vertex3_id="68"/>
+        <face material_id="0" vertex1_id="255" vertex2_id="263" vertex3_id="73"/>
+        <face material_id="0" vertex1_id="67" vertex2_id="73" vertex3_id="72"/>
+        <face material_id="1" vertex1_id="65" vertex2_id="71" vertex3_id="259"/>
+        <face material_id="1" vertex1_id="64" vertex2_id="70" vertex3_id="71"/>
+        <face material_id="0" vertex1_id="62" vertex2_id="68" vertex3_id="69"/>
+        <face material_id="0" vertex1_id="63" vertex2_id="69" vertex3_id="70"/>
+        <face material_id="1" vertex1_id="80" vertex2_id="79" vertex3_id="77"/>
+        <face material_id="1" vertex1_id="271" vertex2_id="264" vertex3_id="96"/>
+        <face material_id="0" vertex1_id="77" vertex2_id="126" vertex3_id="129"/>
+        <face material_id="1" vertex1_id="102" vertex2_id="101" vertex3_id="79"/>
+        <face material_id="0" vertex1_id="89" vertex2_id="93" vertex3_id="129"/>
+        <face material_id="0" vertex1_id="101" vertex2_id="81" vertex3_id="74"/>
+        <face material_id="1" vertex1_id="82" vertex2_id="85" vertex3_id="95"/>
+        <face material_id="1" vertex1_id="94" vertex2_id="93" vertex3_id="270"/>
+        <face material_id="1" vertex1_id="91" vertex2_id="81" vertex3_id="82"/>
+        <face material_id="1" vertex1_id="91" vertex2_id="278" vertex3_id="265"/>
+        <face material_id="1" vertex1_id="80" vertex2_id="84" vertex3_id="100"/>
+        <face material_id="1" vertex1_id="78" vertex2_id="83" vertex3_id="84"/>
+        <face material_id="1" vertex1_id="97" vertex2_id="284" vertex3_id="305"/>
+        <face material_id="2" vertex1_id="96" vertex2_id="264" vertex3_id="284"/>
+        <face material_id="0" vertex1_id="76" vertex2_id="75" vertex3_id="87"/>
+        <face material_id="0" vertex1_id="74" vertex2_id="86" vertex3_id="104"/>
+        <face material_id="1" vertex1_id="265" vertex2_id="285" vertex3_id="99"/>
+        <face material_id="0" vertex1_id="89" vertex2_id="76" vertex3_id="88"/>
+        <face material_id="1" vertex1_id="89" vertex2_id="98" vertex3_id="289"/>
+        <face material_id="1" vertex1_id="90" vertex2_id="99" vertex3_id="86"/>
+        <face material_id="1" vertex1_id="83" vertex2_id="96" vertex3_id="97"/>
+        <face material_id="1" vertex1_id="84" vertex2_id="97" vertex3_id="105"/>
+        <face material_id="1" vertex1_id="81" vertex2_id="91" vertex3_id="90"/>
+        <face material_id="1" vertex1_id="279" vertex2_id="278" vertex3_id="91"/>
+        <face material_id="1" vertex1_id="78" vertex2_id="77" vertex3_id="93"/>
+        <face material_id="1" vertex1_id="92" vertex2_id="95" vertex3_id="283"/>
+        <face material_id="1" vertex1_id="93" vertex2_id="89" vertex3_id="269"/>
+        <face material_id="1" vertex1_id="78" vertex2_id="94" vertex3_id="96"/>
+        <face material_id="0" vertex1_id="308" vertex2_id="289" vertex3_id="98"/>
+        <face material_id="0" vertex1_id="121" vertex2_id="116" vertex3_id="113"/>
+        <face material_id="1" vertex1_id="85" vertex2_id="100" vertex3_id="105"/>
+        <face material_id="0" vertex1_id="75" vertex2_id="103" vertex3_id="104"/>
+        <face material_id="1" vertex1_id="105" vertex2_id="305" vertex3_id="283"/>
+        <face material_id="1" vertex1_id="102" vertex2_id="100" vertex3_id="85"/>
+        <face material_id="0" vertex1_id="79" vertex2_id="101" vertex3_id="103"/>
+        <face material_id="1" vertex1_id="82" vertex2_id="81" vertex3_id="101"/>
+        <face material_id="1" vertex1_id="108" vertex2_id="99" vertex3_id="285"/>
+        <face material_id="1" vertex1_id="109" vertex2_id="86" vertex3_id="99"/>
+        <face material_id="0" vertex1_id="107" vertex2_id="88" vertex3_id="87"/>
+        <face material_id="0" vertex1_id="110" vertex2_id="87" vertex3_id="104"/>
+        <face material_id="0" vertex1_id="111" vertex2_id="104" vertex3_id="86"/>
+        <face material_id="0" vertex1_id="69" vertex2_id="111" vertex3_id="109"/>
+        <face material_id="0" vertex1_id="68" vertex2_id="110" vertex3_id="111"/>
+        <face material_id="0" vertex1_id="72" vertex2_id="107" vertex3_id="110"/>
+        <face material_id="1" vertex1_id="70" vertex2_id="109" vertex3_id="108"/>
+        <face material_id="1" vertex1_id="71" vertex2_id="108" vertex3_id="311"/>
+        <face material_id="1" vertex1_id="118" vertex2_id="119" vertex3_id="112"/>
+        <face material_id="0" vertex1_id="263" vertex2_id="308" vertex3_id="106"/>
+        <face material_id="0" vertex1_id="116" vertex2_id="115" vertex3_id="114"/>
+        <face material_id="0" vertex1_id="113" vertex2_id="116" vertex3_id="117"/>
+        <face material_id="1" vertex1_id="122" vertex2_id="118" vertex3_id="117"/>
+        <face material_id="0" vertex1_id="123" vertex2_id="115" vertex3_id="116"/>
+        <face material_id="0" vertex1_id="122" vertex2_id="114" vertex3_id="115"/>
+        <face material_id="0" vertex1_id="120" vertex2_id="113" vertex3_id="112"/>
+        <face material_id="0" vertex1_id="72" vertex2_id="73" vertex3_id="120"/>
+        <face material_id="0" vertex1_id="98" vertex2_id="88" vertex3_id="122"/>
+        <face material_id="0" vertex1_id="98" vertex2_id="123" vertex3_id="121"/>
+        <face material_id="1" vertex1_id="88" vertex2_id="107" vertex3_id="118"/>
+        <face material_id="1" vertex1_id="107" vertex2_id="72" vertex3_id="119"/>
+        <face material_id="0" vertex1_id="106" vertex2_id="121" vertex3_id="120"/>
+        <face material_id="2" vertex1_id="126" vertex2_id="125" vertex3_id="128"/>
+        <face material_id="2" vertex1_id="126" vertex2_id="127" vertex3_id="124"/>
+        <face material_id="0" vertex1_id="76" vertex2_id="125" vertex3_id="124"/>
+        <face material_id="0" vertex1_id="75" vertex2_id="124" vertex3_id="127"/>
+        <face material_id="0" vertex1_id="77" vertex2_id="79" vertex3_id="127"/>
+        <face material_id="0" vertex1_id="76" vertex2_id="89" vertex3_id="128"/>
+        <face material_id="0" vertex1_id="138" vertex2_id="136" vertex3_id="134"/>
+        <face material_id="0" vertex1_id="137" vertex2_id="138" vertex3_id="135"/>
+        <face material_id="0" vertex1_id="193" vertex2_id="334" vertex3_id="131"/>
+        <face material_id="0" vertex1_id="200" vertex2_id="20" vertex3_id="130"/>
+        <face material_id="0" vertex1_id="134" vertex2_id="339" vertex3_id="344"/>
+        <face material_id="0" vertex1_id="133" vertex2_id="135" vertex3_id="344"/>
+        <face material_id="0" vertex1_id="136" vertex2_id="348" vertex3_id="339"/>
+        <face material_id="0" vertex1_id="349" vertex2_id="137" vertex3_id="133"/>
+        <face material_id="0" vertex1_id="336" vertex2_id="130" vertex3_id="137"/>
+        <face material_id="0" vertex1_id="131" vertex2_id="334" vertex3_id="348"/>
+        <face material_id="0" vertex1_id="132" vertex2_id="138" vertex3_id="137"/>
+        <face material_id="0" vertex1_id="132" vertex2_id="131" vertex3_id="136"/>
+        <face material_id="1" vertex1_id="141" vertex2_id="144" vertex3_id="142"/>
+        <face material_id="1" vertex1_id="154" vertex2_id="142" vertex3_id="143"/>
+        <face material_id="1" vertex1_id="156" vertex2_id="155" vertex3_id="143"/>
+        <face material_id="1" vertex1_id="152" vertex2_id="140" vertex3_id="141"/>
+        <face material_id="1" vertex1_id="152" vertex2_id="153" vertex3_id="139"/>
+        <face material_id="1" vertex1_id="156" vertex2_id="144" vertex3_id="139"/>
+        <face material_id="1" vertex1_id="5" vertex2_id="15" vertex3_id="148"/>
+        <face material_id="1" vertex1_id="7" vertex2_id="5" vertex3_id="150"/>
+        <face material_id="1" vertex1_id="9" vertex2_id="7" vertex3_id="149"/>
+        <face material_id="1" vertex1_id="13" vertex2_id="147" vertex3_id="148"/>
+        <face material_id="1" vertex1_id="11" vertex2_id="145" vertex3_id="147"/>
+        <face material_id="1" vertex1_id="9" vertex2_id="146" vertex3_id="145"/>
+        <face material_id="1" vertex1_id="144" vertex2_id="143" vertex3_id="142"/>
+        <face material_id="1" vertex1_id="140" vertex2_id="139" vertex3_id="144"/>
+        <face material_id="1" vertex1_id="150" vertex2_id="148" vertex3_id="156"/>
+        <face material_id="1" vertex1_id="149" vertex2_id="150" vertex3_id="153"/>
+        <face material_id="1" vertex1_id="146" vertex2_id="149" vertex3_id="152"/>
+        <face material_id="1" vertex1_id="147" vertex2_id="155" vertex3_id="156"/>
+        <face material_id="1" vertex1_id="145" vertex2_id="154" vertex3_id="155"/>
+        <face material_id="1" vertex1_id="146" vertex2_id="151" vertex3_id="154"/>
+        <face material_id="1" vertex1_id="157" vertex2_id="169" vertex3_id="174"/>
+        <face material_id="1" vertex1_id="165" vertex2_id="163" vertex3_id="162"/>
+        <face material_id="1" vertex1_id="166" vertex2_id="165" vertex3_id="161"/>
+        <face material_id="1" vertex1_id="166" vertex2_id="160" vertex3_id="159"/>
+        <face material_id="1" vertex1_id="167" vertex2_id="159" vertex3_id="158"/>
+        <face material_id="1" vertex1_id="168" vertex2_id="158" vertex3_id="157"/>
+        <face material_id="1" vertex1_id="36" vertex2_id="168" vertex3_id="164"/>
+        <face material_id="1" vertex1_id="38" vertex2_id="167" vertex3_id="168"/>
+        <face material_id="1" vertex1_id="40" vertex2_id="166" vertex3_id="167"/>
+        <face material_id="1" vertex1_id="40" vertex2_id="42" vertex3_id="165"/>
+        <face material_id="1" vertex1_id="42" vertex2_id="44" vertex3_id="163"/>
+        <face material_id="1" vertex1_id="44" vertex2_id="34" vertex3_id="164"/>
+        <face material_id="1" vertex1_id="169" vertex2_id="172" vertex3_id="173"/>
+        <face material_id="1" vertex1_id="161" vertex2_id="162" vertex3_id="174"/>
+        <face material_id="1" vertex1_id="160" vertex2_id="161" vertex3_id="173"/>
+        <face material_id="1" vertex1_id="160" vertex2_id="172" vertex3_id="171"/>
+        <face material_id="1" vertex1_id="159" vertex2_id="171" vertex3_id="170"/>
+        <face material_id="1" vertex1_id="157" vertex2_id="158" vertex3_id="170"/>
+        <face material_id="1" vertex1_id="169" vertex2_id="170" vertex3_id="171"/>
+        <face material_id="1" vertex1_id="180" vertex2_id="179" vertex3_id="181"/>
+        <face material_id="0" vertex1_id="242" vertex2_id="192" vertex3_id="178"/>
+        <face material_id="1" vertex1_id="365" vertex2_id="353" vertex3_id="352"/>
+        <face material_id="1" vertex1_id="186" vertex2_id="184" vertex3_id="183"/>
+        <face material_id="0" vertex1_id="244" vertex2_id="176" vertex3_id="175"/>
+        <face material_id="0" vertex1_id="245" vertex2_id="175" vertex3_id="191"/>
+        <face material_id="1" vertex1_id="184" vertex2_id="182" vertex3_id="181"/>
+        <face material_id="1" vertex1_id="190" vertex2_id="189" vertex3_id="179"/>
+        <face material_id="0" vertex1_id="178" vertex2_id="177" vertex3_id="246"/>
+        <face material_id="1" vertex1_id="190" vertex2_id="188" vertex3_id="187"/>
+        <face material_id="0" vertex1_id="177" vertex2_id="176" vertex3_id="244"/>
+        <face material_id="1" vertex1_id="247" vertex2_id="191" vertex3_id="192"/>
+        <face material_id="1" vertex1_id="188" vertex2_id="186" vertex3_id="185"/>
+        <face material_id="1" vertex1_id="202" vertex2_id="194" vertex3_id="195"/>
+        <face material_id="1" vertex1_id="193" vertex2_id="194" vertex3_id="202"/>
+        <face material_id="0" vertex1_id="177" vertex2_id="197" vertex3_id="196"/>
+        <face material_id="0" vertex1_id="197" vertex2_id="199" vertex3_id="198"/>
+        <face material_id="0" vertex1_id="199" vertex2_id="201" vertex3_id="200"/>
+        <face material_id="1" vertex1_id="204" vertex2_id="202" vertex3_id="191"/>
+        <face material_id="1" vertex1_id="191" vertex2_id="202" vertex3_id="203"/>
+        <face material_id="0" vertex1_id="338" vertex2_id="337" vertex3_id="204"/>
+        <face material_id="0" vertex1_id="205" vertex2_id="204" vertex3_id="175"/>
+        <face material_id="0" vertex1_id="335" vertex2_id="338" vertex3_id="205"/>
+        <face material_id="0" vertex1_id="196" vertex2_id="198" vertex3_id="205"/>
+        <face material_id="1" vertex1_id="213" vertex2_id="208" vertex3_id="192"/>
+        <face material_id="0" vertex1_id="199" vertex2_id="211" vertex3_id="212"/>
+        <face material_id="0" vertex1_id="197" vertex2_id="210" vertex3_id="211"/>
+        <face material_id="0" vertex1_id="177" vertex2_id="206" vertex3_id="210"/>
+        <face material_id="1" vertex1_id="209" vertex2_id="213" vertex3_id="203"/>
+        <face material_id="1" vertex1_id="192" vertex2_id="208" vertex3_id="207"/>
+        <face material_id="0" vertex1_id="178" vertex2_id="207" vertex3_id="206"/>
+        <face material_id="0" vertex1_id="229" vertex2_id="228" vertex3_id="221"/>
+        <face material_id="1" vertex1_id="218" vertex2_id="219" vertex3_id="217"/>
+        <face material_id="0" vertex1_id="230" vertex2_id="229" vertex3_id="223"/>
+        <face material_id="1" vertex1_id="220" vertex2_id="221" vertex3_id="219"/>
+        <face material_id="0" vertex1_id="206" vertex2_id="207" vertex3_id="215"/>
+        <face material_id="1" vertex1_id="231" vertex2_id="230" vertex3_id="225"/>
+        <face material_id="1" vertex1_id="220" vertex2_id="222" vertex3_id="223"/>
+        <face material_id="0" vertex1_id="219" vertex2_id="214" vertex3_id="215"/>
+        <face material_id="0" vertex1_id="237" vertex2_id="238" vertex3_id="212"/>
+        <face material_id="1" vertex1_id="222" vertex2_id="224" vertex3_id="225"/>
+        <face material_id="1" vertex1_id="217" vertex2_id="215" vertex3_id="231"/>
+        <face material_id="1" vertex1_id="216" vertex2_id="217" vertex3_id="227"/>
+        <face material_id="1" vertex1_id="224" vertex2_id="226" vertex3_id="227"/>
+        <face material_id="0" vertex1_id="221" vertex2_id="228" vertex3_id="214"/>
+        <face material_id="1" vertex1_id="374" vertex2_id="373" vertex3_id="368"/>
+        <face material_id="1" vertex1_id="234" vertex2_id="235" vertex3_id="233"/>
+        <face material_id="1" vertex1_id="230" vertex2_id="231" vertex3_id="235"/>
+        <face material_id="1" vertex1_id="209" vertex2_id="233" vertex3_id="235"/>
+        <face material_id="1" vertex1_id="235" vertex2_id="231" vertex3_id="208"/>
+        <face material_id="1" vertex1_id="215" vertex2_id="207" vertex3_id="208"/>
+        <face material_id="0" vertex1_id="236" vertex2_id="237" vertex3_id="211"/>
+        <face material_id="0" vertex1_id="210" vertex2_id="206" vertex3_id="214"/>
+        <face material_id="0" vertex1_id="240" vertex2_id="241" vertex3_id="238"/>
+        <face material_id="0" vertex1_id="239" vertex2_id="240" vertex3_id="237"/>
+        <face material_id="0" vertex1_id="214" vertex2_id="228" vertex3_id="239"/>
+        <face material_id="1" vertex1_id="247" vertex2_id="242" vertex3_id="181"/>
+        <face material_id="0" vertex1_id="185" vertex2_id="246" vertex3_id="244"/>
+        <face material_id="0" vertex1_id="183" vertex2_id="243" vertex3_id="246"/>
+        <face material_id="0" vertex1_id="245" vertex2_id="247" vertex3_id="179"/>
+        <face material_id="0" vertex1_id="187" vertex2_id="244" vertex3_id="245"/>
+        <face material_id="0" vertex1_id="242" vertex2_id="243" vertex3_id="183"/>
+        <face material_id="0" vertex1_id="248" vertex2_id="253" vertex3_id="239"/>
+        <face material_id="0" vertex1_id="254" vertex2_id="255" vertex3_id="241"/>
+        <face material_id="0" vertex1_id="253" vertex2_id="254" vertex3_id="240"/>
+        <face material_id="1" vertex1_id="232" vertex2_id="251" vertex3_id="252"/>
+        <face material_id="1" vertex1_id="234" vertex2_id="252" vertex3_id="250"/>
+        <face material_id="0" vertex1_id="249" vertex2_id="248" vertex3_id="228"/>
+        <face material_id="0" vertex1_id="230" vertex2_id="250" vertex3_id="249"/>
+        <face material_id="0" vertex1_id="256" vertex2_id="261" vertex3_id="253"/>
+        <face material_id="0" vertex1_id="262" vertex2_id="263" vertex3_id="255"/>
+        <face material_id="0" vertex1_id="261" vertex2_id="262" vertex3_id="254"/>
+        <face material_id="1" vertex1_id="252" vertex2_id="251" vertex3_id="259"/>
+        <face material_id="1" vertex1_id="250" vertex2_id="252" vertex3_id="260"/>
+        <face material_id="0" vertex1_id="257" vertex2_id="256" vertex3_id="248"/>
+        <face material_id="0" vertex1_id="258" vertex2_id="257" vertex3_id="249"/>
+        <face material_id="1" vertex1_id="275" vertex2_id="273" vertex3_id="272"/>
+        <face material_id="1" vertex1_id="297" vertex2_id="264" vertex3_id="271"/>
+        <face material_id="0" vertex1_id="333" vertex2_id="330" vertex3_id="272"/>
+        <face material_id="1" vertex1_id="303" vertex2_id="275" vertex3_id="274"/>
+        <face material_id="0" vertex1_id="290" vertex2_id="332" vertex3_id="333"/>
+        <face material_id="0" vertex1_id="302" vertex2_id="304" vertex3_id="266"/>
+        <face material_id="1" vertex1_id="296" vertex2_id="282" vertex3_id="277"/>
+        <face material_id="1" vertex1_id="295" vertex2_id="271" vertex3_id="270"/>
+        <face material_id="1" vertex1_id="277" vertex2_id="276" vertex3_id="292"/>
+        <face material_id="1" vertex1_id="292" vertex2_id="291" vertex3_id="265"/>
+        <face material_id="1" vertex1_id="301" vertex2_id="281" vertex3_id="275"/>
+        <face material_id="1" vertex1_id="281" vertex2_id="280" vertex3_id="273"/>
+        <face material_id="1" vertex1_id="305" vertex2_id="284" vertex3_id="298"/>
+        <face material_id="2" vertex1_id="284" vertex2_id="264" vertex3_id="297"/>
+        <face material_id="0" vertex1_id="268" vertex2_id="288" vertex3_id="287"/>
+        <face material_id="0" vertex1_id="306" vertex2_id="286" vertex3_id="266"/>
+        <face material_id="1" vertex1_id="300" vertex2_id="285" vertex3_id="265"/>
+        <face material_id="0" vertex1_id="290" vertex2_id="299" vertex3_id="288"/>
+        <face material_id="1" vertex1_id="289" vertex2_id="299" vertex3_id="290"/>
+        <face material_id="1" vertex1_id="286" vertex2_id="300" vertex3_id="291"/>
+        <face material_id="1" vertex1_id="298" vertex2_id="297" vertex3_id="280"/>
+        <face material_id="1" vertex1_id="307" vertex2_id="298" vertex3_id="281"/>
+        <face material_id="1" vertex1_id="276" vertex2_id="266" vertex3_id="291"/>
+        <face material_id="1" vertex1_id="279" vertex2_id="293" vertex3_id="292"/>
+        <face material_id="1" vertex1_id="273" vertex2_id="295" vertex3_id="294"/>
+        <face material_id="1" vertex1_id="283" vertex2_id="296" vertex3_id="293"/>
+        <face material_id="1" vertex1_id="269" vertex2_id="290" vertex3_id="294"/>
+        <face material_id="1" vertex1_id="273" vertex2_id="280" vertex3_id="297"/>
+        <face material_id="0" vertex1_id="299" vertex2_id="289" vertex3_id="308"/>
+        <face material_id="0" vertex1_id="317" vertex2_id="320" vertex3_id="325"/>
+        <face material_id="1" vertex1_id="282" vertex2_id="296" vertex3_id="307"/>
+        <face material_id="0" vertex1_id="267" vertex2_id="287" vertex3_id="306"/>
+        <face material_id="1" vertex1_id="283" vertex2_id="305" vertex3_id="307"/>
+        <face material_id="1" vertex1_id="282" vertex2_id="301" vertex3_id="303"/>
+        <face material_id="0" vertex1_id="274" vertex2_id="267" vertex3_id="304"/>
+        <face material_id="1" vertex1_id="277" vertex2_id="303" vertex3_id="302"/>
+        <face material_id="1" vertex1_id="285" vertex2_id="300" vertex3_id="312"/>
+        <face material_id="1" vertex1_id="300" vertex2_id="286" vertex3_id="313"/>
+        <face material_id="0" vertex1_id="287" vertex2_id="288" vertex3_id="310"/>
+        <face material_id="0" vertex1_id="306" vertex2_id="287" vertex3_id="314"/>
+        <face material_id="0" vertex1_id="286" vertex2_id="306" vertex3_id="315"/>
+        <face material_id="0" vertex1_id="313" vertex2_id="315" vertex3_id="257"/>
+        <face material_id="0" vertex1_id="315" vertex2_id="314" vertex3_id="256"/>
+        <face material_id="0" vertex1_id="314" vertex2_id="310" vertex3_id="261"/>
+        <face material_id="1" vertex1_id="312" vertex2_id="313" vertex3_id="258"/>
+        <face material_id="1" vertex1_id="311" vertex2_id="312" vertex3_id="260"/>
+        <face material_id="1" vertex1_id="322" vertex2_id="321" vertex3_id="316"/>
+        <face material_id="0" vertex1_id="309" vertex2_id="308" vertex3_id="263"/>
+        <face material_id="0" vertex1_id="318" vertex2_id="319" vertex3_id="320"/>
+        <face material_id="0" vertex1_id="321" vertex2_id="320" vertex3_id="317"/>
+        <face material_id="1" vertex1_id="326" vertex2_id="318" vertex3_id="321"/>
+        <face material_id="0" vertex1_id="320" vertex2_id="319" vertex3_id="327"/>
+        <face material_id="0" vertex1_id="319" vertex2_id="318" vertex3_id="326"/>
+        <face material_id="0" vertex1_id="316" vertex2_id="317" vertex3_id="324"/>
+        <face material_id="0" vertex1_id="261" vertex2_id="323" vertex3_id="324"/>
+        <face material_id="0" vertex1_id="299" vertex2_id="327" vertex3_id="326"/>
+        <face material_id="0" vertex1_id="325" vertex2_id="327" vertex3_id="299"/>
+        <face material_id="1" vertex1_id="288" vertex2_id="326" vertex3_id="322"/>
+        <face material_id="1" vertex1_id="310" vertex2_id="322" vertex3_id="323"/>
+        <face material_id="0" vertex1_id="324" vertex2_id="325" vertex3_id="309"/>
+        <face material_id="2" vertex1_id="332" vertex2_id="329" vertex3_id="330"/>
+        <face material_id="2" vertex1_id="330" vertex2_id="329" vertex3_id="328"/>
+        <face material_id="0" vertex1_id="328" vertex2_id="329" vertex3_id="268"/>
+        <face material_id="0" vertex1_id="331" vertex2_id="328" vertex3_id="267"/>
+        <face material_id="0" vertex1_id="272" vertex2_id="330" vertex3_id="331"/>
+        <face material_id="0" vertex1_id="268" vertex2_id="329" vertex3_id="332"/>
+        <face material_id="0" vertex1_id="347" vertex2_id="343" vertex3_id="342"/>
+        <face material_id="0" vertex1_id="346" vertex2_id="340" vertex3_id="343"/>
+        <face material_id="0" vertex1_id="337" vertex2_id="334" vertex3_id="193"/>
+        <face material_id="0" vertex1_id="200" vertex2_id="336" vertex3_id="335"/>
+        <face material_id="0" vertex1_id="344" vertex2_id="339" vertex3_id="342"/>
+        <face material_id="0" vertex1_id="340" vertex2_id="341" vertex3_id="344"/>
+        <face material_id="0" vertex1_id="345" vertex2_id="342" vertex3_id="339"/>
+        <face material_id="0" vertex1_id="349" vertex2_id="341" vertex3_id="340"/>
+        <face material_id="0" vertex1_id="336" vertex2_id="349" vertex3_id="346"/>
+        <face material_id="0" vertex1_id="337" vertex2_id="345" vertex3_id="348"/>
+        <face material_id="0" vertex1_id="346" vertex2_id="347" vertex3_id="338"/>
+        <face material_id="0" vertex1_id="338" vertex2_id="347" vertex3_id="345"/>
+        <face material_id="1" vertex1_id="351" vertex2_id="352" vertex3_id="355"/>
+        <face material_id="1" vertex1_id="354" vertex2_id="353" vertex3_id="365"/>
+        <face material_id="1" vertex1_id="367" vertex2_id="355" vertex3_id="354"/>
+        <face material_id="1" vertex1_id="352" vertex2_id="351" vertex3_id="363"/>
+        <face material_id="1" vertex1_id="363" vertex2_id="351" vertex3_id="350"/>
+        <face material_id="1" vertex1_id="350" vertex2_id="355" vertex3_id="367"/>
+        <face material_id="1" vertex1_id="180" vertex2_id="361" vertex3_id="359"/>
+        <face material_id="1" vertex1_id="182" vertex2_id="360" vertex3_id="361"/>
+        <face material_id="1" vertex1_id="184" vertex2_id="357" vertex3_id="360"/>
+        <face material_id="1" vertex1_id="359" vertex2_id="358" vertex3_id="188"/>
+        <face material_id="1" vertex1_id="358" vertex2_id="356" vertex3_id="186"/>
+        <face material_id="1" vertex1_id="356" vertex2_id="357" vertex3_id="184"/>
+        <face material_id="1" vertex1_id="353" vertex2_id="354" vertex3_id="355"/>
+        <face material_id="1" vertex1_id="351" vertex2_id="352" vertex3_id="355"/>
+        <face material_id="1" vertex1_id="361" vertex2_id="364" vertex3_id="367"/>
+        <face material_id="1" vertex1_id="360" vertex2_id="363" vertex3_id="364"/>
+        <face material_id="1" vertex1_id="357" vertex2_id="362" vertex3_id="363"/>
+        <face material_id="1" vertex1_id="367" vertex2_id="366" vertex3_id="358"/>
+        <face material_id="1" vertex1_id="366" vertex2_id="365" vertex3_id="356"/>
+        <face material_id="1" vertex1_id="365" vertex2_id="362" vertex3_id="357"/>
+        <face material_id="1" vertex1_id="385" vertex2_id="380" vertex3_id="368"/>
+        <face material_id="1" vertex1_id="376" vertex2_id="372" vertex3_id="373"/>
+        <face material_id="1" vertex1_id="377" vertex2_id="371" vertex3_id="372"/>
+        <face material_id="1" vertex1_id="370" vertex2_id="371" vertex3_id="377"/>
+        <face material_id="1" vertex1_id="369" vertex2_id="370" vertex3_id="378"/>
+        <face material_id="1" vertex1_id="368" vertex2_id="369" vertex3_id="379"/>
+        <face material_id="1" vertex1_id="375" vertex2_id="379" vertex3_id="218"/>
+        <face material_id="1" vertex1_id="379" vertex2_id="378" vertex3_id="220"/>
+        <face material_id="1" vertex1_id="378" vertex2_id="377" vertex3_id="222"/>
+        <face material_id="1" vertex1_id="222" vertex2_id="377" vertex3_id="376"/>
+        <face material_id="1" vertex1_id="224" vertex2_id="376" vertex3_id="374"/>
+        <face material_id="1" vertex1_id="226" vertex2_id="374" vertex3_id="375"/>
+        <face material_id="1" vertex1_id="384" vertex2_id="383" vertex3_id="380"/>
+        <face material_id="1" vertex1_id="372" vertex2_id="384" vertex3_id="385"/>
+        <face material_id="1" vertex1_id="371" vertex2_id="383" vertex3_id="384"/>
+        <face material_id="1" vertex1_id="382" vertex2_id="383" vertex3_id="371"/>
+        <face material_id="1" vertex1_id="381" vertex2_id="382" vertex3_id="370"/>
+        <face material_id="1" vertex1_id="368" vertex2_id="380" vertex3_id="381"/>
+        <face material_id="1" vertex1_id="380" vertex2_id="383" vertex3_id="382"/>
+        <face material_id="1" vertex1_id="7" vertex2_id="6" vertex3_id="5"/>
+        <face material_id="0" vertex1_id="17" vertex2_id="56" vertex3_id="3"/>
+        <face material_id="1" vertex1_id="142" vertex2_id="154" vertex3_id="141"/>
+        <face material_id="1" vertex1_id="9" vertex2_id="11" vertex3_id="8"/>
+        <face material_id="0" vertex1_id="1" vertex2_id="58" vertex3_id="0"/>
+        <face material_id="0" vertex1_id="0" vertex2_id="59" vertex3_id="16"/>
+        <face material_id="1" vertex1_id="7" vertex2_id="9" vertex3_id="6"/>
+        <face material_id="1" vertex1_id="5" vertex2_id="4" vertex3_id="15"/>
+        <face material_id="0" vertex1_id="57" vertex2_id="60" vertex3_id="3"/>
+        <face material_id="1" vertex1_id="13" vertex2_id="15" vertex3_id="12"/>
+        <face material_id="0" vertex1_id="60" vertex2_id="58" vertex3_id="2"/>
+        <face material_id="1" vertex1_id="16" vertex2_id="61" vertex3_id="17"/>
+        <face material_id="1" vertex1_id="11" vertex2_id="13" vertex3_id="10"/>
+        <face material_id="1" vertex1_id="194" vertex2_id="22" vertex3_id="195"/>
+        <face material_id="1" vertex1_id="24" vertex2_id="22" vertex3_id="193"/>
+        <face material_id="0" vertex1_id="19" vertex2_id="2" vertex3_id="18"/>
+        <face material_id="0" vertex1_id="21" vertex2_id="19" vertex3_id="20"/>
+        <face material_id="0" vertex1_id="201" vertex2_id="21" vertex3_id="200"/>
+        <face material_id="1" vertex1_id="0" vertex2_id="16" vertex3_id="24"/>
+        <face material_id="1" vertex1_id="22" vertex2_id="16" vertex3_id="23"/>
+        <face material_id="0" vertex1_id="25" vertex2_id="24" vertex3_id="132"/>
+        <face material_id="0" vertex1_id="1" vertex2_id="0" vertex3_id="25"/>
+        <face material_id="0" vertex1_id="20" vertex2_id="25" vertex3_id="130"/>
+        <face material_id="0" vertex1_id="20" vertex2_id="18" vertex3_id="25"/>
+        <face material_id="1" vertex1_id="23" vertex2_id="17" vertex3_id="31"/>
+        <face material_id="0" vertex1_id="30" vertex2_id="21" vertex3_id="212"/>
+        <face material_id="0" vertex1_id="29" vertex2_id="19" vertex3_id="30"/>
+        <face material_id="0" vertex1_id="26" vertex2_id="2" vertex3_id="29"/>
+        <face material_id="1" vertex1_id="195" vertex2_id="23" vertex3_id="209"/>
+        <face material_id="1" vertex1_id="28" vertex2_id="17" vertex3_id="27"/>
+        <face material_id="0" vertex1_id="27" vertex2_id="3" vertex3_id="26"/>
+        <face material_id="0" vertex1_id="41" vertex2_id="39" vertex3_id="47"/>
+        <face material_id="1" vertex1_id="34" vertex2_id="35" vertex3_id="36"/>
+        <face material_id="0" vertex1_id="43" vertex2_id="41" vertex3_id="48"/>
+        <face material_id="1" vertex1_id="36" vertex2_id="37" vertex3_id="38"/>
+        <face material_id="0" vertex1_id="32" vertex2_id="33" vertex3_id="26"/>
+        <face material_id="1" vertex1_id="45" vertex2_id="43" vertex3_id="49"/>
+        <face material_id="1" vertex1_id="40" vertex2_id="38" vertex3_id="41"/>
+        <face material_id="0" vertex1_id="32" vertex2_id="37" vertex3_id="33"/>
+        <face material_id="0" vertex1_id="30" vertex2_id="212" vertex3_id="53"/>
+        <face material_id="1" vertex1_id="42" vertex2_id="40" vertex3_id="43"/>
+        <face material_id="1" vertex1_id="33" vertex2_id="35" vertex3_id="49"/>
+        <face material_id="1" vertex1_id="44" vertex2_id="45" vertex3_id="34"/>
+        <face material_id="1" vertex1_id="44" vertex2_id="42" vertex3_id="45"/>
+        <face material_id="0" vertex1_id="46" vertex2_id="39" vertex3_id="32"/>
+        <face material_id="1" vertex1_id="162" vertex2_id="163" vertex3_id="157"/>
+        <face material_id="1" vertex1_id="51" vertex2_id="50" vertex3_id="233"/>
+        <face material_id="1" vertex1_id="49" vertex2_id="48" vertex3_id="51"/>
+        <face material_id="1" vertex1_id="233" vertex2_id="209" vertex3_id="51"/>
+        <face material_id="1" vertex1_id="31" vertex2_id="28" vertex3_id="51"/>
+        <face material_id="1" vertex1_id="49" vertex2_id="28" vertex3_id="33"/>
+        <face material_id="0" vertex1_id="29" vertex2_id="30" vertex3_id="52"/>
+        <face material_id="0" vertex1_id="26" vertex2_id="29" vertex3_id="32"/>
+        <face material_id="0" vertex1_id="53" vertex2_id="238" vertex3_id="55"/>
+        <face material_id="0" vertex1_id="52" vertex2_id="53" vertex3_id="54"/>
+        <face material_id="0" vertex1_id="46" vertex2_id="32" vertex3_id="54"/>
+        <face material_id="1" vertex1_id="4" vertex2_id="6" vertex3_id="61"/>
+        <face material_id="0" vertex1_id="60" vertex2_id="10" vertex3_id="58"/>
+        <face material_id="0" vertex1_id="57" vertex2_id="8" vertex3_id="60"/>
+        <face material_id="0" vertex1_id="14" vertex2_id="4" vertex3_id="59"/>
+        <face material_id="0" vertex1_id="58" vertex2_id="12" vertex3_id="59"/>
+        <face material_id="0" vertex1_id="6" vertex2_id="8" vertex3_id="56"/>
+        <face material_id="0" vertex1_id="46" vertex2_id="54" vertex3_id="62"/>
+        <face material_id="0" vertex1_id="55" vertex2_id="241" vertex3_id="67"/>
+        <face material_id="0" vertex1_id="54" vertex2_id="55" vertex3_id="66"/>
+        <face material_id="1" vertex1_id="50" vertex2_id="65" vertex3_id="232"/>
+        <face material_id="1" vertex1_id="48" vertex2_id="64" vertex3_id="50"/>
+        <face material_id="0" vertex1_id="47" vertex2_id="46" vertex3_id="63"/>
+        <face material_id="0" vertex1_id="64" vertex2_id="48" vertex3_id="63"/>
+        <face material_id="0" vertex1_id="62" vertex2_id="66" vertex3_id="68"/>
+        <face material_id="0" vertex1_id="67" vertex2_id="255" vertex3_id="73"/>
+        <face material_id="0" vertex1_id="66" vertex2_id="67" vertex3_id="72"/>
+        <face material_id="1" vertex1_id="251" vertex2_id="65" vertex3_id="259"/>
+        <face material_id="1" vertex1_id="65" vertex2_id="64" vertex3_id="71"/>
+        <face material_id="0" vertex1_id="63" vertex2_id="62" vertex3_id="69"/>
+        <face material_id="0" vertex1_id="64" vertex2_id="63" vertex3_id="70"/>
+        <face material_id="1" vertex1_id="78" vertex2_id="80" vertex3_id="77"/>
+        <face material_id="1" vertex1_id="94" vertex2_id="271" vertex3_id="96"/>
+        <face material_id="0" vertex1_id="93" vertex2_id="77" vertex3_id="129"/>
+        <face material_id="1" vertex1_id="80" vertex2_id="102" vertex3_id="79"/>
+        <face material_id="0" vertex1_id="128" vertex2_id="89" vertex3_id="129"/>
+        <face material_id="0" vertex1_id="103" vertex2_id="101" vertex3_id="74"/>
+        <face material_id="1" vertex1_id="92" vertex2_id="82" vertex3_id="95"/>
+        <face material_id="1" vertex1_id="271" vertex2_id="94" vertex3_id="270"/>
+        <face material_id="1" vertex1_id="92" vertex2_id="91" vertex3_id="82"/>
+        <face material_id="1" vertex1_id="90" vertex2_id="91" vertex3_id="265"/>
+        <face material_id="1" vertex1_id="102" vertex2_id="80" vertex3_id="100"/>
+        <face material_id="1" vertex1_id="80" vertex2_id="78" vertex3_id="84"/>
+        <face material_id="1" vertex1_id="105" vertex2_id="97" vertex3_id="305"/>
+        <face material_id="2" vertex1_id="97" vertex2_id="96" vertex3_id="284"/>
+        <face material_id="0" vertex1_id="88" vertex2_id="76" vertex3_id="87"/>
+        <face material_id="0" vertex1_id="103" vertex2_id="74" vertex3_id="104"/>
+        <face material_id="1" vertex1_id="90" vertex2_id="265" vertex3_id="99"/>
+        <face material_id="0" vertex1_id="98" vertex2_id="89" vertex3_id="88"/>
+        <face material_id="1" vertex1_id="269" vertex2_id="89" vertex3_id="289"/>
+        <face material_id="1" vertex1_id="74" vertex2_id="90" vertex3_id="86"/>
+        <face material_id="1" vertex1_id="84" vertex2_id="83" vertex3_id="97"/>
+        <face material_id="1" vertex1_id="100" vertex2_id="84" vertex3_id="105"/>
+        <face material_id="1" vertex1_id="74" vertex2_id="81" vertex3_id="90"/>
+        <face material_id="1" vertex1_id="92" vertex2_id="279" vertex3_id="91"/>
+        <face material_id="1" vertex1_id="94" vertex2_id="78" vertex3_id="93"/>
+        <face material_id="1" vertex1_id="279" vertex2_id="92" vertex3_id="283"/>
+        <face material_id="1" vertex1_id="270" vertex2_id="93" vertex3_id="269"/>
+        <face material_id="1" vertex1_id="83" vertex2_id="78" vertex3_id="96"/>
+        <face material_id="0" vertex1_id="106" vertex2_id="308" vertex3_id="98"/>
+        <face material_id="0" vertex1_id="120" vertex2_id="121" vertex3_id="113"/>
+        <face material_id="1" vertex1_id="95" vertex2_id="85" vertex3_id="105"/>
+        <face material_id="0" vertex1_id="87" vertex2_id="75" vertex3_id="104"/>
+        <face material_id="1" vertex1_id="95" vertex2_id="105" vertex3_id="283"/>
+        <face material_id="1" vertex1_id="82" vertex2_id="102" vertex3_id="85"/>
+        <face material_id="0" vertex1_id="75" vertex2_id="79" vertex3_id="103"/>
+        <face material_id="1" vertex1_id="102" vertex2_id="82" vertex3_id="101"/>
+        <face material_id="1" vertex1_id="311" vertex2_id="108" vertex3_id="285"/>
+        <face material_id="1" vertex1_id="108" vertex2_id="109" vertex3_id="99"/>
+        <face material_id="0" vertex1_id="110" vertex2_id="107" vertex3_id="87"/>
+        <face material_id="0" vertex1_id="111" vertex2_id="110" vertex3_id="104"/>
+        <face material_id="0" vertex1_id="109" vertex2_id="111" vertex3_id="86"/>
+        <face material_id="0" vertex1_id="70" vertex2_id="69" vertex3_id="109"/>
+        <face material_id="0" vertex1_id="69" vertex2_id="68" vertex3_id="111"/>
+        <face material_id="0" vertex1_id="68" vertex2_id="72" vertex3_id="110"/>
+        <face material_id="1" vertex1_id="71" vertex2_id="70" vertex3_id="108"/>
+        <face material_id="1" vertex1_id="259" vertex2_id="71" vertex3_id="311"/>
+        <face material_id="1" vertex1_id="117" vertex2_id="118" vertex3_id="112"/>
+        <face material_id="0" vertex1_id="73" vertex2_id="263" vertex3_id="106"/>
+        <face material_id="0" vertex1_id="117" vertex2_id="116" vertex3_id="114"/>
+        <face material_id="0" vertex1_id="112" vertex2_id="113" vertex3_id="117"/>
+        <face material_id="1" vertex1_id="114" vertex2_id="122" vertex3_id="117"/>
+        <face material_id="0" vertex1_id="121" vertex2_id="123" vertex3_id="116"/>
+        <face material_id="0" vertex1_id="123" vertex2_id="122" vertex3_id="115"/>
+        <face material_id="0" vertex1_id="119" vertex2_id="120" vertex3_id="112"/>
+        <face material_id="0" vertex1_id="119" vertex2_id="72" vertex3_id="120"/>
+        <face material_id="0" vertex1_id="123" vertex2_id="98" vertex3_id="122"/>
+        <face material_id="0" vertex1_id="106" vertex2_id="98" vertex3_id="121"/>
+        <face material_id="1" vertex1_id="122" vertex2_id="88" vertex3_id="118"/>
+        <face material_id="1" vertex1_id="118" vertex2_id="107" vertex3_id="119"/>
+        <face material_id="0" vertex1_id="73" vertex2_id="106" vertex3_id="120"/>
+        <face material_id="2" vertex1_id="129" vertex2_id="126" vertex3_id="128"/>
+        <face material_id="2" vertex1_id="125" vertex2_id="126" vertex3_id="124"/>
+        <face material_id="0" vertex1_id="75" vertex2_id="76" vertex3_id="124"/>
+        <face material_id="0" vertex1_id="79" vertex2_id="75" vertex3_id="127"/>
+        <face material_id="0" vertex1_id="126" vertex2_id="77" vertex3_id="127"/>
+        <face material_id="0" vertex1_id="125" vertex2_id="76" vertex3_id="128"/>
+        <face material_id="0" vertex1_id="135" vertex2_id="138" vertex3_id="134"/>
+        <face material_id="0" vertex1_id="133" vertex2_id="137" vertex3_id="135"/>
+        <face material_id="0" vertex1_id="24" vertex2_id="193" vertex3_id="131"/>
+        <face material_id="0" vertex1_id="336" vertex2_id="200" vertex3_id="130"/>
+        <face material_id="0" vertex1_id="135" vertex2_id="134" vertex3_id="344"/>
+        <face material_id="0" vertex1_id="341" vertex2_id="133" vertex3_id="344"/>
+        <face material_id="0" vertex1_id="134" vertex2_id="136" vertex3_id="339"/>
+        <face material_id="0" vertex1_id="341" vertex2_id="349" vertex3_id="133"/>
+        <face material_id="0" vertex1_id="349" vertex2_id="336" vertex3_id="137"/>
+        <face material_id="0" vertex1_id="136" vertex2_id="131" vertex3_id="348"/>
+        <face material_id="0" vertex1_id="130" vertex2_id="132" vertex3_id="137"/>
+        <face material_id="0" vertex1_id="138" vertex2_id="132" vertex3_id="136"/>
+        <face material_id="1" vertex1_id="144" vertex2_id="141" vertex3_id="140"/>
+        <face material_id="1" vertex1_id="144" vertex2_id="143" vertex3_id="142"/>
+        <face material_id="1" vertex1_id="140" vertex2_id="139" vertex3_id="144"/>
+        <face material_id="1" vertex1_id="155" vertex2_id="154" vertex3_id="143"/>
+        <face material_id="1" vertex1_id="144" vertex2_id="156" vertex3_id="143"/>
+        <face material_id="1" vertex1_id="151" vertex2_id="152" vertex3_id="141"/>
+        <face material_id="1" vertex1_id="140" vertex2_id="152" vertex3_id="139"/>
+        <face material_id="1" vertex1_id="153" vertex2_id="156" vertex3_id="139"/>
+        <face material_id="1" vertex1_id="150" vertex2_id="5" vertex3_id="148"/>
+        <face material_id="1" vertex1_id="149" vertex2_id="7" vertex3_id="150"/>
+        <face material_id="1" vertex1_id="146" vertex2_id="9" vertex3_id="149"/>
+        <face material_id="1" vertex1_id="15" vertex2_id="13" vertex3_id="148"/>
+        <face material_id="1" vertex1_id="13" vertex2_id="11" vertex3_id="147"/>
+        <face material_id="1" vertex1_id="11" vertex2_id="9" vertex3_id="145"/>
+        <face material_id="1" vertex1_id="141" vertex2_id="144" vertex3_id="142"/>
+        <face material_id="1" vertex1_id="141" vertex2_id="140" vertex3_id="144"/>
+        <face material_id="1" vertex1_id="153" vertex2_id="150" vertex3_id="156"/>
+        <face material_id="1" vertex1_id="152" vertex2_id="149" vertex3_id="153"/>
+        <face material_id="1" vertex1_id="151" vertex2_id="146" vertex3_id="152"/>
+        <face material_id="1" vertex1_id="148" vertex2_id="147" vertex3_id="156"/>
+        <face material_id="1" vertex1_id="147" vertex2_id="145" vertex3_id="155"/>
+        <face material_id="1" vertex1_id="145" vertex2_id="146" vertex3_id="154"/>
+        <face material_id="1" vertex1_id="162" vertex2_id="157" vertex3_id="174"/>
+        <face material_id="1" vertex1_id="161" vertex2_id="165" vertex3_id="162"/>
+        <face material_id="1" vertex1_id="160" vertex2_id="166" vertex3_id="161"/>
+        <face material_id="1" vertex1_id="167" vertex2_id="166" vertex3_id="159"/>
+        <face material_id="1" vertex1_id="168" vertex2_id="167" vertex3_id="158"/>
+        <face material_id="1" vertex1_id="164" vertex2_id="168" vertex3_id="157"/>
+        <face material_id="1" vertex1_id="34" vertex2_id="36" vertex3_id="164"/>
+        <face material_id="1" vertex1_id="36" vertex2_id="38" vertex3_id="168"/>
+        <face material_id="1" vertex1_id="38" vertex2_id="40" vertex3_id="167"/>
+        <face material_id="1" vertex1_id="166" vertex2_id="40" vertex3_id="165"/>
+        <face material_id="1" vertex1_id="165" vertex2_id="42" vertex3_id="163"/>
+        <face material_id="1" vertex1_id="163" vertex2_id="44" vertex3_id="164"/>
+        <face material_id="1" vertex1_id="174" vertex2_id="169" vertex3_id="173"/>
+        <face material_id="1" vertex1_id="173" vertex2_id="161" vertex3_id="174"/>
+        <face material_id="1" vertex1_id="172" vertex2_id="160" vertex3_id="173"/>
+        <face material_id="1" vertex1_id="159" vertex2_id="160" vertex3_id="171"/>
+        <face material_id="1" vertex1_id="158" vertex2_id="159" vertex3_id="170"/>
+        <face material_id="1" vertex1_id="169" vertex2_id="157" vertex3_id="170"/>
+        <face material_id="1" vertex1_id="172" vertex2_id="169" vertex3_id="171"/>
+        <face material_id="1" vertex1_id="182" vertex2_id="180" vertex3_id="181"/>
+        <face material_id="0" vertex1_id="243" vertex2_id="242" vertex3_id="178"/>
+        <face material_id="1" vertex1_id="362" vertex2_id="365" vertex3_id="352"/>
+        <face material_id="1" vertex1_id="185" vertex2_id="186" vertex3_id="183"/>
+        <face material_id="0" vertex1_id="245" vertex2_id="244" vertex3_id="175"/>
+        <face material_id="0" vertex1_id="247" vertex2_id="245" vertex3_id="191"/>
+        <face material_id="1" vertex1_id="183" vertex2_id="184" vertex3_id="181"/>
+        <face material_id="1" vertex1_id="180" vertex2_id="190" vertex3_id="179"/>
+        <face material_id="0" vertex1_id="243" vertex2_id="178" vertex3_id="246"/>
+        <face material_id="1" vertex1_id="189" vertex2_id="190" vertex3_id="187"/>
+        <face material_id="0" vertex1_id="246" vertex2_id="177" vertex3_id="244"/>
+        <face material_id="1" vertex1_id="242" vertex2_id="247" vertex3_id="192"/>
+        <face material_id="1" vertex1_id="187" vertex2_id="188" vertex3_id="185"/>
+        <face material_id="1" vertex1_id="203" vertex2_id="202" vertex3_id="195"/>
+        <face material_id="1" vertex1_id="204" vertex2_id="193" vertex3_id="202"/>
+        <face material_id="0" vertex1_id="176" vertex2_id="177" vertex3_id="196"/>
+        <face material_id="0" vertex1_id="196" vertex2_id="197" vertex3_id="198"/>
+        <face material_id="0" vertex1_id="198" vertex2_id="199" vertex3_id="200"/>
+        <face material_id="1" vertex1_id="175" vertex2_id="204" vertex3_id="191"/>
+        <face material_id="1" vertex1_id="192" vertex2_id="191" vertex3_id="203"/>
+        <face material_id="0" vertex1_id="205" vertex2_id="338" vertex3_id="204"/>
+        <face material_id="0" vertex1_id="176" vertex2_id="205" vertex3_id="175"/>
+        <face material_id="0" vertex1_id="198" vertex2_id="335" vertex3_id="205"/>
+        <face material_id="0" vertex1_id="176" vertex2_id="196" vertex3_id="205"/>
+        <face material_id="1" vertex1_id="203" vertex2_id="213" vertex3_id="192"/>
+        <face material_id="0" vertex1_id="201" vertex2_id="199" vertex3_id="212"/>
+        <face material_id="0" vertex1_id="199" vertex2_id="197" vertex3_id="211"/>
+        <face material_id="0" vertex1_id="197" vertex2_id="177" vertex3_id="210"/>
+        <face material_id="1" vertex1_id="195" vertex2_id="209" vertex3_id="203"/>
+        <face material_id="1" vertex1_id="178" vertex2_id="192" vertex3_id="207"/>
+        <face material_id="0" vertex1_id="177" vertex2_id="178" vertex3_id="206"/>
+        <face material_id="0" vertex1_id="223" vertex2_id="229" vertex3_id="221"/>
+        <face material_id="1" vertex1_id="216" vertex2_id="218" vertex3_id="217"/>
+        <face material_id="0" vertex1_id="225" vertex2_id="230" vertex3_id="223"/>
+        <face material_id="1" vertex1_id="218" vertex2_id="220" vertex3_id="219"/>
+        <face material_id="0" vertex1_id="214" vertex2_id="206" vertex3_id="215"/>
+        <face material_id="1" vertex1_id="227" vertex2_id="231" vertex3_id="225"/>
+        <face material_id="1" vertex1_id="221" vertex2_id="220" vertex3_id="223"/>
+        <face material_id="0" vertex1_id="217" vertex2_id="219" vertex3_id="215"/>
+        <face material_id="0" vertex1_id="211" vertex2_id="237" vertex3_id="212"/>
+        <face material_id="1" vertex1_id="223" vertex2_id="222" vertex3_id="225"/>
+        <face material_id="1" vertex1_id="227" vertex2_id="217" vertex3_id="231"/>
+        <face material_id="1" vertex1_id="226" vertex2_id="216" vertex3_id="227"/>
+        <face material_id="1" vertex1_id="225" vertex2_id="224" vertex3_id="227"/>
+        <face material_id="0" vertex1_id="219" vertex2_id="221" vertex3_id="214"/>
+        <face material_id="1" vertex1_id="375" vertex2_id="374" vertex3_id="368"/>
+        <face material_id="1" vertex1_id="232" vertex2_id="234" vertex3_id="233"/>
+        <face material_id="1" vertex1_id="234" vertex2_id="230" vertex3_id="235"/>
+        <face material_id="1" vertex1_id="213" vertex2_id="209" vertex3_id="235"/>
+        <face material_id="1" vertex1_id="213" vertex2_id="235" vertex3_id="208"/>
+        <face material_id="1" vertex1_id="231" vertex2_id="215" vertex3_id="208"/>
+        <face material_id="0" vertex1_id="210" vertex2_id="236" vertex3_id="211"/>
+        <face material_id="0" vertex1_id="236" vertex2_id="210" vertex3_id="214"/>
+        <face material_id="0" vertex1_id="237" vertex2_id="240" vertex3_id="238"/>
+        <face material_id="0" vertex1_id="236" vertex2_id="239" vertex3_id="237"/>
+        <face material_id="0" vertex1_id="236" vertex2_id="214" vertex3_id="239"/>
+        <face material_id="1" vertex1_id="179" vertex2_id="247" vertex3_id="181"/>
+        <face material_id="0" vertex1_id="187" vertex2_id="185" vertex3_id="244"/>
+        <face material_id="0" vertex1_id="185" vertex2_id="183" vertex3_id="246"/>
+        <face material_id="0" vertex1_id="189" vertex2_id="245" vertex3_id="179"/>
+        <face material_id="0" vertex1_id="189" vertex2_id="187" vertex3_id="245"/>
+        <face material_id="0" vertex1_id="181" vertex2_id="242" vertex3_id="183"/>
+        <face material_id="0" vertex1_id="228" vertex2_id="248" vertex3_id="239"/>
+        <face material_id="0" vertex1_id="240" vertex2_id="254" vertex3_id="241"/>
+        <face material_id="0" vertex1_id="239" vertex2_id="253" vertex3_id="240"/>
+        <face material_id="1" vertex1_id="234" vertex2_id="232" vertex3_id="252"/>
+        <face material_id="1" vertex1_id="230" vertex2_id="234" vertex3_id="250"/>
+        <face material_id="0" vertex1_id="229" vertex2_id="249" vertex3_id="228"/>
+        <face material_id="0" vertex1_id="229" vertex2_id="230" vertex3_id="249"/>
+        <face material_id="0" vertex1_id="248" vertex2_id="256" vertex3_id="253"/>
+        <face material_id="0" vertex1_id="254" vertex2_id="262" vertex3_id="255"/>
+        <face material_id="0" vertex1_id="253" vertex2_id="261" vertex3_id="254"/>
+        <face material_id="1" vertex1_id="260" vertex2_id="252" vertex3_id="259"/>
+        <face material_id="1" vertex1_id="258" vertex2_id="250" vertex3_id="260"/>
+        <face material_id="0" vertex1_id="249" vertex2_id="257" vertex3_id="248"/>
+        <face material_id="0" vertex1_id="250" vertex2_id="258" vertex3_id="249"/>
+        <face material_id="1" vertex1_id="274" vertex2_id="275" vertex3_id="272"/>
+        <face material_id="1" vertex1_id="295" vertex2_id="297" vertex3_id="271"/>
+        <face material_id="0" vertex1_id="294" vertex2_id="333" vertex3_id="272"/>
+        <face material_id="1" vertex1_id="302" vertex2_id="303" vertex3_id="274"/>
+        <face material_id="0" vertex1_id="294" vertex2_id="290" vertex3_id="333"/>
+        <face material_id="0" vertex1_id="276" vertex2_id="302" vertex3_id="266"/>
+        <face material_id="1" vertex1_id="293" vertex2_id="296" vertex3_id="277"/>
+        <face material_id="1" vertex1_id="294" vertex2_id="295" vertex3_id="270"/>
+        <face material_id="1" vertex1_id="293" vertex2_id="277" vertex3_id="292"/>
+        <face material_id="1" vertex1_id="278" vertex2_id="292" vertex3_id="265"/>
+        <face material_id="1" vertex1_id="303" vertex2_id="301" vertex3_id="275"/>
+        <face material_id="1" vertex1_id="275" vertex2_id="281" vertex3_id="273"/>
+        <face material_id="1" vertex1_id="307" vertex2_id="305" vertex3_id="298"/>
+        <face material_id="2" vertex1_id="298" vertex2_id="284" vertex3_id="297"/>
+        <face material_id="0" vertex1_id="267" vertex2_id="268" vertex3_id="287"/>
+        <face material_id="0" vertex1_id="304" vertex2_id="306" vertex3_id="266"/>
+        <face material_id="1" vertex1_id="291" vertex2_id="300" vertex3_id="265"/>
+        <face material_id="0" vertex1_id="268" vertex2_id="290" vertex3_id="288"/>
+        <face material_id="1" vertex1_id="269" vertex2_id="289" vertex3_id="290"/>
+        <face material_id="1" vertex1_id="266" vertex2_id="286" vertex3_id="291"/>
+        <face material_id="1" vertex1_id="281" vertex2_id="298" vertex3_id="280"/>
+        <face material_id="1" vertex1_id="301" vertex2_id="307" vertex3_id="281"/>
+        <face material_id="1" vertex1_id="292" vertex2_id="276" vertex3_id="291"/>
+        <face material_id="1" vertex1_id="278" vertex2_id="279" vertex3_id="292"/>
+        <face material_id="1" vertex1_id="272" vertex2_id="273" vertex3_id="294"/>
+        <face material_id="1" vertex1_id="279" vertex2_id="283" vertex3_id="293"/>
+        <face material_id="1" vertex1_id="270" vertex2_id="269" vertex3_id="294"/>
+        <face material_id="1" vertex1_id="295" vertex2_id="273" vertex3_id="297"/>
+        <face material_id="0" vertex1_id="309" vertex2_id="299" vertex3_id="308"/>
+        <face material_id="0" vertex1_id="324" vertex2_id="317" vertex3_id="325"/>
+        <face material_id="1" vertex1_id="301" vertex2_id="282" vertex3_id="307"/>
+        <face material_id="0" vertex1_id="304" vertex2_id="267" vertex3_id="306"/>
+        <face material_id="1" vertex1_id="296" vertex2_id="283" vertex3_id="307"/>
+        <face material_id="1" vertex1_id="277" vertex2_id="282" vertex3_id="303"/>
+        <face material_id="0" vertex1_id="302" vertex2_id="274" vertex3_id="304"/>
+        <face material_id="1" vertex1_id="276" vertex2_id="277" vertex3_id="302"/>
+        <face material_id="1" vertex1_id="311" vertex2_id="285" vertex3_id="312"/>
+        <face material_id="1" vertex1_id="312" vertex2_id="300" vertex3_id="313"/>
+        <face material_id="0" vertex1_id="314" vertex2_id="287" vertex3_id="310"/>
+        <face material_id="0" vertex1_id="315" vertex2_id="306" vertex3_id="314"/>
+        <face material_id="0" vertex1_id="313" vertex2_id="286" vertex3_id="315"/>
+        <face material_id="0" vertex1_id="258" vertex2_id="313" vertex3_id="257"/>
+        <face material_id="0" vertex1_id="257" vertex2_id="315" vertex3_id="256"/>
+        <face material_id="0" vertex1_id="256" vertex2_id="314" vertex3_id="261"/>
+        <face material_id="1" vertex1_id="260" vertex2_id="312" vertex3_id="258"/>
+        <face material_id="1" vertex1_id="259" vertex2_id="311" vertex3_id="260"/>
+        <face material_id="1" vertex1_id="323" vertex2_id="322" vertex3_id="316"/>
+        <face material_id="0" vertex1_id="262" vertex2_id="309" vertex3_id="263"/>
+        <face material_id="0" vertex1_id="321" vertex2_id="318" vertex3_id="320"/>
+        <face material_id="0" vertex1_id="316" vertex2_id="321" vertex3_id="317"/>
+        <face material_id="1" vertex1_id="322" vertex2_id="326" vertex3_id="321"/>
+        <face material_id="0" vertex1_id="325" vertex2_id="320" vertex3_id="327"/>
+        <face material_id="0" vertex1_id="327" vertex2_id="319" vertex3_id="326"/>
+        <face material_id="0" vertex1_id="323" vertex2_id="316" vertex3_id="324"/>
+        <face material_id="0" vertex1_id="262" vertex2_id="261" vertex3_id="324"/>
+        <face material_id="0" vertex1_id="288" vertex2_id="299" vertex3_id="326"/>
+        <face material_id="0" vertex1_id="309" vertex2_id="325" vertex3_id="299"/>
+        <face material_id="1" vertex1_id="310" vertex2_id="288" vertex3_id="322"/>
+        <face material_id="1" vertex1_id="261" vertex2_id="310" vertex3_id="323"/>
+        <face material_id="0" vertex1_id="262" vertex2_id="324" vertex3_id="309"/>
+        <face material_id="2" vertex1_id="333" vertex2_id="332" vertex3_id="330"/>
+        <face material_id="2" vertex1_id="331" vertex2_id="330" vertex3_id="328"/>
+        <face material_id="0" vertex1_id="267" vertex2_id="328" vertex3_id="268"/>
+        <face material_id="0" vertex1_id="274" vertex2_id="331" vertex3_id="267"/>
+        <face material_id="0" vertex1_id="274" vertex2_id="272" vertex3_id="331"/>
+        <face material_id="0" vertex1_id="290" vertex2_id="268" vertex3_id="332"/>
+        <face material_id="0" vertex1_id="345" vertex2_id="347" vertex3_id="342"/>
+        <face material_id="0" vertex1_id="347" vertex2_id="346" vertex3_id="343"/>
+        <face material_id="0" vertex1_id="204" vertex2_id="337" vertex3_id="193"/>
+        <face material_id="0" vertex1_id="198" vertex2_id="200" vertex3_id="335"/>
+        <face material_id="0" vertex1_id="343" vertex2_id="344" vertex3_id="342"/>
+        <face material_id="0" vertex1_id="343" vertex2_id="340" vertex3_id="344"/>
+        <face material_id="0" vertex1_id="348" vertex2_id="345" vertex3_id="339"/>
+        <face material_id="0" vertex1_id="346" vertex2_id="349" vertex3_id="340"/>
+        <face material_id="0" vertex1_id="335" vertex2_id="336" vertex3_id="346"/>
+        <face material_id="0" vertex1_id="334" vertex2_id="337" vertex3_id="348"/>
+        <face material_id="0" vertex1_id="335" vertex2_id="346" vertex3_id="338"/>
+        <face material_id="0" vertex1_id="337" vertex2_id="338" vertex3_id="345"/>
+        <face material_id="1" vertex1_id="355" vertex2_id="350" vertex3_id="351"/>
+        <face material_id="1" vertex1_id="353" vertex2_id="354" vertex3_id="355"/>
+        <face material_id="1" vertex1_id="355" vertex2_id="352" vertex3_id="353"/>
+        <face material_id="1" vertex1_id="366" vertex2_id="354" vertex3_id="365"/>
+        <face material_id="1" vertex1_id="366" vertex2_id="367" vertex3_id="354"/>
+        <face material_id="1" vertex1_id="362" vertex2_id="352" vertex3_id="363"/>
+        <face material_id="1" vertex1_id="364" vertex2_id="363" vertex3_id="350"/>
+        <face material_id="1" vertex1_id="364" vertex2_id="350" vertex3_id="367"/>
+        <face material_id="1" vertex1_id="190" vertex2_id="180" vertex3_id="359"/>
+        <face material_id="1" vertex1_id="180" vertex2_id="182" vertex3_id="361"/>
+        <face material_id="1" vertex1_id="182" vertex2_id="184" vertex3_id="360"/>
+        <face material_id="1" vertex1_id="190" vertex2_id="359" vertex3_id="188"/>
+        <face material_id="1" vertex1_id="188" vertex2_id="358" vertex3_id="186"/>
+        <face material_id="1" vertex1_id="186" vertex2_id="356" vertex3_id="184"/>
+        <face material_id="1" vertex1_id="352" vertex2_id="353" vertex3_id="355"/>
+        <face material_id="1" vertex1_id="350" vertex2_id="351" vertex3_id="355"/>
+        <face material_id="1" vertex1_id="359" vertex2_id="361" vertex3_id="367"/>
+        <face material_id="1" vertex1_id="361" vertex2_id="360" vertex3_id="364"/>
+        <face material_id="1" vertex1_id="360" vertex2_id="357" vertex3_id="363"/>
+        <face material_id="1" vertex1_id="359" vertex2_id="367" vertex3_id="358"/>
+        <face material_id="1" vertex1_id="358" vertex2_id="366" vertex3_id="356"/>
+        <face material_id="1" vertex1_id="356" vertex2_id="365" vertex3_id="357"/>
+        <face material_id="1" vertex1_id="373" vertex2_id="385" vertex3_id="368"/>
+        <face material_id="1" vertex1_id="374" vertex2_id="376" vertex3_id="373"/>
+        <face material_id="1" vertex1_id="376" vertex2_id="377" vertex3_id="372"/>
+        <face material_id="1" vertex1_id="378" vertex2_id="370" vertex3_id="377"/>
+        <face material_id="1" vertex1_id="379" vertex2_id="369" vertex3_id="378"/>
+        <face material_id="1" vertex1_id="375" vertex2_id="368" vertex3_id="379"/>
+        <face material_id="1" vertex1_id="216" vertex2_id="375" vertex3_id="218"/>
+        <face material_id="1" vertex1_id="218" vertex2_id="379" vertex3_id="220"/>
+        <face material_id="1" vertex1_id="220" vertex2_id="378" vertex3_id="222"/>
+        <face material_id="1" vertex1_id="224" vertex2_id="222" vertex3_id="376"/>
+        <face material_id="1" vertex1_id="226" vertex2_id="224" vertex3_id="374"/>
+        <face material_id="1" vertex1_id="216" vertex2_id="226" vertex3_id="375"/>
+        <face material_id="1" vertex1_id="385" vertex2_id="384" vertex3_id="380"/>
+        <face material_id="1" vertex1_id="373" vertex2_id="372" vertex3_id="385"/>
+        <face material_id="1" vertex1_id="372" vertex2_id="371" vertex3_id="384"/>
+        <face material_id="1" vertex1_id="370" vertex2_id="382" vertex3_id="371"/>
+        <face material_id="1" vertex1_id="369" vertex2_id="381" vertex3_id="370"/>
+        <face material_id="1" vertex1_id="369" vertex2_id="368" vertex3_id="381"/>
+        <face material_id="1" vertex1_id="381" vertex2_id="380" vertex3_id="382"/>
+    </faces>
+    <tags>
+        <tag ID="0" name="Bone"/>
+    </tags>
+    <animations>
+        <animation length_ms="0" name="static">
+            <frame index="0" time_ms="0">
+                <vert normal_x="0.387432" normal_y="0.904416" normal_z="-0.178594" tag_id="-1" x="0.606371" y="1.415866" z="-1.382767"/>
+                <vert normal_x="0.904141" normal_y="0.397351" normal_z="0.156835" tag_id="-1" x="0.861433" y="1.592297" z="-1.176998"/>
+                <vert normal_x="0.995117" normal_y="-0.095676" normal_z="-0.023286" tag_id="-1" x="0.861432" y="1.554407" z="-0.557407"/>
+                <vert normal_x="0.570513" normal_y="-0.499039" normal_z="-0.652242" tag_id="-1" x="0.465792" y="1.068505" z="-0.313335"/>
+                <vert normal_x="-0.851283" normal_y="0.523148" normal_z="0.039949" tag_id="-1" x="0.300097" y="0.701379" z="-1.298671"/>
+                <vert normal_x="-0.852290" normal_y="0.484817" normal_z="-0.196265" tag_id="-1" x="0.336165" y="0.305905" z="-1.178507"/>
+                <vert normal_x="-0.936827" normal_y="-0.262246" normal_z="-0.231361" tag_id="-1" x="0.300097" y="0.694290" z="-1.054205"/>
+                <vert normal_x="-0.947752" normal_y="-0.249641" normal_z="0.198553" tag_id="-1" x="0.336165" y="0.340635" z="-1.035446"/>
+                <vert normal_x="0.052004" normal_y="-0.701224" normal_z="-0.710990" tag_id="-1" x="0.463659" y="0.690746" z="-0.931971"/>
+                <vert normal_x="-0.034364" normal_y="-0.636860" normal_z="0.770196" tag_id="-1" x="0.463659" y="0.358000" z="-0.963915"/>
+                <vert normal_x="0.883511" normal_y="-0.314890" normal_z="-0.346721" tag_id="-1" x="0.675462" y="0.694290" z="-1.054205"/>
+                <vert normal_x="0.956755" normal_y="-0.244484" normal_z="0.157414" tag_id="-1" x="0.591152" y="0.340635" z="-1.035446"/>
+                <vert normal_x="0.810602" normal_y="0.569292" normal_z="-0.136998" tag_id="-1" x="0.675462" y="0.701379" z="-1.298671"/>
+                <vert normal_x="0.840846" normal_y="0.478317" normal_z="-0.253304" tag_id="-1" x="0.591152" y="0.305905" z="-1.178507"/>
+                <vert normal_x="-0.081606" normal_y="0.996612" normal_z="-0.008240" tag_id="-1" x="0.463659" y="0.704924" z="-1.420904"/>
+                <vert normal_x="-0.009430" normal_y="0.932585" normal_z="-0.360820" tag_id="-1" x="0.463659" y="0.288539" z="-1.250038"/>
+                <vert normal_x="-0.445326" normal_y="0.638905" normal_z="-0.627247" tag_id="-1" x="0.258059" y="1.102585" z="-1.176998"/>
+                <vert normal_x="-0.098239" normal_y="-0.039460" normal_z="-0.994354" tag_id="-1" x="0.257137" y="1.043977" z="-0.317625"/>
+                <vert normal_x="0.672140" normal_y="0.421155" normal_z="0.608936" tag_id="-1" x="0.705906" y="1.868915" z="-1.170425"/>
+                <vert normal_x="0.769127" normal_y="0.074252" normal_z="0.634724" tag_id="-1" x="0.705905" y="2.001401" z="-0.563979"/>
+                <vert normal_x="0.337809" normal_y="0.444227" normal_z="0.829768" tag_id="-1" x="0.307614" y="2.088003" z="-1.165141"/>
+                <vert normal_x="0.361187" normal_y="0.112308" normal_z="0.925687" tag_id="-1" x="0.307613" y="2.261666" z="-0.562142"/>
+                <vert normal_x="-0.178961" normal_y="0.463851" normal_z="-0.867611" tag_id="-1" x="0.129030" y="1.146774" z="-1.176998"/>
+                <vert normal_x="-0.061739" normal_y="0.244606" normal_z="-0.967620" tag_id="-1" x="0.125521" y="1.043446" z="-0.317439"/>
+                <vert normal_x="0.216193" normal_y="0.883999" normal_z="-0.414472" tag_id="-1" x="0.231829" y="1.504265" z="-1.475052"/>
+                <vert normal_x="0.376598" normal_y="0.889553" normal_z="0.258461" tag_id="-1" x="0.366656" y="1.739278" z="-1.479557"/>
+                <vert normal_x="0.980773" normal_y="-0.048769" normal_z="-0.188849" tag_id="-1" x="0.811026" y="1.541651" z="-0.084514"/>
+                <vert normal_x="0.620685" normal_y="0.143925" normal_z="-0.770714" tag_id="-1" x="0.466150" y="1.058796" z="-0.084514"/>
+                <vert normal_x="0.213874" normal_y="0.257515" normal_z="-0.942289" tag_id="-1" x="0.260257" y="0.956237" z="-0.084514"/>
+                <vert normal_x="0.832240" normal_y="0.011505" normal_z="0.554277" tag_id="-1" x="0.708742" y="1.989283" z="-0.084514"/>
+                <vert normal_x="0.369732" normal_y="0.074068" normal_z="0.926176" tag_id="-1" x="0.309882" y="2.249919" z="-0.084514"/>
+                <vert normal_x="0.028108" normal_y="0.255806" normal_z="-0.966308" tag_id="-1" x="0.131044" y="0.955360" z="-0.084514"/>
+                <vert normal_x="0.993835" normal_y="0.070315" normal_z="-0.085543" tag_id="-1" x="0.785084" y="1.500140" z="0.484794"/>
+                <vert normal_x="0.529466" normal_y="0.580676" normal_z="-0.618427" tag_id="-1" x="0.464723" y="0.973214" z="0.294754"/>
+                <vert normal_x="0.004028" normal_y="0.928251" normal_z="-0.371868" tag_id="-1" x="0.464723" y="0.260301" z="0.421020"/>
+                <vert normal_x="-0.028321" normal_y="0.989471" normal_z="-0.141789" tag_id="-1" x="0.464723" y="0.687290" z="0.350843"/>
+                <vert normal_x="0.827601" normal_y="0.517258" normal_z="-0.217872" tag_id="-1" x="0.610248" y="0.281192" z="0.504825"/>
+                <vert normal_x="0.851558" normal_y="0.501297" normal_z="-0.153325" tag_id="-1" x="0.650376" y="0.687807" z="0.457757"/>
+                <vert normal_x="0.936094" normal_y="-0.329539" normal_z="0.122990" tag_id="-1" x="0.610248" y="0.321485" z="0.672434"/>
+                <vert normal_x="0.892880" normal_y="-0.382183" normal_z="-0.238075" tag_id="-1" x="0.650376" y="0.688816" z="0.671584"/>
+                <vert normal_x="0.026063" normal_y="-0.707266" normal_z="0.706442" tag_id="-1" x="0.464723" y="0.327474" z="0.756239"/>
+                <vert normal_x="0.177007" normal_y="-0.806696" normal_z="-0.563799" tag_id="-1" x="0.464723" y="0.665997" z="0.778498"/>
+                <vert normal_x="-0.941191" normal_y="-0.314341" normal_z="0.123722" tag_id="-1" x="0.319199" y="0.321485" z="0.672434"/>
+                <vert normal_x="-0.924802" normal_y="-0.288400" normal_z="-0.248024" tag_id="-1" x="0.279071" y="0.658271" z="0.671818"/>
+                <vert normal_x="-0.827967" normal_y="0.511887" normal_z="-0.228919" tag_id="-1" x="0.319199" y="0.281192" z="0.504825"/>
+                <vert normal_x="-0.850490" normal_y="0.521165" normal_z="-0.070772" tag_id="-1" x="0.279071" y="0.643073" z="0.457757"/>
+                <vert normal_x="0.968780" normal_y="-0.217780" normal_z="-0.118229" tag_id="-1" x="0.795761" y="1.459462" z="0.864873"/>
+                <vert normal_x="0.712455" normal_y="-0.549242" normal_z="-0.436689" tag_id="-1" x="0.464723" y="0.940271" z="1.068595"/>
+                <vert normal_x="0.391247" normal_y="-0.423566" normal_z="-0.816980" tag_id="-1" x="0.269636" y="0.832207" z="1.201064"/>
+                <vert normal_x="-0.481552" normal_y="0.377728" normal_z="-0.790796" tag_id="-1" x="0.269636" y="0.866359" z="0.484794"/>
+                <vert normal_x="0.253334" normal_y="-0.350566" normal_z="-0.901608" tag_id="-1" x="0.134818" y="0.808896" z="1.267480"/>
+                <vert normal_x="0.006104" normal_y="0.106143" normal_z="-0.994324" tag_id="-1" x="0.134818" y="0.866359" z="0.484794"/>
+                <vert normal_x="0.842891" normal_y="0.093326" normal_z="0.529862" tag_id="-1" x="0.705905" y="2.091093" z="0.466462"/>
+                <vert normal_x="0.366100" normal_y="0.189337" normal_z="0.911100" tag_id="-1" x="0.307613" y="2.351358" z="0.466462"/>
+                <vert normal_x="0.889615" normal_y="0.099429" normal_z="0.445692" tag_id="-1" x="0.705905" y="2.135940" z="0.722729"/>
+                <vert normal_x="0.386151" normal_y="0.435194" normal_z="0.813288" tag_id="-1" x="0.307613" y="2.396205" z="0.651432"/>
+                <vert normal_x="-0.691702" normal_y="-0.417341" normal_z="-0.589343" tag_id="-1" x="0.342042" y="0.857259" z="-0.427440"/>
+                <vert normal_x="0.083193" normal_y="-0.746940" normal_z="-0.659658" tag_id="-1" x="0.463659" y="0.798661" z="-0.345935"/>
+                <vert normal_x="0.875149" normal_y="0.449660" normal_z="-0.178503" tag_id="-1" x="0.768448" y="1.146838" z="-1.173768"/>
+                <vert normal_x="-0.038209" normal_y="0.999237" normal_z="0.004944" tag_id="-1" x="0.535015" y="1.060395" z="-1.292922"/>
+                <vert normal_x="0.868068" normal_y="-0.293466" normal_z="-0.400342" tag_id="-1" x="0.759304" y="0.996264" z="-0.665153"/>
+                <vert normal_x="-0.975402" normal_y="0.212561" normal_z="-0.058290" tag_id="-1" x="0.279078" y="0.901982" z="-1.067783"/>
+                <vert normal_x="0.952849" normal_y="-0.297769" normal_z="-0.057924" tag_id="-1" x="0.736640" y="1.734412" z="1.100836"/>
+                <vert normal_x="0.775872" normal_y="-0.542802" normal_z="-0.321451" tag_id="-1" x="0.450309" y="1.328768" z="1.380072"/>
+                <vert normal_x="0.689993" normal_y="-0.635456" normal_z="-0.346477" tag_id="-1" x="0.281569" y="1.248698" z="1.559774"/>
+                <vert normal_x="0.526872" normal_y="-0.760796" normal_z="-0.378826" tag_id="-1" x="0.164959" y="1.204234" z="1.655575"/>
+                <vert normal_x="0.841151" normal_y="0.294534" normal_z="0.453475" tag_id="-1" x="0.658919" y="2.277760" z="0.851333"/>
+                <vert normal_x="0.340220" normal_y="0.650807" normal_z="0.678701" tag_id="-1" x="0.296229" y="2.483623" z="0.741330"/>
+                <vert normal_x="0.967437" normal_y="-0.194983" normal_z="-0.161229" tag_id="-1" x="0.689295" y="2.151696" z="1.368513"/>
+                <vert normal_x="0.646657" normal_y="-0.696432" normal_z="-0.311045" tag_id="-1" x="0.438732" y="1.870662" z="1.662221"/>
+                <vert normal_x="0.388867" normal_y="-0.867458" normal_z="-0.310251" tag_id="-1" x="0.300181" y="1.816510" z="1.714525"/>
+                <vert normal_x="0.250618" normal_y="-0.922971" normal_z="-0.291971" tag_id="-1" x="0.167264" y="1.768859" z="1.736073"/>
+                <vert normal_x="0.879665" normal_y="0.446638" normal_z="0.163182" tag_id="-1" x="0.610018" y="2.524690" z="1.049325"/>
+                <vert normal_x="0.186132" normal_y="0.896359" normal_z="0.402295" tag_id="-1" x="0.286266" y="2.662530" z="0.916174"/>
+                <vert normal_x="0.650044" normal_y="-0.438734" normal_z="-0.620411" tag_id="-1" x="0.292247" y="2.063063" z="1.839871"/>
+                <vert normal_x="0.843410" normal_y="-0.503708" normal_z="-0.186773" tag_id="-1" x="0.619762" y="2.493621" z="1.836652"/>
+                <vert normal_x="0.703787" normal_y="-0.592181" normal_z="0.392346" tag_id="-1" x="0.500436" y="2.857728" z="1.937667"/>
+                <vert normal_x="0.751183" normal_y="-0.540330" normal_z="0.379101" tag_id="-1" x="0.234315" y="2.468562" z="2.129434"/>
+                <vert normal_x="0.749870" normal_y="-0.352428" normal_z="0.559862" tag_id="-1" x="0.234315" y="2.346858" z="2.370980"/>
+                <vert normal_x="0.908292" normal_y="-0.364299" normal_z="-0.205573" tag_id="-1" x="0.331371" y="2.256022" z="2.026343"/>
+                <vert normal_x="0.995178" normal_y="-0.087893" normal_z="-0.043062" tag_id="-1" x="0.331371" y="2.178341" z="2.227426"/>
+                <vert normal_x="0.811151" normal_y="-0.007569" normal_z="-0.584765" tag_id="-1" x="0.234315" y="2.015712" z="1.923252"/>
+                <vert normal_x="0.799738" normal_y="0.046632" normal_z="-0.598498" tag_id="-1" x="0.234315" y="1.969300" z="2.087914"/>
+                <vert normal_x="0.741111" normal_y="-0.652516" normal_z="0.157933" tag_id="-1" x="0.240481" y="2.259326" z="2.469671"/>
+                <vert normal_x="0.848811" normal_y="-0.467574" normal_z="-0.246681" tag_id="-1" x="0.301782" y="2.135893" z="2.378843"/>
+                <vert normal_x="0.596576" normal_y="-0.251564" normal_z="-0.762078" tag_id="-1" x="0.221950" y="1.954715" z="2.244221"/>
+                <vert normal_x="0.478805" normal_y="-0.725913" normal_z="-0.493698" tag_id="-1" x="0.284778" y="2.007833" z="1.778454"/>
+                <vert normal_x="0.961486" normal_y="-0.044404" normal_z="0.271218" tag_id="-1" x="0.748524" y="2.695974" z="1.512931"/>
+                <vert normal_x="0.605426" normal_y="-0.523392" normal_z="0.599567" tag_id="-1" x="0.241319" y="3.210419" z="1.502600"/>
+                <vert normal_x="0.445845" normal_y="-0.677999" normal_z="0.584368" tag_id="-1" x="0.221367" y="3.035637" z="2.066423"/>
+                <vert normal_x="0.566179" normal_y="-0.232734" normal_z="-0.790704" tag_id="-1" x="0.146123" y="1.929475" z="1.838578"/>
+                <vert normal_x="0.506333" normal_y="0.172521" normal_z="-0.844874" tag_id="-1" x="0.117157" y="1.883012" z="1.931740"/>
+                <vert normal_x="0.423994" normal_y="-0.076296" normal_z="-0.902432" tag_id="-1" x="0.117157" y="1.867823" z="2.068928"/>
+                <vert normal_x="0.538285" normal_y="-0.695730" normal_z="0.475570" tag_id="-1" x="0.117157" y="2.534566" z="2.192127"/>
+                <vert normal_x="0.426984" normal_y="-0.467177" normal_z="0.774194" tag_id="-1" x="0.117157" y="2.401849" z="2.406775"/>
+                <vert normal_x="0.344646" normal_y="-0.282449" normal_z="-0.895199" tag_id="-1" x="0.125585" y="1.905614" z="2.182898"/>
+                <vert normal_x="0.554155" normal_y="-0.715659" normal_z="0.425092" tag_id="-1" x="0.140410" y="2.325181" z="2.516292"/>
+                <vert normal_x="0.376446" normal_y="-0.878811" normal_z="-0.293100" tag_id="-1" x="0.126648" y="2.206715" z="2.523331"/>
+                <vert normal_x="0.056459" normal_y="-0.252174" normal_z="0.966002" tag_id="-1" x="0.163743" y="3.248113" z="1.504339"/>
+                <vert normal_x="0.372143" normal_y="-0.791314" normal_z="-0.485061" tag_id="-1" x="0.163743" y="1.897788" z="1.787705"/>
+                <vert normal_x="0.757378" normal_y="-0.316233" normal_z="-0.571245" tag_id="-1" x="0.261866" y="2.045304" z="2.311532"/>
+                <vert normal_x="0.883023" normal_y="-0.144230" normal_z="-0.446577" tag_id="-1" x="0.282843" y="2.138630" z="1.974798"/>
+                <vert normal_x="0.918638" normal_y="0.044435" normal_z="-0.392499" tag_id="-1" x="0.282843" y="2.073820" z="2.157670"/>
+                <vert normal_x="0.670003" normal_y="-0.538987" normal_z="-0.510453" tag_id="-1" x="0.380224" y="2.194817" z="1.873479"/>
+                <vert normal_x="0.683828" normal_y="-0.623432" normal_z="-0.379009" tag_id="-1" x="0.468020" y="2.113605" z="1.740478"/>
+                <vert normal_x="0.332865" normal_y="-0.636799" normal_z="-0.695425" tag_id="-1" x="0.141421" y="2.016288" z="2.393712"/>
+                <vert normal_x="-0.463332" normal_y="0.762902" normal_z="0.450819" tag_id="-1" x="0.225004" y="3.079363" z="1.106580"/>
+                <vert normal_x="0.852870" normal_y="-0.424787" normal_z="0.303507" tag_id="-1" x="0.539983" y="2.928733" z="1.214272"/>
+                <vert normal_x="0.264504" normal_y="-0.897305" normal_z="-0.353313" tag_id="-1" x="0.165504" y="1.827341" z="1.761889"/>
+                <vert normal_x="0.355968" normal_y="-0.891232" normal_z="-0.280953" tag_id="-1" x="0.292480" y="1.907529" z="1.746490"/>
+                <vert normal_x="0.991607" normal_y="-0.081118" normal_z="-0.100528" tag_id="-1" x="0.764582" y="2.396445" z="1.428462"/>
+                <vert normal_x="0.636647" normal_y="-0.707602" normal_z="-0.306467" tag_id="-1" x="0.453376" y="1.991094" z="1.701349"/>
+                <vert normal_x="0.954772" normal_y="0.095218" normal_z="0.281564" tag_id="-1" x="0.740113" y="3.760723" z="1.100226"/>
+                <vert normal_x="0.084597" normal_y="0.715934" normal_z="0.692984" tag_id="-1" x="0.679718" y="3.795958" z="1.091039"/>
+                <vert normal_x="0.564440" normal_y="-0.577654" normal_z="0.589618" tag_id="-1" x="0.636649" y="3.892822" z="1.274854"/>
+                <vert normal_x="-0.387097" normal_y="-0.064058" normal_z="0.919797" tag_id="-1" x="0.604403" y="3.896203" z="1.256384"/>
+                <vert normal_x="-0.188055" normal_y="0.542589" normal_z="0.818659" tag_id="-1" x="0.623032" y="3.856007" z="1.187321"/>
+                <vert normal_x="0.890988" normal_y="-0.180334" normal_z="0.416608" tag_id="-1" x="0.654820" y="3.841818" z="1.192810"/>
+                <vert normal_x="0.635517" normal_y="-0.768914" normal_z="-0.069430" tag_id="-1" x="0.508771" y="3.375543" z="1.136392"/>
+                <vert normal_x="0.947661" normal_y="0.264779" normal_z="-0.178228" tag_id="-1" x="0.907344" y="2.932440" z="0.926300"/>
+                <vert normal_x="-0.145451" normal_y="0.985870" normal_z="0.082858" tag_id="-1" x="0.511949" y="3.094084" z="0.845115"/>
+                <vert normal_x="-0.719138" normal_y="0.622150" normal_z="0.309366" tag_id="-1" x="0.296549" y="3.332784" z="1.016685"/>
+                <vert normal_x="0.502365" normal_y="-0.860653" normal_z="0.082949" tag_id="-1" x="0.381208" y="3.503144" z="1.343411"/>
+                <vert normal_x="-0.643727" normal_y="-0.441206" normal_z="0.625233" tag_id="-1" x="0.333540" y="3.566977" z="1.325406"/>
+                <vert normal_x="0.533982" normal_y="-0.845454" normal_z="-0.006378" tag_id="-1" x="0.430450" y="2.597762" z="1.978837"/>
+                <vert normal_x="0.449660" normal_y="-0.892727" normal_z="0.028474" tag_id="-1" x="0.405298" y="2.711994" z="1.989427"/>
+                <vert normal_x="0.622974" normal_y="-0.716269" normal_z="0.314310" tag_id="-1" x="0.252610" y="2.511898" z="2.075345"/>
+                <vert normal_x="0.549120" normal_y="-0.834590" normal_z="0.043550" tag_id="-1" x="0.352715" y="2.493884" z="2.029157"/>
+                <vert normal_x="0.492050" normal_y="-0.869259" normal_z="0.046937" tag_id="-1" x="0.285414" y="2.732508" z="2.047114"/>
+                <vert normal_x="0.632252" normal_y="-0.770653" normal_z="0.079165" tag_id="-1" x="0.212988" y="2.618680" z="2.103434"/>
+                <vert normal_x="0.522385" normal_y="0.359874" normal_z="0.773003" tag_id="-1" x="0.223235" y="1.949256" z="-1.363949"/>
+                <vert normal_x="0.421094" normal_y="0.779504" normal_z="-0.463668" tag_id="-1" x="0.129600" y="1.580548" z="-1.546249"/>
+                <vert normal_x="0.831660" normal_y="0.555254" normal_z="0.001556" tag_id="-1" x="0.250464" y="1.788433" z="-1.508950"/>
+                <vert normal_x="0.239204" normal_y="-0.459059" normal_z="0.855586" tag_id="-1" x="0.118062" y="2.124470" z="-1.543711"/>
+                <vert normal_x="0.353191" normal_y="0.862911" normal_z="0.361370" tag_id="-1" x="0.168598" y="2.087363" z="-1.687235"/>
+                <vert normal_x="0.554521" normal_y="0.219886" normal_z="0.802576" tag_id="-1" x="0.187187" y="2.129270" z="-1.635367"/>
+                <vert normal_x="0.588580" normal_y="0.743309" normal_z="-0.317820" tag_id="-1" x="0.196243" y="1.783614" z="-1.648503"/>
+                <vert normal_x="0.652730" normal_y="-0.448775" normal_z="0.610309" tag_id="-1" x="0.206493" y="2.022324" z="-1.468165"/>
+                <vert normal_x="0.969176" normal_y="0.246345" normal_z="0.000977" tag_id="-1" x="0.292682" y="1.908854" z="-1.600781"/>
+                <vert normal_x="-0.400006" normal_y="-0.533860" normal_z="-0.744957" tag_id="-1" x="0.390314" y="0.015653" z="-0.737473"/>
+                <vert normal_x="-0.447096" normal_y="-0.823237" normal_z="-0.349742" tag_id="-1" x="0.390314" y="0.105731" z="-0.667356"/>
+                <vert normal_x="0.000183" normal_y="-0.983642" normal_z="-0.179998" tag_id="-1" x="0.464062" y="0.136397" z="-0.637817"/>
+                <vert normal_x="0.437117" normal_y="-0.830439" normal_z="-0.345347" tag_id="-1" x="0.537811" y="0.105731" z="-0.667356"/>
+                <vert normal_x="0.399396" normal_y="-0.528153" normal_z="-0.749321" tag_id="-1" x="0.537811" y="0.015653" z="-0.737473"/>
+                <vert normal_x="0.005524" normal_y="-0.593951" normal_z="-0.804437" tag_id="-1" x="0.468744" y="0.012935" z="-0.730398"/>
+                <vert normal_x="0.854762" normal_y="-0.203864" normal_z="0.477248" tag_id="-1" x="0.641284" y="0.299689" z="-0.863942"/>
+                <vert normal_x="-0.019166" normal_y="-0.335093" normal_z="0.941954" tag_id="-1" x="0.463659" y="0.375495" z="-0.816357"/>
+                <vert normal_x="0.667776" normal_y="0.326151" normal_z="-0.669088" tag_id="-1" x="0.598564" y="0.013581" z="-1.073568"/>
+                <vert normal_x="0.000580" normal_y="0.675741" normal_z="-0.737114" tag_id="-1" x="0.463659" y="0.013581" z="-1.147618"/>
+                <vert normal_x="-0.855373" normal_y="-0.195135" normal_z="0.479812" tag_id="-1" x="0.305459" y="0.295017" z="-0.863942"/>
+                <vert normal_x="-0.681448" normal_y="0.314310" normal_z="-0.660909" tag_id="-1" x="0.325981" y="0.013581" z="-1.072448"/>
+                <vert normal_x="0.005676" normal_y="-0.769524" normal_z="0.638569" tag_id="-1" x="0.463659" y="0.291820" z="-0.724229"/>
+                <vert normal_x="-0.808283" normal_y="-0.537614" normal_z="0.239937" tag_id="-1" x="0.333813" y="0.224188" z="-0.758086"/>
+                <vert normal_x="-0.664113" normal_y="-0.131626" normal_z="-0.735923" tag_id="-1" x="0.341779" y="0.013581" z="-0.869793"/>
+                <vert normal_x="0.803003" normal_y="-0.564196" normal_z="0.191961" tag_id="-1" x="0.601045" y="0.214635" z="-0.758086"/>
+                <vert normal_x="0.642323" normal_y="-0.125217" normal_z="-0.756096" tag_id="-1" x="0.584463" y="0.013581" z="-0.870228"/>
+                <vert normal_x="0.000000" normal_y="-0.003845" normal_z="-0.999969" tag_id="-1" x="0.468004" y="0.013581" z="-0.891937"/>
+                <vert normal_x="0.000000" normal_y="-0.113681" normal_z="-0.993500" tag_id="-1" x="0.464723" y="0.029985" z="0.886839"/>
+                <vert normal_x="0.604755" normal_y="-0.305673" normal_z="-0.735374" tag_id="-1" x="0.555639" y="0.029985" z="0.911472"/>
+                <vert normal_x="0.796167" normal_y="-0.513749" normal_z="0.319559" tag_id="-1" x="0.555639" y="0.192821" z="0.960738"/>
+                <vert normal_x="0.052431" normal_y="-0.621357" normal_z="0.781732" tag_id="-1" x="0.464723" y="0.238174" z="0.985370"/>
+                <vert normal_x="-0.751122" normal_y="-0.543077" normal_z="0.375286" tag_id="-1" x="0.373807" y="0.210545" z="0.960738"/>
+                <vert normal_x="-0.606189" normal_y="-0.308664" normal_z="-0.732933" tag_id="-1" x="0.373807" y="0.029985" z="0.911472"/>
+                <vert normal_x="-0.651814" normal_y="0.356395" normal_z="-0.669362" tag_id="-1" x="0.319199" y="0.029985" z="0.608064"/>
+                <vert normal_x="-0.003082" normal_y="0.566668" normal_z="-0.823908" tag_id="-1" x="0.464723" y="0.029985" z="0.581140"/>
+                <vert normal_x="-0.819453" normal_y="-0.284341" normal_z="0.497574" tag_id="-1" x="0.319199" y="0.278318" z="0.795186"/>
+                <vert normal_x="0.042756" normal_y="-0.347056" normal_z="0.936857" tag_id="-1" x="0.464723" y="0.316591" z="0.850150"/>
+                <vert normal_x="0.841639" normal_y="-0.296335" normal_z="0.451430" tag_id="-1" x="0.610248" y="0.266495" z="0.790757"/>
+                <vert normal_x="0.648579" normal_y="0.364208" normal_z="-0.668294" tag_id="-1" x="0.610248" y="0.029985" z="0.605808"/>
+                <vert normal_x="0.000000" normal_y="-0.669057" normal_z="-0.743187" tag_id="-1" x="0.464723" y="0.061174" z="0.998915"/>
+                <vert normal_x="0.327647" normal_y="-0.716086" normal_z="-0.616291" tag_id="-1" x="0.503672" y="0.060075" z="1.004349"/>
+                <vert normal_x="0.507462" normal_y="-0.860347" normal_z="0.047243" tag_id="-1" x="0.503672" y="0.156432" z="1.035156"/>
+                <vert normal_x="0.000000" normal_y="-0.950346" normal_z="0.311136" tag_id="-1" x="0.464723" y="0.176693" z="1.044911"/>
+                <vert normal_x="-0.505356" normal_y="-0.862392" normal_z="0.028840" tag_id="-1" x="0.425775" y="0.156432" z="1.035156"/>
+                <vert normal_x="-0.333415" normal_y="-0.715995" normal_z="-0.613300" tag_id="-1" x="0.425775" y="0.060075" z="1.004349"/>
+                <vert normal_x="-0.387432" normal_y="0.904416" normal_z="-0.178594" tag_id="-1" x="-0.606371" y="1.415866" z="-1.382767"/>
+                <vert normal_x="-0.904141" normal_y="0.397351" normal_z="0.156835" tag_id="-1" x="-0.861433" y="1.592297" z="-1.176998"/>
+                <vert normal_x="-0.995117" normal_y="-0.095676" normal_z="-0.023286" tag_id="-1" x="-0.861432" y="1.554407" z="-0.557407"/>
+                <vert normal_x="-0.570513" normal_y="-0.499039" normal_z="-0.652242" tag_id="-1" x="-0.465792" y="1.068505" z="-0.313335"/>
+                <vert normal_x="0.851283" normal_y="0.523148" normal_z="0.039949" tag_id="-1" x="-0.300097" y="0.701379" z="-1.298671"/>
+                <vert normal_x="0.852290" normal_y="0.484817" normal_z="-0.196265" tag_id="-1" x="-0.336165" y="0.305905" z="-1.178507"/>
+                <vert normal_x="0.936827" normal_y="-0.262246" normal_z="-0.231361" tag_id="-1" x="-0.300097" y="0.694290" z="-1.054205"/>
+                <vert normal_x="0.947752" normal_y="-0.249641" normal_z="0.198553" tag_id="-1" x="-0.336165" y="0.340635" z="-1.035446"/>
+                <vert normal_x="-0.052004" normal_y="-0.701224" normal_z="-0.710990" tag_id="-1" x="-0.463659" y="0.690746" z="-0.931971"/>
+                <vert normal_x="0.034364" normal_y="-0.636860" normal_z="0.770196" tag_id="-1" x="-0.463659" y="0.358000" z="-0.963915"/>
+                <vert normal_x="-0.883511" normal_y="-0.314890" normal_z="-0.346721" tag_id="-1" x="-0.675462" y="0.694290" z="-1.054205"/>
+                <vert normal_x="-0.956755" normal_y="-0.244484" normal_z="0.157414" tag_id="-1" x="-0.591152" y="0.340635" z="-1.035446"/>
+                <vert normal_x="-0.810602" normal_y="0.569292" normal_z="-0.136998" tag_id="-1" x="-0.675462" y="0.701379" z="-1.298671"/>
+                <vert normal_x="-0.840846" normal_y="0.478317" normal_z="-0.253304" tag_id="-1" x="-0.591152" y="0.305905" z="-1.178507"/>
+                <vert normal_x="0.081606" normal_y="0.996612" normal_z="-0.008240" tag_id="-1" x="-0.463659" y="0.704924" z="-1.420904"/>
+                <vert normal_x="0.009430" normal_y="0.932585" normal_z="-0.360820" tag_id="-1" x="-0.463659" y="0.288539" z="-1.250038"/>
+                <vert normal_x="0.445326" normal_y="0.638905" normal_z="-0.627247" tag_id="-1" x="-0.258059" y="1.102585" z="-1.176998"/>
+                <vert normal_x="0.098239" normal_y="-0.039460" normal_z="-0.994354" tag_id="-1" x="-0.257137" y="1.043977" z="-0.317625"/>
+                <vert normal_x="0.000000" normal_y="0.765862" normal_z="-0.642994" tag_id="-1" x="0.000000" y="1.438511" z="-1.486793"/>
+                <vert normal_x="0.000000" normal_y="0.419568" normal_z="-0.907682" tag_id="-1" x="0.000000" y="1.166167" z="-1.176998"/>
+                <vert normal_x="0.000000" normal_y="0.277078" normal_z="-0.960845" tag_id="-1" x="0.000000" y="1.061679" z="-0.318269"/>
+                <vert normal_x="-0.672140" normal_y="0.421155" normal_z="0.608936" tag_id="-1" x="-0.705906" y="1.868915" z="-1.170425"/>
+                <vert normal_x="-0.769127" normal_y="0.074252" normal_z="0.634724" tag_id="-1" x="-0.705905" y="2.001401" z="-0.563979"/>
+                <vert normal_x="-0.337809" normal_y="0.444227" normal_z="0.829768" tag_id="-1" x="-0.307614" y="2.088003" z="-1.165141"/>
+                <vert normal_x="-0.361187" normal_y="0.112308" normal_z="0.925687" tag_id="-1" x="-0.307613" y="2.261666" z="-0.562142"/>
+                <vert normal_x="0.000000" normal_y="0.448073" normal_z="0.893979" tag_id="-1" x="0.000000" y="2.163236" z="-1.155110"/>
+                <vert normal_x="0.000000" normal_y="0.111484" normal_z="0.993744" tag_id="-1" x="0.000000" y="2.314692" z="-0.563215"/>
+                <vert normal_x="0.178961" normal_y="0.463851" normal_z="-0.867611" tag_id="-1" x="-0.129030" y="1.146774" z="-1.176998"/>
+                <vert normal_x="0.061739" normal_y="0.244606" normal_z="-0.967620" tag_id="-1" x="-0.125521" y="1.043446" z="-0.317439"/>
+                <vert normal_x="-0.216193" normal_y="0.883999" normal_z="-0.414472" tag_id="-1" x="-0.231829" y="1.504265" z="-1.475052"/>
+                <vert normal_x="-0.376598" normal_y="0.889553" normal_z="0.258461" tag_id="-1" x="-0.366656" y="1.739278" z="-1.479557"/>
+                <vert normal_x="-0.980773" normal_y="-0.048769" normal_z="-0.188849" tag_id="-1" x="-0.811026" y="1.541651" z="-0.084514"/>
+                <vert normal_x="-0.620685" normal_y="0.143925" normal_z="-0.770714" tag_id="-1" x="-0.466150" y="1.058796" z="-0.084514"/>
+                <vert normal_x="-0.213874" normal_y="0.257515" normal_z="-0.942289" tag_id="-1" x="-0.260257" y="0.956237" z="-0.084514"/>
+                <vert normal_x="0.000000" normal_y="0.266976" normal_z="-0.963683" tag_id="-1" x="0.000000" y="0.948530" z="-0.084514"/>
+                <vert normal_x="-0.832240" normal_y="0.011505" normal_z="0.554277" tag_id="-1" x="-0.708742" y="1.989283" z="-0.084514"/>
+                <vert normal_x="-0.369732" normal_y="0.074068" normal_z="0.926176" tag_id="-1" x="-0.309882" y="2.249919" z="-0.084514"/>
+                <vert normal_x="0.000000" normal_y="0.079562" normal_z="0.996826" tag_id="-1" x="0.000000" y="2.303020" z="-0.084514"/>
+                <vert normal_x="-0.028108" normal_y="0.255806" normal_z="-0.966308" tag_id="-1" x="-0.131044" y="0.955360" z="-0.084514"/>
+                <vert normal_x="-0.993835" normal_y="0.070315" normal_z="-0.085543" tag_id="-1" x="-0.785084" y="1.500140" z="0.484794"/>
+                <vert normal_x="-0.529466" normal_y="0.580676" normal_z="-0.618427" tag_id="-1" x="-0.464723" y="0.973214" z="0.294754"/>
+                <vert normal_x="-0.004028" normal_y="0.928251" normal_z="-0.371868" tag_id="-1" x="-0.464723" y="0.260301" z="0.421020"/>
+                <vert normal_x="0.028321" normal_y="0.989471" normal_z="-0.141789" tag_id="-1" x="-0.464723" y="0.687290" z="0.350843"/>
+                <vert normal_x="-0.827601" normal_y="0.517258" normal_z="-0.217872" tag_id="-1" x="-0.610248" y="0.281192" z="0.504825"/>
+                <vert normal_x="-0.851558" normal_y="0.501297" normal_z="-0.153325" tag_id="-1" x="-0.650376" y="0.687807" z="0.457757"/>
+                <vert normal_x="-0.936094" normal_y="-0.329539" normal_z="0.122990" tag_id="-1" x="-0.610248" y="0.321485" z="0.672434"/>
+                <vert normal_x="-0.892880" normal_y="-0.382183" normal_z="-0.238075" tag_id="-1" x="-0.650376" y="0.688816" z="0.671584"/>
+                <vert normal_x="-0.026063" normal_y="-0.707266" normal_z="0.706442" tag_id="-1" x="-0.464723" y="0.327474" z="0.756239"/>
+                <vert normal_x="-0.177007" normal_y="-0.806696" normal_z="-0.563799" tag_id="-1" x="-0.464723" y="0.665997" z="0.778498"/>
+                <vert normal_x="0.941191" normal_y="-0.314341" normal_z="0.123722" tag_id="-1" x="-0.319199" y="0.321485" z="0.672434"/>
+                <vert normal_x="0.924802" normal_y="-0.288400" normal_z="-0.248024" tag_id="-1" x="-0.279071" y="0.658271" z="0.671818"/>
+                <vert normal_x="0.827967" normal_y="0.511887" normal_z="-0.228919" tag_id="-1" x="-0.319199" y="0.281192" z="0.504825"/>
+                <vert normal_x="0.850490" normal_y="0.521165" normal_z="-0.070772" tag_id="-1" x="-0.279071" y="0.643073" z="0.457757"/>
+                <vert normal_x="-0.968780" normal_y="-0.217780" normal_z="-0.118229" tag_id="-1" x="-0.795761" y="1.459462" z="0.864873"/>
+                <vert normal_x="-0.712455" normal_y="-0.549242" normal_z="-0.436689" tag_id="-1" x="-0.464723" y="0.940271" z="1.068595"/>
+                <vert normal_x="-0.391247" normal_y="-0.423566" normal_z="-0.816980" tag_id="-1" x="-0.269636" y="0.832207" z="1.201064"/>
+                <vert normal_x="0.481552" normal_y="0.377728" normal_z="-0.790796" tag_id="-1" x="-0.269636" y="0.866359" z="0.484794"/>
+                <vert normal_x="0.000000" normal_y="-0.382946" normal_z="-0.923734" tag_id="-1" x="0.000000" y="0.798361" z="1.300996"/>
+                <vert normal_x="0.000000" normal_y="0.108615" normal_z="-0.994079" tag_id="-1" x="0.000000" y="0.866359" z="0.484794"/>
+                <vert normal_x="-0.253334" normal_y="-0.350566" normal_z="-0.901608" tag_id="-1" x="-0.134818" y="0.808896" z="1.267480"/>
+                <vert normal_x="-0.006104" normal_y="0.106143" normal_z="-0.994324" tag_id="-1" x="-0.134818" y="0.866359" z="0.484794"/>
+                <vert normal_x="-0.842891" normal_y="0.093326" normal_z="0.529862" tag_id="-1" x="-0.705905" y="2.091093" z="0.466462"/>
+                <vert normal_x="-0.366100" normal_y="0.189337" normal_z="0.911100" tag_id="-1" x="-0.307613" y="2.351358" z="0.466462"/>
+                <vert normal_x="0.000000" normal_y="0.214148" normal_z="0.976775" tag_id="-1" x="0.000000" y="2.404384" z="0.466462"/>
+                <vert normal_x="-0.889615" normal_y="0.099429" normal_z="0.445692" tag_id="-1" x="-0.705905" y="2.135940" z="0.722729"/>
+                <vert normal_x="-0.386151" normal_y="0.435194" normal_z="0.813288" tag_id="-1" x="-0.307613" y="2.396205" z="0.651432"/>
+                <vert normal_x="0.000000" normal_y="0.490524" normal_z="0.871395" tag_id="-1" x="0.000000" y="2.449231" z="0.639442"/>
+                <vert normal_x="0.691702" normal_y="-0.417341" normal_z="-0.589343" tag_id="-1" x="-0.342042" y="0.857259" z="-0.427440"/>
+                <vert normal_x="-0.083193" normal_y="-0.746940" normal_z="-0.659658" tag_id="-1" x="-0.463659" y="0.798661" z="-0.345935"/>
+                <vert normal_x="-0.875149" normal_y="0.449660" normal_z="-0.178503" tag_id="-1" x="-0.768448" y="1.146838" z="-1.173768"/>
+                <vert normal_x="0.038209" normal_y="0.999237" normal_z="0.004944" tag_id="-1" x="-0.535015" y="1.060395" z="-1.292922"/>
+                <vert normal_x="-0.868068" normal_y="-0.293466" normal_z="-0.400342" tag_id="-1" x="-0.759304" y="0.996264" z="-0.665153"/>
+                <vert normal_x="0.975402" normal_y="0.212561" normal_z="-0.058290" tag_id="-1" x="-0.279078" y="0.901982" z="-1.067783"/>
+                <vert normal_x="-0.952849" normal_y="-0.297769" normal_z="-0.057924" tag_id="-1" x="-0.736640" y="1.734412" z="1.100836"/>
+                <vert normal_x="-0.775872" normal_y="-0.542802" normal_z="-0.321451" tag_id="-1" x="-0.450309" y="1.328768" z="1.380072"/>
+                <vert normal_x="-0.689993" normal_y="-0.635456" normal_z="-0.346477" tag_id="-1" x="-0.281569" y="1.248698" z="1.559774"/>
+                <vert normal_x="0.000000" normal_y="-0.889859" normal_z="-0.456191" tag_id="-1" x="0.000000" y="1.161960" z="1.721531"/>
+                <vert normal_x="-0.526872" normal_y="-0.760796" normal_z="-0.378826" tag_id="-1" x="-0.164959" y="1.204234" z="1.655575"/>
+                <vert normal_x="-0.841151" normal_y="0.294534" normal_z="0.453475" tag_id="-1" x="-0.658919" y="2.277760" z="0.851333"/>
+                <vert normal_x="-0.340220" normal_y="0.650807" normal_z="0.678701" tag_id="-1" x="-0.296229" y="2.483623" z="0.741330"/>
+                <vert normal_x="0.000000" normal_y="0.706870" normal_z="0.707327" tag_id="-1" x="0.000000" y="2.526051" z="0.721058"/>
+                <vert normal_x="-0.967437" normal_y="-0.194983" normal_z="-0.161229" tag_id="-1" x="-0.689295" y="2.151696" z="1.368513"/>
+                <vert normal_x="-0.646657" normal_y="-0.696432" normal_z="-0.311045" tag_id="-1" x="-0.438732" y="1.870662" z="1.662221"/>
+                <vert normal_x="-0.388867" normal_y="-0.867458" normal_z="-0.310251" tag_id="-1" x="-0.300181" y="1.816510" z="1.714525"/>
+                <vert normal_x="0.000000" normal_y="-0.947508" normal_z="-0.319651" tag_id="-1" x="0.000000" y="1.747226" z="1.762764"/>
+                <vert normal_x="-0.250618" normal_y="-0.922971" normal_z="-0.291971" tag_id="-1" x="-0.167264" y="1.768859" z="1.736073"/>
+                <vert normal_x="-0.879665" normal_y="0.446638" normal_z="0.163182" tag_id="-1" x="-0.610018" y="2.524690" z="1.049325"/>
+                <vert normal_x="-0.186132" normal_y="0.896359" normal_z="0.402295" tag_id="-1" x="-0.286266" y="2.662530" z="0.916174"/>
+                <vert normal_x="0.000000" normal_y="0.825373" normal_z="0.564562" tag_id="-1" x="0.000000" y="2.706228" z="0.885392"/>
+                <vert normal_x="0.000000" normal_y="-0.846095" normal_z="0.532975" tag_id="-1" x="0.000000" y="2.396451" z="2.618690"/>
+                <vert normal_x="0.000000" normal_y="-0.330668" normal_z="-0.943724" tag_id="-1" x="0.000000" y="1.872306" z="1.837757"/>
+                <vert normal_x="-0.650044" normal_y="-0.438734" normal_z="-0.620411" tag_id="-1" x="-0.292247" y="2.063063" z="1.839871"/>
+                <vert normal_x="-0.843410" normal_y="-0.503708" normal_z="-0.186773" tag_id="-1" x="-0.619762" y="2.493621" z="1.836652"/>
+                <vert normal_x="-0.703787" normal_y="-0.592181" normal_z="0.392346" tag_id="-1" x="-0.500436" y="2.857728" z="1.937667"/>
+                <vert normal_x="0.000000" normal_y="-0.762230" normal_z="0.647298" tag_id="-1" x="0.000000" y="3.069182" z="2.120452"/>
+                <vert normal_x="0.000000" normal_y="-0.775414" normal_z="0.631428" tag_id="-1" x="0.000000" y="2.552149" z="2.254821"/>
+                <vert normal_x="0.000000" normal_y="-0.437422" normal_z="0.899228" tag_id="-1" x="0.000000" y="2.434479" z="2.442570"/>
+                <vert normal_x="-0.751183" normal_y="-0.540330" normal_z="0.379101" tag_id="-1" x="-0.234315" y="2.468562" z="2.129434"/>
+                <vert normal_x="-0.749870" normal_y="-0.352428" normal_z="0.559862" tag_id="-1" x="-0.234315" y="2.346858" z="2.370980"/>
+                <vert normal_x="-0.908292" normal_y="-0.364299" normal_z="-0.205573" tag_id="-1" x="-0.331371" y="2.256022" z="2.026343"/>
+                <vert normal_x="-0.995178" normal_y="-0.087893" normal_z="-0.043062" tag_id="-1" x="-0.331371" y="2.178341" z="2.227426"/>
+                <vert normal_x="-0.811151" normal_y="-0.007569" normal_z="-0.584765" tag_id="-1" x="-0.234315" y="2.015712" z="1.923252"/>
+                <vert normal_x="-0.799738" normal_y="0.046632" normal_z="-0.598498" tag_id="-1" x="-0.234315" y="1.969300" z="2.087914"/>
+                <vert normal_x="0.000000" normal_y="0.123386" normal_z="-0.992340" tag_id="-1" x="0.000000" y="1.838220" z="1.940228"/>
+                <vert normal_x="0.000000" normal_y="-0.088839" normal_z="-0.996033" tag_id="-1" x="0.000000" y="1.843507" z="2.049942"/>
+                <vert normal_x="-0.741111" normal_y="-0.652516" normal_z="0.157933" tag_id="-1" x="-0.240481" y="2.259326" z="2.469671"/>
+                <vert normal_x="-0.848811" normal_y="-0.467574" normal_z="-0.246681" tag_id="-1" x="-0.301782" y="2.135893" z="2.378843"/>
+                <vert normal_x="-0.596576" normal_y="-0.251564" normal_z="-0.762078" tag_id="-1" x="-0.221950" y="1.954715" z="2.244221"/>
+                <vert normal_x="0.000000" normal_y="-0.369366" normal_z="-0.929258" tag_id="-1" x="0.000000" y="1.880000" z="2.195688"/>
+                <vert normal_x="0.000000" normal_y="-0.954741" normal_z="-0.297403" tag_id="-1" x="0.000000" y="2.250974" z="2.580219"/>
+                <vert normal_x="0.000000" normal_y="-0.875942" normal_z="-0.482376" tag_id="-1" x="0.000000" y="1.820860" z="1.804000"/>
+                <vert normal_x="-0.478805" normal_y="-0.725913" normal_z="-0.493698" tag_id="-1" x="-0.284778" y="2.007833" z="1.778454"/>
+                <vert normal_x="-0.961486" normal_y="-0.044404" normal_z="0.271218" tag_id="-1" x="-0.748524" y="2.695974" z="1.512931"/>
+                <vert normal_x="-0.605426" normal_y="-0.523392" normal_z="0.599567" tag_id="-1" x="-0.241319" y="3.210419" z="1.502600"/>
+                <vert normal_x="0.000000" normal_y="-0.026185" normal_z="0.999634" tag_id="-1" x="0.000000" y="3.282689" z="1.516850"/>
+                <vert normal_x="-0.445845" normal_y="-0.677999" normal_z="0.584368" tag_id="-1" x="-0.221367" y="3.035637" z="2.066423"/>
+                <vert normal_x="-0.566179" normal_y="-0.232734" normal_z="-0.790704" tag_id="-1" x="-0.146123" y="1.929475" z="1.838578"/>
+                <vert normal_x="-0.506333" normal_y="0.172521" normal_z="-0.844874" tag_id="-1" x="-0.117157" y="1.883012" z="1.931740"/>
+                <vert normal_x="-0.423994" normal_y="-0.076296" normal_z="-0.902432" tag_id="-1" x="-0.117157" y="1.867823" z="2.068928"/>
+                <vert normal_x="-0.538285" normal_y="-0.695730" normal_z="0.475570" tag_id="-1" x="-0.117157" y="2.534566" z="2.192127"/>
+                <vert normal_x="-0.426984" normal_y="-0.467177" normal_z="0.774194" tag_id="-1" x="-0.117157" y="2.401849" z="2.406775"/>
+                <vert normal_x="-0.344646" normal_y="-0.282449" normal_z="-0.895199" tag_id="-1" x="-0.125585" y="1.905614" z="2.182898"/>
+                <vert normal_x="-0.554155" normal_y="-0.715659" normal_z="0.425092" tag_id="-1" x="-0.140410" y="2.325181" z="2.516292"/>
+                <vert normal_x="-0.376446" normal_y="-0.878811" normal_z="-0.293100" tag_id="-1" x="-0.126648" y="2.206715" z="2.523331"/>
+                <vert normal_x="-0.056459" normal_y="-0.252174" normal_z="0.966002" tag_id="-1" x="-0.163743" y="3.248113" z="1.504339"/>
+                <vert normal_x="-0.372143" normal_y="-0.791314" normal_z="-0.485061" tag_id="-1" x="-0.163743" y="1.897788" z="1.787705"/>
+                <vert normal_x="-0.757378" normal_y="-0.316233" normal_z="-0.571245" tag_id="-1" x="-0.261866" y="2.045304" z="2.311532"/>
+                <vert normal_x="-0.883023" normal_y="-0.144230" normal_z="-0.446577" tag_id="-1" x="-0.282843" y="2.138630" z="1.974798"/>
+                <vert normal_x="-0.918638" normal_y="0.044435" normal_z="-0.392499" tag_id="-1" x="-0.282843" y="2.073820" z="2.157670"/>
+                <vert normal_x="-0.670003" normal_y="-0.538987" normal_z="-0.510453" tag_id="-1" x="-0.380224" y="2.194817" z="1.873479"/>
+                <vert normal_x="0.000000" normal_y="-0.701987" normal_z="-0.712180" tag_id="-1" x="0.000000" y="2.010703" z="2.434779"/>
+                <vert normal_x="-0.683828" normal_y="-0.623432" normal_z="-0.379009" tag_id="-1" x="-0.468020" y="2.113605" z="1.740478"/>
+                <vert normal_x="-0.332865" normal_y="-0.636799" normal_z="-0.695425" tag_id="-1" x="-0.141421" y="2.016288" z="2.393712"/>
+                <vert normal_x="0.000000" normal_y="0.584796" normal_z="0.811151" tag_id="-1" x="0.000000" y="3.162583" z="1.148622"/>
+                <vert normal_x="0.463332" normal_y="0.762902" normal_z="0.450819" tag_id="-1" x="-0.225004" y="3.079363" z="1.106580"/>
+                <vert normal_x="-0.852870" normal_y="-0.424787" normal_z="0.303507" tag_id="-1" x="-0.539983" y="2.928733" z="1.214272"/>
+                <vert normal_x="0.000000" normal_y="-0.877743" normal_z="-0.479049" tag_id="-1" x="0.000000" y="1.781687" z="1.783382"/>
+                <vert normal_x="-0.264504" normal_y="-0.897305" normal_z="-0.353313" tag_id="-1" x="-0.165504" y="1.827341" z="1.761889"/>
+                <vert normal_x="-0.355968" normal_y="-0.891232" normal_z="-0.280953" tag_id="-1" x="-0.292480" y="1.907529" z="1.746490"/>
+                <vert normal_x="-0.991607" normal_y="-0.081118" normal_z="-0.100528" tag_id="-1" x="-0.764582" y="2.396445" z="1.428462"/>
+                <vert normal_x="-0.636647" normal_y="-0.707602" normal_z="-0.306467" tag_id="-1" x="-0.453376" y="1.991094" z="1.701349"/>
+                <vert normal_x="-0.954772" normal_y="0.095218" normal_z="0.281564" tag_id="-1" x="-0.740113" y="3.760723" z="1.100226"/>
+                <vert normal_x="-0.084597" normal_y="0.715934" normal_z="0.692984" tag_id="-1" x="-0.679718" y="3.795958" z="1.091039"/>
+                <vert normal_x="-0.564440" normal_y="-0.577654" normal_z="0.589618" tag_id="-1" x="-0.636649" y="3.892822" z="1.274854"/>
+                <vert normal_x="0.387097" normal_y="-0.064058" normal_z="0.919797" tag_id="-1" x="-0.604403" y="3.896203" z="1.256384"/>
+                <vert normal_x="0.188055" normal_y="0.542589" normal_z="0.818659" tag_id="-1" x="-0.623032" y="3.856007" z="1.187321"/>
+                <vert normal_x="-0.890988" normal_y="-0.180334" normal_z="0.416608" tag_id="-1" x="-0.654820" y="3.841818" z="1.192810"/>
+                <vert normal_x="-0.635517" normal_y="-0.768914" normal_z="-0.069430" tag_id="-1" x="-0.508771" y="3.375543" z="1.136392"/>
+                <vert normal_x="-0.947661" normal_y="0.264779" normal_z="-0.178228" tag_id="-1" x="-0.907344" y="2.932440" z="0.926300"/>
+                <vert normal_x="0.145451" normal_y="0.985870" normal_z="0.082858" tag_id="-1" x="-0.511949" y="3.094084" z="0.845115"/>
+                <vert normal_x="0.719138" normal_y="0.622150" normal_z="0.309366" tag_id="-1" x="-0.296549" y="3.332784" z="1.016685"/>
+                <vert normal_x="-0.502365" normal_y="-0.860653" normal_z="0.082949" tag_id="-1" x="-0.381208" y="3.503144" z="1.343411"/>
+                <vert normal_x="0.643727" normal_y="-0.441206" normal_z="0.625233" tag_id="-1" x="-0.333540" y="3.566977" z="1.325406"/>
+                <vert normal_x="-0.533982" normal_y="-0.845454" normal_z="-0.006378" tag_id="-1" x="-0.430450" y="2.597762" z="1.978837"/>
+                <vert normal_x="-0.449660" normal_y="-0.892727" normal_z="0.028474" tag_id="-1" x="-0.405298" y="2.711994" z="1.989427"/>
+                <vert normal_x="-0.622974" normal_y="-0.716269" normal_z="0.314310" tag_id="-1" x="-0.252610" y="2.511898" z="2.075345"/>
+                <vert normal_x="-0.549120" normal_y="-0.834590" normal_z="0.043550" tag_id="-1" x="-0.352715" y="2.493884" z="2.029157"/>
+                <vert normal_x="-0.492050" normal_y="-0.869259" normal_z="0.046937" tag_id="-1" x="-0.285414" y="2.732508" z="2.047114"/>
+                <vert normal_x="-0.632252" normal_y="-0.770653" normal_z="0.079165" tag_id="-1" x="-0.212988" y="2.618680" z="2.103434"/>
+                <vert normal_x="0.000000" normal_y="0.772942" normal_z="-0.634449" tag_id="-1" x="0.000000" y="1.516223" z="-1.547888"/>
+                <vert normal_x="-0.522385" normal_y="0.359874" normal_z="0.773003" tag_id="-1" x="-0.223235" y="1.949256" z="-1.363949"/>
+                <vert normal_x="0.000000" normal_y="0.073275" normal_z="0.997284" tag_id="-1" x="0.000000" y="1.983951" z="-1.359323"/>
+                <vert normal_x="-0.421094" normal_y="0.779504" normal_z="-0.463668" tag_id="-1" x="-0.129600" y="1.580548" z="-1.546249"/>
+                <vert normal_x="-0.831660" normal_y="0.555254" normal_z="0.001556" tag_id="-1" x="-0.250464" y="1.788433" z="-1.508950"/>
+                <vert normal_x="0.000000" normal_y="0.919889" normal_z="0.392132" tag_id="-1" x="0.000000" y="2.083004" z="-1.698070"/>
+                <vert normal_x="-0.239204" normal_y="-0.459059" normal_z="0.855586" tag_id="-1" x="-0.118062" y="2.124470" z="-1.543711"/>
+                <vert normal_x="0.000000" normal_y="-0.550920" normal_z="0.834529" tag_id="-1" x="0.000000" y="2.125234" z="-1.521270"/>
+                <vert normal_x="-0.353191" normal_y="0.862911" normal_z="0.361370" tag_id="-1" x="-0.168598" y="2.087363" z="-1.687235"/>
+                <vert normal_x="-0.554521" normal_y="0.219886" normal_z="0.802576" tag_id="-1" x="-0.187187" y="2.129270" z="-1.635367"/>
+                <vert normal_x="0.000000" normal_y="0.179998" normal_z="0.983642" tag_id="-1" x="0.000000" y="2.150403" z="-1.611541"/>
+                <vert normal_x="-0.588580" normal_y="0.743309" normal_z="-0.317820" tag_id="-1" x="-0.196243" y="1.783614" z="-1.648503"/>
+                <vert normal_x="-0.652730" normal_y="-0.448775" normal_z="0.610309" tag_id="-1" x="-0.206493" y="2.022324" z="-1.468165"/>
+                <vert normal_x="-0.969176" normal_y="0.246345" normal_z="0.000977" tag_id="-1" x="-0.292682" y="1.908854" z="-1.600781"/>
+                <vert normal_x="0.000000" normal_y="0.926298" normal_z="-0.376782" tag_id="-1" x="0.000000" y="1.689589" z="-1.699988"/>
+                <vert normal_x="0.000000" normal_y="-0.660939" normal_z="0.750389" tag_id="-1" x="0.000000" y="2.047592" z="-1.451797"/>
+                <vert normal_x="0.400006" normal_y="-0.533860" normal_z="-0.744957" tag_id="-1" x="-0.390314" y="0.015653" z="-0.737473"/>
+                <vert normal_x="0.447096" normal_y="-0.823237" normal_z="-0.349742" tag_id="-1" x="-0.390314" y="0.105731" z="-0.667356"/>
+                <vert normal_x="-0.000183" normal_y="-0.983642" normal_z="-0.179998" tag_id="-1" x="-0.464062" y="0.136397" z="-0.637817"/>
+                <vert normal_x="-0.437117" normal_y="-0.830439" normal_z="-0.345347" tag_id="-1" x="-0.537811" y="0.105731" z="-0.667356"/>
+                <vert normal_x="-0.399396" normal_y="-0.528153" normal_z="-0.749321" tag_id="-1" x="-0.537811" y="0.015653" z="-0.737473"/>
+                <vert normal_x="-0.005524" normal_y="-0.593951" normal_z="-0.804437" tag_id="-1" x="-0.468744" y="0.012935" z="-0.730398"/>
+                <vert normal_x="-0.854762" normal_y="-0.203864" normal_z="0.477248" tag_id="-1" x="-0.641284" y="0.299689" z="-0.863942"/>
+                <vert normal_x="0.019166" normal_y="-0.335093" normal_z="0.941954" tag_id="-1" x="-0.463659" y="0.375495" z="-0.816357"/>
+                <vert normal_x="-0.667776" normal_y="0.326151" normal_z="-0.669088" tag_id="-1" x="-0.598564" y="0.013581" z="-1.073568"/>
+                <vert normal_x="-0.000580" normal_y="0.675741" normal_z="-0.737114" tag_id="-1" x="-0.463659" y="0.013581" z="-1.147618"/>
+                <vert normal_x="0.855373" normal_y="-0.195135" normal_z="0.479812" tag_id="-1" x="-0.305459" y="0.295017" z="-0.863942"/>
+                <vert normal_x="0.681448" normal_y="0.314310" normal_z="-0.660909" tag_id="-1" x="-0.325981" y="0.013581" z="-1.072448"/>
+                <vert normal_x="-0.005676" normal_y="-0.769524" normal_z="0.638569" tag_id="-1" x="-0.463659" y="0.291820" z="-0.724229"/>
+                <vert normal_x="0.808283" normal_y="-0.537614" normal_z="0.239937" tag_id="-1" x="-0.333813" y="0.224188" z="-0.758086"/>
+                <vert normal_x="0.664113" normal_y="-0.131626" normal_z="-0.735923" tag_id="-1" x="-0.341779" y="0.013581" z="-0.869793"/>
+                <vert normal_x="-0.803003" normal_y="-0.564196" normal_z="0.191961" tag_id="-1" x="-0.601045" y="0.214635" z="-0.758086"/>
+                <vert normal_x="-0.642323" normal_y="-0.125217" normal_z="-0.756096" tag_id="-1" x="-0.584463" y="0.013581" z="-0.870228"/>
+                <vert normal_x="0.000000" normal_y="-0.003845" normal_z="-0.999969" tag_id="-1" x="-0.468004" y="0.013581" z="-0.891937"/>
+                <vert normal_x="0.000000" normal_y="-0.113681" normal_z="-0.993500" tag_id="-1" x="-0.464723" y="0.029985" z="0.886839"/>
+                <vert normal_x="-0.604755" normal_y="-0.305673" normal_z="-0.735374" tag_id="-1" x="-0.555639" y="0.029985" z="0.911472"/>
+                <vert normal_x="-0.796167" normal_y="-0.513749" normal_z="0.319559" tag_id="-1" x="-0.555639" y="0.192821" z="0.960738"/>
+                <vert normal_x="-0.052431" normal_y="-0.621357" normal_z="0.781732" tag_id="-1" x="-0.464723" y="0.238174" z="0.985370"/>
+                <vert normal_x="0.751122" normal_y="-0.543077" normal_z="0.375286" tag_id="-1" x="-0.373807" y="0.210545" z="0.960738"/>
+                <vert normal_x="0.606189" normal_y="-0.308664" normal_z="-0.732933" tag_id="-1" x="-0.373807" y="0.029985" z="0.911472"/>
+                <vert normal_x="0.651845" normal_y="0.356395" normal_z="-0.669362" tag_id="-1" x="-0.319199" y="0.029985" z="0.608064"/>
+                <vert normal_x="0.003082" normal_y="0.566668" normal_z="-0.823908" tag_id="-1" x="-0.464723" y="0.029985" z="0.581140"/>
+                <vert normal_x="0.819453" normal_y="-0.284341" normal_z="0.497574" tag_id="-1" x="-0.319199" y="0.278318" z="0.795186"/>
+                <vert normal_x="-0.042756" normal_y="-0.347056" normal_z="0.936857" tag_id="-1" x="-0.464723" y="0.316591" z="0.850150"/>
+                <vert normal_x="-0.841639" normal_y="-0.296335" normal_z="0.451430" tag_id="-1" x="-0.610248" y="0.266495" z="0.790757"/>
+                <vert normal_x="-0.648579" normal_y="0.364208" normal_z="-0.668294" tag_id="-1" x="-0.610248" y="0.029985" z="0.605808"/>
+                <vert normal_x="0.000000" normal_y="-0.669057" normal_z="-0.743187" tag_id="-1" x="-0.464723" y="0.061174" z="0.998915"/>
+                <vert normal_x="-0.327647" normal_y="-0.716086" normal_z="-0.616291" tag_id="-1" x="-0.503672" y="0.060075" z="1.004349"/>
+                <vert normal_x="-0.507462" normal_y="-0.860347" normal_z="0.047243" tag_id="-1" x="-0.503672" y="0.156432" z="1.035156"/>
+                <vert normal_x="0.000000" normal_y="-0.950346" normal_z="0.311136" tag_id="-1" x="-0.464723" y="0.176693" z="1.044911"/>
+                <vert normal_x="0.505356" normal_y="-0.862392" normal_z="0.028840" tag_id="-1" x="-0.425775" y="0.156432" z="1.035156"/>
+                <vert normal_x="0.333415" normal_y="-0.715995" normal_z="-0.613300" tag_id="-1" x="-0.425775" y="0.060075" z="1.004349"/>
+            </frame>
+        </animation>
+    </animations>
+</chopmesh>

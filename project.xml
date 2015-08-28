@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<meta title="ChopEngine Demo" package="ChopEngine" version="1.0.0" company="Ohmnivore" />
+	<app main="LimeMain" file="ChopEngine" path="binlime" />
+	
+	<window width="640" height="480" background="#FFFFFF" fps="48" antialiasing="8" hardware="true" vsync="true" />
+	
+	<source path="src" />
+	
+	<haxelib name="lime" />
+	<haxelib name="hxmath" />
+	<haxelib name="jiglibhx" />
+	
+	<assets path="assets" exclude="*.svg" />
+	<icon path="assets/lime.svg" />
+	
+	<haxedef name="webgl" />
+</project>
