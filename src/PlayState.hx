@@ -10,6 +10,7 @@ import chop.render3d.light.PointLight;
 import chop.render3d.light.SunLight;
 import chop.phys.PhysUtil;
 import jiglib.physics.RigidBody;
+import chop.render3d.shader.ChopProgramMgr;
 //import snow.types.Types.Key;
 
 /**
@@ -20,6 +21,7 @@ class PlayState extends State
 {
 	override public function create():Void 
 	{
+		ChopProgramMgr;
 		super.create();
 		
 		Global.cam.pos.y = -3.0;

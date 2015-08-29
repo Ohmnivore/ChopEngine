@@ -94,7 +94,10 @@ class Camera extends Basic
 			{
 				var m:Model = cast basic;
 				if (checkIfCam(m))
-					renderModel(m);
+				{
+					m.mgr.render(m, this);
+					//renderModel(m);
+				}
 			}
 		}
 	}

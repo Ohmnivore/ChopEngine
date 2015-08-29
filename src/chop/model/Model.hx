@@ -1,6 +1,7 @@
 package chop.model;
 import chop.gen.Global;
 import chop.gen.Object;
+import chop.render3d.shader.ChopProgramMgr;
 import haxe.io.ArrayBufferView.ArrayBufferViewData;
 import haxe.io.Bytes;
 import hxmath.math.MathUtil;
@@ -26,6 +27,7 @@ class Model extends Object
 {
 	public var data:ModelData;
 	public var anim:AnimController;
+	public var mgr:ChopProgramMgr;
 	
 	public function new() 
 	{
@@ -33,6 +35,7 @@ class Model extends Object
 		
 		data = new ModelData();
 		anim = new AnimController();
+		mgr = Global.game.defaultMgr;
 	}
 	
 	public function loadChop(P:String):Void
