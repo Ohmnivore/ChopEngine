@@ -2,8 +2,7 @@ package chop.model.data;
 
 import hxmath.math.Vector3;
 import chop.render3d.GLUtil;
-//import snow.modules.opengl.GL.GLProgram;
-import lime.graphics.opengl.GLProgram;
+import chop.render3d.opengl.GL.GLProgram;
 
 /**
  * ...

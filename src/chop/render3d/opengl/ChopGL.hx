@@ -24,4 +24,7 @@ class ChopGL
 	public static inline var COLOR_ATTACHMENT15:Int = 0x8CEF;
 	
 	public static inline var RGB16F:Int = 0x881B;
+	
+	public static inline var DRAW_FRAMEBUFFER:Int = 0x8CA9;
+	public static inline var READ_FRAMEBUFFER:Int = 0x8CA8;
 }

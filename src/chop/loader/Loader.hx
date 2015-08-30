@@ -1,6 +1,6 @@
 package chop.loader;
 import chop.model.data.ModelData;
-import lime.Assets;
+import chop.assets.Assets;
 
 /**
  * ...
@@ -20,7 +20,7 @@ class Loader
 	public function loadFile(P:String):Void
 	{
 		path = P;
-		var source:String = Assets.getText(P);
+		var source:String = Assets.loadText(P);
 		loadSource(source);
 	}
 	

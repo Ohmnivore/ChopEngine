@@ -1,6 +1,8 @@
 package chop.render3d;
+
 import chop.gen.Basic;
 import chop.gen.Global;
+import chop.render3d.shader.ChopProgramMgr;
 import hxmath.math.MathUtil;
 import hxmath.math.Matrix4x4;
 import hxmath.math.Vector2;
@@ -8,12 +10,10 @@ import hxmath.math.Vector3;
 import hxmath.math.Vector4;
 import chop.math.Util;
 import chop.model.Model;
-//import snow.modules.opengl.GL;
-//import snow.modules.opengl.GL.GLProgram;
-//import snow.modules.opengl.GL.GLShader;
-import lime.graphics.opengl.GL;
-import lime.graphics.opengl.GLProgram;
-import lime.graphics.opengl.GLShader;
+import chop.render3d.opengl.GL;
+import chop.render3d.opengl.GL.GLProgram;
+import chop.render3d.opengl.GL.GLShader;
+import chop.render3d.shader.*;
 
 /**
  * ...
@@ -22,6 +22,7 @@ import lime.graphics.opengl.GLShader;
 class Camera extends Basic
 {
 	public var prog:Program;
+	public var defaultMgr:ChopProgramMgr;
 	
 	public var gBuffer:Int;
 	public var gPosition:Int;
@@ -57,7 +58,10 @@ class Camera extends Basic
 		bgColor = new Vector3(1.0, 1.0, 1.0);
 		projectionMatrix = Matrix4x4.zero;
 		viewMatrix = Matrix4x4.zero;
-		prog = new Program("assets/default_vertex.glsl", "assets/default_fragment.glsl");
+		prog = new Program("assets/shader/default_vertex.glsl",
+			"assets/shader/default_fragment.glsl");
+		
+		createProgramMgrs();
 		
 		GL.enable(GL.CULL_FACE);
 		GL.enable(GL.DEPTH_TEST);
@@ -65,6 +69,21 @@ class Camera extends Basic
 		
 		preDraw(0);
 		postDraw(0);
+	}
+	
+	private function createProgramMgrs():Void
+	{
+		defaultMgr = new ChopProgramMgr();
+		var gBufferProgram:ShaderGBuffer = new ShaderGBuffer();
+		defaultMgr.progs.push(gBufferProgram);
+		gBufferProgram.readBuffer = defaultMgr.buff.buffer;
+		gBufferProgram.drawBuffer = defaultMgr.buff.buffer;
+		var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture();
+		defaultMgr.progs.push(quadTextureProgram);
+		quadTextureProgram.readBuffer = defaultMgr.buff.buffer;
+		//quadTextureProgram.drawBuffer = cast 0;
+		quadTextureProgram.drawBuffer = new GLFramebuffer(0);
+		defaultMgr.init();
 	}
 	
 	public function setView(ScreenX:Int, ScreenY:Int, Width:Int, Height:Int, Ratio:Int = -1):Void
@@ -88,16 +107,43 @@ class Camera extends Basic
 	
 	public function postDraw(Elapsed:Float):Void
 	{
-		for (basic in Global.state.members)
+		//for (basic in Global.state.members)
+		//{
+			//if (Std.is(basic, Model))
+			//{
+				//var m:Model = cast basic;
+				//if (checkIfCam(m))
+				//{
+					//m.mgr.render(m, this);
+					////renderModel(m);
+				//}
+			//}
+		//}
+		
+		// TODO: mgr array
+		for (p in defaultMgr.progs)
 		{
-			if (Std.is(basic, Model))
+			if (p.type == ChopProgram.MULTIPLE)
 			{
-				var m:Model = cast basic;
-				if (checkIfCam(m))
+				var toRender:Array<Model> = [];
+				for (basic in Global.state.members)
 				{
-					m.mgr.render(m, this);
-					//renderModel(m);
+					if (Std.is(basic, Model))
+					{
+						var m:Model = cast basic;
+						if (m.mgr == defaultMgr)
+						{
+							toRender.push(m);
+						}
+					}
 				}
+				p.preRender(defaultMgr);
+				p.render(toRender, this, defaultMgr);
+			}
+			else if (p.type == ChopProgram.ONESHOT)
+			{
+				p.preRender(defaultMgr);
+				p.render(null, this, defaultMgr);
 			}
 		}
 	}

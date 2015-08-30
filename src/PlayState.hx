@@ -11,7 +11,9 @@ import chop.render3d.light.SunLight;
 import chop.phys.PhysUtil;
 import jiglib.physics.RigidBody;
 import chop.render3d.shader.ChopProgramMgr;
-//import snow.types.Types.Key;
+#if snow
+import snow.types.Types.Key;
+#end
 
 /**
  * ...
@@ -46,15 +48,15 @@ class PlayState extends State
 		var objLoader:ObjLoader = new ObjLoader();
 		//objLoader.loadFile("assets/lowpoly.obj");
 		//m.loadData(objLoader.data);
-		m.loadChop("assets/lowpoly.chopmesh");
+		m.loadChop("assets/mesh/lowpoly.chopmesh");
 		//m.scale.z = 2.0;
 		//m.pos.x = -14.0;
 		//m.rot.z = 45.0;
-		//m.loadChop("assets/corgi.chopmesh");
+		//m.loadChop("assets/mesh/corgi.chopmesh");
 		add(m);
 		
 		var m2:Model = new Model();
-		m2.loadChop("assets/corgi.chopmesh");
+		m2.loadChop("assets/mesh/corgi.chopmesh");
 		m2.scale.x = 2.0;
 		m2.scale.y = 2.0;
 		m2.scale.z = 2.0;
@@ -110,18 +112,20 @@ class PlayState extends State
 	{
 		super.update(Elapsed);
 		
-		//if (SnowApp._snow.input.keydown(Key.key_a))
-			//Global.cam.pos.x -= 5.0 * Elapsed;
-		//if (SnowApp._snow.input.keydown(Key.key_d))
-			//Global.cam.pos.x += 5.0 * Elapsed;
-		//if (SnowApp._snow.input.keydown(Key.key_w))
-			//Global.cam.pos.y += 5.0 * Elapsed;
-		//if (SnowApp._snow.input.keydown(Key.key_s))
-			//Global.cam.pos.y -= 5.0 * Elapsed;
-		//
-		//if (SnowApp._snow.input.keydown(Key.space))
-			//Global.cam.pos.z += 5.0 * Elapsed;
-		//if (SnowApp._snow.input.keydown(Key.lctrl))
-			//Global.cam.pos.z -= 5.0 * Elapsed;
+		#if snow
+		if (SnowApp._snow.input.keydown(Key.key_a))
+			Global.cam.pos.x -= 5.0 * Elapsed;
+		if (SnowApp._snow.input.keydown(Key.key_d))
+			Global.cam.pos.x += 5.0 * Elapsed;
+		if (SnowApp._snow.input.keydown(Key.key_w))
+			Global.cam.pos.y += 5.0 * Elapsed;
+		if (SnowApp._snow.input.keydown(Key.key_s))
+			Global.cam.pos.y -= 5.0 * Elapsed;
+		
+		if (SnowApp._snow.input.keydown(Key.space))
+			Global.cam.pos.z += 5.0 * Elapsed;
+		if (SnowApp._snow.input.keydown(Key.lctrl))
+			Global.cam.pos.z -= 5.0 * Elapsed;
+		#end
 	}
 }

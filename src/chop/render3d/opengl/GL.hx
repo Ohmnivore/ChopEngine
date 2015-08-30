@@ -11,6 +11,9 @@ package chop.render3d.opengl;
     typedef GLShader            = snow.modules.opengl.GL.GLShader;
     typedef GLTexture           = snow.modules.opengl.GL.GLTexture;
     typedef GLUniformLocation   = snow.modules.opengl.GL.GLUniformLocation;
+    typedef ArrayBufferView     = snow.api.buffers.ArrayBufferView;
+	typedef Float32Array        = snow.api.buffers.Float32Array;
+	typedef Uint8Array          = snow.api.buffers.Uint8Array;
 	
 	//#if snow_render_gl_native
         //typedef GLLink              = snow.modules.opengl.native.GL_Native.GLLink;
@@ -26,4 +29,5 @@ package chop.render3d.opengl;
     typedef GLShader            = lime.graphics.opengl.GLShader;
     typedef GLTexture           = lime.graphics.opengl.GLTexture;
     typedef GLUniformLocation   = lime.graphics.opengl.GLUniformLocation;
+	typedef Float32Array        = lime.utils.Float32Array;
 #end

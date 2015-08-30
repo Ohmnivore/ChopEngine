@@ -1,14 +1,11 @@
 package chop.render3d;
+
 import hxmath.math.Matrix4x4;
 import hxmath.math.Vector3;
-//import snow.modules.opengl.GL;
-//import snow.modules.opengl.GL.GLProgram;
-//import snow.modules.opengl.GL.GLUniformLocation;
-//import snow.api.buffers.Float32Array;
-import lime.graphics.opengl.GL;
-import lime.graphics.opengl.GLProgram;
-import lime.graphics.opengl.GLUniformLocation;
-import lime.utils.Float32Array;
+import chop.render3d.opengl.GL;
+import chop.render3d.opengl.GL.GLProgram;
+import chop.render3d.opengl.GL.GLUniformLocation;
+import chop.render3d.opengl.GL.Float32Array;
 
 /**
  * ...

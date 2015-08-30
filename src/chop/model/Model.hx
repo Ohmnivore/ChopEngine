@@ -35,7 +35,7 @@ class Model extends Object
 		
 		data = new ModelData();
 		anim = new AnimController();
-		mgr = Global.game.defaultMgr;
+		mgr = cam.defaultMgr;
 	}
 	
 	public function loadChop(P:String):Void

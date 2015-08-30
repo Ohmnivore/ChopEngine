@@ -10,17 +10,17 @@ import chop.render3d.opengl.ChopGL;
  */
 class ChopBuffer
 {
-	public var buffer:GLBuffer;
+	public var buffer:GLFramebuffer;
 	public var target:Int;
 	
 	public function new() 
 	{
-		buffer = GL.createBuffer();
+		buffer = GL.createFramebuffer();
 	}
 	
 	public function bind(Target:Int):Void
 	{
 		target = Target;
-		GL.bindBuffer(target, buffer);
+		GL.bindFramebuffer(target, buffer);
 	}
 }

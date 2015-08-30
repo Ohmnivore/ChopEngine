@@ -1,9 +1,9 @@
 package chop.render3d.light;
+
 import chop.render3d.GLUtil;
 import hxmath.math.Vector3;
 import chop.math.Util;
-//import snow.modules.opengl.GL.GLProgram;
-import lime.graphics.opengl.GLProgram;
+import chop.render3d.opengl.GL.GLProgram;
 
 /**
  * ...

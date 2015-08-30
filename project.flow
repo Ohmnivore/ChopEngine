@@ -15,6 +15,7 @@
       dependencies : {
         snow : '*',
         hxmath : '*',
+        jiglibhx : '*',
       }
     },
 

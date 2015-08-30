@@ -6,8 +6,16 @@ package chop.assets;
  */
 class Assets
 {
-	public static function loadTexts(IDs:Array<String>, OnEnd:Array<String>->Void):Void
+	public static function loadText(ID:String):String
 	{
-		SnowApp.
+		#if snow
+		return sys.io.File.getContent(ID);
+		#else
+		return lime.Assets.getText(ID);
+		#end
 	}
+	//public static function loadTexts(IDs:Array<String>, OnEnd:Array<String>->Void):Void
+	//{
+		//SnowApp.
+	//}
 }

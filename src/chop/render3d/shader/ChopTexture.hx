@@ -2,7 +2,7 @@ package chop.render3d.shader;
 
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.ChopGL;
-import lime.utils.ArrayBufferView;
+import chop.render3d.opengl.GL.Float32Array;
 
 /**
  * ...
@@ -11,7 +11,7 @@ import lime.utils.ArrayBufferView;
 class ChopTexture
 {
 	public var texture:GLTexture;
-	public var names:ChopTextureDescriptor;
+	public var name:String;
 	public var colorAttachment:Int;
 	public var colorAttachmentGL:Int;
 	
@@ -22,7 +22,7 @@ class ChopTexture
 	public var height:Int;
 	public var format:Int;
 	public var type:Int;
-	public var pixels:ArrayBufferView;
+	public var pixels:Float32Array;
 	
 	public var params:Array<ChopTextureParam>;
 	
@@ -64,9 +64,9 @@ class ChopTexture
 			throw("Invaid color attachment index");
 	}
 	
-	public function new(Names:ChopTextureDescriptor, Target:Int, Level:Int, InternalFormat:Int, Width:Int, Height:Int, Format:Int, T:Int)
+	public function new(Name:String, Target:Int, Level:Int, InternalFormat:Int, Width:Int, Height:Int, Format:Int, T:Int)
 	{
-		names = Names;
+		name = Name;
 		target = Target;
 		level = Level;
 		internalFormat = InternalFormat;
@@ -89,6 +89,6 @@ class ChopTexture
 		GL.texImage2D(target, level, internalFormat, width, height, 0, format, type, pixels);
 		for (p in params)
 			p.addToTexture(this);
-		GL.framebufferTexture2D(Target, Attachment, target, texture, 0);
+		GL.framebufferTexture2D(Target, colorAttachmentGL, target, texture, 0);
 	}
 }

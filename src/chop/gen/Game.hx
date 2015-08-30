@@ -3,8 +3,9 @@ package chop.gen;
 import chop.render3d.Camera;
 import chop.render3d.shader.ChopProgram;
 import chop.render3d.shader.ChopProgramMgr;
-//import snow.modules.opengl.GL;
-import lime.graphics.opengl.GL;
+import chop.render3d.shader.ShaderGBuffer;
+import chop.render3d.shader.ShaderQuadTexture;
+import chop.render3d.opengl.GL;
 import jiglib.cof.JConfig;
 
 /**
@@ -13,15 +14,8 @@ import jiglib.cof.JConfig;
  */
 class Game
 {
-	public var defaultMgr:ChopProgramMgr;
-	
 	public function new(S:State) 
 	{
-		defaultMgr = new ChopProgramMgr();
-		var gBufferProgram:ChopProgram = new ChopProgram();
-		defaultMgr.progs.push(gBufferProgram);
-		defaultMgr.init();
-		
 		Global.game = this;
 		Global.state = S;
 		

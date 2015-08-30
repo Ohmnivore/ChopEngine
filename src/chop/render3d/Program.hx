@@ -20,8 +20,8 @@ import chop.render3d.opengl.GL;
 import chop.render3d.opengl.GL.GLProgram;
 import chop.render3d.opengl.GL.GLShader;
 import chop.render3d.opengl.GL.GLBuffer;
-import lime.Assets;
-import lime.utils.Float32Array;
+import chop.assets.Assets;
+import chop.render3d.opengl.GL.Float32Array;
 
 /**
  * ...
@@ -52,7 +52,7 @@ class Program
 	private function loadShader(Shader:GLShader, Kind:Int, Path:String):Void
 	{
 		Shader = GL.createShader(Kind);
-		GL.shaderSource(Shader, Assets.getText(Path));
+		GL.shaderSource(Shader, Assets.loadText(Path));
 		GL.compileShader(Shader);
 		trace(GL.getShaderInfoLog(Shader));
 		GL.attachShader(program, Shader);
