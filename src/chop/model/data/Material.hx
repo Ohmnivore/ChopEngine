@@ -52,4 +52,26 @@ class Material
 		GLUtil.setUniform(P, "material.emit", emit);
 		GLUtil.setUniform(P, "material.transparency", transparency);
 	}
+	
+	public function toFlagInt():Int
+	{
+		var res:Int = 0x0;
+		res = addField(res, useShading, 0x1);
+		res = addField(res, shadowsCast, 0x2);
+		res = addField(res, shadowsReceive, 0x4);
+		return res;
+	}
+	
+	public function toFlagFloat():Float
+	{
+		return toFlagInt() / 7.0;
+	}
+	
+	private function addField(To:Int, Field:Bool, Bit:Int):Int
+	{
+		if (Field)
+			return To | Bit;
+		else
+			return To;
+	}
 }

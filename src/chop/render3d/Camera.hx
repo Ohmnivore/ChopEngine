@@ -67,22 +67,34 @@ class Camera extends Basic
 		GL.enable(GL.DEPTH_TEST);
 		GL.depthFunc(GL.LESS);
 		
-		preDraw(0);
-		postDraw(0);
+		//preDraw(0);
+		//postDraw(0);
 	}
 	
 	private function createProgramMgrs():Void
 	{
 		defaultMgr = new ChopProgramMgr();
+		
 		var gBufferProgram:ShaderGBuffer = new ShaderGBuffer();
 		defaultMgr.progs.push(gBufferProgram);
 		gBufferProgram.readBuffer = defaultMgr.buff.buffer;
 		gBufferProgram.drawBuffer = defaultMgr.buff.buffer;
-		var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture();
-		defaultMgr.progs.push(quadTextureProgram);
-		quadTextureProgram.readBuffer = defaultMgr.buff.buffer;
-		//quadTextureProgram.drawBuffer = cast 0;
-		quadTextureProgram.drawBuffer = new GLFramebuffer(0);
+		
+		var gLightProgram:ShaderLights = new ShaderLights();
+		defaultMgr.progs.push(gLightProgram);
+		gLightProgram.readBuffer = defaultMgr.buff.buffer;
+		//gLightProgram.drawBuffer = defaultMgr.buff.buffer;
+		gLightProgram.drawBuffer = new GLFramebuffer(0);
+		gLightProgram.outTextures = [];
+		
+		//var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture();
+		//defaultMgr.progs.push(quadTextureProgram);
+		//quadTextureProgram.readBuffer = defaultMgr.buff.buffer;
+		//quadTextureProgram.drawBuffer = new GLFramebuffer(0);
+		//quadTextureProgram.inTextures[0].globalName = "gDiffuse";
+		////quadTextureProgram.inTextures[0].globalName = "gSpec";
+		////quadTextureProgram.inTextures[0].globalName = "gLight";
+		
 		defaultMgr.init();
 	}
 	

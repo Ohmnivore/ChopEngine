@@ -28,7 +28,10 @@ class ConeLight extends Light
 		super.setUniforms(P, I);
 		GLUtil.setUniformElement(P, "allLights", I, "direction", Util.Vector3ToGL(dir));
 		GLUtil.setUniformElement(P, "allLights", I, "position", Util.Vector3ToGL(pos));
-		GLUtil.setUniformElement(P, "allLights", I, "coneAngle", coneAngle);
-		GLUtil.setUniformElement(P, "allLights", I, "type", 2);
+		//GLUtil.setUniformElement(P, "allLights", I, "coneAngle", coneAngle);
+		//GLUtil.setUniformElement(P, "allLights", I, "type", 2);
+		
+		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].coneAngle"), coneAngle);
+		GLUtil.setInt(GLUtil.getLocation(P, "allLights[" + I + "].type"), 2);
 	}
 }

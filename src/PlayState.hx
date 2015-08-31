@@ -97,7 +97,7 @@ class PlayState extends State
 		var cone:ConeLight = new ConeLight();
 		cone.pos.x = 2.0;
 		cone.pos.z = 6.0;
-		cone.pos.y = -2.0;
+		cone.pos.y = -4.0;
 		cone.dir.x = -1.0;
 		cone.dir.z = -0.5;
 		cone.dir.y = 0.5;
@@ -105,6 +105,7 @@ class PlayState extends State
 		cone.color.x = 1.0;
 		cone.color.y = 0.0;
 		cone.color.z = 0.0;
+		cone.coneAngle = 40.0;
 		lights.lights.push(cone);
 	}
 	

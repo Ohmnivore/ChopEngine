@@ -4,6 +4,7 @@ import chop.model.data.Face;
 import chop.model.data.Vertex;
 import chop.model.Model;
 import chop.render3d.Camera;
+import chop.render3d.light.Light;
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.ChopGL;
 import chop.render3d.opengl.GL.GLTexture;
@@ -14,12 +15,13 @@ import hxmath.math.Vector3;
 import chop.assets.Assets;
 import chop.math.Util;
 import chop.render3d.opengl.GL.Float32Array;
+import chop.gen.Global;
 
 /**
  * ...
  * @author Ohmnivore
  */
-class ShaderQuadTexture extends ChopProgram
+class ShaderLights extends ChopProgram
 {
 	public var gLight:ChopTexture;
 	
@@ -51,6 +53,27 @@ class ShaderQuadTexture extends ChopProgram
 		super.render(M, C, Mgr);
 		
 		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+		
+		// Transformation matrices
+		GLUtil.setUniform(prog, "v", C.viewMatrix);
+		GLUtil.setUniform(prog, "p", C.projectionMatrix);
+		GLUtil.setUniform(prog, "viewPos", Util.Vector3ToGL(C.pos));
+		
+		// LightState globals
+		GLUtil.setUniform(prog, "ambientColor", Global.state.lights.ambientColor);
+		//GLUtil.setUniform(prog, "ambientIntensity", Global.state.lights.ambientIntensity);
+		//GLUtil.setUniform(prog, "gamma", Global.state.lights.gamma);
+		GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), Global.state.lights.ambientIntensity);
+		GLUtil.setFloat(GLUtil.getLocation(prog, "gamma"), Global.state.lights.gamma);
+		
+		// Lights uniforms
+		//GLUtil.setUniform(prog, "numLights", Global.state.lights.lights.length);
+		GLUtil.setInt(GLUtil.getLocation(prog, "numLights"), Global.state.lights.lights.length);
+		for (i in 0...Global.state.lights.lights.length)
+		{
+			var light:Light = Global.state.lights.lights[i];
+			light.setUniforms(prog, i);
+		}
 		
 		var vData:Array<Float> = [];
 		vData = [

@@ -31,9 +31,12 @@ class Light
 	{
 		//GLUtil.setUniformElement(P, "allLights", I, "castShadows", light.castShadows);
 		GLUtil.setUniformElement(P, "allLights", I, "color", color);
-		GLUtil.setUniformElement(P, "allLights", I, "distance", distance);
-		GLUtil.setUniformElement(P, "allLights", I, "energy", energy);
+		//GLUtil.setUniformElement(P, "allLights", I, "distance", distance);
+		//GLUtil.setUniformElement(P, "allLights", I, "energy", energy);
 		GLUtil.setUniformElement(P, "allLights", I, "useDiffuse", useDiffuse);
 		GLUtil.setUniformElement(P, "allLights", I, "useSpecular", useSpecular);
+		
+		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].distance"), distance);
+		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].energy"), energy);
 	}
 }

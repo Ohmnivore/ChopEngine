@@ -64,7 +64,9 @@ class ChopProgram
 	{
 		var texAttachmentIds:Array<Int> = [];
 		for (t in outTextures)
+		{
 			texAttachmentIds.push(t.colorAttachmentGL);
+		}
 		ChopGL_FFI.drawBuffers(texAttachmentIds.length, texAttachmentIds);
 	}
 	
@@ -76,7 +78,8 @@ class ChopProgram
 			var texDescr:ChopTextureDescriptor = inTextures[i];
 			var tex:ChopTexture = Mgr.textures.get(texDescr.globalName);
 			GL.bindTexture(tex.target, tex.texture);
-			GLUtil.setUniform(prog, texDescr.shaderName, i);
+			//GLUtil.setUniform(prog, texDescr.shaderName, i);
+			GLUtil.setInt(GLUtil.getLocation(prog, texDescr.shaderName), i);
 		}
 	}
 	

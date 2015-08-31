@@ -34,17 +34,29 @@ class GLUtil
 		}
 		else
 		{
-			if (Std.is(Value, Int))
-				setInt(loc, Value);
-			else if (Std.is(Value, Float))
-				setFloat(loc, Value);
-			else if (Std.is(Value, Bool))
+			//if (Std.is(Value, Int))
+				//setInt(loc, Value);
+			//else if (Std.is(Value, Float))
+				//setFloat(loc, Value);
+			//if (Std.is(Value, Float))
+				//setFloat(loc, Value);
+			//else if (Std.is(Value, Int))
+				//setInt(loc, Value);
+			//else if (Std.is(Value, Bool))
+			if (Std.is(Value, Bool))
 				setBool(loc, Value);
 			else if (Std.is(Value, Vector3Type))
 				setVector3(loc, Value);
 			else if (Std.is(Value, Matrix4x4Type))
 				setMatrix4x4(loc, Value);
+			else
+				trace("Unknown uniform value type passed: " + Name);
 		}
+	}
+	
+	static public function getLocation(Program:GLProgram, Name:String):GLUniformLocation
+	{
+		return GL.getUniformLocation(Program, Name);
 	}
 	
 	static private function setBool(Location:GLUniformLocation, Value:Bool)
@@ -55,12 +67,12 @@ class GLUtil
 		GL.uniform1i(Location, v);
 	}
 	
-	static private function setInt(Location:GLUniformLocation, Value:Int)
+	static public function setInt(Location:GLUniformLocation, Value:Int)
 	{
 		GL.uniform1i(Location, Value);
 	}
 	
-	static private function setFloat(Location:GLUniformLocation, Value:Float)
+	static public function setFloat(Location:GLUniformLocation, Value:Float)
 	{
 		GL.uniform1f(Location, Value);
 	}

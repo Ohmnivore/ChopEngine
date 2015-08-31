@@ -53,17 +53,17 @@ class ShaderGBuffer extends ChopProgram
 		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gPosition);
 		
-		gNormal = new ChopTexture("gNormal", GL.TEXTURE_2D, 0, ChopGL.RGB16F, 640, 480, GL.RGB, GL.FLOAT);
+		gNormal = new ChopTexture("gNormal", GL.TEXTURE_2D, 0, GL.RGBA, 640, 480, GL.RGBA, GL.FLOAT);
 		gNormal.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gNormal.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gNormal);
 		
-		gDiffuse = new ChopTexture("gDiffuse", GL.TEXTURE_2D, 0, ChopGL.RGB16F, 640, 480, GL.RGB, GL.FLOAT);
+		gDiffuse = new ChopTexture("gDiffuse", GL.TEXTURE_2D, 0, GL.RGBA, 640, 480, GL.RGBA, GL.FLOAT);
 		gDiffuse.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gDiffuse.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gDiffuse);
 		
-		gSpec = new ChopTexture("gSpec", GL.TEXTURE_2D, 0, ChopGL.RGB16F, 640, 480, GL.RGB, GL.FLOAT);
+		gSpec = new ChopTexture("gSpec", GL.TEXTURE_2D, 0, GL.RGBA, 640, 480, GL.RGBA, GL.FLOAT);
 		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gSpec);
@@ -95,6 +95,12 @@ class ShaderGBuffer extends ChopProgram
 				// Material uniforms
 				GLUtil.setUniform(prog, "diffuseColor", mat.diffuseColor);
 				GLUtil.setUniform(prog, "specularColor", mat.specularColor);
+				//GLUtil.setUniform(prog, "materialFlags", mat.toFlagFloat());
+				GLUtil.setFloat(GLUtil.getLocation(prog, "diffuseIntensity"), mat.diffuseIntensity);
+				GLUtil.setFloat(GLUtil.getLocation(prog, "specularIntensity"), mat.specularIntensity);
+				GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), mat.ambientIntensity);
+				GLUtil.setFloat(GLUtil.getLocation(prog, "materialFlags"), mat.toFlagFloat());
+				GLUtil.setFloat(GLUtil.getLocation(prog, "emit"), mat.emit);
 				
 				var vData:Array<Float> = [];
 				for (i in 0...M.data.faces.length)
@@ -119,15 +125,19 @@ class ShaderGBuffer extends ChopProgram
 				var sizeOfFloat:Int = 4;
 				GL.enableVertexAttribArray(0);
 				GL.bindAttribLocation(prog, 0, "position");
-				GL.vertexAttribPointer(0, 3, GL.FLOAT, false, sizeOfFloat * 6, sizeOfFloat * 0);
+				GL.vertexAttribPointer(0, 3, GL.FLOAT, false, sizeOfFloat * 9, sizeOfFloat * 0);
 				GL.enableVertexAttribArray(1);
-				GL.bindAttribLocation(prog, 1, "normal");
-				GL.vertexAttribPointer(1, 3, GL.FLOAT, false, sizeOfFloat * 6, sizeOfFloat * 3);
+				GL.bindAttribLocation(prog, 1, "meanPosition");
+				GL.vertexAttribPointer(1, 3, GL.FLOAT, false, sizeOfFloat * 9, sizeOfFloat * 3);
+				GL.enableVertexAttribArray(2);
+				GL.bindAttribLocation(prog, 2, "normal");
+				GL.vertexAttribPointer(2, 3, GL.FLOAT, false, sizeOfFloat * 9, sizeOfFloat * 6);
 				
-				GL.drawArrays(GL.TRIANGLES, 0, Std.int(vData.length / 6));
+				GL.drawArrays(GL.TRIANGLES, 0, Std.int(vData.length / 9));
 				
 				GL.disableVertexAttribArray(0);
 				GL.disableVertexAttribArray(1);
+				GL.disableVertexAttribArray(2);
 				GL.deleteBuffer(vertexBuffer);
 			}
 		}
@@ -167,9 +177,9 @@ class ShaderGBuffer extends ChopProgram
 		//Verts.push(Vec.ny);
 		//Verts.push(Vec.nz);
 		
-		//Verts.push((V1.x + V2.x + V3.x) / 3.0);
-		//Verts.push((V1.y + V2.y + V3.y) / 3.0);
-		//Verts.push((V1.z + V2.z + V3.z) / 3.0);
+		Verts.push((V1.x + V2.x + V3.x) / 3.0);
+		Verts.push((V1.y + V2.y + V3.y) / 3.0);
+		Verts.push((V1.z + V2.z + V3.z) / 3.0);
 		
 		n.x = 0;
 		n.y = 0;

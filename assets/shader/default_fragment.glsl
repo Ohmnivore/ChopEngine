@@ -1,11 +1,12 @@
 #version 330 core
 
-uniform sampler2D gPosition;
-uniform sampler2D gNormal;
-uniform sampler2D gDiffuse;
-uniform sampler2D gSpec;
+in vec3 inPositionModelSpace;
+in vec3 inNormalModelSpace;
+in vec3 inMeanPositionModelSpace;
+in vec3 inMeanNormalModelSpace;
 
 out vec4 color;
+out float placeholder;
 
 uniform mat4 m;
 uniform mat4 v;
@@ -13,6 +14,22 @@ uniform mat4 p;
 uniform vec3 ambientColor;
 uniform float ambientIntensity;
 uniform float gamma;
+
+// material info
+struct Material
+{
+    bool useShading;
+    bool shadowsCast;
+    bool shadowsReceive;
+    vec3 diffuseColor;
+    float diffuseIntensity;
+    vec3 specularColor;
+    float specularIntensity;
+    float ambientIntensity;
+    float emit;
+    float transparency;
+};
+uniform Material material;
 
 // lights info
 #define MAX_LIGHTS 32
@@ -140,11 +157,6 @@ vec3 applyLight(Light light, Material mat, vec3 lMeanPositionModelSpace, vec3 lM
 
 void main()
 {
-	vec3 FragPos = texture(gPosition, TexCoords).rgb;
-    vec3 Normal = texture(gNormal, TexCoords).rgb;
-    vec3 Diffuse = texture(gDiffuse, TexCoords).rgb;
-    vec3 Specular = texture(gSpec, TexCoords).rgb;
-	
 	vec3 linearColor;
 
     if (material.useShading)
@@ -212,3 +224,4 @@ void main()
 	if (allLights[0].type == 2)
 		color.x += allLights[0].coneAngle * 0.00001;
 }
+

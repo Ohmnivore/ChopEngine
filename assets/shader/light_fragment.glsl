@@ -1,16 +1,18 @@
 #version 330 core
 
-in vec3 inPositionModelSpace;
-in vec3 inNormalModelSpace;
-in vec3 inMeanPositionModelSpace;
-in vec3 inMeanNormalModelSpace;
+in vec2 UV;
 
 out vec4 color;
-out float placeholder;
+
+uniform sampler2D gPosition;
+uniform sampler2D gNormal;
+uniform sampler2D gDiffuse;
+uniform sampler2D gSpec;
 
 uniform mat4 m;
 uniform mat4 v;
 uniform mat4 p;
+uniform vec3 viewPos;
 uniform vec3 ambientColor;
 uniform float ambientIntensity;
 uniform float gamma;
@@ -29,7 +31,6 @@ struct Material
     float emit;
     float transparency;
 };
-uniform Material material;
 
 // lights info
 #define MAX_LIGHTS 32
@@ -48,124 +49,100 @@ struct Light
 };
 uniform Light allLights[MAX_LIGHTS];
 
-vec3 applyLight(Light light, Material mat, vec3 lMeanPositionModelSpace, vec3 lMeanNormalModelSpace)
+bool getFlagAsBool(int flags, int flag)
 {
-    // Position of the vertex, in worldspace : M * position
-    vec3 positionWorldSpace = (m * vec4(lMeanPositionModelSpace, 1)).xyz;
-
-    // Vector that goes from the vertex to the camera, in camera space.
-    // In camera space, the camera is at the origin (0,0,0).
-    vec3 vertexPositionCameraSpace = (v * m * vec4(lMeanPositionModelSpace, 1)).xyz;
-    vec3 eyeDirectionCameraSpace = vec3(0, 0, 0) - vertexPositionCameraSpace;
-
-    // Distance to the light
-    float distance = length(light.position - positionWorldSpace);
-
-    // Vector that goes from the vertex to the light, in camera space. M is ommited because it's identity.
-    vec3 lightPositionCameraSpace = (v * vec4(light.position, 1)).xyz;
-    vec3 lightDirectionCameraSpace;
-    if (light.type == 0)
-    {
-        lightDirectionCameraSpace = -light.direction;
-    }
-    else
-    {
-        lightDirectionCameraSpace = lightPositionCameraSpace + eyeDirectionCameraSpace;
-        if (distance > light.distance)
-        {
-            // return vec3(0, 0, 0);
-        }
-    }
-
-    // Normal of the the vertex, in camera space
-    vec3 normalCameraSpace = (v * m * vec4(lMeanNormalModelSpace, 0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
-
-
-    // Light emission properties
-    float lightPower = light.energy * 100.0f;
-
-    if (light.type == 2)
-    {
-        // 1. Get the direction for the center of the cone. The `normalize`
-        //    function is called just in case `light.coneDirection` isn't
-        //    already a unit vector.
-        vec3 coneDirection = normalize(light.direction);
-
-        // 2. Get the direction of the ray of light. This is the opposite
-        //    of the direction from the surface to the light.
-        vec3 rayDirection = -lightDirectionCameraSpace;
-
-        // 3. Get the angle between the center of the cone and the ray of light.
-        //    The combination of `acos` and `dot` return the angle in radians, then
-        //    we convert it to degrees.
-        float lightToSurfaceAngle = degrees(acos(dot(rayDirection, coneDirection)));
-
-        // 4. Check if the angle is outside of the cone. If so, set the attenuation
-        //    factor to zero, to make the light ray invisible.
-        if (lightToSurfaceAngle > light.coneAngle)
-        {
-            lightPower = 0.0;
-        }
-        // distanceMod = 1.0 / (distance * distance);
-        // lightPower *= max(0.0, 1.0 - abs(lightToSurfaceAngle / light.coneAngle));
-        // lightPower = 1.0 / pow(lightToSurfaceAngle, 2);
-    }
-
-    // Normal of the computed fragment, in camera space
-    vec3 n = normalize(normalCameraSpace);
-    // Direction of the light (from the fragment to the light)
-    vec3 l = normalize(lightDirectionCameraSpace);
-    // Cosine of the angle between the normal and the light direction,
-    // clamped above 0
-    //  - light is at the vertical of the triangle -> 1
-    //  - light is perpendicular to the triangle -> 0
-    //  - light is behind the triangle -> 0
-    float cosTheta = clamp(dot(n, l), 0, 1);
-
-    // Eye vector (towards the camera)
-    vec3 E = normalize(eyeDirectionCameraSpace);
-    // Direction in which the triangle reflects the light
-    vec3 R = reflect(-l, n);
-    // Cosine of the angle between the Eye vector and the Reflect vector,
-    // clamped to 0
-    //  - Looking into the reflection -> 1
-    //  - Looking elsewhere -> < 1
-    float cosAlpha = clamp(dot(E, R), 0, 1);
-
-    float distanceMod;
-    if (light.type == 0)
-    {
-        distanceMod = 1.0;
-    }
-    else
-    {
-        distanceMod = 1.0 / (distance * distance);
-    }
-
-    if (!light.useDiffuse)
-        cosTheta = 0;
-    if (!light.useSpecular)
-        cosAlpha = 0;
-
-    return vec3(
-        // Diffuse : "color" of the object
-        mat.diffuseColor * light.color * mat.diffuseIntensity * lightPower * cosTheta * distanceMod +
-        // Specular : reflective highlight, like a mirror
-        mat.specularColor * light.color * mat.specularIntensity * lightPower * pow(cosAlpha, 5) * distanceMod
-        );
+	return (flags & flag) != 0;
+}
+Material createMaterial(float flags, vec3 diffuseColor, vec3 specularColor, float ambientIntensity, float emit)
+{
+	int intFlags = int(flags * 7.0);
+	return Material(getFlagAsBool(intFlags, 0x01), getFlagAsBool(intFlags, 0x02), getFlagAsBool(intFlags, 0x04), diffuseColor, 1.0, specularColor, 1.0, ambientIntensity, emit, 1.0);
 }
 
 void main()
 {
-	vec3 linearColor;
+	// Decode the G Buffer
+	vec3 FragPos = texture(gPosition, UV).rgb;
+    vec3 Normal = texture(gNormal, UV).rgb;
+    vec3 Diffuse = texture(gDiffuse, UV).rgb;
+    vec3 Specular = texture(gSpec, UV).rgb;
+	float MaterialFlags = texture(gDiffuse, UV).a;
+	float AmbientIntensity = texture(gNormal, UV).a;
+	float Emit = texture(gSpec, UV).a;
+	Material material = createMaterial(MaterialFlags, Diffuse, Specular, AmbientIntensity, Emit);
+	
+	vec3 linearColor = vec3(0);
 
     if (material.useShading)
     {
-        //combine color from all the lights
-        linearColor = vec3(0, 0, 0);
+		vec3 viewDir = normalize(viewPos - FragPos);
+		
         for (int i = 0; i < numLights; ++i)
         {
-            linearColor += applyLight(allLights[i], material, inMeanPositionModelSpace, inMeanNormalModelSpace);
+			Light light = allLights[i];
+			
+			// Calculate distance between light source and current fragment
+			float distance = length(light.position - FragPos);
+			
+			if (light.type != 0)
+				// Don't check distance for sun lights
+				if (distance > light.distance)
+					continue;
+			
+			// Diffuse
+			vec3 lightDir;
+			if (light.type == 0)
+				// Sun light direction is constant
+				lightDir = -light.direction;
+			else
+				lightDir = normalize(light.position - FragPos);
+			vec3 diffuse = vec3(0);
+			if (light.useSpecular)
+				diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * light.color;
+			
+			// Specular
+			vec3 halfwayDir = normalize(lightDir + viewDir);
+			vec3 specular = vec3(0);
+			if (light.useSpecular)
+			{
+				float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
+				specular = light.color * spec * Specular;
+			}
+			
+			// Attenuation
+			float attenuation = 1.0;
+			if (light.type != 0)
+				attenuation = 1.0 / (distance * distance);
+			
+			// Cone light attenuation
+			if (light.type == 2)
+			{
+				// 1. Get the direction for the center of the cone. The `normalize`
+				//    function is called just in case `light.coneDirection` isn't
+				//    already a unit vector.
+				vec3 coneDirection = normalize(light.direction);
+
+				// 2. Get the direction of the ray of light. This is the opposite
+				//    of the direction from the surface to the light.
+				vec3 rayDirection = -lightDir;
+
+				// 3. Get the angle between the center of the cone and the ray of light.
+				//    The combination of `acos` and `dot` return the angle in radians, then
+				//    we convert it to degrees.
+				float lightToSurfaceAngle = degrees(acos(dot(rayDirection, coneDirection)));
+
+				// 4. Check if the angle is outside of the cone. If so, set the attenuation
+				//    factor to zero, to make the light ray invisible.
+				if (lightToSurfaceAngle > light.coneAngle)
+				{
+					attenuation = 0.0;
+				}
+			}
+			
+			diffuse *= attenuation;
+			specular *= attenuation;
+			
+			linearColor += (diffuse + specular) * light.energy * 100.0;
         }
         // Emit
         linearColor += material.diffuseColor * material.emit;
@@ -174,20 +151,30 @@ void main()
     }
     else
     {
-        linearColor = vec3(material.diffuseColor.x, material.diffuseColor.y, material.diffuseColor.z);
+        linearColor = Diffuse;
     }
 
     // gamma correction
     vec3 gammav = vec3(gamma);
-    color = vec4(pow(linearColor, gammav), material.transparency);
-    // color = vec4(material.diffuseColor.xyz, material.transparency);
-    // color = vec4(inMeanPositionModelSpace.xyz, material.transparency);
+    color = vec4(pow(linearColor, gammav), texture(gPosition, UV).a);
+	
+	// Ugly hack to keep the optimizer from removing supposedly unused uniforms (ugh...)
+	
+	// Ensure uniform samplers compilation
+	color.x += texture(gPosition, vec2(0, 0)).r * 0.00001;
+	color.x += texture(gNormal, vec2(0, 0)).r * 0.00001;
+	color.x += texture(gDiffuse, vec2(0, 0)).r * 0.00001;
+	color.x += texture(gSpec, vec2(0, 0)).r * 0.00001;
+	color.x += FragPos.x * 0.00001;
+	color.x += Normal.x * 0.00001;
+	color.x += Diffuse.x * 0.00001;
+	color.x += Specular.x * 0.00001;
+	color.x += Emit * 0.00001;
+	color.x += AmbientIntensity * 0.00001;
+	color.x += MaterialFlags * 0.00001;
 	
 	// Ensure input compilation
-	color.x += inPositionModelSpace.x * 0.00001;
-	color.x += inNormalModelSpace.x * 0.00001;
-	color.x += inMeanPositionModelSpace.x * 0.00001;
-	color.x += inMeanNormalModelSpace.x * 0.00001;
+	color.x += UV.x * 0.00001;
 	
 	// Ensure material uniform compilation
 	color.x += material.diffuseColor.x * 0.00001;

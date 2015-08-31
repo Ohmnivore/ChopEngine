@@ -23,6 +23,8 @@ class PointLight extends Light
 	{
 		super.setUniforms(P, I);
 		GLUtil.setUniformElement(P, "allLights", I, "position", Util.Vector3ToGL(pos));
-		GLUtil.setUniformElement(P, "allLights", I, "type", 1);
+		//GLUtil.setUniformElement(P, "allLights", I, "type", 1);
+		
+		GLUtil.setInt(GLUtil.getLocation(P, "allLights[" + I + "].type"), 1);
 	}
 }

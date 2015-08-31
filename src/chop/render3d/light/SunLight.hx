@@ -23,6 +23,8 @@ class SunLight extends Light
 	{
 		super.setUniforms(P, I);
 		GLUtil.setUniformElement(P, "allLights", I, "direction", Util.Vector3ToGL(dir));
-		GLUtil.setUniformElement(P, "allLights", I, "type", 0);
+		//GLUtil.setUniformElement(P, "allLights", I, "type", 0);
+		
+		GLUtil.setInt(GLUtil.getLocation(P, "allLights[" + I + "].type"), 0);
 	}
 }
