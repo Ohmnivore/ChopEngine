@@ -13,12 +13,14 @@
 * Normal maps
 * Cubemap sky (lightState)
 * Particle effects
-### Lights
+
+##### Lights
 * Pass through bool
 * Cast shadow bool
 * Cone light
  * Add an angle-based falloff to smooth it out
-## Material support
+
+##### Material support
 * bool shadowsCast
 * bool shadowsReceive
 
