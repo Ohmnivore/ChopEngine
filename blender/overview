@@ -1,0 +1,45 @@
+file:
+	-materials (Array(material))
+	-faces (Array(face))
+	-tags (Array(tag))
+	-animations (Array(animation))
+
+material:
+	-name (String)
+	-ID (Unsigned Int)
+	-use shading (Bool)
+	-cast shadows (Bool)
+	-receive shadows (Bool)
+	-diffuse color (RGB, 0-100)
+	-diffuse intensity (Int)
+	-specular color (RGB, 0-100)
+	-specular intensity (Int, 0-100)
+	-ambient intensity (Int)
+	-emit (Int, 0-100)
+	-transparency (Int, 0-100)
+
+face:
+	-material ID (Unsigned Int)
+	-vertex1 ID (Unsigned Int)
+	-vertex2 ID (Unsigned Int)
+	-vertex3 ID (Unsigned Int)
+
+tag:
+	 -name (String)
+	 -ID (Unsigned Int)
+
+animation:
+	-name (String)
+	-length_ms (Unsigned Int)
+	-frames (Array(frame))
+
+frame:
+	-index (Unsigned Int)
+	-time_ms (Unsigned Int)
+	-vertices (Array(vertex))
+
+vertex:
+	-x (Float)
+	-y (Float)
+	-z (Float)
+	-tag ID (Unsigned Int)
