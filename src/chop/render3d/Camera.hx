@@ -44,12 +44,18 @@ class Camera extends Basic
 	public var projectionMatrix:Matrix4x4;
 	public var viewMatrix:Matrix4x4;
 	
-	public function new() 
+	public function new(X:Int = 0, Y:Int = 0, Width:Int = 0, Height:Int = 0) 
 	{
 		super();
 		
 		screenPos = new Vector2(0, 0);
-		setView(0, 0, 640, 480);
+		
+		if (Width == 0)
+			Width = SnowApp._snow.window.width;
+		if (Height == 0)
+			Height = SnowApp._snow.window.height;
+		setView(X, Y, Width, Height);
+		
 		FOV = 45.0;
 		displayMin = 0.1;
 		displayMax = 200.0;
@@ -73,14 +79,14 @@ class Camera extends Basic
 	
 	private function createProgramMgrs():Void
 	{
-		defaultMgr = new ChopProgramMgr();
+		defaultMgr = new ChopProgramMgr(this);
 		
-		var gBufferProgram:ShaderGBuffer = new ShaderGBuffer();
+		var gBufferProgram:ShaderGBuffer = new ShaderGBuffer(this);
 		defaultMgr.progs.push(gBufferProgram);
 		gBufferProgram.readBuffer = defaultMgr.buff.buffer;
 		gBufferProgram.drawBuffer = defaultMgr.buff.buffer;
 		
-		var gLightProgram:ShaderLights = new ShaderLights();
+		var gLightProgram:ShaderLights = new ShaderLights(this);
 		defaultMgr.progs.push(gLightProgram);
 		gLightProgram.readBuffer = defaultMgr.buff.buffer;
 		//gLightProgram.drawBuffer = defaultMgr.buff.buffer;
@@ -112,7 +118,7 @@ class Camera extends Basic
 	
 	public function preDraw(Elapsed:Float):Void
 	{
-		GL.viewport(Std.int(screenPos.x), Std.int(480 - screenPos.y - height), width, height);
+		GL.viewport(Std.int(screenPos.x), Std.int(SnowApp._snow.window.height - screenPos.y - height), width, height);
 		GL.clearColor(bgColor.x, bgColor.y, bgColor.z, 1.0);
 		GL.clear(GL.DEPTH_BUFFER_BIT);
 	}

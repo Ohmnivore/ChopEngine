@@ -25,9 +25,9 @@ class ShaderLights extends ChopProgram
 {
 	public var gLight:ChopTexture;
 	
-	public function new() 
+	public function new(C:Camera) 
 	{
-		super();
+		super(C);
 		
 		type = ChopProgram.ONESHOT;
 		
@@ -42,7 +42,7 @@ class ShaderLights extends ChopProgram
 		inTextures.push(new ChopTextureDescriptor("gDiffuse", "gDiffuse"));
 		inTextures.push(new ChopTextureDescriptor("gSpec", "gSpec"));
 		
-		gLight = new ChopTexture("gLight", GL.TEXTURE_2D, 0, ChopGL.RGB16F, 640, 480, GL.RGB, GL.FLOAT);
+		gLight = new ChopTexture("gLight", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
 		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gLight);

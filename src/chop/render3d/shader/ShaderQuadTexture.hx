@@ -21,9 +21,9 @@ import chop.render3d.opengl.GL.Float32Array;
  */
 class ShaderQuadTexture extends ChopProgram
 {
-	public function new() 
+	public function new(C:Camera) 
 	{
-		super();
+		super(C);
 		
 		type = ChopProgram.ONESHOT;
 		

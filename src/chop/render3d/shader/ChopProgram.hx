@@ -31,7 +31,7 @@ class ChopProgram
 	public var drawBuffer:GLFramebuffer;
 	public var type:Int;
 	
-	public function new() 
+	public function new(C:Camera) 
 	{
 		prog = GL.createProgram();
 		

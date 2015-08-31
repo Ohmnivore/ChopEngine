@@ -32,9 +32,9 @@ class ShaderGBuffer extends ChopProgram
 	private var u:Vector3;
 	private var v:Vector3;
 	
-	public function new() 
+	public function new(C:Camera) 
 	{
-		super();
+		super(C);
 		
 		type = ChopProgram.MULTIPLE;
 		
@@ -48,22 +48,22 @@ class ShaderGBuffer extends ChopProgram
 		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
-		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, ChopGL.RGB16F, 640, 480, GL.RGB, GL.FLOAT);
+		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
 		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gPosition);
 		
-		gNormal = new ChopTexture("gNormal", GL.TEXTURE_2D, 0, GL.RGBA, 640, 480, GL.RGBA, GL.FLOAT);
+		gNormal = new ChopTexture("gNormal", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
 		gNormal.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gNormal.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gNormal);
 		
-		gDiffuse = new ChopTexture("gDiffuse", GL.TEXTURE_2D, 0, GL.RGBA, 640, 480, GL.RGBA, GL.FLOAT);
+		gDiffuse = new ChopTexture("gDiffuse", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
 		gDiffuse.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gDiffuse.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gDiffuse);
 		
-		gSpec = new ChopTexture("gSpec", GL.TEXTURE_2D, 0, GL.RGBA, 640, 480, GL.RGBA, GL.FLOAT);
+		gSpec = new ChopTexture("gSpec", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
 		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gSpec);

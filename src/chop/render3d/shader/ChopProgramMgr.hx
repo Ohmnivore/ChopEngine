@@ -14,7 +14,7 @@ class ChopProgramMgr
 	public var textures:Map<String, ChopTexture>;
 	public var buff:ChopBuffer;
 	
-	public function new() 
+	public function new(C:Camera) 
 	{
 		progs = [];
 		textures = new Map<String, ChopTexture>();
@@ -24,7 +24,7 @@ class ChopProgramMgr
 		
 		var rbo:GLRenderbuffer = GL.createRenderbuffer();
 		GL.bindRenderbuffer(GL.RENDERBUFFER, rbo);
-		GL.renderbufferStorage(GL.RENDERBUFFER, GL.DEPTH_COMPONENT, 640, 480);
+		GL.renderbufferStorage(GL.RENDERBUFFER, GL.DEPTH_COMPONENT, C.width, C.height);
 		GL.framebufferRenderbuffer(GL.FRAMEBUFFER, GL.DEPTH_ATTACHMENT, GL.RENDERBUFFER, rbo);
 	}
 	
