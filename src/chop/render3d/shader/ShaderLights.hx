@@ -43,8 +43,9 @@ class ShaderLights extends ChopProgram
 		inTextures.push(new ChopTextureDescriptor("gSpec", "gSpec"));
 		
 		gLight = new ChopTexture("gLight", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
-		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
+		//gLight = new ChopMultisampleTexture("gLight", ChopGL.TEXTURE_2D_MULTISAMPLE, 4, GL.RGB, C.width, C.height, GL.RGB, GL.FLOAT);
+		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
+		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
 		outTextures.push(gLight);
 	}
 	

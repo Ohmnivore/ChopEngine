@@ -23,8 +23,14 @@ class ChopGL
 	public static inline var COLOR_ATTACHMENT14:Int = 0x8CEE;
 	public static inline var COLOR_ATTACHMENT15:Int = 0x8CEF;
 	
+	public static inline var DEPTH24_STENCIL8:Int = 0x88F0;
+	
+	public static inline var MULTISAMPLE:Int = 0x809D;
+	
 	public static inline var RGB16F:Int = 0x881B;
 	
 	public static inline var DRAW_FRAMEBUFFER:Int = 0x8CA9;
 	public static inline var READ_FRAMEBUFFER:Int = 0x8CA8;
+	
+	public static inline var TEXTURE_2D_MULTISAMPLE:Int = 0x9100;
 }

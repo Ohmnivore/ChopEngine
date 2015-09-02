@@ -3,6 +3,7 @@ package chop.render3d.shader;
 import chop.model.Model;
 import chop.render3d.Camera;
 import chop.render3d.opengl.GL;
+import chop.render3d.opengl.ChopGL_FFI;
 
 /**
  * ...
@@ -37,6 +38,7 @@ class ChopProgramMgr
 			{
 				if (!textures.exists(t.name))
 				{
+					//GL.bindFramebuffer(GL.FRAMEBUFFER, p.drawBuffer);
 					textures.set(t.name, t);
 					t.addToBuffer(buff.target, attachmentIndex);
 					attachmentIndex++;
