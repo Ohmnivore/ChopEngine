@@ -20,13 +20,13 @@ import chop.render3d.opengl.GL.Float32Array;
  * ...
  * @author Ohmnivore
  */
-class ShaderFXAA extends ChopProgram
+class ShaderGaussianBlur extends ChopProgram
 {
-	public var qualitySubpix:Float = 0.75;
-	public var edgeThreshold:Float = 0.125;
-	public var edgeThresholdMin:Float = 0.0312;
+	public var horizontal:Bool = true;
+	public var blurSize:Int = 9;
+	public var sigma:Float = 5.0;
 	
-	public var gFXAA:ChopTexture;
+	public var gGaussianBlur:ChopTexture;
 	
 	public function new(C:Camera) 
 	{
@@ -34,29 +34,32 @@ class ShaderFXAA extends ChopProgram
 		
 		type = ChopProgram.ONESHOT;
 		
-		var id:String = "assets/shader/fxaa_vertex.glsl";
+		var id:String = "assets/shader/gaussian_blur_vertex.glsl";
 		new ChopShader(id, Assets.loadText(id), GL.VERTEX_SHADER).attach(prog);
-		id = "assets/shader/fxaa_fragment.glsl";
+		id = "assets/shader/gaussian_blur_fragment.glsl";
 		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
-		inTextures.push(new ChopTextureDescriptor("gLight", "textureSampler"));
+		inTextures.push(new ChopTextureDescriptor("gLight", "texture"));
 		
-		gFXAA = new ChopTexture("gFXAA", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
-		gFXAA.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
-		gFXAA.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
-		outTextures.push(gFXAA);
+		gGaussianBlur = new ChopTexture("gGaussianBlur", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
+		gGaussianBlur.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
+		gGaussianBlur.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
+		outTextures.push(gGaussianBlur);
 	}
 	
 	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
 		super.render(M, C, Mgr);
 		
+		GLUtil.setInt(GLUtil.getLocation(prog, "blurSize"), blurSize);
+		var horizInt:Int = 0;
+		if (horizontal)
+			horizInt = 1;
+		GLUtil.setInt(GLUtil.getLocation(prog, "horizontalPass"), horizInt);
+		GLUtil.setFloat(GLUtil.getLocation(prog, "sigma"), sigma);
 		var inpTex:ChopTexture = Mgr.textures.get(inTextures[0].globalName);
 		GLUtil.setUniform(prog, "texOffset", new Vector2(1.0 / inpTex.width, 1.0 / inpTex.height));
-		GLUtil.setFloat(GLUtil.getLocation(prog, "qualitySubpix"), qualitySubpix);
-		GLUtil.setFloat(GLUtil.getLocation(prog, "edgeThreshold"), edgeThreshold);
-		GLUtil.setFloat(GLUtil.getLocation(prog, "edgeThresholdMin"), edgeThresholdMin);
 		
 		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 		

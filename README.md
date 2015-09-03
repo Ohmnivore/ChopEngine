@@ -1,7 +1,6 @@
 # TODO
 ## Rendering
 * Test multiple cameras scenario on other computer
-* Gaussian blur shader (for fun)
 * SSAO shader
 * Forward rendering for transparent models
 * Static shadows

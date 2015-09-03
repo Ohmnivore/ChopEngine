@@ -44,15 +44,10 @@ class ChopProgram
 		GL.useProgram(prog);
 		bindInTextures(Mgr);
 		
-		//trace(readBuffer, drawBuffer, Mgr.buff.buffer);
-		
 		GL.bindFramebuffer(ChopGL.READ_FRAMEBUFFER, readBuffer);
-		//GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, drawBuffer);
-		GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, Mgr.buff.buffer);
+		GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, drawBuffer);
 		
 		bindOutTextures(Mgr);
-		
-		GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, drawBuffer);
 	}
 	
 	public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void
@@ -67,7 +62,8 @@ class ChopProgram
 		{
 			texAttachmentIds.push(t.colorAttachmentGL);
 		}
-		ChopGL_FFI.drawBuffers(texAttachmentIds.length, texAttachmentIds);
+		if (texAttachmentIds.length > 0)
+			ChopGL_FFI.drawBuffers(texAttachmentIds.length, texAttachmentIds);
 	}
 	
 	private function bindInTextures(Mgr:ChopProgramMgr):Void
@@ -78,7 +74,6 @@ class ChopProgram
 			var texDescr:ChopTextureDescriptor = inTextures[i];
 			var tex:ChopTexture = Mgr.textures.get(texDescr.globalName);
 			GL.bindTexture(tex.target, tex.texture);
-			//GLUtil.setUniform(prog, texDescr.shaderName, i);
 			GLUtil.setInt(GLUtil.getLocation(prog, texDescr.shaderName), i);
 		}
 	}

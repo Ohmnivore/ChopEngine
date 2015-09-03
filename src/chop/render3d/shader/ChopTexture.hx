@@ -66,6 +66,8 @@ class ChopTexture
 	
 	public function new(Name:String, Target:Int, Level:Int, InternalFormat:Int, Width:Int, Height:Int, Format:Int, T:Int)
 	{
+		texture = GL.createTexture();
+		
 		name = Name;
 		target = Target;
 		level = Level;
@@ -84,7 +86,6 @@ class ChopTexture
 		colorAttachment = Attachment;
 		colorAttachmentGL = intToColorAttachment(colorAttachment);
 		
-		texture = GL.createTexture();
 		GL.bindTexture(target, texture);
 		GL.texImage2D(target, level, internalFormat, width, height, 0, format, type, pixels);
 		for (p in params)

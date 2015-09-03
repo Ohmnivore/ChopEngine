@@ -1,6 +1,7 @@
 package chop.render3d;
 
 import hxmath.math.Matrix4x4;
+import hxmath.math.Vector2;
 import hxmath.math.Vector3;
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.GL.GLProgram;
@@ -45,6 +46,8 @@ class GLUtil
 			//else if (Std.is(Value, Bool))
 			if (Std.is(Value, Bool))
 				setBool(loc, Value);
+			else if (Std.is(Value, Vector2Type))
+				setVector2(loc, Value);
 			else if (Std.is(Value, Vector3Type))
 				setVector3(loc, Value);
 			else if (Std.is(Value, Matrix4x4Type))
@@ -75,6 +78,11 @@ class GLUtil
 	static public function setFloat(Location:GLUniformLocation, Value:Float)
 	{
 		GL.uniform1f(Location, Value);
+	}
+	
+	static private function setVector2(Location:GLUniformLocation, Value:Vector2)
+	{
+		GL.uniform2f(Location, Value.x, Value.y);
 	}
 	
 	static private function setVector3(Location:GLUniformLocation, Value:Vector3)

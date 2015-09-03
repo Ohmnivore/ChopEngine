@@ -5,6 +5,10 @@
 #define FXAA_QUALITY__PRESET 23
 
 uniform sampler2D textureSampler;
+uniform vec2 texOffset;
+uniform float qualitySubpix;
+uniform float edgeThreshold;
+uniform float edgeThresholdMin;
 
 in vec2 vertTexcoord;
 
@@ -2060,20 +2064,19 @@ half4 FxaaPixelShader(
 
 void main()
 {
-	// color = vec4(0.5, 0, 0.5, 1.0);
 	color = FxaaPixelShader(
 		vertTexcoord,
 		vec4(0),
 		textureSampler,
 		textureSampler,
 		textureSampler,
-		vec2(1.0/640.0, 1.0/480.0),
+		texOffset,
 		vec4(0),
 		vec4(0),
 		vec4(0),
-		0.75,
-		0.125,
-		0.0312,
+		qualitySubpix,
+		edgeThreshold,
+		edgeThresholdMin,
 		0,
 		0,
 		0,

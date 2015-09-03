@@ -19,7 +19,6 @@ class ChopMultisampleTexture extends ChopTexture
 		
 		texture = GL.createTexture();
 		GL.bindTexture(target, texture);
-		//GL.texImage2D(target, level, internalFormat, width, height, 0, format, type, pixels);
 		ChopGL_FFI.texImage2DMultisample(target, level, internalFormat, width, height, fixedSampleLocation);
 		for (p in params)
 			p.addToTexture(this);

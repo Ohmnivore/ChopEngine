@@ -93,28 +93,42 @@ class Camera extends Basic
 		defaultMgr.progs.push(gLightProgram);
 		gLightProgram.readBuffer = defaultMgr.buff.buffer;
 		gLightProgram.drawBuffer = defaultMgr.buff.buffer;
-		//gLightProgram.drawBuffer = new GLFramebuffer(0);
-		//gLightProgram.outTextures = [];
 		
 		var toLumaProgram:ShaderRGBAToLuma = new ShaderRGBAToLuma(this);
 		defaultMgr.progs.push(toLumaProgram);
 		toLumaProgram.readBuffer = defaultMgr.buff.buffer;
 		toLumaProgram.drawBuffer = defaultMgr.buff.buffer;
-		//toLumaProgram.drawBuffer = new GLFramebuffer(0);
 		toLumaProgram.inTextures[0].globalName = "gLight";
+		
+		var fxaaProgram:ShaderFXAA = new ShaderFXAA(this);
+		defaultMgr.progs.push(fxaaProgram);
+		fxaaProgram.readBuffer = defaultMgr.buff.buffer;
+		fxaaProgram.drawBuffer = defaultMgr.buff.buffer;
+		//fxaaProgram.drawBuffer = new GLFramebuffer(0);
+		fxaaProgram.inTextures[0].globalName = "gLuma";
+		//fxaaProgram.outTextures = [];
+		
+		var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(this);
+		defaultMgr.progs.push(gaussianBlurProgram);
+		gaussianBlurProgram.readBuffer = defaultMgr.buff.buffer;
+		gaussianBlurProgram.drawBuffer = defaultMgr.buff.buffer;
+		//gaussianBlurProgram.drawBuffer = new GLFramebuffer(0);
+		gaussianBlurProgram.inTextures[0].globalName = "gFXAA";
+		//gaussianBlurProgram.outTextures = [];
+		
+		var gaussianBlurVerticalProgram:ShaderGaussianBlur = new ShaderGaussianBlur(this);
+		gaussianBlurVerticalProgram.horizontal = false;
+		defaultMgr.progs.push(gaussianBlurVerticalProgram);
+		gaussianBlurVerticalProgram.readBuffer = defaultMgr.buff.buffer;
+		gaussianBlurVerticalProgram.drawBuffer = new GLFramebuffer(0);
+		gaussianBlurVerticalProgram.inTextures[0].globalName = "gGaussianBlur";
+		gaussianBlurVerticalProgram.outTextures = [];
 		
 		//var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture(this);
 		//defaultMgr.progs.push(quadTextureProgram);
 		//quadTextureProgram.readBuffer = defaultMgr.buff.buffer;
 		//quadTextureProgram.drawBuffer = new GLFramebuffer(0);
-		//quadTextureProgram.inTextures[0].globalName = "gLight";
-		
-		var fxaaProgram:ShaderFXAA = new ShaderFXAA(this);
-		defaultMgr.progs.push(fxaaProgram);
-		fxaaProgram.readBuffer = defaultMgr.buff.buffer;
-		fxaaProgram.drawBuffer = new GLFramebuffer(0);
-		//fxaaProgram.inTextures[0].globalName = "gLight";
-		fxaaProgram.inTextures[0].globalName = "gLuma";
+		//quadTextureProgram.inTextures[0].globalName = "gFXAA";
 		
 		defaultMgr.init();
 	}
