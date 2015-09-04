@@ -20,7 +20,7 @@ import chop.gen.Global;
  * ...
  * @author Ohmnivore
  */
-class ShaderLights extends ChopProgram
+class ShaderLights extends ChopQuadProgram
 {
 	public var gLight:ChopTexture;
 	
@@ -42,7 +42,6 @@ class ShaderLights extends ChopProgram
 		inTextures.push(new ChopTextureDescriptor("gSpec", "gSpec"));
 		
 		gLight = new ChopTexture("gLight", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
-		//gLight = new ChopMultisampleTexture("gLight", ChopGL.TEXTURE_2D_MULTISAMPLE, 4, GL.RGB, C.width, C.height, GL.RGB, GL.FLOAT);
 		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
 		gLight.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
 		outTextures.push(gLight);
@@ -50,10 +49,6 @@ class ShaderLights extends ChopProgram
 	
 	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
-		super.render(M, C, Mgr);
-		
-		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
-		
 		// Transformation matrices
 		GLUtil.setUniform(prog, "v", C.viewMatrix);
 		GLUtil.setUniform(prog, "p", C.projectionMatrix);
@@ -61,13 +56,10 @@ class ShaderLights extends ChopProgram
 		
 		// LightState globals
 		GLUtil.setUniform(prog, "ambientColor", Global.state.lights.ambientColor);
-		//GLUtil.setUniform(prog, "ambientIntensity", Global.state.lights.ambientIntensity);
-		//GLUtil.setUniform(prog, "gamma", Global.state.lights.gamma);
 		GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), Global.state.lights.ambientIntensity);
 		GLUtil.setFloat(GLUtil.getLocation(prog, "gamma"), Global.state.lights.gamma);
 		
 		// Lights uniforms
-		//GLUtil.setUniform(prog, "numLights", Global.state.lights.lights.length);
 		GLUtil.setInt(GLUtil.getLocation(prog, "numLights"), Global.state.lights.lights.length);
 		for (i in 0...Global.state.lights.lights.length)
 		{
@@ -75,23 +67,6 @@ class ShaderLights extends ChopProgram
 			light.setUniforms(prog, i);
 		}
 		
-		var vData:Array<Float> = [];
-		vData = [
-			-1.0, -1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    1.0,  1.0, 0.0
-		];
-		var dataBuffer:GLBuffer = GL.createBuffer();
-		GL.bindBuffer(GL.ARRAY_BUFFER, dataBuffer);
-		GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vData), GL.STATIC_DRAW);
-		
-		GL.enableVertexAttribArray(0);
-		GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 0, 0);
-		
-		GL.drawArrays(GL.TRIANGLES, 0, 6);
-		GL.disableVertexAttribArray(0);
+		super.render(M, C, Mgr);
 	}
 }

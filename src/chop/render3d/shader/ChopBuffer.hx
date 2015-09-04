@@ -26,6 +26,12 @@ class ChopBuffer
 		GL.bindFramebuffer(target, buffer);
 	}
 	
+	public function checkCompleteness():Void
+	{
+		if (GL.checkFramebufferStatus(target) != GL.FRAMEBUFFER_COMPLETE)
+			throw("buffer incomplete " + GL.checkFramebufferStatus(GL.FRAMEBUFFER));
+	}
+	
 	public function addDepthBuffer(Width:Int, Height:Int):Void
 	{
 		var rbo:GLRenderbuffer = GL.createRenderbuffer();

@@ -20,7 +20,7 @@ import chop.render3d.opengl.GL.Float32Array;
  * ...
  * @author Ohmnivore
  */
-class ShaderGaussianBlur extends ChopProgram
+class ShaderGaussianBlur extends ChopQuadProgram
 {
 	public var horizontal:Bool = true;
 	public var blurSize:Int = 9;
@@ -50,8 +50,6 @@ class ShaderGaussianBlur extends ChopProgram
 	
 	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
-		super.render(M, C, Mgr);
-		
 		GLUtil.setInt(GLUtil.getLocation(prog, "blurSize"), blurSize);
 		var horizInt:Int = 0;
 		if (horizontal)
@@ -61,25 +59,6 @@ class ShaderGaussianBlur extends ChopProgram
 		var inpTex:ChopTexture = Mgr.textures.get(inTextures[0].globalName);
 		GLUtil.setUniform(prog, "texOffset", new Vector2(1.0 / inpTex.width, 1.0 / inpTex.height));
 		
-		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
-		
-		var vData:Array<Float> = [];
-		vData = [
-			-1.0, -1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    1.0,  1.0, 0.0
-		];
-		var dataBuffer:GLBuffer = GL.createBuffer();
-		GL.bindBuffer(GL.ARRAY_BUFFER, dataBuffer);
-		GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vData), GL.STATIC_DRAW);
-		
-		GL.enableVertexAttribArray(0);
-		GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 0, 0);
-		
-		GL.drawArrays(GL.TRIANGLES, 0, 6);
-		GL.disableVertexAttribArray(0);
+		super.render(M, C, Mgr);
 	}
 }

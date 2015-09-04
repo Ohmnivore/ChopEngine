@@ -18,7 +18,7 @@ import chop.render3d.opengl.GL.Float32Array;
  * ...
  * @author Ohmnivore
  */
-class ShaderRGBAToLuma extends ChopProgram
+class ShaderRGBAToLuma extends ChopQuadProgram
 {
 	public var gLuma:ChopTexture;
 	
@@ -40,31 +40,5 @@ class ShaderRGBAToLuma extends ChopProgram
 		gLuma.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
 		gLuma.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
 		outTextures.push(gLuma);
-	}
-	
-	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
-	{
-		super.render(M, C, Mgr);
-		
-		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
-		
-		var vData:Array<Float> = [];
-		vData = [
-			-1.0, -1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    1.0,  1.0, 0.0
-		];
-		var dataBuffer:GLBuffer = GL.createBuffer();
-		GL.bindBuffer(GL.ARRAY_BUFFER, dataBuffer);
-		GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vData), GL.STATIC_DRAW);
-		
-		GL.enableVertexAttribArray(0);
-		GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 0, 0);
-		
-		GL.drawArrays(GL.TRIANGLES, 0, 6);
-		GL.disableVertexAttribArray(0);
 	}
 }

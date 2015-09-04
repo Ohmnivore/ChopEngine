@@ -41,7 +41,10 @@ class ChopProgramMgr
 			p.registerTextures(this);
 		}
 		
-		if (GL.checkFramebufferStatus(GL.FRAMEBUFFER) != GL.FRAMEBUFFER_COMPLETE)
-			throw("buffer incomplete " + GL.checkFramebufferStatus(GL.FRAMEBUFFER));
+		for (t in textures)
+		{
+			t.buffer.bind(GL.FRAMEBUFFER);
+			t.buffer.checkCompleteness();
+		}
 	}
 }

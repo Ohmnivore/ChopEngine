@@ -66,7 +66,6 @@ class Camera extends Basic
 		projectionMatrix = Matrix4x4.zero;
 		viewMatrix = Matrix4x4.zero;
 		
-		GL.enable(ChopGL.MULTISAMPLE);
 		GL.enable(GL.CULL_FACE);
 		GL.enable(GL.DEPTH_TEST);
 		GL.depthFunc(GL.LESS);
@@ -221,10 +220,6 @@ class Camera extends Basic
 		direction.y = Math.sin(MathUtil.degToRad(nRot.x));
 		direction.z = Math.cos(MathUtil.degToRad(nRot.x)) * Math.cos(MathUtil.degToRad(nRot.y));
 		
-		//var upVec:Vector4 = new Vector3(0.0, 1.0, 0.0, 1.0) * Util.eulerToMatrix4x4(
-			//MathUtil.degToRad(nRot.x),
-			//MathUtil.degToRad(nRot.y),
-			//MathUtil.degToRad(nRot.z));
 		var upVec:Vector4 = Matrix4x4.multiplyVector(Util.eulerToMatrix4x4(
 			MathUtil.degToRad(nRot.x),
 			MathUtil.degToRad(nRot.y),
