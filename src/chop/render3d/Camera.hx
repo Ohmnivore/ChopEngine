@@ -23,7 +23,6 @@ import chop.render3d.opengl.ChopGL_FFI;
  */
 class Camera extends Basic
 {
-	public var prog:Program;
 	public var defaultMgr:ChopProgramMgr;
 	
 	public var gBuffer:Int;
@@ -66,18 +65,13 @@ class Camera extends Basic
 		bgColor = new Vector3(1.0, 1.0, 1.0);
 		projectionMatrix = Matrix4x4.zero;
 		viewMatrix = Matrix4x4.zero;
-		prog = new Program("assets/shader/default_vertex.glsl",
-			"assets/shader/default_fragment.glsl");
-		
-		createProgramMgrs();
 		
 		GL.enable(ChopGL.MULTISAMPLE);
 		GL.enable(GL.CULL_FACE);
 		GL.enable(GL.DEPTH_TEST);
 		GL.depthFunc(GL.LESS);
 		
-		//preDraw(0);
-		//postDraw(0);
+		createProgramMgrs();
 	}
 	
 	private function createProgramMgrs():Void
@@ -88,41 +82,64 @@ class Camera extends Basic
 		defaultMgr.progs.push(gBufferProgram);
 		gBufferProgram.readBuffer = defaultMgr.buff.buffer;
 		gBufferProgram.drawBuffer = defaultMgr.buff.buffer;
+		gBufferProgram.gPosition.buffer = defaultMgr.buff;
+		gBufferProgram.gNormal.buffer = defaultMgr.buff;
+		gBufferProgram.gDiffuse.buffer = defaultMgr.buff;
+		gBufferProgram.gSpec.buffer = defaultMgr.buff;
+		gBufferProgram.gRealPosition.buffer = defaultMgr.buff;
 		
 		var gLightProgram:ShaderLights = new ShaderLights(this);
 		defaultMgr.progs.push(gLightProgram);
 		gLightProgram.readBuffer = defaultMgr.buff.buffer;
 		gLightProgram.drawBuffer = defaultMgr.buff.buffer;
+		gLightProgram.gLight.buffer = defaultMgr.buff;
 		
 		var toLumaProgram:ShaderRGBAToLuma = new ShaderRGBAToLuma(this);
 		defaultMgr.progs.push(toLumaProgram);
 		toLumaProgram.readBuffer = defaultMgr.buff.buffer;
 		toLumaProgram.drawBuffer = defaultMgr.buff.buffer;
 		toLumaProgram.inTextures[0].globalName = "gLight";
+		toLumaProgram.gLuma.buffer = defaultMgr.buff;
 		
 		var fxaaProgram:ShaderFXAA = new ShaderFXAA(this);
 		defaultMgr.progs.push(fxaaProgram);
 		fxaaProgram.readBuffer = defaultMgr.buff.buffer;
 		fxaaProgram.drawBuffer = defaultMgr.buff.buffer;
-		//fxaaProgram.drawBuffer = new GLFramebuffer(0);
 		fxaaProgram.inTextures[0].globalName = "gLuma";
-		//fxaaProgram.outTextures = [];
+		fxaaProgram.gFXAA.buffer = defaultMgr.buff;
+		fxaaProgram.outputToScreenBuffer();
 		
-		var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(this);
-		defaultMgr.progs.push(gaussianBlurProgram);
-		gaussianBlurProgram.readBuffer = defaultMgr.buff.buffer;
-		gaussianBlurProgram.drawBuffer = defaultMgr.buff.buffer;
-		//gaussianBlurProgram.drawBuffer = new GLFramebuffer(0);
-		gaussianBlurProgram.inTextures[0].globalName = "gFXAA";
-		//gaussianBlurProgram.outTextures = [];
+		//var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(this);
+		//defaultMgr.progs.push(gaussianBlurProgram);
+		//gaussianBlurProgram.readBuffer = defaultMgr.buff.buffer;
+		//gaussianBlurProgram.drawBuffer = defaultMgr.buff.buffer;
+		//gaussianBlurProgram.inTextures[0].globalName = "gFXAA";
+		//gaussianBlurProgram.gGaussianBlur.buffer = defaultMgr.buff;
+		//var gaussianBlurVerticalProgram:ShaderGaussianBlur = new ShaderGaussianBlur(this);
+		//gaussianBlurVerticalProgram.horizontal = false;
+		//defaultMgr.progs.push(gaussianBlurVerticalProgram);
+		//gaussianBlurVerticalProgram.readBuffer = defaultMgr.buff.buffer;
+		//gaussianBlurVerticalProgram.drawBuffer = new GLFramebuffer(0);
+		//gaussianBlurVerticalProgram.inTextures[0].globalName = "gGaussianBlur";
+		//gaussianBlurVerticalProgram.outTextures = [];
+		//gaussianBlurVerticalProgram.gGaussianBlur.buffer = defaultMgr.buff;
 		
-		var gaussianBlurVerticalProgram:ShaderGaussianBlur = new ShaderGaussianBlur(this);
-		gaussianBlurVerticalProgram.horizontal = false;
-		defaultMgr.progs.push(gaussianBlurVerticalProgram);
-		gaussianBlurVerticalProgram.readBuffer = defaultMgr.buff.buffer;
-		gaussianBlurVerticalProgram.drawBuffer = new GLFramebuffer(0);
-		gaussianBlurVerticalProgram.inTextures[0].globalName = "gGaussianBlur";
-		gaussianBlurVerticalProgram.outTextures = [];
+		//var ssaoShader = new ShaderSSAO(this);
+		//defaultMgr.progs.push(ssaoShader);
+		//ssaoShader.readBuffer = defaultMgr.buff.buffer;
+		//ssaoShader.drawBuffer = new GLFramebuffer(0);
+		//ssaoShader.outTextures = [];
+		//ssaoShader.gSSAO.buffer = defaultMgr.buff;
+		//ssaoShader.texNoise.buffer = defaultMgr.buff;
+		
+		//var newBuff:ChopBuffer = new ChopBuffer();
+		//newBuff.bind(GL.FRAMEBUFFER);
+		//var rbo:GLRenderbuffer = GL.createRenderbuffer();
+		//GL.bindRenderbuffer(GL.RENDERBUFFER, rbo);
+		//GL.renderbufferStorage(GL.RENDERBUFFER, GL.DEPTH_COMPONENT, width, height);
+		//GL.framebufferRenderbuffer(GL.FRAMEBUFFER, GL.DEPTH_ATTACHMENT, GL.RENDERBUFFER, rbo);
+		//ssaoShader.texNoise.buffer = newBuff;
+		//ssaoShader.readBuffer = newBuff.buffer;
 		
 		//var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture(this);
 		//defaultMgr.progs.push(quadTextureProgram);
@@ -154,19 +171,6 @@ class Camera extends Basic
 	
 	public function postDraw(Elapsed:Float):Void
 	{
-		//for (basic in Global.state.members)
-		//{
-			//if (Std.is(basic, Model))
-			//{
-				//var m:Model = cast basic;
-				//if (checkIfCam(m))
-				//{
-					//m.mgr.render(m, this);
-					////renderModel(m);
-				//}
-			//}
-		//}
-		
 		// TODO: mgr array
 		for (p in defaultMgr.progs)
 		{
@@ -193,19 +197,6 @@ class Camera extends Basic
 				p.render(null, this, defaultMgr);
 			}
 		}
-	}
-	private function checkIfCam(M:Model):Bool
-	{
-		for (c in M.cams)
-		{
-			if (c == this)
-				return true;
-		}
-		return false;
-	}
-	private function renderModel(M:Model):Void
-	{
-		prog.renderModel(M, this);
 	}
 	
 	override public function update(Elapsed:Float):Void 

@@ -14,6 +14,11 @@ import chop.render3d.opengl.GL.Float32Array;
  */
 class GLUtil
 {
+	static public function setUniformElementSimple(Program:GLProgram, Name:String, Index:Int, Value:Dynamic)
+	{
+		setUniform(Program, Name + "[" + Std.string(Index) + "]", Value);
+	}
+	
 	static public function setUniformElement(Program:GLProgram, Name:String, Index:Int, Property:String, Value:Dynamic)
 	{
 		setUniform(Program, Name + "[" + Std.string(Index) + "]." + Property, Value);

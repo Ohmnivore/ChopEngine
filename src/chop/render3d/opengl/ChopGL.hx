@@ -32,5 +32,7 @@ class ChopGL
 	public static inline var DRAW_FRAMEBUFFER:Int = 0x8CA9;
 	public static inline var READ_FRAMEBUFFER:Int = 0x8CA8;
 	
+	public static inline var RED:Int = 0x1903;
+	
 	public static inline var TEXTURE_2D_MULTISAMPLE:Int = 0x9100;
 }

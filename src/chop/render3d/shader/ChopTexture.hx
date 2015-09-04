@@ -23,6 +23,7 @@ class ChopTexture
 	public var format:Int;
 	public var type:Int;
 	public var pixels:Float32Array;
+	public var buffer:ChopBuffer;
 	
 	public var params:Array<ChopTextureParam>;
 	
@@ -64,7 +65,7 @@ class ChopTexture
 			throw("Invaid color attachment index");
 	}
 	
-	public function new(Name:String, Target:Int, Level:Int, InternalFormat:Int, Width:Int, Height:Int, Format:Int, T:Int)
+	public function new(Name:String, Target:Int, Level:Int, InternalFormat:Int, Width:Int, Height:Int, Format:Int, T:Int, Pixels:Float32Array = null)
 	{
 		texture = GL.createTexture();
 		
@@ -76,20 +77,38 @@ class ChopTexture
 		height = Height;
 		format = Format;
 		type = T;
-		pixels = null;
+		pixels = Pixels;
 		
 		params = [];
 	}
 	
-	public function addToBuffer(Target:Int, Attachment:Int):Void
+	//public function addToBuffer(Target:Int, Attachment:Int):Void
+	//{
+		//colorAttachment = Attachment;
+		//colorAttachmentGL = intToColorAttachment(colorAttachment);
+		//
+		//GL.bindTexture(target, texture);
+		//GL.texImage2D(target, level, internalFormat, width, height, 0, format, type, pixels);
+		//for (p in params)
+			//p.addToTexture(this);
+		//GL.framebufferTexture2D(Target, colorAttachmentGL, target, texture, 0);
+	//}
+	
+	public function create():Void
 	{
-		colorAttachment = Attachment;
-		colorAttachmentGL = intToColorAttachment(colorAttachment);
-		
 		GL.bindTexture(target, texture);
 		GL.texImage2D(target, level, internalFormat, width, height, 0, format, type, pixels);
 		for (p in params)
 			p.addToTexture(this);
-		GL.framebufferTexture2D(Target, colorAttachmentGL, target, texture, 0);
+	}
+	
+	public function addToBuffer():Void
+	{
+		colorAttachment = buffer.attachmentIndex;
+		buffer.attachmentIndex++;
+		colorAttachmentGL = intToColorAttachment(colorAttachment);
+		
+		create();
+		GL.framebufferTexture2D(buffer.target, colorAttachmentGL, target, texture, 0);
 	}
 }

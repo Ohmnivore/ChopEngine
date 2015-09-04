@@ -22,40 +22,26 @@ class ChopProgramMgr
 		
 		buff = new ChopBuffer();
 		buff.bind(GL.FRAMEBUFFER);
-		
-		var rbo:GLRenderbuffer = GL.createRenderbuffer();
-		GL.bindRenderbuffer(GL.RENDERBUFFER, rbo);
-		GL.renderbufferStorage(GL.RENDERBUFFER, GL.DEPTH_COMPONENT, C.width, C.height);
-		GL.framebufferRenderbuffer(GL.FRAMEBUFFER, GL.DEPTH_ATTACHMENT, GL.RENDERBUFFER, rbo);
+		buff.addDepthBuffer(C.width, C.height);
 	}
 	
 	public function init():Void
 	{
-		var attachmentIndex:Int = 0;
 		for (p in progs)
 		{
 			for (t in p.outTextures)
 			{
 				if (!textures.exists(t.name))
 				{
-					//GL.bindFramebuffer(GL.FRAMEBUFFER, p.drawBuffer);
+					t.buffer.bind(GL.FRAMEBUFFER);
 					textures.set(t.name, t);
-					t.addToBuffer(buff.target, attachmentIndex);
-					attachmentIndex++;
+					t.addToBuffer();
 				}
 			}
+			p.registerTextures(this);
 		}
 		
 		if (GL.checkFramebufferStatus(GL.FRAMEBUFFER) != GL.FRAMEBUFFER_COMPLETE)
 			throw("buffer incomplete " + GL.checkFramebufferStatus(GL.FRAMEBUFFER));
 	}
-	
-	//public function render(M:Model, C:Camera):Void
-	//{
-		//for (p in progs)
-		//{
-			//p.preRender(this);
-			//p.render(M, C, this);
-		//}
-	//}
 }

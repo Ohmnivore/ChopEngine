@@ -2,7 +2,6 @@ package chop.render3d.shader;
 
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.GL.GLProgram;
-import chop.render3d.Program;
 import chop.render3d.opengl.GL.GLShader;
 
 /**

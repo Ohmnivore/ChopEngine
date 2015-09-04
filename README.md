@@ -1,14 +1,17 @@
 # TODO
 ## Rendering
-* Test multiple cameras scenario on other computer
+* Test multiple cameras setup on other computer
 * SSAO shader
 * Forward rendering for transparent models
 * Static shadows
 * Dynamic shadows
 * Diffuse textures
 * Specular textures
-* Parallax maps
 * Normal maps
+* Bloom shader
+* HDR
+* Batching
+* Instancing
 * Cubemap sky (lightState)
 * Particle effects
 

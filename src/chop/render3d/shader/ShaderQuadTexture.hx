@@ -7,7 +7,6 @@ import chop.render3d.Camera;
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.ChopGL;
 import chop.render3d.opengl.GL.GLTexture;
-import chop.render3d.Program;
 import hxmath.math.MathUtil;
 import hxmath.math.Matrix4x4;
 import hxmath.math.Vector3;

@@ -8,7 +8,6 @@ import chop.render3d.opengl.ChopGL_FFI;
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.ChopGL;
 import chop.render3d.opengl.GL.GLTexture;
-import chop.render3d.Program;
 import chop.render3d.shader.ChopProgramMgr;
 import hxmath.math.MathUtil;
 import hxmath.math.Matrix4x4;
@@ -27,6 +26,7 @@ class ShaderGBuffer extends ChopProgram
 	public var gNormal:ChopTexture;
 	public var gDiffuse:ChopTexture;
 	public var gSpec:ChopTexture;
+	public var gRealPosition:ChopTexture;
 	
 	private var n:Vector3;
 	private var u:Vector3;
@@ -48,7 +48,7 @@ class ShaderGBuffer extends ChopProgram
 		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
-		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT);
+		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
 		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gPosition);
@@ -67,6 +67,11 @@ class ShaderGBuffer extends ChopProgram
 		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		outTextures.push(gSpec);
+		
+		gRealPosition = new ChopTexture("gRealPosition", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
+		gRealPosition.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
+		gRealPosition.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
+		outTextures.push(gRealPosition);
 	}
 	
 	override public function render(Models:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 

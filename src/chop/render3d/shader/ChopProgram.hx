@@ -6,7 +6,6 @@ import chop.render3d.opengl.ChopGL_FFI;
 import chop.render3d.opengl.GL;
 import chop.render3d.opengl.ChopGL;
 import chop.render3d.opengl.GL.GLTexture;
-import chop.render3d.Program;
 import hxmath.math.MathUtil;
 import hxmath.math.Matrix4x4;
 import hxmath.math.Vector3;
@@ -37,6 +36,17 @@ class ChopProgram
 		
 		inTextures = [];
 		outTextures = [];
+	}
+	
+	public function outputToScreenBuffer():Void
+	{
+		drawBuffer = new GLFramebuffer(0);
+		outTextures = [];
+	}
+	
+	public function registerTextures(Mgr:ChopProgramMgr):Void
+	{
+		
 	}
 	
 	public function preRender(Mgr:ChopProgramMgr):Void
