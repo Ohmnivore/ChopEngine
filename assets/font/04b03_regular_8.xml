@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font type="NGL">
+ <description size="8" family="04b03" style="Regular"/>
+ <metrics ascender="6" height="8" descender="-2"/>
+ <texture width="128" height="64" file="04b03_regular_8.png"/>
+ <chars>
+  <char offset_x="-2" offset_y="2" advance="4" rect_w="4" id=" " rect_x="0" rect_y="5" rect_h="4"/>
+  <char offset_x="-2" offset_y="7" advance="2" rect_w="5" id="!" rect_x="4" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="&quot;" rect_x="9" rect_y="0" rect_h="6"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="#" rect_x="16" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="$" rect_x="25" rect_y="0" rect_h="10"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="%" rect_x="33" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="&amp;" rect_x="42" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="2" rect_w="5" id="'" rect_x="51" rect_y="0" rect_h="6"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id="(" rect_x="56" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id=")" rect_x="62" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="*" rect_x="68" rect_y="0" rect_h="7"/>
+  <char offset_x="-2" offset_y="6" advance="4" rect_w="7" id="+" rect_x="75" rect_y="1" rect_h="7"/>
+  <char offset_x="-2" offset_y="3" advance="3" rect_w="6" id="," rect_x="82" rect_y="4" rect_h="6"/>
+  <char offset_x="-2" offset_y="5" advance="4" rect_w="7" id="-" rect_x="88" rect_y="2" rect_h="5"/>
+  <char offset_x="-2" offset_y="3" advance="2" rect_w="5" id="." rect_x="95" rect_y="4" rect_h="5"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="/" rect_x="100" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="0" rect_x="109" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id="1" rect_x="117" rect_y="0" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="2" rect_x="0" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="3" rect_x="8" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="4" rect_x="16" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="5" rect_x="24" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="6" rect_x="32" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="7" rect_x="40" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="8" rect_x="48" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="9" rect_x="56" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="2" rect_w="5" id=":" rect_x="64" rect_y="11" rect_h="7"/>
+  <char offset_x="-2" offset_y="6" advance="2" rect_w="5" id=";" rect_x="69" rect_y="11" rect_h="8"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="&lt;" rect_x="74" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="4" rect_w="7" id="=" rect_x="81" rect_y="11" rect_h="7"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id=">" rect_x="88" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="?" rect_x="95" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="@" rect_x="103" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="A" rect_x="112" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="B" rect_x="120" rect_y="10" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="C" rect_x="0" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="D" rect_x="7" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="E" rect_x="15" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="F" rect_x="22" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="G" rect_x="29" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="H" rect_x="37" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="I" rect_x="45" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="J" rect_x="52" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="K" rect_x="60" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="L" rect_x="68" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="M" rect_x="75" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="N" rect_x="84" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="O" rect_x="92" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="P" rect_x="100" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="Q" rect_x="108" rect_y="19" rect_h="10"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="R" rect_x="116" rect_y="19" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="S" rect_x="0" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="T" rect_x="8" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="U" rect_x="15" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="V" rect_x="23" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="W" rect_x="31" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="X" rect_x="40" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="Y" rect_x="48" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="Z" rect_x="56" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id="[" rect_x="63" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="6" rect_w="9" id="\" rect_x="69" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id="]" rect_x="78" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="^" rect_x="84" rect_y="29" rect_h="6"/>
+  <char offset_x="-2" offset_y="3" advance="5" rect_w="8" id="_" rect_x="91" rect_y="33" rect_h="5"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id="`" rect_x="99" rect_y="29" rect_h="6"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="a" rect_x="105" rect_y="30" rect_h="8"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="b" rect_x="113" rect_y="29" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="4" rect_w="7" id="c" rect_x="121" rect_y="30" rect_h="8"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="d" rect_x="0" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="e" rect_x="8" rect_y="39" rect_h="8"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="f" rect_x="16" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="g" rect_x="23" rect_y="39" rect_h="10"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="h" rect_x="31" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="2" rect_w="5" id="i" rect_x="39" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="3" rect_w="6" id="j" rect_x="44" rect_y="38" rect_h="11"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="k" rect_x="50" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="2" rect_w="5" id="l" rect_x="58" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="6" rect_w="9" id="m" rect_x="63" rect_y="39" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="n" rect_x="72" rect_y="39" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="o" rect_x="80" rect_y="39" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="p" rect_x="88" rect_y="39" rect_h="10"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="q" rect_x="96" rect_y="39" rect_h="10"/>
+  <char offset_x="-2" offset_y="6" advance="4" rect_w="7" id="r" rect_x="104" rect_y="39" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="s" rect_x="111" rect_y="39" rect_h="8"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="t" rect_x="119" rect_y="38" rect_h="9"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="u" rect_x="0" rect_y="50" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="v" rect_x="8" rect_y="50" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="6" rect_w="9" id="w" rect_x="16" rect_y="50" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="4" rect_w="7" id="x" rect_x="25" rect_y="50" rect_h="8"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="y" rect_x="32" rect_y="50" rect_h="10"/>
+  <char offset_x="-2" offset_y="6" advance="5" rect_w="8" id="z" rect_x="40" rect_y="50" rect_h="8"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="{" rect_x="48" rect_y="49" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="2" rect_w="5" id="|" rect_x="55" rect_y="49" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="4" rect_w="7" id="}" rect_x="60" rect_y="49" rect_h="9"/>
+  <char offset_x="-2" offset_y="7" advance="5" rect_w="8" id="~" rect_x="67" rect_y="49" rect_h="6"/>
+ </chars>
+</font>

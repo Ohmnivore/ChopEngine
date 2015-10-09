@@ -8,6 +8,7 @@ uniform sampler2D gPosition;
 uniform sampler2D gNormal;
 uniform sampler2D gDiffuse;
 uniform sampler2D gSpec;
+uniform sampler2D gRealPosition;
 
 uniform mat4 m;
 uniform mat4 v;
@@ -63,6 +64,7 @@ void main()
 {
 	// Decode the G Buffer
 	vec3 FragPos = texture(gPosition, UV).rgb;
+	vec3 FragRealPos = texture(gRealPosition, UV).rgb;
     vec3 Normal = texture(gNormal, UV).rgb;
     vec3 Diffuse = texture(gDiffuse, UV).rgb;
     vec3 Specular = texture(gSpec, UV).rgb;
@@ -83,10 +85,11 @@ void main()
 			
 			// Calculate distance between light source and current fragment
 			float distance = length(light.position - FragPos);
+			float realDistance = length(light.position - FragRealPos);
 			
 			if (light.type != 0)
 				// Don't check distance for sun lights
-				if (distance > light.distance)
+				if (realDistance > light.distance)
 					continue;
 			
 			// Diffuse
@@ -97,7 +100,7 @@ void main()
 			else
 				lightDir = normalize(light.position - FragPos);
 			vec3 diffuse = vec3(0);
-			if (light.useSpecular)
+			if (light.useDiffuse)
 				diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * light.color;
 			
 			// Specular
@@ -124,7 +127,7 @@ void main()
 
 				// 2. Get the direction of the ray of light. This is the opposite
 				//    of the direction from the surface to the light.
-				vec3 rayDirection = -lightDir;
+				vec3 rayDirection = -normalize(light.position - FragRealPos);
 
 				// 3. Get the angle between the center of the cone and the ray of light.
 				//    The combination of `acos` and `dot` return the angle in radians, then

@@ -17,9 +17,16 @@ material:
 	-ambient intensity (Int)
 	-emit (Int, 0-100)
 	-transparency (Int, 0-100)
+	-diffuse map (String, "")
+
+texture:
+	-name (String)
+	-ID (Unsigned Int)
+	-image filename (String)
 
 face:
 	-material ID (Unsigned Int)
+	-texture ID (Unsigned Int) 
 	-vertex1 ID (Unsigned Int)
 	-vertex2 ID (Unsigned Int)
 	-vertex3 ID (Unsigned Int)
@@ -42,4 +49,6 @@ vertex:
 	-x (Float)
 	-y (Float)
 	-z (Float)
+	-u (Float)
+	-v (Float)
 	-tag ID (Unsigned Int)

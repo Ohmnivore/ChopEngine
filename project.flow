@@ -2,26 +2,24 @@
   project : {
     name : 'ChopEngine',
     version : '1.0.0',
-    author : 'Ohmnivore',
+    author : '4 AM Games',
 
     app : {
-      name : 'ChopEngineDemo',
+      name : 'ChopEngine',
       package : 'com.fouramgames',
-      main : 'SnowMain',
-	  output: 'binsnow',
+      main : 'Main',
     },
 
     build : {
       dependencies : {
-        snow : '*',
-        hxmath : '*',
-        jiglibhx : '*',
+		snow : '*',
+		hxmath : '*'
       }
     },
 
     files : {
       config : 'config.json',
-      assets : 'assets/',
-    },
+      assets : 'assets/'
+    }
   }
 }

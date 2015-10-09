@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<chopmesh>
+    <materials>
+        <material ID="0" ambient_intensity="100" diffuse_b="80" diffuse_g="80" diffuse_intensity="80" diffuse_r="80" emit="0" name="Material" shadows_cast="True" shadows_receive="True" specular_b="100" specular_g="100" specular_intensity="50" specular_r="100" transparency="100" use_shading="True"/>
+    </materials>
+    <textures>
+        <texture ID="0" filename="haxelogo.png" name="Tex"/>
+    </textures>
+    <faces>
+        <face material_id="0" normal_x="0.000000" normal_y="-0.000000" normal_z="-1.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="1" vertex2_id="2" vertex3_id="3"/>
+        <face material_id="0" normal_x="0.000000" normal_y="-0.000000" normal_z="1.000000" texture_id="0" u1="0.000100" u2="0.000100" u3="0.999899" v1="0.999900" v2="0.000100" v3="0.000100" vertex1_id="7" vertex2_id="6" vertex3_id="5"/>
+        <face material_id="0" normal_x="1.000000" normal_y="-0.000001" normal_z="0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="4" vertex2_id="5" vertex3_id="1"/>
+        <face material_id="0" normal_x="-0.000000" normal_y="-1.000000" normal_z="0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="5" vertex2_id="6" vertex3_id="2"/>
+        <face material_id="0" normal_x="-1.000000" normal_y="0.000000" normal_z="-0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="2" vertex2_id="6" vertex3_id="7"/>
+        <face material_id="0" normal_x="0.000000" normal_y="1.000000" normal_z="0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="0" vertex2_id="3" vertex3_id="7"/>
+        <face material_id="0" normal_x="0.000000" normal_y="0.000000" normal_z="-1.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="0" vertex2_id="1" vertex3_id="3"/>
+        <face material_id="0" normal_x="-0.000000" normal_y="-0.000000" normal_z="1.000000" texture_id="0" u1="0.999900" u2="0.000100" u3="0.999899" v1="0.999899" v2="0.999900" v3="0.000100" vertex1_id="4" vertex2_id="7" vertex3_id="5"/>
+        <face material_id="0" normal_x="1.000000" normal_y="0.000000" normal_z="-0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="0" vertex2_id="4" vertex3_id="1"/>
+        <face material_id="0" normal_x="-0.000000" normal_y="-1.000000" normal_z="-0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="1" vertex2_id="5" vertex3_id="2"/>
+        <face material_id="0" normal_x="-1.000000" normal_y="0.000000" normal_z="-0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="3" vertex2_id="2" vertex3_id="7"/>
+        <face material_id="0" normal_x="0.000000" normal_y="1.000000" normal_z="0.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="4" vertex2_id="0" vertex3_id="7"/>
+    </faces>
+    <tags/>
+    <animations>
+        <animation length_ms="0" name="static">
+            <frame index="0" time_ms="0">
+                <vert normal_x="0.577349" normal_y="0.577349" normal_z="-0.577349" tag_id="-1" x="1.000000" y="-1.000000" z="-1.000000"/>
+                <vert normal_x="0.577349" normal_y="-0.577349" normal_z="-0.577349" tag_id="-1" x="1.000000" y="-1.000000" z="1.000000"/>
+                <vert normal_x="-0.577349" normal_y="-0.577349" normal_z="-0.577349" tag_id="-1" x="-1.000000" y="-1.000000" z="1.000000"/>
+                <vert normal_x="-0.577349" normal_y="0.577349" normal_z="-0.577349" tag_id="-1" x="-1.000000" y="-1.000000" z="-1.000000"/>
+                <vert normal_x="0.577349" normal_y="0.577349" normal_z="0.577349" tag_id="-1" x="1.000000" y="1.000000" z="-0.999999"/>
+                <vert normal_x="0.577349" normal_y="-0.577349" normal_z="0.577349" tag_id="-1" x="0.999999" y="1.000000" z="1.000001"/>
+                <vert normal_x="-0.577349" normal_y="-0.577349" normal_z="0.577349" tag_id="-1" x="-1.000000" y="1.000000" z="1.000000"/>
+                <vert normal_x="-0.577349" normal_y="0.577349" normal_z="0.577349" tag_id="-1" x="-1.000000" y="1.000000" z="-1.000000"/>
+            </frame>
+        </animation>
+    </animations>
+</chopmesh>

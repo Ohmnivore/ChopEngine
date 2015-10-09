@@ -1,6 +1,8 @@
 package chop.gen;
 
-import chop.render3d.Camera;
+import chop.gen.Basic;
+import choprender.GlobalRender;
+import choprender.render3d.Camera;
 import hxmath.math.Vector3;
 
 /**
@@ -21,12 +23,27 @@ class Object extends Basic
 	{
 		super();
 		
-		cam = Global.cam;
-		cams = Global.cams.slice(0, Global.cams.length);
+		cam = GlobalRender.cam;
+		cams = GlobalRender.cams.slice(0, GlobalRender.cams.length);
 		health = 1.0;
 		
 		pos = new Vector3(0, 0, 0);
 		rot = new Vector3(0, 0, 0);
 		scale = new Vector3(1, 1, 1);
+	}
+	
+	static public function copy(D:Object, S:Object):Void 
+	{
+		Basic.copy(D, S);
+		
+		D.cam = S.cam;
+		D.cams.splice(0, D.cams.length);
+		for (c in S.cams)
+			D.cams.push(c);
+		D.health = S.health;
+		
+		D.pos.copyFromShape(S.pos);
+		D.rot.copyFromShape(S.rot);
+		D.scale.copyFromShape(S.scale);
 	}
 }

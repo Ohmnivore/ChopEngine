@@ -5,7 +5,7 @@ from xml.dom import minidom
 # TODO
 # Global tag ID to avoid collisions
 
-use_log = True
+use_log = False
 
 class MyMaterial:
     def __init__(self):
@@ -60,25 +60,62 @@ class MyMaterial:
         xml.set('specular_g', str(self.specular_color[1]))
         xml.set('specular_b', str(self.specular_color[2]))
 
+class MyTexture:
+    def __init__(self):
+        self.name = None
+        self.ID = None
+        self.filename = None
+
+    def interpret(self, tex):
+        self.name = tex.name
+        if tex.texture.type == 'IMAGE':
+            self.filename = tex.texture.image.name
+
+    def to_xml(self, xml):
+        xml.set('name', str(self.name))
+        xml.set('ID', str(self.ID))
+        xml.set('filename', str(self.filename))
+
 class MyFace:
     def __init__(self):
         self.material_id = None
+        self.texture_id = None
         self.vertex1_id = None
         self.vertex2_id = None
         self.vertex3_id = None
         self.normal = None
+        self.uv1 = None
+        self.uv2 = None
+        self.uv3 = None
 
-    def interpret(self, face, vert_offset, mat_id):
+    def interpret(self, face, vert_offset, mat_id, texture_id, uv1, uv2, uv3):
         self.material_id = mat_id
         self.vertex1_id = face.vertices[0] + vert_offset
         self.vertex2_id = face.vertices[1] + vert_offset
         self.vertex3_id = face.vertices[2] + vert_offset
+        self.texture_id = texture_id
+        self.normal = face.normal[:]
+        self.uv1 = uv1
+        self.uv2 = uv2
+        self.uv3 = uv3
 
     def to_xml(self, xml):
         xml.set('material_id', str(self.material_id))
+        xml.set('texture_id', str(self.texture_id))
         xml.set('vertex1_id', str(self.vertex1_id))
         xml.set('vertex2_id', str(self.vertex2_id))
         xml.set('vertex3_id', str(self.vertex3_id))
+        
+        xml.set('normal_x', "{:f}".format(self.normal[0]))
+        xml.set('normal_y', "{:f}".format(self.normal[1]))
+        xml.set('normal_z', "{:f}".format(self.normal[2]))
+        
+        xml.set('u1', "{:f}".format(self.uv1[0]))
+        xml.set('u2', "{:f}".format(self.uv2[0]))
+        xml.set('u3', "{:f}".format(self.uv3[0]))
+        xml.set('v1', "{:f}".format(self.uv1[1]))
+        xml.set('v2', "{:f}".format(self.uv2[1]))
+        xml.set('v3', "{:f}".format(self.uv3[1]))
 
 class MyTag:
     def __init__(self):
@@ -174,12 +211,14 @@ class XMLWriter:
         self.use_compression = None
         self.xml = None
         self.materials = None
+        self.textures = None
         self.faces = None
         self.tags = None
         self.animations = None
 
-    def set_data(self, materials, faces, tags, animations):
+    def set_data(self, materials, textures, faces, tags, animations):
         self.materials = materials
+        self.textures = textures
         self.faces = faces
         self.tags = tags
         self.animations = animations
@@ -191,6 +230,11 @@ class XMLWriter:
         for mat in self.materials:
             xmat = ET.SubElement(xmats, 'material')
             mat.to_xml(xmat)
+        
+        xtextures = ET.SubElement(xroot, 'textures')
+        for tex in self.textures:
+            xtexture = ET.SubElement(xtextures, 'texture')
+            tex.to_xml(xtexture)
 
         xfaces = ET.SubElement(xroot, 'faces')
         for face in self.faces:
@@ -258,22 +302,34 @@ def get_vertices(scene, global_matrix, filepath):
         logfile.close()
     return vertices
 
-def save(operator, context, filepath="",
-        use_compression=True,
-        global_matrix=None
-        ):
+def save_images(filepath):
+    # for img in bpy.data.images:
+        # backup = img.filepath_raw
+        # img.filepath_raw = os.path.join(filepath, img.name)
+        # img.file_format = 'PNG'
+        # img.save()
+        # img.filepath_raw = backup
+    for tex in bpy.data.textures:
+        if tex.type == 'IMAGE':
+            img = tex.image
+            backup = img.filepath_raw
+            img.filepath_raw = os.path.join(filepath, img.name)
+            img.file_format = 'PNG'
+            img.save()
+            img.filepath_raw = backup
 
-    # materials = []
-    # for i in range(len(bpy.data.materials)):
-    #     mat = bpy.data.materials[i]
-    #     my_mat = MyMaterial()
-    #     my_mat.interpret(mat)
-    #     my_mat.ID = i
-    #     materials.append(my_mat)
-
-    # if len(bpy.data.meshes) > 1:
-    #     operator.report({'ERROR'}, 'There must be only one mesh. Try joining your mesh objects into a single mesh object.')
-    #     return {'CANCELLED'}
+def save(operator, context, filepath="", use_compression=True, global_matrix=None):
+    save_images(os.path.dirname(filepath))
+    tex_index = 0
+    texture_map = {}
+    textures = []
+    # for tex in bpy.data.textures:
+        # myTex = MyTexture()
+        # myTex.interpret(tex)
+        # myTex.ID = tex_index
+        # texture_map[myTex.filename] = myTex
+        # textures.append(myTex)
+        # tex_index += 1
 
     scene = context.scene
     materials = []
@@ -295,6 +351,15 @@ def save(operator, context, filepath="",
                     my_mat.ID = len(materials)
                     materials.append(my_mat)
                     material_map[mat.name] = my_mat
+            
+                for i in range (len(mat.texture_slots)):
+                    texture_slot = mat.texture_slots[i]
+                    if texture_slot != None:
+                        myTex = MyTexture()
+                        myTex.interpret(texture_slot)
+                        myTex.ID = len(textures)
+                        texture_map[myTex.filename] = myTex
+                        textures.append(myTex)
 
             if mesh.is_editmode:
                 operator.report({'ERROR'}, 'Can\'t export while in edit mode, switch over to object mode.')
@@ -311,11 +376,29 @@ def save(operator, context, filepath="",
                 logfile.truncate(0)
             for i in range(len(mesh.polygons)):
                 poly = mesh.polygons[i]
+                
+                uvs = []
+                for vert, loop in zip(poly.vertices, poly.loop_indices):
+                    item = (0.0, 0.0)
+                    if mesh.uv_layers.active is not None:
+                        item = mesh.uv_layers.active.data[loop].uv[:]
+                    uvs.append(item)
+                
+                tex_id = -1
+                for tex in mesh.uv_textures:
+                    if tex != None:
+                        tex = tex.data[i]
+                        if tex != None and tex.image != None:
+                            img_name = tex.image.name
+                            tex_id = texture_map[img_name].ID
+                
                 my_face = MyFace()
                 my_face.interpret(
                     poly,
                     vert_offset,
-                    material_map[obj.material_slots[poly.material_index].material.name].ID
+                    material_map[obj.material_slots[poly.material_index].material.name].ID,
+                    tex_id,
+                    uvs[0], uvs[1], uvs[2]
                     )
                 faces.append(my_face)
                 if use_log:
@@ -366,7 +449,7 @@ def save(operator, context, filepath="",
             animations.append(my_animation)
 
     writer = XMLWriter()
-    writer.set_data(materials, faces, tags, animations)
+    writer.set_data(materials, textures, faces, tags, animations)
     writer.gen_xml()
     writer.write(filepath, use_compression)
 
@@ -424,7 +507,7 @@ class ExportChopMesh(bpy.types.Operator, ExportHelper, IOOBJOrientationHelper):
     use_compression = BoolProperty(
             name="Compression",
             description="Use zip compression to save space",
-            default=True,
+            default=False,
             )
 
     check_extension = True

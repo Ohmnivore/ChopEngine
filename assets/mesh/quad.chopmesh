@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<chopmesh>
+    <materials>
+        <material ID="0" ambient_intensity="100" diffuse_b="80" diffuse_g="80" diffuse_intensity="80" diffuse_r="80" emit="0" name="Material.001" shadows_cast="True" shadows_receive="True" specular_b="100" specular_g="100" specular_intensity="50" specular_r="100" transparency="100" use_shading="True"/>
+    </materials>
+    <textures/>
+    <faces>
+        <face material_id="0" normal_x="-0.000000" normal_y="0.000000" normal_z="1.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="1" vertex2_id="3" vertex3_id="2"/>
+        <face material_id="0" normal_x="0.000000" normal_y="0.000000" normal_z="1.000000" texture_id="-1" u1="0.000000" u2="0.000000" u3="0.000000" v1="0.000000" v2="0.000000" v3="0.000000" vertex1_id="0" vertex2_id="1" vertex3_id="2"/>
+    </faces>
+    <tags/>
+    <animations>
+        <animation length_ms="0" name="static">
+            <frame index="0" time_ms="0">
+                <vert normal_x="0.000000" normal_y="0.000000" normal_z="1.000000" tag_id="-1" x="-1.000000" y="0.000000" z="-0.000000"/>
+                <vert normal_x="0.000000" normal_y="0.000000" normal_z="1.000000" tag_id="-1" x="1.000000" y="0.000000" z="-0.000000"/>
+                <vert normal_x="0.000000" normal_y="0.000000" normal_z="1.000000" tag_id="-1" x="-1.000000" y="2.000000" z="0.000000"/>
+                <vert normal_x="0.000000" normal_y="0.000000" normal_z="1.000000" tag_id="-1" x="1.000000" y="2.000000" z="0.000000"/>
+            </frame>
+        </animation>
+    </animations>
+</chopmesh>

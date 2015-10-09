@@ -19,6 +19,14 @@ class Basic
 		visible = true;
 	}
 	
+	static public function copy(D:Basic, S:Basic):Void
+	{
+		D.id = S.id;
+		D.active = S.active;
+		D.alive = S.alive;
+		D.visible = S.visible;
+	}
+	
 	public function draw(Elapsed:Float):Void
 	{
 		
