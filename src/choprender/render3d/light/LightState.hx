@@ -1,6 +1,6 @@
 package choprender.render3d.light;
 
-import hxmath.math.Vector3;
+import com.rsredsq.math.Vec3;
 
 /**
  * ...
@@ -8,18 +8,18 @@ import hxmath.math.Vector3;
  */
 class LightState
 {
-	public var horizonColor:Vector3;
-	public var zenithColor:Vector3;
-	public var ambientColor:Vector3;
+	public var horizonColor:Vec3;
+	public var zenithColor:Vec3;
+	public var ambientColor:Vec3;
 	public var ambientIntensity:Float;
 	public var gamma:Float;
 	public var lights:Array<Light>;
 	
 	public function new() 
 	{
-		horizonColor = new Vector3(0.0, 0.0, 0.0);
-		zenithColor = new Vector3(0.0, 0.0, 0.0);
-		ambientColor = new Vector3(0.05, 0.05, 0.05);
+		horizonColor = Vec3.fromValues(0.0, 0.0, 0.0);
+		zenithColor = Vec3.fromValues(0.0, 0.0, 0.0);
+		ambientColor = Vec3.fromValues(0.05, 0.05, 0.05);
 		ambientIntensity = 0.1;
 		gamma = 1.0 / 2.2;
 		lights = [];

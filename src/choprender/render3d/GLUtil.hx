@@ -1,8 +1,8 @@
 package choprender.render3d;
 
-import hxmath.math.Matrix4x4;
-import hxmath.math.Vector2;
-import hxmath.math.Vector3;
+import com.rsredsq.math.Mat4;
+import com.rsredsq.math.Vec2;
+import com.rsredsq.math.Vec3;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLProgram;
 import choprender.render3d.opengl.GL.GLUniformLocation;
@@ -49,14 +49,32 @@ class GLUtil
 			//else if (Std.is(Value, Int))
 				//setInt(loc, Value);
 			//else if (Std.is(Value, Bool))
+			
+			//if (Std.is(Value, Bool))
+				//setBool(loc, Value);
+			//else if (Std.is(Value, Vector2Type))
+				//setVector2(loc, Value);
+			//else if (Std.is(Value, Vector3Type))
+				//setVector3(loc, Value);
+			//else if (Std.is(Value, Matrix4x4Type))
+				//setMatrix4x4(loc, Value);
+			//else
+				//trace("Unknown uniform value type passed: " + Name);
+			
 			if (Std.is(Value, Bool))
 				setBool(loc, Value);
-			else if (Std.is(Value, Vector2Type))
-				setVector2(loc, Value);
-			else if (Std.is(Value, Vector3Type))
-				setVector3(loc, Value);
-			else if (Std.is(Value, Matrix4x4Type))
-				setMatrix4x4(loc, Value);
+			else if (Std.is(Value, Array))
+			{
+				var arr:Array<Float> = cast Value;
+				if (arr.length == 2)
+					setVector2(loc, Value);
+				else if (arr.length == 3)
+					setVector3(loc, Value);
+				else if (arr.length == 16)
+					setMatrix4x4(loc, Value);
+				else
+					trace("Unknown uniform value array type passed: " + Name);
+			}
 			else
 				trace("Unknown uniform value type passed: " + Name);
 		}
@@ -85,27 +103,27 @@ class GLUtil
 		GL.uniform1f(Location, Value);
 	}
 	
-	static private function setVector2(Location:GLUniformLocation, Value:Vector2)
+	static private function setVector2(Location:GLUniformLocation, Value:Vec2)
 	{
 		GL.uniform2f(Location, Value.x, Value.y);
 	}
 	
-	static private function setVector3(Location:GLUniformLocation, Value:Vector3)
+	static private function setVector3(Location:GLUniformLocation, Value:Vec3)
 	{
 		GL.uniform3f(Location, Value.x, Value.y, Value.z);
 	}
 	
-	static private function setMatrix4x4(Location:GLUniformLocation, Value:Matrix4x4)
+	static private function setMatrix4x4(Location:GLUniformLocation, Value:Mat4)
 	{
 		GL.uniformMatrix4fv(Location, false, matrixToFloat32Array(Value));
 	}
 	
-	static private function matrixToFloat32Array(M:Matrix4x4):Float32Array
+	static private function matrixToFloat32Array(M:Mat4):Float32Array
 	{
 		var arr:Array<Float> = [];
 		for (i in 0...16)
 		{
-			arr.push(M.getArrayElement(i));
+			arr.push(M[i]);
 		}
 		return new Float32Array(arr);
 	}

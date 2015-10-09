@@ -2,7 +2,7 @@ package choprender.render3d.light;
 
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL;
-import hxmath.math.Vector3;
+import com.rsredsq.math.Vec3;
 import choprender.render3d.opengl.GL.GLProgram;
 
 /**
@@ -12,7 +12,7 @@ import choprender.render3d.opengl.GL.GLProgram;
 class Light
 {
 	public var energy:Float;
-	public var color:Vector3;
+	public var color:Vec3;
 	public var distance:Float;
 	public var useSpecular:Bool;
 	public var useDiffuse:Bool;
@@ -21,7 +21,7 @@ class Light
 	public function new() 
 	{
 		energy = 1.0;
-		color = new Vector3(1.0, 1.0, 1.0);
+		color = Vec3.fromValues(1.0, 1.0, 1.0);
 		distance = 500.0;
 		useSpecular = true;
 		useDiffuse = true;

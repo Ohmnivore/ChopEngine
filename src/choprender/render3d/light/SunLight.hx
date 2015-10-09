@@ -2,7 +2,7 @@ package choprender.render3d.light;
 
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL;
-import hxmath.math.Vector3;
+import com.rsredsq.math.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.GLProgram;
 
@@ -12,12 +12,12 @@ import choprender.render3d.opengl.GL.GLProgram;
  */
 class SunLight extends Light
 {
-	public var dir:Vector3;
+	public var dir:Vec3;
 	
 	public function new() 
 	{
 		super();
-		dir = new Vector3(-1.0, -1.0, 0.5);
+		dir = Vec3.fromValues(-1.0, -1.0, 0.5);
 	}
 	
 	override public function setUniforms(P:GLProgram, I:Int):Void 

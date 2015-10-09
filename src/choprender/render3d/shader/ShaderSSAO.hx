@@ -13,7 +13,7 @@ import choprender.render3d.GLUtil;
 import hxmath.math.MathUtil;
 import hxmath.math.Matrix4x4;
 import hxmath.math.Vector2;
-import hxmath.math.Vector3;
+import hxmath.math.Vec3;
 import chop.assets.Assets;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
@@ -24,7 +24,7 @@ import choprender.render3d.opengl.GL.Float32Array;
  */
 class ShaderSSAO extends ChopProgram
 {
-	public var ssaoKernel:Array<Vector3>;
+	public var ssaoKernel:Array<Vec3>;
 	public var texNoise:ChopTexture;
 	
 	public var gSSAO:ChopTexture;
@@ -54,7 +54,7 @@ class ShaderSSAO extends ChopProgram
 		ssaoKernel = [];
 		for (i in 0...64)
 		{
-			var sample:Vector3 = new Vector3(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, Math.random());
+			var sample:Vec3 = Vec3.fromValues(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, Math.random());
 			sample = sample.normalize();
 			sample = sample * Math.random();
 			var scale:Float = i / 64.0;
@@ -69,7 +69,7 @@ class ShaderSSAO extends ChopProgram
 		for (i in 0...16)
 		//for (i in 0...(C.width*C.height))
 		{
-			var noise:Vector3 = new Vector3(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, 0.0);
+			var noise:Vec3 = Vec3.fromValues(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, 0.0);
 			ssaoNoise.push(noise.x);
 			ssaoNoise.push(noise.y);
 			ssaoNoise.push(noise.z);
@@ -101,7 +101,7 @@ class ShaderSSAO extends ChopProgram
 		
 		for (i in 0...ssaoKernel.length)
 		{
-			var vec:Vector3 = ssaoKernel[i];
+			var vec:Vec3 = ssaoKernel[i];
 			GLUtil.setUniformElementSimple(prog, "samples", i, vec);
 		}
 		GLUtil.setUniform(prog, "projection", C.projectionMatrix);

@@ -10,9 +10,8 @@ import choprender.render3d.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.shader.ChopProgramMgr;
 import choprender.render3d.GLUtil;
-import hxmath.math.MathUtil;
-import hxmath.math.Matrix4x4;
-import hxmath.math.Vector3;
+import com.rsredsq.math.Mat4;
+import com.rsredsq.math.Vec3;
 import chop.assets.Assets;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
@@ -30,9 +29,9 @@ class ShaderGBuffer extends ChopProgram
 	public var gRealPosition:ChopTexture;
 	public var gUV:ChopTexture;
 	
-	private var n:Vector3;
-	private var u:Vector3;
-	private var v:Vector3;
+	private var n:Vec3;
+	private var u:Vec3;
+	private var v:Vec3;
 	
 	public function new(C:Camera) 
 	{
@@ -40,9 +39,9 @@ class ShaderGBuffer extends ChopProgram
 		
 		type = ChopProgram.MULTIPLE;
 		
-		n = new Vector3(0.0, 0.0, 0.0);
-		u = new Vector3(0.0, 0.0, 0.0);
-		v = new Vector3(0.0, 0.0, 0.0);
+		n = Vec3.fromValues(0.0, 0.0, 0.0);
+		u = Vec3.fromValues(0.0, 0.0, 0.0);
+		v = Vec3.fromValues(0.0, 0.0, 0.0);
 		
 		var id:String = "assets/shader/g_buffer_vertex.glsl";
 		new ChopShader(id, Assets.loadText(id), GL.VERTEX_SHADER).attach(prog);
@@ -92,7 +91,7 @@ class ShaderGBuffer extends ChopProgram
 			if (M.visible)
 			{
 				// Matrix calculations
-				var m:Matrix4x4 = getModelMatrix(getTranslationMatrix(M), getRotationMatrix(M), getScaleMatrix(M));
+				var m:Mat4 = getModelMatrix(getTranslationMatrix(M), getRotationMatrix(M), getScaleMatrix(M));
 				
 				// Transformation matrices
 				GLUtil.setUniform(prog, "m", m);
@@ -171,28 +170,28 @@ class ShaderGBuffer extends ChopProgram
 			}
 		}
 	}
-	private function getTranslationMatrix(M:Model):Matrix4x4
+	private function getTranslationMatrix(M:Model):Mat4
 	{
-		return Util.translate(Matrix4x4.identity, Util.Vector3ToGL(M.pos));
+		return Util.translate(Mat4.newIdent(), Util.Vector3ToGL(M.pos));
 	}
-	private function getRotationMatrix(M:Model):Matrix4x4
+	private function getRotationMatrix(M:Model):Mat4
 	{
-		var nRot:Vector3 = Util.Vector3ToGLSoft(M.rot);
+		var nRot:Vec3 = Util.Vector3ToGLSoft(M.rot);
 		return Util.eulerToMatrix4x4(
-			MathUtil.degToRad(nRot.x),
-			MathUtil.degToRad(nRot.y),
-			MathUtil.degToRad(nRot.z)
+			Util.degToRad(nRot.x),
+			Util.degToRad(nRot.y),
+			Util.degToRad(nRot.z)
 		);
 	}
-	private function getScaleMatrix(M:Model):Matrix4x4
+	private function getScaleMatrix(M:Model):Mat4
 	{
-		return Util.scale(Matrix4x4.identity, Util.Vector3ToGLSoft(M.scale));
+		return Util.scale(Mat4.newIdent(), Util.Vector3ToGLSoft(M.scale));
 	}
-	private function getModelMatrix(T:Matrix4x4, R:Matrix4x4, S:Matrix4x4):Matrix4x4
+	private function getModelMatrix(T:Mat4, R:Mat4, S:Mat4):Mat4
 	{
 		return S * R * T;
 	}
-	private function getMVPMatrix(M:Matrix4x4, V:Matrix4x4, P:Matrix4x4):Matrix4x4
+	private function getMVPMatrix(M:Mat4, V:Mat4, P:Mat4):Mat4
 	{
 		return M * V * P;
 	}

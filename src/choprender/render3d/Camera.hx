@@ -8,11 +8,10 @@ import choprender.render3d.shader.ShaderFXAA;
 import choprender.render3d.shader.ShaderGBuffer;
 import choprender.render3d.shader.ShaderLights;
 import choprender.render3d.shader.ShaderRGBAToLuma;
-import hxmath.math.MathUtil;
-import hxmath.math.Matrix4x4;
-import hxmath.math.Vector2;
-import hxmath.math.Vector3;
-import hxmath.math.Vector4;
+import com.rsredsq.math.Mat4;
+import com.rsredsq.math.Vec2;
+import com.rsredsq.math.Vec3;
+import com.rsredsq.math.Vec4;
 import chop.math.Util;
 import choprender.model.Model;
 import choprender.render3d.opengl.GL;
@@ -30,25 +29,25 @@ class Camera extends Basic
 {
 	public var mgr:ChopProgramMgr;
 	
-	public var screenPos:Vector2;
+	public var screenPos:Vec2;
 	public var width:Int;
 	public var height:Int;
 	public var FOV:Float;
 	public var ratio:Float;
 	public var displayMin:Float;
 	public var displayMax:Float;
-	public var pos:Vector3;
-	public var rot:Vector3;
-	public var bgColor:Vector3;
+	public var pos:Vec3;
+	public var rot:Vec3;
+	public var bgColor:Vec3;
 	
-	public var projectionMatrix:Matrix4x4;
-	public var viewMatrix:Matrix4x4;
+	public var projectionMatrix:Mat4;
+	public var viewMatrix:Mat4;
 	
 	public function new(X:Int = 0, Y:Int = 0, Width:Int = 0, Height:Int = 0) 
 	{
 		super();
 		
-		screenPos = new Vector2(0, 0);
+		screenPos = Vec2.fromValues(0, 0);
 		
 		if (Width == 0)
 			Width = SnowApp._snow.window.width;
@@ -59,11 +58,11 @@ class Camera extends Basic
 		FOV = 45.0;
 		displayMin = 0.1;
 		displayMax = 200.0;
-		pos = new Vector3(0.0, 0.0, 0.0);
-		rot = new Vector3(0.0, 0.0, 0.0);
-		bgColor = new Vector3(1.0, 1.0, 1.0);
-		projectionMatrix = Matrix4x4.zero;
-		viewMatrix = Matrix4x4.zero;
+		pos = Vec3.fromValues(0.0, 0.0, 0.0);
+		rot = Vec3.fromValues(0.0, 0.0, 0.0);
+		bgColor = Vec3.fromValues(1.0, 1.0, 1.0);
+		projectionMatrix = Mat4.newZero();
+		viewMatrix = Mat4.newZero();
 		
 		createProgramMgrs();
 	}
@@ -145,19 +144,20 @@ class Camera extends Basic
 	
 	public function computeViewMatrix():Void
 	{
-		var nPos:Vector3 = Util.Vector3ToGL(pos);
-		var nRot:Vector3 = Util.Vector3ToGLSoft(rot);
+		var nPos:Vec3 = Util.Vector3ToGL(pos);
+		var nRot:Vec3 = Util.Vector3ToGLSoft(rot);
 		
-		var direction:Vector3 = new Vector3(0.0, 0.0, 1.0);
-		direction.x = Math.sin(MathUtil.degToRad(nRot.y)) * Math.cos(MathUtil.degToRad(nRot.x));
-		direction.y = Math.sin(MathUtil.degToRad(nRot.x));
-		direction.z = Math.cos(MathUtil.degToRad(nRot.x)) * Math.cos(MathUtil.degToRad(nRot.y));
+		var direction:Vec3 = Vec3.fromValues(0.0, 0.0, 1.0);
+		direction.x = Math.sin(Util.degToRad(nRot.y)) * Math.cos(Util.degToRad(nRot.x));
+		direction.y = Math.sin(Util.degToRad(nRot.x));
+		direction.z = Math.cos(Util.degToRad(nRot.x)) * Math.cos(Util.degToRad(nRot.y));
 		
-		var upVec:Vector4 = Matrix4x4.multiplyVector(Util.eulerToMatrix4x4(
-			MathUtil.degToRad(nRot.x),
-			MathUtil.degToRad(nRot.y),
-			MathUtil.degToRad(nRot.z)), new Vector4(0.0, 1.0, 0.0, 1.0));
+		//var upVec:Vec4 = Mat4.multiplyVector(Util.eulerToMatrix4x4(
+			//Util.degToRad(nRot.x),
+			//Util.degToRad(nRot.y),
+			//Util.degToRad(nRot.z)), Vec4.fromValues(0.0, 1.0, 0.0, 1.0));
+		var upVec:Vec4 = Vec4.fromValues(0.0, 1.0, 0.0, 1.0).transMat4(Util.eulerToMatrix4x4(Util.degToRad(nRot.x), Util.degToRad(nRot.y), Util.degToRad(nRot.z)));
 		
-		viewMatrix = Util.lookAt(nPos, nPos - direction, new Vector3(upVec.x, upVec.y, upVec.z));
+		viewMatrix = Util.lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));
 	}
 }

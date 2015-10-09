@@ -2,7 +2,7 @@ package choprender.render3d.light;
 
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL;
-import hxmath.math.Vector3;
+import com.rsredsq.math.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.GLProgram;
 
@@ -12,15 +12,15 @@ import choprender.render3d.opengl.GL.GLProgram;
  */
 class ConeLight extends Light
 {
-	public var pos:Vector3;
-	public var dir:Vector3;
+	public var pos:Vec3;
+	public var dir:Vec3;
 	public var coneAngle:Float;
 	
 	public function new() 
 	{
 		super();
-		pos = new Vector3(0.0, 0.0, 0.0);
-		dir = new Vector3( -1.0, -1.0, 0.5);
+		pos = Vec3.fromValues(0.0, 0.0, 0.0);
+		dir = Vec3.fromValues( -1.0, -1.0, 0.5);
 		coneAngle = 20.0;
 	}
 	

@@ -1,6 +1,6 @@
 package choprender.mint.chop;
 import choprender.model.QuadModel;
-import hxmath.math.Vector3;
+import hxmath.math.Vec3;
 
 /**
  * ...
@@ -8,12 +8,12 @@ import hxmath.math.Vector3;
  */
 class HUDQuadModel extends QuadModel
 {
-	public var color(get, set):Vector3;
-	public function get_color():Vector3
+	public var color(get, set):Vec3;
+	public function get_color():Vec3
 	{
 		return mat.diffuseColor;
 	}
-	public function set_color(V:Vector3):Vector3
+	public function set_color(V:Vec3):Vec3
 	{
 		mat.diffuseColor.copyFromShape(V);
 		return get_color();

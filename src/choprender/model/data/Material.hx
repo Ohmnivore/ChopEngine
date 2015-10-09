@@ -1,6 +1,6 @@
 package choprender.model.data;
 
-import hxmath.math.Vector3;
+import com.rsredsq.math.Vec3;
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL.GLProgram;
 
@@ -15,9 +15,9 @@ class Material
 	public var useShading:Bool;
 	public var shadowsCast:Bool;
 	public var shadowsReceive:Bool;
-	public var diffuseColor:Vector3;
+	public var diffuseColor:Vec3;
 	public var diffuseIntensity:Float;
-	public var specularColor:Vector3;
+	public var specularColor:Vec3;
 	public var specularIntensity:Float;
 	public var ambientIntensity:Float;
 	public var emit:Float;
@@ -30,9 +30,9 @@ class Material
 		useShading = true;
 		shadowsCast = true;
 		shadowsReceive = true;
-		diffuseColor = new Vector3(1, 1, 1);
+		diffuseColor = Vec3.fromValues(1, 1, 1);
 		diffuseIntensity = 1.0;
-		specularColor = new Vector3(1, 1, 1);
+		specularColor = Vec3.fromValues(1, 1, 1);
 		specularIntensity = 1.0;
 		ambientIntensity = 1.0;
 		emit = 0;
@@ -46,9 +46,9 @@ class Material
 		useShading = M.useShading;
 		shadowsCast = M.shadowsCast;
 		shadowsReceive = M.shadowsReceive;
-		diffuseColor.copyFromShape(M.diffuseColor);
+		diffuseColor.copy(M.diffuseColor);
 		diffuseIntensity = M.diffuseIntensity;
-		specularColor.copyFromShape(M.specularColor);
+		specularColor.copy(M.specularColor);
 		specularIntensity = M.specularIntensity;
 		ambientIntensity = M.ambientIntensity;
 		emit = M.emit;

@@ -12,7 +12,7 @@ import choprender.render3d.GLUtil;
 import hxmath.math.MathUtil;
 import hxmath.math.Matrix4x4;
 import hxmath.math.Vector2;
-import hxmath.math.Vector3;
+import hxmath.math.Vec3;
 import chop.assets.Assets;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;

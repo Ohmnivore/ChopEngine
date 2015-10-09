@@ -2,7 +2,7 @@ package choprender.render3d.light;
 
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL;
-import hxmath.math.Vector3;
+import com.rsredsq.math.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.GLProgram;
 
@@ -12,12 +12,12 @@ import choprender.render3d.opengl.GL.GLProgram;
  */
 class PointLight extends Light
 {
-	public var pos:Vector3;
+	public var pos:Vec3;
 	
 	public function new() 
 	{
 		super();
-		pos = new Vector3(0.0, 0.0, 0.0);
+		pos = Vec3.fromValues(0.0, 0.0, 0.0);
 	}
 	
 	override public function setUniforms(P:GLProgram, I:Int):Void 
