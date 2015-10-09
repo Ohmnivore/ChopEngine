@@ -1,6 +1,6 @@
 package choprender.render3d.light;
 
-import com.rsredsq.math.Vec3;
+import chop.math.Vec3;
 
 /**
  * ...

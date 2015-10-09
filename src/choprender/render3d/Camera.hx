@@ -8,10 +8,10 @@ import choprender.render3d.shader.ShaderFXAA;
 import choprender.render3d.shader.ShaderGBuffer;
 import choprender.render3d.shader.ShaderLights;
 import choprender.render3d.shader.ShaderRGBAToLuma;
-import com.rsredsq.math.Mat4;
-import com.rsredsq.math.Vec2;
-import com.rsredsq.math.Vec3;
-import com.rsredsq.math.Vec4;
+import chop.math.Mat4;
+import chop.math.Vec2;
+import chop.math.Vec3;
+import chop.math.Vec4;
 import chop.math.Util;
 import choprender.model.Model;
 import choprender.render3d.opengl.GL;
@@ -152,10 +152,6 @@ class Camera extends Basic
 		direction.y = Math.sin(Util.degToRad(nRot.x));
 		direction.z = Math.cos(Util.degToRad(nRot.x)) * Math.cos(Util.degToRad(nRot.y));
 		
-		//var upVec:Vec4 = Mat4.multiplyVector(Util.eulerToMatrix4x4(
-			//Util.degToRad(nRot.x),
-			//Util.degToRad(nRot.y),
-			//Util.degToRad(nRot.z)), Vec4.fromValues(0.0, 1.0, 0.0, 1.0));
 		var upVec:Vec4 = Vec4.fromValues(0.0, 1.0, 0.0, 1.0).transMat4(Util.eulerToMatrix4x4(Util.degToRad(nRot.x), Util.degToRad(nRot.y), Util.degToRad(nRot.z)));
 		
 		viewMatrix = Util.lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));

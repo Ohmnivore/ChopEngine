@@ -1,8 +1,8 @@
 package choprender.render3d;
 
-import com.rsredsq.math.Mat4;
-import com.rsredsq.math.Vec2;
-import com.rsredsq.math.Vec3;
+import chop.math.Mat4;
+import chop.math.Vec2;
+import chop.math.Vec3;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLProgram;
 import choprender.render3d.opengl.GL.GLUniformLocation;
@@ -28,11 +28,7 @@ class GLUtil
 	{
 		var loc:GLUniformLocation = GL.getUniformLocation(Program, Name);
 		var isOk:Bool = true;
-		#if snow
 		isOk = loc != null;
-		#else
-		isOk = loc >= 0;
-		#end
 		
 		if (!isOk)
 		{
@@ -40,27 +36,6 @@ class GLUtil
 		}
 		else
 		{
-			//if (Std.is(Value, Int))
-				//setInt(loc, Value);
-			//else if (Std.is(Value, Float))
-				//setFloat(loc, Value);
-			//if (Std.is(Value, Float))
-				//setFloat(loc, Value);
-			//else if (Std.is(Value, Int))
-				//setInt(loc, Value);
-			//else if (Std.is(Value, Bool))
-			
-			//if (Std.is(Value, Bool))
-				//setBool(loc, Value);
-			//else if (Std.is(Value, Vector2Type))
-				//setVector2(loc, Value);
-			//else if (Std.is(Value, Vector3Type))
-				//setVector3(loc, Value);
-			//else if (Std.is(Value, Matrix4x4Type))
-				//setMatrix4x4(loc, Value);
-			//else
-				//trace("Unknown uniform value type passed: " + Name);
-			
 			if (Std.is(Value, Bool))
 				setBool(loc, Value);
 			else if (Std.is(Value, Array))

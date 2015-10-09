@@ -1,6 +1,6 @@
 package choprender.model.data;
 
-import com.rsredsq.math.Vec3;
+import chop.math.Vec3;
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL.GLProgram;
 

@@ -2,7 +2,7 @@ package choprender.render3d.light;
 
 import choprender.render3d.GLUtil;
 import choprender.render3d.opengl.GL;
-import com.rsredsq.math.Vec3;
+import chop.math.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.GLProgram;
 

@@ -9,9 +9,7 @@ import choprender.render3d.Camera;
 import choprender.render3d.light.ConeLight;
 import choprender.render3d.light.PointLight;
 import choprender.render3d.light.SunLight;
-#if snow
 import snow.types.Types.Key;
-#end
 
 /**
  * ...
@@ -85,7 +83,6 @@ class PlayState extends State
 	{
 		super.update(Elapsed);
 		
-		#if snow
 		if (SnowApp._snow.input.keydown(Key.key_a))
 			GlobalRender.cam.pos.x -= 5.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_d))
@@ -99,6 +96,5 @@ class PlayState extends State
 			GlobalRender.cam.pos.z += 5.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.lctrl))
 			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
-		#end
 	}
 }

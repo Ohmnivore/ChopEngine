@@ -3,7 +3,7 @@ package chop.gen;
 import chop.gen.Basic;
 import choprender.GlobalRender;
 import choprender.render3d.Camera;
-import com.rsredsq.math.Vec3;
+import chop.math.Vec3;
 
 /**
  * ...
