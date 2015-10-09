@@ -30,38 +30,12 @@ class Util
 		return Vec3.fromValues(V.x, V.z, -V.y);
 	}
 	
-	static public function perspective(FOV:Float, Ratio:Float, DisplayMin:Float, DisplayMax:Float):Mat4
+	static public function eulerDegToMatrix4x4(X:Float, Y:Float, Z:Float):Mat4
 	{
-		return new Mat4().perspective(FOV, Ratio, DisplayMin, DisplayMax);
+		return eulerRadToMatrix4x4(degToRad(X), degToRad(Y), degToRad(Z));
 	}
-	
-	static public function lookAt(Eye:Vec3, Center:Vec3, Up:Vec3):Mat4
-	{
-		return new Mat4().lookAt(Eye, Center, Up);
-	}
-	
-	static public function translate(M:Mat4, V:Vec3):Mat4
-	{
-		return M.trans(V);
-	}
-	
-	static public function scale(M:Mat4, V:Vec3):Mat4
-	{
-		return M.scale(V);
-	}
-	
-	static public function eulerToMatrix4x4(X:Float, Y:Float, Z:Float):Mat4
+	static public function eulerRadToMatrix4x4(X:Float, Y:Float, Z:Float):Mat4
 	{
 		return new Mat4().fromQuat(Quat.fromEuler(X, Y, Z));
-	}
-	
-	static public function matrix4MultVec4(M:Mat4, V:Vec4):Vec4
-	{
-		return V.transMat4(M);
-	}
-	
-	static public function invertMatrix4x4(Mat:Mat4):Mat4
-	{
-		return Mat.invert();
 	}
 }

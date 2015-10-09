@@ -172,20 +172,16 @@ class ShaderGBuffer extends ChopProgram
 	}
 	private function getTranslationMatrix(M:Model):Mat4
 	{
-		return Util.translate(Mat4.newIdent(), Util.Vector3ToGL(M.pos));
+		return Mat4.newIdent().trans(Util.Vector3ToGL(M.pos));
 	}
 	private function getRotationMatrix(M:Model):Mat4
 	{
 		var nRot:Vec3 = Util.Vector3ToGLSoft(M.rot);
-		return Util.eulerToMatrix4x4(
-			Util.degToRad(nRot.x),
-			Util.degToRad(nRot.y),
-			Util.degToRad(nRot.z)
-		);
+		return Util.eulerDegToMatrix4x4(nRot.x, nRot.y, nRot.z);
 	}
 	private function getScaleMatrix(M:Model):Mat4
 	{
-		return Util.scale(Mat4.newIdent(), Util.Vector3ToGLSoft(M.scale));
+		return Mat4.newIdent().scale(Util.Vector3ToGLSoft(M.scale));
 	}
 	private function getModelMatrix(T:Mat4, R:Mat4, S:Mat4):Mat4
 	{

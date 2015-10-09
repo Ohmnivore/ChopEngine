@@ -139,7 +139,7 @@ class Camera extends Basic
 	
 	private function computeProjectionMatrix():Void
 	{
-		projectionMatrix = Util.perspective(FOV, ratio, displayMin, displayMax);
+		projectionMatrix = new Mat4().perspective(FOV, ratio, displayMin, displayMax);
 	}
 	
 	public function computeViewMatrix():Void
@@ -152,8 +152,8 @@ class Camera extends Basic
 		direction.y = Math.sin(Util.degToRad(nRot.x));
 		direction.z = Math.cos(Util.degToRad(nRot.x)) * Math.cos(Util.degToRad(nRot.y));
 		
-		var upVec:Vec4 = Vec4.fromValues(0.0, 1.0, 0.0, 1.0).transMat4(Util.eulerToMatrix4x4(Util.degToRad(nRot.x), Util.degToRad(nRot.y), Util.degToRad(nRot.z)));
+		var upVec:Vec4 = Vec4.fromValues(0.0, 1.0, 0.0, 1.0).transMat4(Util.eulerDegToMatrix4x4(nRot.x, nRot.y, nRot.z));
 		
-		viewMatrix = Util.lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));
+		viewMatrix = new Mat4().lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));
 	}
 }
