@@ -1,6 +1,6 @@
-package choprender.loader.chop;
+package choprender.model.loader.chop;
 
-import choprender.loader.Loader;
+import choprender.model.loader.Loader;
 import choprender.model.data.Animation;
 import choprender.model.data.Face;
 import choprender.model.data.Frame;

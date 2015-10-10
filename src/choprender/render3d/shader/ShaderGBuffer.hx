@@ -44,9 +44,9 @@ class ShaderGBuffer extends ChopProgram
 		v = Vec3.fromValues(0.0, 0.0, 0.0);
 		
 		var id:String = "assets/shader/g_buffer_vertex.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.VERTEX_SHADER).attach(prog);
+		new ChopShader(id, Assets.getText(id), GL.VERTEX_SHADER).attach(prog);
 		id = "assets/shader/g_buffer_fragment.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
+		new ChopShader(id, Assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
 		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, ChopGL.RGBA16F, C.width, C.height, GL.RGBA, GL.FLOAT);
@@ -222,7 +222,7 @@ class ShaderGBuffer extends ChopProgram
 		//Verts.push(F.normal[2]);
 		
 		Verts.push(UV[0]);
-		Verts.push(UV[1]);
+		Verts.push(1.0 - UV[1]); // Invert y axis
 		Verts.push(TexID / 16.0);
 	}
 }

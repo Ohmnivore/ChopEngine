@@ -1,5 +1,9 @@
 # TODO
 ## Rendering
+* Font Builder NGL loader
+* Text rendering
+
+## Rendering (eventually)
 * Test multiple cameras setup on other computer
 * Get face normals from chopmesh file
 * Batching

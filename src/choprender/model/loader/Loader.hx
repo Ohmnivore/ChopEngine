@@ -1,4 +1,5 @@
-package choprender.loader;
+package choprender.model.loader;
+
 import choprender.model.data.ModelData;
 import chop.assets.Assets;
 
@@ -20,7 +21,7 @@ class Loader
 	public function loadFile(P:String):Void
 	{
 		path = P;
-		var source:String = Assets.loadText(P);
+		var source:String = Assets.getText(P);
 		loadSource(source);
 	}
 	

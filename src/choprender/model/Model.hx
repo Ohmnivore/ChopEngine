@@ -5,7 +5,7 @@ import choprender.model.AnimController;
 import choprender.model.Model;
 import choprender.render3d.shader.ChopProgramMgr;
 import chop.math.Vec3;
-import choprender.loader.chop.ChopLoader;
+import choprender.model.loader.chop.ChopLoader;
 import choprender.model.data.ModelData;
 
 /**

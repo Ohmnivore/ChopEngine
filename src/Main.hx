@@ -4,8 +4,9 @@ import chopengine.gen.Game;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.ChopGL;
 import snow.types.Types;
+import chop.assets.Assets;
 
-@:log_as('app')
+@:log_as('chop')
 class Main extends snow.App 
 {
 	public var game:Game;
@@ -20,8 +21,8 @@ class Main extends snow.App
 
     override function ready() 
     {
-		game = new Game(new PlayState());
-        app.window.onrender = render;
+		Assets.init();
+		Assets.loadManifest();
     }
 
     override function onkeyup(keycode:Int, _,_, mod:ModState, _,_) 
@@ -34,24 +35,18 @@ class Main extends snow.App
 
     override function update(delta:Float)
     {
-		game.update(delta);
+		if (game == null && Assets.isReady())
+		{
+			game = new Game(new PlayState());
+			app.window.onrender = render;
+		}
+		if (game != null)
+			game.update(delta);
     }
 
     function render(window:snow.system.window.Window) 
     {
-		GL.disable(GL.BLEND);
-		
-		game.draw(delta_time);
-		
-		GL.enable(GL.BLEND);
-        GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
-		var b:GLFramebuffer = new GLFramebuffer(0);
-		GL.bindFramebuffer(GL.FRAMEBUFFER, b);
-		GL.bindFramebuffer(ChopGL.READ_FRAMEBUFFER, b);
-		GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, b);
-		GL.enableVertexAttribArray(0);
-		GL.enableVertexAttribArray(1);
-		GL.enableVertexAttribArray(2);
-		GL.enableVertexAttribArray(3);
+		if (game != null)
+			game.draw(delta_time);
     }
 }

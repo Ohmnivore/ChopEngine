@@ -1,4 +1,4 @@
-package choprender.loader.obj;
+package choprender.model.loader.obj;
 
 /**
  * ...

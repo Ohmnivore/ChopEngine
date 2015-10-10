@@ -34,9 +34,9 @@ class ShaderFXAA extends ChopQuadProgram
 		type = ChopProgram.ONESHOT;
 		
 		var id:String = "assets/shader/fxaa_vertex.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.VERTEX_SHADER).attach(prog);
+		new ChopShader(id, Assets.getText(id), GL.VERTEX_SHADER).attach(prog);
 		id = "assets/shader/fxaa_fragment.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
+		new ChopShader(id, Assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
 		inTextures.push(new ChopTextureDescriptor("gLight", "textureSampler"));

@@ -3,12 +3,14 @@ package;
 import chopengine.gen.Global;
 import choprender.GlobalRender;
 import chopengine.gen.State;
-import choprender.loader.obj.ObjLoader;
+import choprender.model.loader.obj.ObjLoader;
 import choprender.model.Model;
+import choprender.model.QuadModel;
 import choprender.render3d.Camera;
 import choprender.render3d.light.ConeLight;
 import choprender.render3d.light.PointLight;
 import choprender.render3d.light.SunLight;
+import choprender.text.loader.FontBuilderNGL;
 import snow.types.Types.Key;
 
 /**
@@ -27,9 +29,19 @@ class PlayState extends State
 		GlobalRender.cam.bgColor.y = 1.0;
 		GlobalRender.cam.bgColor.z = 1.0;
 		
-		var m:Model = new Model();
-		m.loadChop("assets/mesh/lowpoly.chopmesh");
-		add(m);
+		//var m:Model = new Model();
+		//m.loadChop("assets/mesh/lowpoly.chopmesh");
+		//add(m);
+		
+		//var f:FontBuilderNGL = new FontBuilderNGL();
+		//f.loadFile("assets/font/04b03_regular_8.xml");
+		
+		var mQuad:QuadModel = new QuadModel();
+		//mQuad.setTexture("assets/mesh/haxelogo.png");
+		mQuad.setTexture("assets/font/04b03_regular_8.png");
+		mQuad.scale.set(1.28, 1.0, 0.64);
+		mQuad.mat.diffuseColor.set(0, 0, 0);
+		add(mQuad);
 		
 		//var m2:Model = new Model();
 		//m2.loadChop("assets/mesh/corgi.chopmesh");

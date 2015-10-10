@@ -7,7 +7,6 @@ import choprender.render3d.shader.ChopProgramMgr;
 import choprender.render3d.shader.ShaderGBuffer;
 import choprender.render3d.shader.ShaderQuadTexture;
 import choprender.render3d.opengl.GL;
-//import jiglib.cof.JConfig;
 
 /**
  * ...
@@ -24,8 +23,6 @@ class Game
 		GlobalRender.cams.push(GlobalRender.cam);
 		GlobalRender.members = Global.state.members;
 		
-		//JConfig.solverType = "FAST";
-		//JConfig.doShockStep = true;
 		Global.state.create();
 		
 		GlobalRender.lights = Global.state.lights;

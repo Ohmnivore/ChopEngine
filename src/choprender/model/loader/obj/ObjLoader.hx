@@ -1,6 +1,6 @@
-package choprender.loader.obj;
+package choprender.model.loader.obj;
 
-import choprender.loader.Loader;
+import choprender.model.loader.Loader;
 
 /**
  * ...
