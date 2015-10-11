@@ -90,20 +90,29 @@ class Assets
 		loadAsset(ID, SnowApp._snow.assets.text(ID));
 	}
 	
+	static private function check(ID:String):Void
+	{
+		if (!assets.exists(ID))
+			trace("Couldn't find loaded asset: " + ID);
+	}
 	static public function getBytes(ID:String):Uint8Array
 	{
+		check(ID);
 		return cast(assets.get(ID), AssetBytes).bytes;
 	}
 	static public function getImage(ID:String):ImageInfo
 	{
+		check(ID);
 		return cast(assets.get(ID), AssetImage).image;
 	}
 	static public function getJSON(ID:String):Dynamic
 	{
+		check(ID);
 		return cast(assets.get(ID), AssetJSON).json;
 	}
 	static public function getText(ID:String):String
 	{
+		check(ID);
 		return cast(assets.get(ID), AssetText).text;
 	}
 }

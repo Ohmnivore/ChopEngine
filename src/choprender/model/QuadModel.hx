@@ -1,7 +1,10 @@
 package choprender.model;
 
+import chop.assets.Assets;
 import choprender.model.Model;
 import choprender.model.data.*;
+import choprender.render3d.opengl.GL.Uint8Array;
+import snow.types.Types.ImageInfo;
 
 /**
  * ...
@@ -67,10 +70,18 @@ class QuadModel extends Model
 		anim.play(anim0.name, true);
 	}
 	
-	public function setTexture(Path:String):Void
+	public function loadTexFile(P:String):Void
+	{
+		loadTexImage(Assets.getImage(P));
+	}
+	public function loadTexImage(I:ImageInfo):Void
+	{
+		loadTexData(I.pixels, I.width, I.height);
+	}
+	public function loadTexData(D:Uint8Array, Width:Int, Height:Int):Void
 	{
 		tex = new Texture();
-		tex.read(Path);
+		tex.loadData(D, Width, Height);
 		data.textures = [tex];
 		face0.textureID = tex.id;
 		face1.textureID = tex.id;

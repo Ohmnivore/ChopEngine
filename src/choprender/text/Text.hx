@@ -1,9 +1,12 @@
 package choprender.text;
 
+import choprender.model.data.Texture;
 import choprender.model.QuadModel;
 import choprender.text.loader.FontBuilderNGL.Font;
 import choprender.text.loader.FontBuilderNGL.FontChar;
 import snow.api.buffers.ArrayBufferIO;
+import snow.api.buffers.ArrayBuffer;
+import choprender.render3d.opengl.GL.Uint8Array;
 
 /**
  * ...
@@ -15,6 +18,7 @@ class Text extends QuadModel
 	
 	public function new(F:Font) 
 	{
+		super();
 		font = F;
 	}
 	
@@ -29,13 +33,17 @@ class Text extends QuadModel
 	private function setChar(C:FontChar):Void
 	{
 		var arr:Array<Int> = [];
-		
 		for (y in 0...C.rectHeight)
 		{
 			for (x in 0...C.rectWidth)
 			{
-				arr.push(ArrayBufferIO.getUint8(font.tex, y * font.texWidth + x));
+				var arrB:ArrayBuffer = cast font.tex.pixels.buffer;
+				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 0));
+				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 1));
+				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 2));
+				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 3));
 			}
 		}
+		loadTexData(new Uint8Array(arr), C.rectWidth, C.rectHeight);
 	}
 }

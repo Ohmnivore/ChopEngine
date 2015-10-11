@@ -53,7 +53,7 @@ class ChopLoader extends Loader
 			tex.id = Std.parseInt(textureNode.att.ID);
 			tex.filename = textureNode.att.filename;
 			tex.filepath = Path.join([Path.directory(path), tex.filename]);
-			tex.read(tex.filepath);
+			tex.loadFile(tex.filepath);
 			data.textures.push(tex);
 		}
 		

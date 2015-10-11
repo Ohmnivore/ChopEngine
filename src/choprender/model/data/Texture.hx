@@ -34,11 +34,19 @@ class Texture
 		data;
 	}
 	
-	public function read(P:String):Void
+	public function loadFile(P:String):Void
 	{
-		var img:ImageInfo = Assets.getImage(P);
-		data = img.pixels;
-		choptex = new ChopTexture("", GL.TEXTURE_2D, 0, GL.RGBA, img.width, img.height,
+		loadImage(Assets.getImage(P));
+		
+	}
+	public function loadImage(I:ImageInfo):Void
+	{
+		loadData(I.pixels, I.width, I.height);
+	}
+	public function loadData(D:Uint8Array, Width:Int, Height:Int):Void
+	{
+		data = D;
+		choptex = new ChopTexture("", GL.TEXTURE_2D, 0, GL.RGBA, Width, Height,
 					GL.RGBA, GL.UNSIGNED_BYTE, data);
 		choptex.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		choptex.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
