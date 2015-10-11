@@ -1,6 +1,7 @@
 package choprender.text.loader;
 
 import chop.assets.Assets;
+import choprender.model.data.Bitmap;
 import choprender.text.loader.FontBuilderNGL.Font;
 import choprender.text.loader.FontBuilderNGL.FontChar;
 import haxe.xml.Fast;
@@ -70,7 +71,11 @@ class FontBuilderNGL
 		}
 		
 		var fullPath = Path.join([Path.directory(path), font.texFile]);
-		font.tex = Assets.getImage(fullPath);
+		var img:ImageInfo = Assets.getImage(fullPath);
+		font.tex = new Bitmap();
+		font.tex.pixels = img.pixels;
+		font.tex.width = img.width;
+		font.tex.height = img.height;
 	}
 }
 
@@ -84,7 +89,7 @@ class Font
 	public var texWidth:Int;
 	public var texHeight:Int;
 	public var texFile:String;
-	public var tex:ImageInfo;
+	public var tex:Bitmap;
 	
 	public var chars:Map<String, FontChar>;
 	

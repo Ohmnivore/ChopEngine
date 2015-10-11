@@ -64,12 +64,11 @@ void main()
 	{
 		vec4 texDiffuse = getTextureValue(UV.xy, textureID);
 		gDiffuse = texDiffuse * texDiffuse.w + vec4(diffuseColor.xyz, 1.0) * (1.0 - texDiffuse.w);
+		gDiffuse.w = materialFlags;
 	}
 	
     gRealPosition = vec4(FragPos, LinearizeDepth(gl_FragCoord.z));
     gPosition = vec4(MeanFragPos, LinearizeDepth(gl_FragCoord.z));
-    // gPosition = vec4(MeanFragPos, gl_FragCoord.z);
-    // gPosition = vec4(MeanFragPos, MyLinearizeDepth(gl_FragCoord.z));
     gNormal = vec4(normalize(Normal), ambientIntensity);
     gSpec = vec4(specularColor * specularIntensity, emit);
 	gUV = vec4(UV.xyz, 1.0);

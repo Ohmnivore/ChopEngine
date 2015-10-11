@@ -82,8 +82,13 @@ class QuadModel extends Model
 	{
 		tex = new Texture();
 		tex.loadData(D, Width, Height);
-		data.textures = [tex];
-		face0.textureID = tex.id;
-		face1.textureID = tex.id;
+		loadTex(tex);
+	}
+	public function loadTex(T:Texture):Void
+	{
+		tex = T;
+		data.textures = [T];
+		face0.textureID = T.id;
+		face1.textureID = T.id;
 	}
 }

@@ -118,7 +118,6 @@ class ShaderGBuffer extends ChopProgram
 					// Material uniforms
 					GLUtil.setUniform(prog, "diffuseColor", mat.diffuseColor);
 					GLUtil.setUniform(prog, "specularColor", mat.specularColor);
-					//GLUtil.setUniform(prog, "materialFlags", mat.toFlagFloat());
 					GLUtil.setFloat(GLUtil.getLocation(prog, "diffuseIntensity"), mat.diffuseIntensity);
 					GLUtil.setFloat(GLUtil.getLocation(prog, "specularIntensity"), mat.specularIntensity);
 					GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), mat.ambientIntensity);

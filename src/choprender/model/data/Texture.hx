@@ -20,7 +20,7 @@ class Texture
 	public var filepath:String;
 	public var width:Int;
 	public var height:Int;
-	public var data:Uint8Array;
+	public var data:Bitmap;
 	public var choptex:ChopTexture;
 	
 	public function new()
@@ -45,9 +45,12 @@ class Texture
 	}
 	public function loadData(D:Uint8Array, Width:Int, Height:Int):Void
 	{
-		data = D;
+		data = new Bitmap();
+		data.pixels = new Uint8Array(D);
+		data.width = Width;
+		data.height = Height;
 		choptex = new ChopTexture("", GL.TEXTURE_2D, 0, GL.RGBA, Width, Height,
-					GL.RGBA, GL.UNSIGNED_BYTE, data);
+					GL.RGBA, GL.UNSIGNED_BYTE, data.pixels);
 		choptex.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
 		choptex.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		choptex.params.push(new ChopTextureParam(GL.TEXTURE_WRAP_S, GL.CLAMP_TO_EDGE));
@@ -64,6 +67,6 @@ class Texture
 		width = T.width;
 		height = T.height;
 		
-		data = new Uint8Array(T.data);
+		data.copy(T.data);
 	}
 }

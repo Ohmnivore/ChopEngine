@@ -1,6 +1,7 @@
 package;
 
 import chopengine.gen.Global;
+import chopengine.input.Mouse;
 import choprender.GlobalRender;
 import chopengine.gen.State;
 import choprender.model.loader.obj.ObjLoader;
@@ -38,8 +39,7 @@ class PlayState extends State
 		f.loadFile("assets/font/04b03_regular_8.xml");
 		
 		var t:Text = new Text(f.font);
-		t.mat.diffuseColor.set(0, 0, 0);
-		t.setText("A");
+		t.setText("ChopEngine");
 		add(t);
 		
 		//var mQuad:QuadModel = new QuadModel();
@@ -113,5 +113,7 @@ class PlayState extends State
 			GlobalRender.cam.pos.z += 5.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.lctrl))
 			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
+		
+		GlobalRender.cam.rot.z += Mouse.xRel / 2.0;
 	}
 }

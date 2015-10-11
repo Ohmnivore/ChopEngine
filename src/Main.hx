@@ -1,6 +1,7 @@
 package;
 
 import chopengine.gen.Game;
+import chopengine.input.Mouse;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.ChopGL;
 import snow.types.Types;
@@ -49,4 +50,13 @@ class Main extends snow.App
 		if (game != null)
 			game.draw(delta_time);
     }
+	
+	override public function onmousemove(x:Int, y:Int, xrel:Int, yrel:Int, timestamp:Float, window_id:Int) 
+	{
+		super.onmousemove(x, y, xrel, yrel, timestamp, window_id);
+		Mouse.x = x;
+		Mouse.y = y;
+		Mouse.xRel = xrel;
+		Mouse.yRel = yrel;
+	}
 }

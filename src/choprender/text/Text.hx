@@ -1,5 +1,8 @@
 package choprender.text;
 
+import chop.math.Vec2;
+import chop.math.Vec4;
+import choprender.model.data.Bitmap;
 import choprender.model.data.Texture;
 import choprender.model.QuadModel;
 import choprender.text.loader.FontBuilderNGL.Font;
@@ -14,36 +17,46 @@ import choprender.render3d.opengl.GL.Uint8Array;
  */
 class Text extends QuadModel
 {
+	static private inline var UNKNOWN_REPLACER:String = " ";
+	
 	public var font:Font;
 	
 	public function new(F:Font) 
 	{
 		super();
 		font = F;
+		mat.useShading = false;
+		mat.diffuseColor.set(0, 0, 0);
 	}
 	
 	public function setText(T:String):Void
 	{
-		if (font.chars.exists(T))
+		var chars:Array<FontChar> = [];
+		for (i in 0...T.length)
 		{
-			setChar(font.chars.get(T.charAt(0)));
+			var c:String = T.charAt(i);
+			if (font.chars.exists(c))
+				chars.push(font.chars.get(c));
+			else
+				chars.push(font.chars.get(UNKNOWN_REPLACER));
 		}
+		setChars(chars);
 	}
 	
-	private function setChar(C:FontChar):Void
+	private function setChars(Chars:Array<FontChar>):Void
 	{
-		var arr:Array<Int> = [];
-		for (y in 0...C.rectHeight)
+		var b:Bitmap = new Bitmap();
+		for (c in Chars)
 		{
-			for (x in 0...C.rectWidth)
-			{
-				var arrB:ArrayBuffer = cast font.tex.pixels.buffer;
-				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 0));
-				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 1));
-				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 2));
-				arr.push(ArrayBufferIO.getUint8(arrB, (C.rectY + y) * font.tex.width * 4 + (x + C.rectX) * 4 + 3));
-			}
+			b.setSize(b.width + c.advance - c.offsetX, 16);
+			b.copyPixels(
+				font.tex,
+				b,
+				Vec4.fromValues(c.rectX, c.rectY, c.rectWidth, c.rectHeight),
+				Vec2.fromValues(b.width - c.advance + c.offsetX, 8 - c.offsetY)
+			);
 		}
-		loadTexData(new Uint8Array(arr), C.rectWidth, C.rectHeight);
+		loadTexData(b.pixels, b.width, b.height);
+		scale.x = b.width / b.height;
 	}
 }
