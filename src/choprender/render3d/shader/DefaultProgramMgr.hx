@@ -32,6 +32,7 @@ class DefaultProgramMgr extends ChopProgramMgr
 		gLightProgram.readBuffer = buff.buffer;
 		gLightProgram.drawBuffer = buff.buffer;
 		gLightProgram.gLight.buffer = buff;
+		//gLightProgram.outputToScreenBuffer();
 		
 		toLumaProgram = new ShaderRGBAToLuma(C);
 		progs.push(toLumaProgram);

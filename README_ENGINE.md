@@ -1,7 +1,11 @@
 # TODO
 ## Rendering
-* Font Builder NGL loader
-* Text rendering
+* bitmap blit instead of copy
+* text color
+* text size
+* Text line right/center/left align
+* Text max width
+* integrate mint
 
 ## Rendering (eventually)
 * Test multiple cameras setup on other computer

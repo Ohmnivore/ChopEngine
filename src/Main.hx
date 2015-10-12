@@ -59,4 +59,26 @@ class Main extends snow.App
 		Mouse.xRel = xrel;
 		Mouse.yRel = yrel;
 	}
+	
+	override public function onmousedown(x:Int, y:Int, button:Int, timestamp:Float, window_id:Int) 
+	{
+		super.onmousedown(x, y, button, timestamp, window_id);
+		if (button == 1)
+			Mouse.leftPressed = true;
+		else if (button == 2)
+			Mouse.middlePressed = true;
+		else if (button == 3)
+			Mouse.rightPressed = true;
+	}
+	
+	override public function onmouseup(x:Int, y:Int, button:Int, timestamp:Float, window_id:Int) 
+	{
+		super.onmouseup(x, y, button, timestamp, window_id);
+		if (button == 1)
+			Mouse.leftPressed = false;
+		else if (button == 2)
+			Mouse.middlePressed = false;
+		else if (button == 3)
+			Mouse.rightPressed = false;
+	}
 }

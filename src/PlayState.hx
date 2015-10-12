@@ -31,16 +31,42 @@ class PlayState extends State
 		GlobalRender.cam.bgColor.y = 1.0;
 		GlobalRender.cam.bgColor.z = 1.0;
 		
-		//var m:Model = new Model();
-		//m.loadChop("assets/mesh/lowpoly.chopmesh");
-		//add(m);
+		var m:Model = new Model();
+		m.loadChop("assets/mesh/lowpoly.chopmesh");
+		add(m);
 		
 		var f:FontBuilderNGL = new FontBuilderNGL();
 		f.loadFile("assets/font/04b03_regular_8.xml");
 		
 		var t:Text = new Text(f.font);
-		t.setText("ChopEngine");
+		t.pos.x = 0;
+		t.pos.z = 4;
+		t.setText("ChopEngine is chopping.\nIt's also far from completed.");
 		add(t);
+		
+		var t2:Text = new Text(f.font);
+		t2.textWidth = 64;
+		t2.pos.x = 5;
+		t2.pos.z = 4;
+		t2.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		add(t2);
+		
+		var t3:Text = new Text(f.font);
+		t3.textWidth = 64;
+		t3.wordWrap = true;
+		t3.pos.x = 10;
+		t3.pos.z = 4;
+		t3.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		add(t3);
+		
+		//var t4:Text = new Text(f.font);
+		//t4.textWidth = 64;
+		//t4.wordWrap = true;
+		//t4.alignment = "right";
+		//t4.pos.x = 0;
+		//t4.pos.z = 5;
+		//t4.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		//add(t4);
 		
 		//var mQuad:QuadModel = new QuadModel();
 		//mQuad.loadTexFile("assets/font/04b03_regular_8.png");
@@ -114,6 +140,7 @@ class PlayState extends State
 		if (SnowApp._snow.input.keydown(Key.lctrl))
 			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
 		
-		GlobalRender.cam.rot.z += Mouse.xRel / 2.0;
+		if (Mouse.rightPressed)
+			GlobalRender.cam.rot.z -= Mouse.xRel / 2.0;
 	}
 }

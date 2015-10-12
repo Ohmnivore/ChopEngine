@@ -55,7 +55,7 @@ class Camera extends Basic
 			Height = SnowApp._snow.window.height;
 		setView(X, Y, Width, Height);
 		
-		FOV = 45.0;
+		FOV = 40.0;
 		displayMin = 0.1;
 		displayMax = 200.0;
 		pos = Vec3.fromValues(0.0, 0.0, 0.0);
@@ -139,7 +139,7 @@ class Camera extends Basic
 	
 	private function computeProjectionMatrix():Void
 	{
-		projectionMatrix = new Mat4().perspective(FOV, ratio, displayMin, displayMax);
+		projectionMatrix = new Mat4().perspective(Util.degToRad(FOV), ratio, displayMin, displayMax);
 	}
 	
 	public function computeViewMatrix():Void
@@ -154,6 +154,7 @@ class Camera extends Basic
 		
 		var upVec:Vec4 = Vec4.fromValues(0.0, 1.0, 0.0, 1.0).transMat4(Util.eulerDegToMatrix4x4(nRot.x, nRot.y, nRot.z));
 		
-		viewMatrix = new Mat4().lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));
+		//viewMatrix = new Mat4().lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));
+		viewMatrix = new Mat4().lookAt(nPos, nPos - direction, Vec3.fromValues(0.0, 1.0, 0.0));
 	}
 }
