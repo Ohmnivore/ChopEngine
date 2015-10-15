@@ -7,14 +7,14 @@ import mint.render.Rendering;
 import choprender.mint.ChopMintRender;
 import choprender.mint.Convert;
 
-import chop.math.Vec4;
+import chop.util.Color;
 import choprender.model.QuadModel;
 
 private typedef ChopMintCheckboxOptions = {
-    var color: Vec4;
-    var color_hover: Vec4;
-    var color_node: Vec4;
-    var color_node_hover: Vec4;
+    var color: Color;
+    var color_hover: Color;
+    var color_node: Color;
+    var color_node_hover: Color;
 	var group:Group;
 }
 
@@ -25,10 +25,10 @@ class Checkbox extends mint.render.Render {
     public var node : QuadModel;
     public var node_off : QuadModel;
 
-    public var color: Vec4;
-    public var color_hover: Vec4;
-    public var color_node: Vec4;
-    public var color_node_hover: Vec4;
+    public var color: Color;
+    public var color_hover: Color;
+    public var color_node: Color;
+    public var color_node_hover: Color;
 
     var render: ChopMintRender;
 
@@ -41,10 +41,10 @@ class Checkbox extends mint.render.Render {
 
         var _opt: ChopMintCheckboxOptions = checkbox.options.options;
 
-        color = Convert.def(_opt.color, Vec4.fromValues(0.21, 0.21, 0.21, 1.0));
-        color_hover = Convert.def(_opt.color_hover, Vec4.fromValues(0.26, 0.31, 0.01, 1.0));
-        color_node = Convert.def(_opt.color_node, Vec4.fromValues(0.61, 0.79, 0.02, 1.0));
-        color_node_hover = Convert.def(_opt.color_node_hover, Vec4.fromValues(0.67, 0.79, 0.02, 1.0));
+        color = Convert.def(_opt.color, Color.fromRGB(0x373737));
+        color_hover = Convert.def(_opt.color_hover, Color.fromRGB(0x445158));
+        color_node = Convert.def(_opt.color_node, Color.fromRGB(0x9dca63));
+        color_node_hover = Convert.def(_opt.color_node_hover, Color.fromRGB(0xadca63));
 
         //visual = new luxe.Sprite({
             //name: control.name+'.visual',
@@ -62,7 +62,7 @@ class Checkbox extends mint.render.Render {
 		visual.pos.x = Convert.coord(control.x);
 		visual.pos.z = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		visual.mat.diffuseColor.set(color.x, color.y, color.z);
+		visual.mat.diffuseColor.copy(color);
 		visual.pos.y = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		_opt.group.add(visual);
@@ -104,7 +104,7 @@ class Checkbox extends mint.render.Render {
 		node.pos.x = Convert.coord(control.x + 4);
 		node.pos.z = Convert.coordY(control.y + 4);
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
-		node.mat.diffuseColor.set(color_node.x, color_node.y, color_node.z);
+		node.mat.diffuseColor.copy(color_node);
 		node.pos.y = Convert.coordZ(render.options.depth + control.depth + 0.002);
 		node.visible = control.visible && checkbox.state;
 		_opt.group.add(node);
@@ -120,14 +120,12 @@ class Checkbox extends mint.render.Render {
         //checkbox.onmouseenter.listen(function(e,c) { node.color = color_node_hover; visual.color = color_hover; });
         //checkbox.onmouseleave.listen(function(e,c) { node.color = color_node; visual.color = color; });
 		checkbox.onmouseenter.listen(function(e, c) {
-			trace("onenter");
-			node.mat.diffuseColor.set(color_node_hover.x, color_node_hover.y, color_node_hover.x);
-			visual.mat.diffuseColor.set(color_hover.x, color_hover.y, color_hover.z);
+			node.mat.diffuseColor.copy(color_node_hover);
+			visual.mat.diffuseColor.copy(color_hover);
 		});
 		checkbox.onmouseleave.listen(function(e, c) {
-			trace("onleave");
-			node.mat.diffuseColor.set(color_node.x, color_node.y, color_node.x);
-			visual.mat.diffuseColor.set(color.x, color.y, color.z);
+			node.mat.diffuseColor.copy(color_node);
+			visual.mat.diffuseColor.copy(color);
 		});
 
         checkbox.onchange.listen(oncheck);
@@ -135,7 +133,6 @@ class Checkbox extends mint.render.Render {
     } //new
 
     function oncheck(_new:Bool, _old:Bool) {
-		trace("check/new/old", _new, _old);
         node.visible = _new;
 
     } //oncheck

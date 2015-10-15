@@ -36,12 +36,12 @@ class ChopLoader extends Loader
 			mat.ambientIntensity = Std.parseInt(materialNode.att.ambient_intensity) / 100.0;
 			mat.emit = Std.parseInt(materialNode.att.emit) / 100.0;
 			mat.transparency = Std.parseInt(materialNode.att.transparency) / 100.0;
-			mat.diffuseColor.x = Std.parseInt(materialNode.att.diffuse_r) / 100.0;
-			mat.diffuseColor.y = Std.parseInt(materialNode.att.diffuse_g) / 100.0;
-			mat.diffuseColor.z = Std.parseInt(materialNode.att.diffuse_b) / 100.0;
-			mat.specularColor.x = Std.parseInt(materialNode.att.specular_r) / 100.0;
-			mat.specularColor.y = Std.parseInt(materialNode.att.specular_g) / 100.0;
-			mat.specularColor.z = Std.parseInt(materialNode.att.specular_b) / 100.0;
+			mat.diffuseColor.r = Std.parseInt(materialNode.att.diffuse_r) / 100.0;
+			mat.diffuseColor.g = Std.parseInt(materialNode.att.diffuse_g) / 100.0;
+			mat.diffuseColor.b = Std.parseInt(materialNode.att.diffuse_b) / 100.0;
+			mat.specularColor.r = Std.parseInt(materialNode.att.specular_r) / 100.0;
+			mat.specularColor.g = Std.parseInt(materialNode.att.specular_g) / 100.0;
+			mat.specularColor.b = Std.parseInt(materialNode.att.specular_b) / 100.0;
 			data.materials.push(mat);
 		}
 		

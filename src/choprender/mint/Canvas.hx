@@ -1,6 +1,7 @@
 package choprender.mint;
 
 import chop.math.Vec2;
+import chop.util.Color;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -8,11 +9,10 @@ import choprender.mint.ChopMintRender;
 import choprender.mint.Convert;
 
 import choprender.model.QuadModel;
-import chop.math.Vec4;
 import chop.group.Group;
 
 private typedef ChopMintCanvasOptions = {
-    var color: Vec4;
+    var color: Color;
     var group: Group;
 }
 
@@ -21,7 +21,7 @@ class Canvas extends mint.render.Render {
     public var canvas : mint.Canvas;
     public var visual : QuadModel;
 
-    public var color : Vec4;
+    public var color : Color;
 
     var render: ChopMintRender;
 
@@ -34,7 +34,7 @@ class Canvas extends mint.render.Render {
 
         var _opt: ChopMintCanvasOptions = canvas.options.options;
 
-        color = Convert.def(_opt.color, Vec4.fromValues(0.04, 0.04, 0.04, 0));
+        color = Convert.def(_opt.color, Color.fromRGB(0x0c0c0c));
 
         //visual = Luxe.draw.box({
             //id: control.name+'.visual',
@@ -56,7 +56,7 @@ class Canvas extends mint.render.Render {
 		visual.pos.x = Convert.coord(control.x);
 		visual.pos.z = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		visual.mat.diffuseColor.set(color.x, color.y, color.z);
+		visual.mat.diffuseColor.copy(color);
 		visual.pos.y = -render.options.depth - control.depth;
 		visual.visible = control.visible;
 		_opt.group.add(visual);

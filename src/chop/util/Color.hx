@@ -6,8 +6,16 @@ import chop.math.Vec4;
  * @author Ohmnivore
  */
 
-class Color extends Vec4
+abstract Color(Array<Float>)
 {
+	public function new()
+	{
+		this = new Array<Float>();
+		this[0] = 0;
+		this[1] = 0;
+		this[2] = 0;
+	}
+	
 	public var r(get, set):Float;
 	public function get_r():Float
 	{
@@ -41,31 +49,56 @@ class Color extends Vec4
 		return V;
 	}
 	
-	public var a(get, set):Float;
-	public function get_a():Float
+	public static function fromValues(r:Float, g:Float, b:Float):Color
 	{
-		return this[3];
+		var v = new Color();
+		v.set(r, g, b);
+		return v;
 	}
-	public function set_a(V:Float):Float
+
+	public static function clone(v:Color):Color
 	{
-		this[3] = V;
-		return V;
+		return v.cp();
 	}
 	
-	public function rgba(RGB:Int, A:Float = 1.0):Color
+	public function copy(v:Color):Color
 	{
-		var _r = _i >> 16;
-        var _g = _i >> 8 & 0xFF;
-        var _b = _i & 0xFF;
+		this[0] = v.r;
+		this[1] = v.g;
+		this[2] = v.b;
+		return cast this;
+	}
+
+	public function cp():Color
+	{
+		var v = new Array<Float>();
+		v[0] = this[0];
+		v[1] = this[1];
+		v[2] = this[2];
+		return cast v;
+	}
+
+	public function set(r:Float, g:Float, b:Float):Color
+	{
+		this[0] = r;
+		this[1] = g;
+		this[2] = b;
+		return cast this;
+	}
+	
+	public function rgb(RGB:Int):Color
+	{
+		var _r = RGB >> 16;
+        var _g = RGB >> 8 & 0xFF;
+        var _b = RGB & 0xFF;
         r = _r / 255;
         g = _g / 255;
         b = _b / 255;
-		a = A;
-        return this;
-    }
-	static public function fromRGBA(RGB:Int, A:Float = 1.0):Color
+        return cast this;
+	}
+	static public function fromRGB(RGB:Int):Color
 	{
 		var c:Color = new Color();
-		return c.rgba(RGB, A);
+		return c.rgb(RGB);
 	}
 }

@@ -1,7 +1,6 @@
 # TODO
 ## Rendering
 * depth for ui
-* color class
 * bitmap blit instead of copy
 * text color
 * text size
