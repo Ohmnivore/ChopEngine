@@ -1,10 +1,11 @@
 # TODO
 ## Rendering
+* depth for ui
+* color class
 * bitmap blit instead of copy
 * text color
 * text size
 * Text line right/center/left align
-* Text max width
 * integrate mint
 
 ## Rendering (eventually)

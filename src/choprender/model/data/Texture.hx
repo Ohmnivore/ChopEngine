@@ -1,6 +1,5 @@
 package choprender.model.data;
 
-import chop.assets.Assets;
 import choprender.render3d.shader.ChopTexture;
 import choprender.render3d.shader.ChopTextureParam;
 import choprender.render3d.opengl.GL;
@@ -36,7 +35,7 @@ class Texture
 	
 	public function loadFile(P:String):Void
 	{
-		loadImage(Assets.getImage(P));
+		loadImage(Main.assets.getImage(P));
 		
 	}
 	public function loadImage(I:ImageInfo):Void

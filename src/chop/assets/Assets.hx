@@ -12,21 +12,21 @@ import haxe.io.Path;
  */
 class Assets
 {
-	static private var assets:Map<String, Asset>;
-	static private var totalAssets:Int;
-	static private var currentAssets:Int;
+	private var assets:Map<String, Asset>;
+	public var totalAssets:Int;
+	public var currentAssets:Int;
 	
 	public function new()
 	{
-		
+		reset();
 	}
-	static public function init():Void
+	public function reset():Void
 	{
 		assets = new Map<String, Asset>();
 		totalAssets = 0;
 		currentAssets = 0;
 	}
-	static public function loadManifest():Void
+	public function loadManifest():Void
 	{
 		for (id in SnowApp._snow.assets.list)
 		{
@@ -39,17 +39,17 @@ class Assets
 			else if (ext == "chopmesh") loadText(id);
 		}
 	}
-	static public function isReady():Bool
+	public function isReady():Bool
 	{
 		return currentAssets == totalAssets;
 	}
 	
-	static private function setAsset(ID:String, A:Asset):Void
+	private function setAsset(ID:String, A:Asset):Void
 	{
 		assets.set(ID, A);
 		currentAssets++;
 	}
-	static private function loadAsset(ID:String, P:Promise):Void
+	private function loadAsset(ID:String, P:Promise):Void
 	{
 		totalAssets++;
 		P.then(
@@ -64,53 +64,53 @@ class Assets
 		}
 		);
 	}
-	static public function loadBytes(ID:String):Void
+	public function loadBytes(ID:String):Void
 	{
 		loadAsset(ID, SnowApp._snow.assets.bytes(ID));
 	}
-	static public function loadImage(ID:String):Void
+	public function loadImage(ID:String):Void
 	{
 		loadAsset(ID, SnowApp._snow.assets.image(ID));
 	}
-	static public function loadImageFromBytes(ID:String, B:Uint8Array):Void
+	public function loadImageFromBytes(ID:String, B:Uint8Array):Void
 	{
 		loadAsset(ID, SnowApp._snow.assets.image_from_bytes(ID, B));
 	}
-	static public function loadImageFromPixels(ID:String, Width:Int, Height:Int, P:Uint8Array):Void
+	public function loadImageFromPixels(ID:String, Width:Int, Height:Int, P:Uint8Array):Void
 	{
 		totalAssets++;
 		setAsset(ID, SnowApp._snow.assets.image_from_pixels(ID, Width, Height, P));
 	}
-	static public function loadJSON(ID:String):Void
+	public function loadJSON(ID:String):Void
 	{
 		loadAsset(ID, SnowApp._snow.assets.json(ID));
 	}
-	static public function loadText(ID:String):Void
+	public function loadText(ID:String):Void
 	{
 		loadAsset(ID, SnowApp._snow.assets.text(ID));
 	}
 	
-	static private function check(ID:String):Void
+	private function check(ID:String):Void
 	{
 		if (!assets.exists(ID))
 			trace("Couldn't find loaded asset: " + ID);
 	}
-	static public function getBytes(ID:String):Uint8Array
+	public function getBytes(ID:String):Uint8Array
 	{
 		check(ID);
 		return cast(assets.get(ID), AssetBytes).bytes;
 	}
-	static public function getImage(ID:String):ImageInfo
+	public function getImage(ID:String):ImageInfo
 	{
 		check(ID);
 		return cast(assets.get(ID), AssetImage).image;
 	}
-	static public function getJSON(ID:String):Dynamic
+	public function getJSON(ID:String):Dynamic
 	{
 		check(ID);
 		return cast(assets.get(ID), AssetJSON).json;
 	}
-	static public function getText(ID:String):String
+	public function getText(ID:String):String
 	{
 		check(ID);
 		return cast(assets.get(ID), AssetText).text;

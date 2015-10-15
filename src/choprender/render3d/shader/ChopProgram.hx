@@ -9,7 +9,6 @@ import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.GLUtil;
 import chop.math.Mat4;
 import chop.math.Vec3;
-import chop.assets.Assets;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
 

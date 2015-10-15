@@ -1,6 +1,5 @@
 package;
 
-import chopengine.gen.Global;
 import chopengine.input.Mouse;
 import choprender.GlobalRender;
 import chopengine.gen.State;
@@ -14,6 +13,8 @@ import choprender.render3d.light.SunLight;
 import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Text;
 import snow.types.Types.Key;
+
+import mint.Checkbox;
 
 /**
  * ...
@@ -31,12 +32,26 @@ class PlayState extends State
 		GlobalRender.cam.bgColor.y = 1.0;
 		GlobalRender.cam.bgColor.z = 1.0;
 		
-		var m:Model = new Model();
-		m.loadChop("assets/mesh/lowpoly.chopmesh");
-		add(m);
+		//var m:Model = new Model();
+		//m.loadChop("assets/mesh/lowpoly.chopmesh");
+		//add(m);
+		
+		var check:Checkbox = new Checkbox( {
+			options: { group: this },
+            parent: canvas,
+            name: "checkbox_test",
+            x: 0, y: 0, w: 32, h: 32
+        });
 		
 		var f:FontBuilderNGL = new FontBuilderNGL();
 		f.loadFile("assets/font/04b03_regular_8.xml");
+		
+		var q:QuadModel = new QuadModel();
+		q.mat.useShading = false;
+		q.pos.x = 0;
+		q.pos.z = 2;
+		q.setSize(2.0, 1.0);
+		add(q);
 		
 		var t:Text = new Text(f.font);
 		t.pos.x = 0;
@@ -140,7 +155,7 @@ class PlayState extends State
 		if (SnowApp._snow.input.keydown(Key.lctrl))
 			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
 		
-		if (Mouse.rightPressed)
-			GlobalRender.cam.rot.z -= Mouse.xRel / 2.0;
+		if (Main.game.mouse.rightPressed)
+			GlobalRender.cam.rot.z -= Main.game.mouse.xRel / 2.0;
 	}
 }

@@ -1,5 +1,6 @@
 package;
 
+import chop.math.Vec4;
 import chopengine.gen.Game;
 import chopengine.input.Mouse;
 import choprender.render3d.opengl.GL;
@@ -7,10 +8,17 @@ import choprender.render3d.opengl.ChopGL;
 import snow.types.Types;
 import chop.assets.Assets;
 
+import choprender.mint.ChopMintRender;
+import mint.layout.margins.Margins;
+import choprender.mint.Convert;
+import mint.types.Types.InteractState;
+
 @:log_as('chop')
 class Main extends snow.App 
 {
-	public var game:Game;
+	public static var assets:Assets;
+	public static var game:Game;
+    public static var rendering:ChopMintRender;
 	
     override function config(config:AppConfig):AppConfig 
     {
@@ -22,63 +30,53 @@ class Main extends snow.App
 
     override function ready() 
     {
-		Assets.init();
-		Assets.loadManifest();
-    }
-
-    override function onkeyup(keycode:Int, _,_, mod:ModState, _,_) 
-    {
-        if( keycode == Key.escape ) 
-        {
-            app.shutdown();
-        }
+		assets = new Assets();
+		assets.loadManifest();
     }
 
     override function update(delta:Float)
     {
-		if (game == null && Assets.isReady())
+		if (game == null && assets.isReady())
 		{
+			rendering = new ChopMintRender();
 			game = new Game(new PlayState());
 			app.window.onrender = render;
 		}
-		if (game != null)
+		if (assets.isReady())
 			game.update(delta);
     }
-
+	
     function render(window:snow.system.window.Window) 
     {
-		if (game != null)
+		if (assets.isReady())
 			game.draw(delta_time);
     }
 	
 	override public function onmousemove(x:Int, y:Int, xrel:Int, yrel:Int, timestamp:Float, window_id:Int) 
 	{
 		super.onmousemove(x, y, xrel, yrel, timestamp, window_id);
-		Mouse.x = x;
-		Mouse.y = y;
-		Mouse.xRel = xrel;
-		Mouse.yRel = yrel;
+		if (assets.isReady())
+		{
+			game.state.canvas.mousemove(Convert.mouseEvent(x, y, xrel, yrel, 0, timestamp, InteractState.move));
+			game.mouse.onmousemove(x, y, xrel, yrel);
+		}
 	}
-	
 	override public function onmousedown(x:Int, y:Int, button:Int, timestamp:Float, window_id:Int) 
 	{
 		super.onmousedown(x, y, button, timestamp, window_id);
-		if (button == 1)
-			Mouse.leftPressed = true;
-		else if (button == 2)
-			Mouse.middlePressed = true;
-		else if (button == 3)
-			Mouse.rightPressed = true;
+		if (assets.isReady())
+		{
+			game.state.canvas.mousedown(Convert.mouseEvent(x, y, 0, 0, 0, timestamp, InteractState.down));
+			game.mouse.onmousedown(button);
+		}
 	}
-	
 	override public function onmouseup(x:Int, y:Int, button:Int, timestamp:Float, window_id:Int) 
 	{
 		super.onmouseup(x, y, button, timestamp, window_id);
-		if (button == 1)
-			Mouse.leftPressed = false;
-		else if (button == 2)
-			Mouse.middlePressed = false;
-		else if (button == 3)
-			Mouse.rightPressed = false;
+		if (assets.isReady())
+		{
+			game.state.canvas.mouseup(Convert.mouseEvent(x, y, 0, 0, 0, timestamp, InteractState.up));
+			game.mouse.onmouseup(button);
+		}
 	}
 }

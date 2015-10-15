@@ -51,6 +51,8 @@ class AnimController
 	
 	public function update(Sec:Float):Void
 	{
+		if (curAnim != null)
+		{
 		elapsed += Std.int(Sec * 1000);
 		if (curAnim.frames.length > 1)
 		{
@@ -76,6 +78,7 @@ class AnimController
 					}
 				}
 			}
+		}
 		}
 	}
 	

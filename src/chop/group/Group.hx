@@ -1,4 +1,4 @@
-package chopengine.group;
+package chop.group;
 
 import chop.gen.Basic;
 

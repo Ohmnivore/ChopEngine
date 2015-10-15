@@ -1,5 +1,6 @@
 package chopengine.gen;
 
+import chopengine.input.Mouse;
 import choprender.GlobalRender;
 import choprender.render3d.Camera;
 import choprender.render3d.shader.ChopProgram;
@@ -14,25 +15,30 @@ import choprender.render3d.opengl.GL;
  */
 class Game
 {
+	public var mouse:Mouse;
+	public var state:State;
+	
 	public function new(S:State) 
 	{
-		Global.game = this;
-		Global.state = S;
+		mouse = new Mouse();
+		
+		state = S;
 		
 		GlobalRender.cam = new Camera();
 		GlobalRender.cams.push(GlobalRender.cam);
-		GlobalRender.members = Global.state.members;
+		GlobalRender.members = state.members;
 		
-		Global.state.create();
+		state.create();
 		
-		GlobalRender.lights = Global.state.lights;
+		GlobalRender.lights = state.lights;
 	}
 	
 	public function update(Delta:Float):Void
 	{
 		for (cam in GlobalRender.cams)
 			cam.update(Delta);
-		Global.state.update(Delta);
+		state.update(Delta);
+		mouse.update();
 	}
 	
 	public function draw(Delta:Float):Void
@@ -40,7 +46,7 @@ class Game
 		GL.clear(GL.COLOR_BUFFER_BIT);
 		GL.clear(GL.DEPTH_BUFFER_BIT);
 		
-		Global.state.draw(Delta);
+		state.draw(Delta);
 		for (cam in GlobalRender.cams)
 		{
 			cam.preDraw(Delta);

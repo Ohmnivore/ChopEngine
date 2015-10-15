@@ -1,6 +1,5 @@
 package choprender.model;
 
-import chop.assets.Assets;
 import choprender.model.Model;
 import choprender.model.data.*;
 import choprender.render3d.opengl.GL.Uint8Array;
@@ -28,18 +27,31 @@ class QuadModel extends Model
 	{
 		super();
 		
+		//v0 = new Vertex();
+		//v0.x = -1;
+		//v0.y = -1;
+		//v1 = new Vertex();
+		//v1.x = 1;
+		//v1.y = -1;
+		//v2 = new Vertex();
+		//v2.x = 1;
+		//v2.y = 1;
+		//v3 = new Vertex();
+		//v3.x = -1;
+		//v3.y = 1;
+		
 		v0 = new Vertex();
-		v0.x = -1;
+		v0.x = 0;
 		v0.y = -1;
 		v1 = new Vertex();
 		v1.x = 1;
 		v1.y = -1;
 		v2 = new Vertex();
 		v2.x = 1;
-		v2.y = 1;
+		v2.y = 0;
 		v3 = new Vertex();
-		v3.x = -1;
-		v3.y = 1;
+		v3.x = 0;
+		v3.y = 0;
 		
 		face0 = new Face();
 		face0.geomIdx = [0, 1, 2];
@@ -67,12 +79,21 @@ class QuadModel extends Model
 		data.faces = [face0, face1];
 		data.materials = [mat];
 		
-		anim.play(anim0.name, true);
+		anim.setFrame(frame0);
+	}
+	
+	public function setSize(W:Float, H:Float):Void
+	{
+		v0.y = -H;
+		v1.y = -H;
+		v1.x = W;
+		v2.x = W;
+		anim.setFrame(frame0);
 	}
 	
 	public function loadTexFile(P:String):Void
 	{
-		loadTexImage(Assets.getImage(P));
+		loadTexImage(Main.assets.getImage(P));
 	}
 	public function loadTexImage(I:ImageInfo):Void
 	{

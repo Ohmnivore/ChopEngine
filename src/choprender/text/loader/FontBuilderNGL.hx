@@ -1,6 +1,5 @@
 package choprender.text.loader;
 
-import chop.assets.Assets;
 import choprender.model.data.Bitmap;
 import choprender.text.loader.FontBuilderNGL.Font;
 import choprender.text.loader.FontBuilderNGL.FontChar;
@@ -28,7 +27,7 @@ class FontBuilderNGL
 	public function loadFile(P:String):Void
 	{
 		path = P;
-		var source:String = Assets.getText(P);
+		var source:String = Main.assets.getText(P);
 		loadSource(source);
 	}
 	
@@ -71,7 +70,7 @@ class FontBuilderNGL
 		}
 		
 		var fullPath = Path.join([Path.directory(path), font.texFile]);
-		var img:ImageInfo = Assets.getImage(fullPath);
+		var img:ImageInfo = Main.assets.getImage(fullPath);
 		font.tex = new Bitmap();
 		font.tex.pixels = img.pixels;
 		font.tex.width = img.width;

@@ -12,7 +12,6 @@ import choprender.render3d.shader.ChopProgramMgr;
 import choprender.render3d.GLUtil;
 import chop.math.Mat4;
 import chop.math.Vec3;
-import chop.assets.Assets;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
 
@@ -44,9 +43,9 @@ class ShaderGBuffer extends ChopProgram
 		v = Vec3.fromValues(0.0, 0.0, 0.0);
 		
 		var id:String = "assets/shader/g_buffer_vertex.glsl";
-		new ChopShader(id, Assets.getText(id), GL.VERTEX_SHADER).attach(prog);
+		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
 		id = "assets/shader/g_buffer_fragment.glsl";
-		new ChopShader(id, Assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
+		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
 		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, ChopGL.RGBA16F, C.width, C.height, GL.RGBA, GL.FLOAT);
