@@ -194,9 +194,10 @@ class Checkbox extends mint.render.Render {
         //visual.depth = render.options.depth + _depth;
         //node_off.depth = visual.depth + 0.001;
         //node.depth = visual.depth + 0.002;
-		visual.pos.y = Convert.coordZ(render.options.depth + _depth);
-		node_off.pos.y = Convert.coordZ(visual.pos.y + 0.001);
-		node.pos.y = Convert.coordZ(visual.pos.y + 0.002);
+		trace("depth", render.options.depth, _depth, render.options.depth + _depth);
+		//visual.pos.y = Convert.coordZ(render.options.depth + _depth);
+		//node_off.pos.y = Convert.coordZ(visual.pos.y + 0.001);
+		//node.pos.y = Convert.coordZ(visual.pos.y + 0.002);
 
     } //ondepth
 

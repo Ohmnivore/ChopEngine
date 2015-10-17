@@ -27,7 +27,7 @@ class Main extends snow.App
 		config.window.height = 640;
         return config;
     }
-
+	
     override function ready() 
     {
 		assets = new Assets();

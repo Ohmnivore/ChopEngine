@@ -14,7 +14,7 @@ import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Text;
 import snow.types.Types.Key;
 
-import mint.Checkbox;
+import mint.*;
 
 /**
  * ...
@@ -36,12 +36,27 @@ class PlayState extends State
 		//m.loadChop("assets/mesh/lowpoly.chopmesh");
 		//add(m);
 		
-		var check:Checkbox = new Checkbox( {
+		var check:Checkbox = new Checkbox({
 			options: { group: this },
             parent: canvas,
-            name: "checkbox_test",
+            name: "test_check",
             x: 0, y: 0, w: 32, h: 32
         });
+		var btn:Button = new Button({
+			options: { group: this },
+            parent: canvas,
+            name: "test_btn",
+			text: "Test btn",
+            x: 64, y: 64, w: 64, h: 32
+		});
+		var ddown:Dropdown = new Dropdown({
+			options: { group: this },
+            parent: canvas,
+            name: "test_ddown",
+			text: "Test ddown",
+			x: 128, y: 128, w: 64, h: 32
+		});
+		//var dlist:Array<String> = ["item1", "item2", "item3"];
 		
 		var f:FontBuilderNGL = new FontBuilderNGL();
 		f.loadFile("assets/font/04b03_regular_8.xml");
@@ -57,6 +72,7 @@ class PlayState extends State
 		t.pos.x = 0;
 		t.pos.z = 4;
 		t.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		t.setText("ChopEngine is chopping.\nIt's also far from done.");
 		add(t);
 		
 		var t2:Text = new Text(f.font);

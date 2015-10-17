@@ -37,7 +37,11 @@ class ChopMintRender extends mint.render.Rendering {
     override function get<T:Control, T1>( type:Class<T>, control:T ) : T1 {
         return cast switch(type) {
             case mint.Canvas:       new choprender.mint.Canvas(this, cast control);
-            case mint.Checkbox:       new choprender.mint.Checkbox(this, cast control);
+            case mint.Label:       new choprender.mint.Label(this, cast control);
+            case mint.Button:       new choprender.mint.Button(this, cast control);
+            case mint.List:         new choprender.mint.List(this, cast control);
+            case mint.Checkbox:     new choprender.mint.Checkbox(this, cast control);
+            case mint.Dropdown:     new choprender.mint.Dropdown(this, cast control);
 			
             //case mint.Canvas:       new mint.render.luxe.Canvas(this, cast control);
             //case mint.Label:        new mint.render.luxe.Label(this, cast control);
