@@ -2,8 +2,13 @@ package choprender.model.data;
 
 import chop.math.Vec2;
 import chop.math.Vec4;
+import choprender.render3d.opengl.GL.ArrayBuffer;
 import choprender.render3d.opengl.GL.Uint8Array;
+#if !js
 import snow.api.buffers.ArrayBufferIO;
+#else
+import snow.api.buffers.DataView;
+#end
 
 /**
  * ...
@@ -14,6 +19,26 @@ class Bitmap
 	public var pixels:Uint8Array;
 	public var width:Int;
 	public var height:Int;
+	
+	static private function getUint8(Arr:ArrayBuffer, Pos:Int):Int
+	{
+		#if !js
+		return ArrayBufferIO.getUint8(Arr, Pos);
+		#else
+		var dv:DataView = new DataView(cast Arr);
+		return dv.getUint8(Pos);
+		#end
+	}
+	
+	static private function setUint8(Arr:ArrayBuffer, Pos:Int, V:Int):Void
+	{
+		#if !js
+		ArrayBufferIO.setUint8(Arr, Pos, V);
+		#else
+		var dv:DataView = new DataView(cast Arr);
+		dv.setUint8(Pos, V);
+		#end
+	}
 	
 	public function new() 
 	{
@@ -43,10 +68,10 @@ class Bitmap
 					var p:Array<Int> = getPixel(x, y);
 					
 					var id:Int = x * 4 + y * Width * 4;
-					ArrayBufferIO.setUint8(newArr.buffer, id, p[0]);
-					ArrayBufferIO.setUint8(newArr.buffer, id + 1, p[1]);
-					ArrayBufferIO.setUint8(newArr.buffer, id + 2, p[2]);
-					ArrayBufferIO.setUint8(newArr.buffer, id + 3, p[3]);
+					setUint8(newArr.buffer, id, p[0]);
+					setUint8(newArr.buffer, id + 1, p[1]);
+					setUint8(newArr.buffer, id + 2, p[2]);
+					setUint8(newArr.buffer, id + 3, p[3]);
 					
 				}
 			}
@@ -60,20 +85,20 @@ class Bitmap
 	{
 		var id:Int = X * 4 + Y * width * 4;
 		return [
-			ArrayBufferIO.getUint8(pixels.buffer, id),
-			ArrayBufferIO.getUint8(pixels.buffer, id + 1),
-			ArrayBufferIO.getUint8(pixels.buffer, id + 2),
-			ArrayBufferIO.getUint8(pixels.buffer, id + 3)
+			getUint8(pixels.buffer, id),
+			getUint8(pixels.buffer, id + 1),
+			getUint8(pixels.buffer, id + 2),
+			getUint8(pixels.buffer, id + 3)
 		];
 	}
 	
 	public function setPixel(X:Int, Y:Int, Arr:Array<Int>):Void
 	{
 		var id:Int = X * 4 + Y * width * 4;
-		ArrayBufferIO.setUint8(pixels.buffer, id, Arr[0]);
-		ArrayBufferIO.setUint8(pixels.buffer, id + 1, Arr[1]);
-		ArrayBufferIO.setUint8(pixels.buffer, id + 2, Arr[2]);
-		ArrayBufferIO.setUint8(pixels.buffer, id + 3, Arr[3]);
+		setUint8(pixels.buffer, id, Arr[0]);
+		setUint8(pixels.buffer, id + 1, Arr[1]);
+		setUint8(pixels.buffer, id + 2, Arr[2]);
+		setUint8(pixels.buffer, id + 3, Arr[3]);
 	}
 	
 	public function displace(Rect:Vec4, Delta:Vec2, Clear:Vec4 = null):Void

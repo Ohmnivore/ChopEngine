@@ -8,6 +8,7 @@
 * integrate mint
 
 ## Rendering (eventually)
+* integrate iqm model format: https://github.com/snowkit/iqm/
 * Test multiple cameras setup on other computer
 * Get face normals from chopmesh file
 * Batching

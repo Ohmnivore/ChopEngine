@@ -4,7 +4,7 @@ import chop.math.Vec4;
 import chopengine.gen.Game;
 import chopengine.input.Mouse;
 import choprender.render3d.opengl.GL;
-import choprender.render3d.opengl.ChopGL;
+import choprender.render3d.shaderexp.opengl.ChopGL;
 import snow.types.Types;
 import chop.assets.Assets;
 
@@ -25,6 +25,7 @@ class Main extends snow.App
         config.window.title = 'ChopEngine';
 		config.window.width = 960;
 		config.window.height = 640;
+		config.render.antialiasing = 8;
         return config;
     }
 	

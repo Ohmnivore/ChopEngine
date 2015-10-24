@@ -7,7 +7,6 @@ import choprender.model.data.Texture;
 import choprender.model.QuadModel;
 import choprender.text.loader.FontBuilderNGL.Font;
 import choprender.text.loader.FontBuilderNGL.FontChar;
-import snow.api.buffers.ArrayBufferIO;
 import snow.api.buffers.ArrayBuffer;
 import choprender.render3d.opengl.GL.Uint8Array;
 
@@ -121,7 +120,7 @@ class Text extends QuadModel
 		}
 		loadTexData(b.pixels, b.width, b.height);
 		scale.x = b.width / b.height;
-		scale.y = b.height / b.width;
+		scale.z = b.height / b.width;
 		
 		textWidth = b.width;
 	}

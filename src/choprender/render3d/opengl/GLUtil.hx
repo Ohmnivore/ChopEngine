@@ -1,4 +1,4 @@
-package choprender.render3d;
+package choprender.render3d.opengl;
 
 import chop.math.Mat4;
 import chop.math.Vec2;

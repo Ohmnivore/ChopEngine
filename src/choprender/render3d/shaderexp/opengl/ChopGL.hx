@@ -1,4 +1,4 @@
-package choprender.render3d.opengl;
+package choprender.render3d.shaderexp.opengl;
 
 /**
  * ...

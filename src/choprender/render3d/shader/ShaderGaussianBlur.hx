@@ -5,16 +5,12 @@ import choprender.model.data.Vertex;
 import choprender.model.Model;
 import choprender.render3d.Camera;
 import choprender.render3d.opengl.GL;
-import choprender.render3d.opengl.ChopGL;
+import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
-import chop.render3d.Program;
-import choprender.render3d.GLUtil;
-import hxmath.math.MathUtil;
-import hxmath.math.Matrix4x4;
-import hxmath.math.Vector2;
-import hxmath.math.Vec3;
-import chop.math.Util;
+import choprender.render3d.opengl.GLUtil;
 import choprender.render3d.opengl.GL.Float32Array;
+import chop.assets.Assets;
+import chop.math.Vec2;
 
 /**
  * ...
@@ -35,9 +31,9 @@ class ShaderGaussianBlur extends ChopQuadProgram
 		type = ChopProgram.ONESHOT;
 		
 		var id:String = "assets/shader/gaussian_blur_vertex.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.VERTEX_SHADER).attach(prog);
+		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
 		id = "assets/shader/gaussian_blur_fragment.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
+		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
 		inTextures.push(new ChopTextureDescriptor("gLight", "texture"));
@@ -57,7 +53,7 @@ class ShaderGaussianBlur extends ChopQuadProgram
 		GLUtil.setInt(GLUtil.getLocation(prog, "horizontalPass"), horizInt);
 		GLUtil.setFloat(GLUtil.getLocation(prog, "sigma"), sigma);
 		var inpTex:ChopTexture = Mgr.textures.get(inTextures[0].globalName);
-		GLUtil.setUniform(prog, "texOffset", new Vector2(1.0 / inpTex.width, 1.0 / inpTex.height));
+		GLUtil.setUniform(prog, "texOffset", Vec2.fromValues(1.0 / inpTex.width, 1.0 / inpTex.height));
 		
 		super.render(M, C, Mgr);
 	}

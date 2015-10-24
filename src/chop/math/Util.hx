@@ -20,16 +20,6 @@ class Util
 		return 180 / Math.PI * Rad;
 	}
 	
-	static public function Vector3ToGLSoft(V:Vec3):Vec3
-	{
-		return Vec3.fromValues(V.x, V.z, V.y);
-	}
-	
-	static public function Vector3ToGL(V:Vec3):Vec3
-	{
-		return Vec3.fromValues(V.x, V.z, -V.y);
-	}
-	
 	static public function eulerDegToMatrix4x4(X:Float, Y:Float, Z:Float):Mat4
 	{
 		return eulerRadToMatrix4x4(degToRad(X), degToRad(Y), degToRad(Z));

@@ -5,7 +5,7 @@ import choprender.GlobalRender;
 import choprender.render3d.Camera;
 import choprender.render3d.shader.ChopProgram;
 import choprender.render3d.shader.ChopProgramMgr;
-import choprender.render3d.shader.ShaderGBuffer;
+import choprender.render3d.shaderexp.ShaderGBuffer;
 import choprender.render3d.shader.ShaderQuadTexture;
 import choprender.render3d.opengl.GL;
 

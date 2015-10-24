@@ -108,7 +108,7 @@ class Button extends mint.render.Render {
     override function ondepth( _depth:Float ) {
 
         //visual.depth = render.options.depth + _depth;
-		trace("depth", render.options.depth, _depth, render.options.depth + _depth);
+		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		//visual.pos.y = Convert.coordZ(render.options.depth + _depth);
 
     } //ondepth

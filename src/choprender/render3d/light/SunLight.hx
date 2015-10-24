@@ -1,6 +1,6 @@
 package choprender.render3d.light;
 
-import choprender.render3d.GLUtil;
+import choprender.render3d.opengl.GLUtil;
 import choprender.render3d.opengl.GL;
 import chop.math.Vec3;
 import chop.math.Util;
@@ -23,7 +23,7 @@ class SunLight extends Light
 	override public function setUniforms(P:GLProgram, I:Int):Void 
 	{
 		super.setUniforms(P, I);
-		GLUtil.setUniformElement(P, "allLights", I, "direction", Util.Vector3ToGL(dir));
+		GLUtil.setUniformElement(P, "allLights", I, "direction", dir);
 		//GLUtil.setUniformElement(P, "allLights", I, "type", 0);
 		
 		GLUtil.setInt(GLUtil.getLocation(P, "allLights[" + I + "].type"), 0);

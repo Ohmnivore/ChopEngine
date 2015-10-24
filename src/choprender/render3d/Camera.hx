@@ -3,11 +3,11 @@ package choprender.render3d;
 import chop.gen.Basic;
 import choprender.render3d.shader.ChopProgramMgr;
 import choprender.render3d.shader.ChopProgram;
-import choprender.render3d.shader.DefaultProgramMgr;
-import choprender.render3d.shader.ShaderFXAA;
-import choprender.render3d.shader.ShaderGBuffer;
-import choprender.render3d.shader.ShaderLights;
-import choprender.render3d.shader.ShaderRGBAToLuma;
+import choprender.render3d.shader.ForwardProgramMgr;
+import choprender.render3d.shaderexp.ShaderFXAA;
+import choprender.render3d.shaderexp.ShaderGBuffer;
+import choprender.render3d.shaderexp.ShaderDeferredLights;
+import choprender.render3d.shaderexp.ShaderRGBAToLuma;
 import chop.math.Mat4;
 import chop.math.Vec2;
 import chop.math.Vec3;
@@ -18,8 +18,6 @@ import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLProgram;
 import choprender.render3d.opengl.GL.GLShader;
 import chop.render3d.shader.*;
-import choprender.render3d.opengl.ChopGL;
-import choprender.render3d.opengl.ChopGL_FFI;
 
 /**
  * ...
@@ -69,7 +67,7 @@ class Camera extends Basic
 	
 	private function createProgramMgrs():Void
 	{
-		mgr = new DefaultProgramMgr(this);
+		mgr = new ForwardProgramMgr(this);
 		mgr.init();
 	}
 	
@@ -87,47 +85,12 @@ class Camera extends Basic
 	
 	public function preDraw(Elapsed:Float):Void
 	{
-		GL.enable(GL.CULL_FACE);
-		GL.enable(GL.DEPTH_TEST);
-		GL.depthFunc(GL.LEQUAL);
-		GL.clearDepth(1.0);
-		
-		GL.viewport(Std.int(screenPos.x), Std.int(SnowApp._snow.window.height - screenPos.y - height), width, height);
-		GL.clearColor(bgColor.x, bgColor.y, bgColor.z, 1.0);
-		GL.clear(GL.DEPTH_BUFFER_BIT);
+		mgr.preDraw(Elapsed);
 	}
 	
 	public function postDraw(Elapsed:Float):Void
 	{
-		// TODO: mgr array
-		for (p in mgr.progs)
-		{
-			if (p.type == ChopProgram.MULTIPLE)
-			{
-				var toRender:Array<Model> = [];
-				for (basic in GlobalRender.members)
-				{
-					if (Std.is(basic, Model))
-					{
-						var m:Model = cast basic;
-						//if (m.mgr == mgr)
-						//{
-							toRender.push(m);
-						//}
-					}
-				}
-				p.preRender(mgr);
-				p.render(toRender, this, mgr);
-			}
-			else if (p.type == ChopProgram.ONESHOT)
-			{
-				p.preRender(mgr);
-				p.render(null, this, mgr);
-			}
-		}
-		
-		GL.disable(GL.CULL_FACE);
-		GL.disable(GL.DEPTH_TEST);
+		mgr.postDraw(Elapsed);
 	}
 	
 	override public function update(Elapsed:Float):Void 
@@ -144,8 +107,8 @@ class Camera extends Basic
 	
 	public function computeViewMatrix():Void
 	{
-		var nPos:Vec3 = Util.Vector3ToGL(pos);
-		var nRot:Vec3 = Util.Vector3ToGLSoft(rot);
+		var nPos:Vec3 = pos;
+		var nRot:Vec3 = rot;
 		
 		var direction:Vec3 = Vec3.fromValues(0.0, 0.0, 1.0);
 		direction.x = Math.sin(Util.degToRad(nRot.y)) * Math.cos(Util.degToRad(nRot.x));

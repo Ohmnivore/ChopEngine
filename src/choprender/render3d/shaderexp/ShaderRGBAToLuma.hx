@@ -1,11 +1,12 @@
-package choprender.render3d.shader;
+package choprender.render3d.shaderexp;
 
+import choprender.render3d.shader.*;
 import choprender.model.data.Face;
 import choprender.model.data.Vertex;
 import choprender.model.Model;
 import choprender.render3d.Camera;
 import choprender.render3d.opengl.GL;
-import choprender.render3d.opengl.ChopGL;
+import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
 import chop.math.Mat4;
 import chop.math.Vec3;

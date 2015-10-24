@@ -1,5 +1,8 @@
 package;
 
+import chop.math.Quat;
+import chop.math.Util;
+import chop.math.Vec4;
 import chopengine.input.Mouse;
 import choprender.GlobalRender;
 import chopengine.gen.State;
@@ -26,15 +29,19 @@ class PlayState extends State
 	{
 		super.create();
 		
-		GlobalRender.cam.pos.y = -3.0;
-		GlobalRender.cam.pos.z = 0.5;
+		GlobalRender.cam.pos.z = 3.0;
+		GlobalRender.cam.pos.y = 0.5;
 		GlobalRender.cam.bgColor.x = 0.0;
 		GlobalRender.cam.bgColor.y = 1.0;
 		GlobalRender.cam.bgColor.z = 1.0;
 		
-		//var m:Model = new Model();
-		//m.loadChop("assets/mesh/lowpoly.chopmesh");
-		//add(m);
+		var m:Model = new Model();
+		m.loadChop("assets/mesh/lowpoly.chopmesh");
+		for (mat in m.data.materials)
+		{
+			//mat.transparency = 0.75;
+		}
+		add(m);
 		
 		var check:Checkbox = new Checkbox({
 			options: { group: this },
@@ -70,7 +77,7 @@ class PlayState extends State
 		
 		var t:Text = new Text(f.font);
 		t.pos.x = 0;
-		t.pos.z = 4;
+		t.pos.y = 4;
 		t.setText("ChopEngine is chopping.\nIt's also far from completed.");
 		t.setText("ChopEngine is chopping.\nIt's also far from done.");
 		add(t);
@@ -78,7 +85,7 @@ class PlayState extends State
 		var t2:Text = new Text(f.font);
 		t2.textWidth = 64;
 		t2.pos.x = 5;
-		t2.pos.z = 4;
+		t2.pos.y = 4;
 		t2.setText("ChopEngine is chopping.\nIt's also far from completed.");
 		add(t2);
 		
@@ -86,7 +93,7 @@ class PlayState extends State
 		t3.textWidth = 64;
 		t3.wordWrap = true;
 		t3.pos.x = 10;
-		t3.pos.z = 4;
+		t3.pos.y = 4;
 		t3.setText("ChopEngine is chopping.\nIt's also far from completed.");
 		add(t3);
 		
@@ -105,51 +112,64 @@ class PlayState extends State
 		//mQuad.mat.diffuseColor.set(0, 0, 0);
 		//add(mQuad);
 		
-		//var m2:Model = new Model();
-		//m2.loadChop("assets/mesh/corgi.chopmesh");
-		//m2.scale.x = 2.0;
-		//m2.scale.y = 2.0;
-		//m2.scale.z = 2.0;
-		//m2.rot.z = 20.0;
-		//m2.pos.z = 0.1;
-		//m2.pos.x = 5.0;
-		//add(m2);
+		var m2:Model = new Model();
+		m2.loadChop("assets/mesh/corgi.chopmesh");
+		m2.scale.x = 2.0;
+		m2.scale.y = 2.0;
+		m2.scale.z = 2.0;
+		m2.rot.y = 20.0;
+		m2.pos.y = 0.1;
+		m2.pos.x = 5.0;
+		for (mat in m2.data.materials)
+		{
+			//mat.transparency = 0.75;
+		}
+		add(m2);
 		
-		// simple sun
+		var displace:Vec4 = Vec4.fromValues(0, 0, -1, 0);
+		displace.transMat4(Util.eulerDegToMatrix4x4(
+			0, 0, -25
+		));
+		// simple sun light
 		var sun:SunLight = new SunLight();
-		sun.dir.x = -1.0;
-		sun.dir.y = 0.5;
-		sun.dir.z = -0.5;
+		sun.dir.x = displace.x;
+		sun.dir.y = displace.y;
+		sun.dir.z = displace.z;
+		sun.dir = sun.dir.norm();
 		sun.energy = 0.02;
-		sun.color.x = 1.0;
-		sun.color.y = 0.433;
-		sun.color.z = 0.007;
+		sun.color.x = 0.7;
+		sun.color.y = 0.5;
+		sun.color.z = 0.3;
+		sun.useSpecular = false;
 		lights.lights.push(sun);
 		
 		// simple point light
 		var point:PointLight = new PointLight();
-		point.pos.x = -12.0;
-		point.pos.z = 6.0;
-		point.energy = 1.5;
-		point.color.x = 0.0;
+		point.pos.x = 3.6;
+		point.pos.y = 3.96;
+		point.energy = 0.8;
+		point.color.x = 1.0;
 		point.color.y = 0.0;
-		point.color.z = 1.0;
+		point.color.z = 0.0;
 		point.distance = 15.0;
+		point.useSpecular = false;
 		lights.lights.push(point);
 		
 		// simple cone light
 		var cone:ConeLight = new ConeLight();
-		cone.pos.x = 2.0;
-		cone.pos.z = 6.0;
-		cone.pos.y = -4.0;
-		cone.dir.x = -1.0;
-		cone.dir.z = -0.5;
-		cone.dir.y = 0.5;
-		cone.energy = 0.5;
-		cone.color.x = 1.0;
+		cone.pos.x = -12.0;
+		cone.pos.y = 1.5;
+		cone.pos.z = 10;
+		cone.dir.x = 0.0;
+		cone.dir.y = 0.0;
+		cone.dir.z = -1.0;
+		cone.energy = 2;
+		cone.color.x = 0.0;
 		cone.color.y = 0.0;
-		cone.color.z = 0.0;
-		cone.coneAngle = 40.0;
+		cone.color.z = 1.0;
+		cone.coneAngle = 35.0;
+		cone.distance = 400;
+		cone.useSpecular = true;
 		lights.lights.push(cone);
 	}
 	
@@ -162,16 +182,16 @@ class PlayState extends State
 		if (SnowApp._snow.input.keydown(Key.key_d))
 			GlobalRender.cam.pos.x += 5.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_w))
-			GlobalRender.cam.pos.y += 5.0 * Elapsed;
+			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_s))
-			GlobalRender.cam.pos.y -= 5.0 * Elapsed;
+			GlobalRender.cam.pos.z += 5.0 * Elapsed;
 		
 		if (SnowApp._snow.input.keydown(Key.space))
-			GlobalRender.cam.pos.z += 5.0 * Elapsed;
+			GlobalRender.cam.pos.y += 5.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.lctrl))
-			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
+			GlobalRender.cam.pos.y -= 5.0 * Elapsed;
 		
 		if (Main.game.mouse.rightPressed)
-			GlobalRender.cam.rot.z -= Main.game.mouse.xRel / 2.0;
+			GlobalRender.cam.rot.y -= Main.game.mouse.xRel / 2.0;
 	}
 }

@@ -4,29 +4,23 @@ import choprender.model.data.Face;
 import choprender.model.data.Vertex;
 import choprender.model.Model;
 import choprender.render3d.Camera;
-import choprender.render3d.opengl.ChopGL_FFI;
 import choprender.render3d.opengl.GL;
-import choprender.render3d.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.shader.ChopProgramMgr;
-import choprender.render3d.GLUtil;
+import choprender.render3d.opengl.GLUtil;
 import chop.math.Mat4;
 import chop.math.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
+import choprender.render3d.light.Light;
 
 /**
  * ...
  * @author Ohmnivore
  */
-class ShaderGBuffer extends ChopProgram
+class ShaderForwardLights extends ChopProgram
 {
-	public var gPosition:ChopTexture;
-	public var gNormal:ChopTexture;
-	public var gDiffuse:ChopTexture;
-	public var gSpec:ChopTexture;
-	public var gRealPosition:ChopTexture;
-	public var gUV:ChopTexture;
+	public var gForwardLight:ChopTexture;
 	
 	private var n:Vec3;
 	private var u:Vec3;
@@ -42,48 +36,40 @@ class ShaderGBuffer extends ChopProgram
 		u = Vec3.fromValues(0.0, 0.0, 0.0);
 		v = Vec3.fromValues(0.0, 0.0, 0.0);
 		
-		var id:String = "assets/shader/g_buffer_vertex.glsl";
+		var id:String = "assets/shader/forward_light_vertex.glsl";
 		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
-		id = "assets/shader/g_buffer_fragment.glsl";
+		id = "assets/shader/forward_light_fragment.glsl";
 		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
-		gPosition = new ChopTexture("gPosition", GL.TEXTURE_2D, 0, ChopGL.RGBA16F, C.width, C.height, GL.RGBA, GL.FLOAT);
-		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gPosition.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
-		outTextures.push(gPosition);
-		
-		gNormal = new ChopTexture("gNormal", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
-		gNormal.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gNormal.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
-		outTextures.push(gNormal);
-		
-		gDiffuse = new ChopTexture("gDiffuse", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
-		gDiffuse.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gDiffuse.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
-		outTextures.push(gDiffuse);
-		
-		gSpec = new ChopTexture("gSpec", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
-		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gSpec.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
-		outTextures.push(gSpec);
-		
-		gRealPosition = new ChopTexture("gRealPosition", GL.TEXTURE_2D, 0, ChopGL.RGBA16F, C.width, C.height, GL.RGBA, GL.FLOAT);
-		gRealPosition.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gRealPosition.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
-		outTextures.push(gRealPosition);
-		
-		gUV = new ChopTexture("gUV", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGBA, GL.FLOAT);
-		gUV.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		gUV.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
-		outTextures.push(gUV);
+		gForwardLight = new ChopTexture("gForwardLight", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGB, GL.FLOAT);
+		gForwardLight.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
+		gForwardLight.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
+		outTextures.push(gForwardLight);
+	}
+	
+	override public function preRender(Mgr:ChopProgramMgr):Void 
+	{
+		super.preRender(Mgr);
+		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 	}
 	
 	override public function render(Models:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
 		super.render(Models, C, Mgr);
 		
-		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+		// LightState globals
+		GLUtil.setUniform(prog, "ambientColor", GlobalRender.lights.ambientColor);
+		GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), GlobalRender.lights.ambientIntensity);
+		GLUtil.setFloat(GLUtil.getLocation(prog, "gamma"), GlobalRender.lights.gamma);
+		
+		// Lights uniforms
+		GLUtil.setInt(GLUtil.getLocation(prog, "numLights"), GlobalRender.lights.lights.length);
+		for (i in 0...GlobalRender.lights.lights.length)
+		{
+			var light:Light = GlobalRender.lights.lights[i];
+			light.setUniforms(prog, i);
+		}
 		
 		for (M in Models)
 		{
@@ -91,16 +77,11 @@ class ShaderGBuffer extends ChopProgram
 			{
 				// Matrix calculations
 				var m:Mat4 = getModelMatrix(getTranslationMatrix(M), getRotationMatrix(M), getScaleMatrix(M));
-				
 				// Transformation matrices
 				GLUtil.setUniform(prog, "m", m);
 				GLUtil.setUniform(prog, "v", C.viewMatrix);
 				GLUtil.setUniform(prog, "p", C.projectionMatrix);
-				
-				// Transformation matrices
-				GLUtil.setUniform(prog, "m", m);
-				GLUtil.setUniform(prog, "v", C.viewMatrix);
-				GLUtil.setUniform(prog, "p", C.projectionMatrix);
+				GLUtil.setUniform(prog, "viewPos", C.pos);
 				
 				var textureID:Int = 0;
 				for (tex in M.data.textures)
@@ -115,13 +96,16 @@ class ShaderGBuffer extends ChopProgram
 				for (mat in M.data.materials)
 				{
 					// Material uniforms
-					GLUtil.setUniform(prog, "diffuseColor", mat.diffuseColor);
-					GLUtil.setUniform(prog, "specularColor", mat.specularColor);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "diffuseIntensity"), mat.diffuseIntensity);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "specularIntensity"), mat.specularIntensity);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), mat.ambientIntensity);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "materialFlags"), mat.toFlagFloat());
-					GLUtil.setFloat(GLUtil.getLocation(prog, "emit"), mat.emit);
+					GLUtil.setUniform(prog, "material.useShading", mat.useShading);
+					GLUtil.setUniform(prog, "material.shadowsCast", mat.shadowsCast);
+					GLUtil.setUniform(prog, "material.shadowsReceive", mat.shadowsReceive);
+					GLUtil.setUniform(prog, "material.diffuseColor", mat.diffuseColor);
+					GLUtil.setFloat(GLUtil.getLocation(prog, "material.diffuseIntensity"), mat.diffuseIntensity);
+					GLUtil.setUniform(prog, "material.specularColor", mat.specularColor);
+					GLUtil.setFloat(GLUtil.getLocation(prog, "material.specularIntensity"), mat.specularIntensity);
+					GLUtil.setFloat(GLUtil.getLocation(prog, "material.ambientIntensity"), mat.ambientIntensity);
+					GLUtil.setFloat(GLUtil.getLocation(prog, "material.emit"), mat.emit);
+					GLUtil.setFloat(GLUtil.getLocation(prog, "material.transparency"), mat.transparency);
 					
 					var vData:Array<Float> = [];
 					for (i in 0...M.data.faces.length)
@@ -170,16 +154,15 @@ class ShaderGBuffer extends ChopProgram
 	}
 	private function getTranslationMatrix(M:Model):Mat4
 	{
-		return Mat4.newIdent().trans(Util.Vector3ToGL(M.pos));
+		return Mat4.newIdent().trans(M.pos);
 	}
 	private function getRotationMatrix(M:Model):Mat4
 	{
-		var nRot:Vec3 = Util.Vector3ToGLSoft(M.rot);
-		return Util.eulerDegToMatrix4x4(nRot.x, nRot.y, nRot.z);
+		return Util.eulerDegToMatrix4x4(M.rot.x, M.rot.y, M.rot.z);
 	}
 	private function getScaleMatrix(M:Model):Mat4
 	{
-		return Mat4.newIdent().scale(Util.Vector3ToGLSoft(M.scale));
+		return Mat4.newIdent().scale(M.scale);
 	}
 	private function getModelMatrix(T:Mat4, R:Mat4, S:Mat4):Mat4
 	{

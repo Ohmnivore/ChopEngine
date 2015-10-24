@@ -1,5 +1,6 @@
-package choprender.render3d.shader;
+package choprender.render3d.shaderexp;
 
+import choprender.render3d.shader.*;
 import choprender.GlobalRender;
 import choprender.model.data.Face;
 import choprender.model.data.Vertex;
@@ -7,9 +8,9 @@ import choprender.model.Model;
 import choprender.render3d.Camera;
 import choprender.render3d.light.Light;
 import choprender.render3d.opengl.GL;
-import choprender.render3d.opengl.ChopGL;
+import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
-import choprender.render3d.GLUtil;
+import choprender.render3d.opengl.GLUtil;
 import chop.math.Mat4;
 import chop.math.Vec3;
 import chop.math.Util;
@@ -19,7 +20,7 @@ import choprender.render3d.opengl.GL.Float32Array;
  * ...
  * @author Ohmnivore
  */
-class ShaderLights extends ChopQuadProgram
+class ShaderDeferredLights extends ChopQuadProgram
 {
 	public var gLight:ChopTexture;
 	
@@ -29,9 +30,9 @@ class ShaderLights extends ChopQuadProgram
 		
 		type = ChopProgram.ONESHOT;
 		
-		var id:String = "assets/shader/light_vertex.glsl";
+		var id:String = "assets/shader/deferred_light_vertex.glsl";
 		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
-		id = "assets/shader/light_fragment.glsl";
+		id = "assets/shader/deferred_light_fragment.glsl";
 		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
@@ -50,9 +51,7 @@ class ShaderLights extends ChopQuadProgram
 	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
 		// Transformation matrices
-		GLUtil.setUniform(prog, "v", C.viewMatrix);
-		GLUtil.setUniform(prog, "p", C.projectionMatrix);
-		GLUtil.setUniform(prog, "viewPos", Util.Vector3ToGL(C.pos));
+		GLUtil.setUniform(prog, "viewPos", C.pos);
 		
 		// LightState globals
 		GLUtil.setUniform(prog, "ambientColor", GlobalRender.lights.ambientColor);

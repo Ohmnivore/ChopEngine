@@ -2,7 +2,7 @@ package choprender.render3d.shader;
 
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLBuffer;
-import choprender.render3d.opengl.ChopGL;
+import choprender.render3d.shaderexp.opengl.ChopGL;
 
 /**
  * ...

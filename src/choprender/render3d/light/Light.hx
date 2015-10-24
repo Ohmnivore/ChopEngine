@@ -1,6 +1,6 @@
 package choprender.render3d.light;
 
-import choprender.render3d.GLUtil;
+import choprender.render3d.opengl.GLUtil;
 import choprender.render3d.opengl.GL;
 import chop.math.Vec3;
 import choprender.render3d.opengl.GL.GLProgram;

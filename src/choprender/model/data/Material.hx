@@ -1,7 +1,7 @@
 package choprender.model.data;
 
 import chop.util.Color;
-import choprender.render3d.GLUtil;
+import choprender.render3d.opengl.GLUtil;
 import choprender.render3d.opengl.GL.GLProgram;
 
 /**

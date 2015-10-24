@@ -10,9 +10,6 @@ uniform sampler2D gDiffuse;
 uniform sampler2D gSpec;
 uniform sampler2D gRealPosition;
 
-uniform mat4 m;
-uniform mat4 v;
-uniform mat4 p;
 uniform vec3 viewPos;
 uniform vec3 ambientColor;
 uniform float ambientIntensity;
@@ -161,56 +158,8 @@ void main()
     vec3 gammav = vec3(gamma);
     color = vec4(pow(linearColor, gammav), texture(gPosition, UV).a);
 	
-	// Ugly hack to keep the optimizer from removing supposedly unused uniforms (ugh...)
-	
-	// Ensure uniform samplers compilation
-	color.x += texture(gPosition, vec2(0, 0)).r * 0.00001;
-	color.x += texture(gNormal, vec2(0, 0)).r * 0.00001;
-	color.x += texture(gDiffuse, vec2(0, 0)).r * 0.00001;
-	color.x += texture(gSpec, vec2(0, 0)).r * 0.00001;
-	color.x += FragPos.x * 0.00001;
-	color.x += Normal.x * 0.00001;
-	color.x += Diffuse.x * 0.00001;
-	color.x += Specular.x * 0.00001;
-	color.x += Emit * 0.00001;
-	color.x += AmbientIntensity * 0.00001;
-	color.x += MaterialFlags * 0.00001;
-	
-	// Ensure input compilation
-	color.x += UV.x * 0.00001;
-	
+	// Ugly hack to keep the optimizer from removing supposedly unused uniforms
 	// Ensure material uniform compilation
-	color.x += material.diffuseColor.x * 0.00001;
-	color.x += material.diffuseIntensity * 0.00001;
-	color.x += material.specularColor.x * 0.00001;
-	color.x += material.specularIntensity * 0.00001;
-	color.x += material.ambientIntensity * 0.00001;
-	color.x += material.emit * 0.00001;
-	color.x += material.transparency * 0.00001;
-	color.x += float(material.useShading) * 0.00001;
 	color.x += float(material.shadowsCast) * 0.00001;
 	color.x += float(material.shadowsReceive) * 0.00001;
-	
-	// Ensure misc uniform compilation
-	color.x += float(numLights) * 0.00001;
-	color.x += m[0][0] * 0.00001;
-	color.x += v[0][0] * 0.00001;
-	color.x += p[0][0] * 0.00001;
-	color.x += ambientColor.x * 0.00001;
-	color.x += ambientIntensity * 0.00001;
-	color.x += gamma * 0.00001;
-	
-	// Ensure lights uniform compilation
-	color.x += float(allLights[0].useSpecular) * 0.00001;
-	color.x += float(allLights[0].useDiffuse) * 0.00001;
-	color.x += float(allLights[0].type) * 0.00001;
-	color.x += allLights[0].energy * 0.00001;
-	color.x += allLights[0].color.x * 0.00001;
-	color.x += allLights[0].distance * 0.00001;
-	if (allLights[0].type == 0 || allLights[0].type == 2)
-		color.x += allLights[0].direction.x * 0.00001;
-	if (allLights[0].type == 1 || allLights[0].type == 2)
-		color.x += allLights[0].position.x * 0.00001;
-	if (allLights[0].type == 2)
-		color.x += allLights[0].coneAngle * 0.00001;
 }
