@@ -1,4 +1,6 @@
 # TODO
+* HTML5 sample forward light fragment+vertex shader
+
 ## Rendering
 * depth for ui
 * bitmap blit instead of copy
@@ -16,7 +18,6 @@
 * Cubemap sky (lightState)
 * Particle effects
 
-* Forward rendering for transparent models
 * Static shadows
 * Dynamic shadows
 

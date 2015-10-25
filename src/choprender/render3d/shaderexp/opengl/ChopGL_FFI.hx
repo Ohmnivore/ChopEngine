@@ -7,7 +7,7 @@ import snow.api.Libs;
  * ...
  * @author Ohmnivore
  */
-class ChopGL_FFI2
+class ChopGL_FFI
 {
 	public static function drawBuffers(ArrLength:Int, Buffs:Array<Int>):Void
     {

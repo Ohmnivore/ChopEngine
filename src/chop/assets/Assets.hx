@@ -28,16 +28,28 @@ class Assets
 	}
 	public function loadManifest():Void
 	{
-		for (id in SnowApp._snow.assets.list)
-		{
-			var ext:String = Path.extension(id);
+		totalAssets = 1;
+		currentAssets = 0;
+		SnowApp._snow.assets.json("manifest").then(
+		function (A:AssetJSON) {
+			totalAssets = 0;
+			currentAssets = 0;
+			var list:Array<String> = cast A.json;
 			
-			if (ext == "png") loadImage(id);
-			else if (ext == "json") loadJSON(id);
-			else if (ext == "xml") loadText(id);
-			else if (ext == "glsl") loadText(id);
-			else if (ext == "chopmesh") loadText(id);
-		}
+			for (id in list)
+			{
+				var ext:String = Path.extension(id);
+				
+				if (ext == "png") loadImage(id);
+				else if (ext == "json") loadJSON(id);
+				else if (ext == "xml") loadText(id);
+				else if (ext == "glsl") loadText(id);
+				else if (ext == "chopmesh") loadText(id);
+			}
+		}).error(
+		function () {
+			trace("Couldn't find manifest");
+		});
 	}
 	public function isReady():Bool
 	{

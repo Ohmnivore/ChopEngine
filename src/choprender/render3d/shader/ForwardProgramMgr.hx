@@ -24,23 +24,20 @@ class ForwardProgramMgr extends ChopProgramMgr
 		
 		//var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
 		//progs.push(gaussianBlurProgram);
-		//gaussianBlurProgram.readBuffer = buff.buffer;
-		//gaussianBlurProgram.drawBuffer = buff.buffer;
+		//gaussianBlurProgram.frameBuffer = buff.buffer;
 		//gaussianBlurProgram.inTextures[0].globalName = "gForwardLight";
 		//gaussianBlurProgram.gGaussianBlur.buffer = buff;
 		//var gaussianBlurVerticalProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
 		//gaussianBlurVerticalProgram.horizontal = false;
 		//progs.push(gaussianBlurVerticalProgram);
-		//gaussianBlurVerticalProgram.readBuffer = buff.buffer;
-		//gaussianBlurVerticalProgram.drawBuffer = buff.buffer;
+		//gaussianBlurVerticalProgram.frameBuffer = buff.buffer;
 		//gaussianBlurVerticalProgram.inTextures[0].globalName = "gGaussianBlur";
 		//gaussianBlurVerticalProgram.gGaussianBlur.buffer = buff;
 		//gaussianBlurVerticalProgram.outputToScreenBuffer();
 		
 		//var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture(C);
 		//progs.push(quadTextureProgram);
-		//quadTextureProgram.readBuffer = buff.buffer;
-		//quadTextureProgram.drawBuffer = buff.buffer;
+		//quadTextureProgram.frameBuffer = buff.buffer;
 		//quadTextureProgram.outputToScreenBuffer();
 		//quadTextureProgram.inTextures[0].globalName = "gForwardLight";
 	}

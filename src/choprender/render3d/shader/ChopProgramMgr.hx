@@ -36,7 +36,8 @@ class ChopProgramMgr
 				{
 					t.buffer.bind(GL.FRAMEBUFFER);
 					textures.set(t.name, t);
-					//t.addToBuffer();
+					t.create();
+					t.addToBuffer();
 				}
 			}
 			p.registerTextures(this);

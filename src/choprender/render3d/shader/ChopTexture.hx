@@ -50,4 +50,9 @@ class ChopTexture
 		for (p in params)
 			p.addToTexture(this);
 	}
+	
+	public function addToBuffer():Void
+	{
+		GL.framebufferTexture2D(buffer.target, GL.COLOR_ATTACHMENT0, target, texture, level);
+	}
 }
