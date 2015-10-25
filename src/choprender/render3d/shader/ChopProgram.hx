@@ -4,7 +4,6 @@ import choprender.model.Model;
 import choprender.render3d.Camera;
 import choprender.render3d.shaderexp.opengl.ChopGL_FFI;
 import choprender.render3d.opengl.GL;
-import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.GLUtil;
 import chop.math.Mat4;
@@ -25,8 +24,7 @@ class ChopProgram
 	public var inTextures:Array<ChopTextureDescriptor>;
 	public var outTextures:Array<ChopTexture>;
 	public var prog:GLProgram;
-	public var readBuffer:GLFramebuffer;
-	public var drawBuffer:GLFramebuffer;
+	public var frameBuffer:GLFramebuffer;
 	public var type:Int;
 	
 	public function new(C:Camera) 
@@ -39,7 +37,7 @@ class ChopProgram
 	
 	public function outputToScreenBuffer():Void
 	{
-		drawBuffer = new GLFramebuffer(0);
+		frameBuffer = new GLFramebuffer(0);
 		outTextures = [];
 	}
 	
@@ -51,9 +49,8 @@ class ChopProgram
 	public function preRender(Mgr:ChopProgramMgr):Void
 	{
 		GL.useProgram(prog);
-		GL.bindFramebuffer(ChopGL.READ_FRAMEBUFFER, readBuffer);
+		GL.bindFramebuffer(Mgr.buff.target, frameBuffer);
 		bindInTextures(Mgr);
-		GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, drawBuffer);
 		bindOutTextures(Mgr);
 	}
 	

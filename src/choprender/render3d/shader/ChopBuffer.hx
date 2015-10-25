@@ -12,12 +12,10 @@ class ChopBuffer
 {
 	public var buffer:GLFramebuffer;
 	public var target:Int;
-	public var attachmentIndex:Int;
 	
 	public function new() 
 	{
 		buffer = GL.createFramebuffer();
-		attachmentIndex = 0;
 	}
 	
 	public function bind(Target:Int):Void

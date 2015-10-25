@@ -18,9 +18,8 @@ class ForwardProgramMgr extends ChopProgramMgr
 		
 		gLightProgram = new ShaderForwardLights(C);
 		progs.push(gLightProgram);
-		gLightProgram.readBuffer = buff.buffer;
-		gLightProgram.drawBuffer = buff.buffer;
 		gLightProgram.gForwardLight.buffer = buff;
+		gLightProgram.frameBuffer = buff.buffer;
 		gLightProgram.outputToScreenBuffer();
 		
 		//var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
