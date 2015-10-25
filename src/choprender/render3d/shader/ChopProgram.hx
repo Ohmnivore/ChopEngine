@@ -51,11 +51,9 @@ class ChopProgram
 	public function preRender(Mgr:ChopProgramMgr):Void
 	{
 		GL.useProgram(prog);
-		bindInTextures(Mgr);
-		
 		GL.bindFramebuffer(ChopGL.READ_FRAMEBUFFER, readBuffer);
+		bindInTextures(Mgr);
 		GL.bindFramebuffer(ChopGL.DRAW_FRAMEBUFFER, drawBuffer);
-		
 		bindOutTextures(Mgr);
 	}
 	
@@ -66,13 +64,8 @@ class ChopProgram
 	
 	private function bindOutTextures(Mgr:ChopProgramMgr):Void
 	{
-		var texAttachmentIds:Array<Int> = [];
 		for (t in outTextures)
-		{
-			texAttachmentIds.push(t.colorAttachmentGL);
-		}
-		if (texAttachmentIds.length > 0)
-			ChopGL_FFI.drawBuffers(texAttachmentIds.length, texAttachmentIds);
+			GL.framebufferTexture2D(Mgr.buff.target, GL.COLOR_ATTACHMENT0, t.target, t.texture, t.level);
 	}
 	
 	private function bindInTextures(Mgr:ChopProgramMgr):Void

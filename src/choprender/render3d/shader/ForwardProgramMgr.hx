@@ -33,25 +33,17 @@ class ForwardProgramMgr extends ChopProgramMgr
 		//gaussianBlurVerticalProgram.horizontal = false;
 		//progs.push(gaussianBlurVerticalProgram);
 		//gaussianBlurVerticalProgram.readBuffer = buff.buffer;
-		//gaussianBlurVerticalProgram.drawBuffer = new GLFramebuffer(0);
+		//gaussianBlurVerticalProgram.drawBuffer = buff.buffer;
 		//gaussianBlurVerticalProgram.inTextures[0].globalName = "gGaussianBlur";
-		//gaussianBlurVerticalProgram.outTextures = [];
 		//gaussianBlurVerticalProgram.gGaussianBlur.buffer = buff;
 		//gaussianBlurVerticalProgram.outputToScreenBuffer();
-		
-		//var ssaoShader = new ShaderSSAO(this);
-		//defaultMgr.progs.push(ssaoShader);
-		//ssaoShader.readBuffer = defaultMgr.buff.buffer;
-		//ssaoShader.drawBuffer = new GLFramebuffer(0);
-		//ssaoShader.outTextures = [];
-		//ssaoShader.gSSAO.buffer = defaultMgr.buff;
-		//ssaoShader.texNoise.buffer = defaultMgr.buff;
 		
 		//var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture(C);
 		//progs.push(quadTextureProgram);
 		//quadTextureProgram.readBuffer = buff.buffer;
+		//quadTextureProgram.drawBuffer = buff.buffer;
 		//quadTextureProgram.outputToScreenBuffer();
-		//quadTextureProgram.inTextures[0].globalName = "gUV";
+		//quadTextureProgram.inTextures[0].globalName = "gForwardLight";
 	}
 	
 	override public function preDraw(Elapsed:Float):Void 
