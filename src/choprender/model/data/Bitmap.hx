@@ -54,6 +54,19 @@ class Bitmap
 		height = B.height;
 	}
 	
+	public function replace(K:Array<Int>, V:Array<Int>):Void
+	{
+		for (x in 0...width)
+		{
+			for (y in 0...height)
+			{
+				var old:Array<Int> = getPixel(x, y);
+				if (old[0] == K[0] && old[1] == K[1] && old[2] == K[2] && old[3] == K[3])
+					setPixel(x, y, V);
+			}
+		}
+	}
+	
 	public function setSize(Width:Int, Height:Int):Void
 	{
 		var newSize:Int = Width * Height;
@@ -95,6 +108,22 @@ class Bitmap
 	public function setPixel(X:Int, Y:Int, Arr:Array<Int>):Void
 	{
 		var id:Int = X * 4 + Y * width * 4;
+		setUint8(pixels.buffer, id, Arr[0]);
+		setUint8(pixels.buffer, id + 1, Arr[1]);
+		setUint8(pixels.buffer, id + 2, Arr[2]);
+		setUint8(pixels.buffer, id + 3, Arr[3]);
+	}
+	
+	public function blitPixel(X:Int, Y:Int, Arr:Array<Int>):Void
+	{
+		var id:Int = X * 4 + Y * width * 4;
+		
+		var old:Array<Int> = getPixel(X, Y);
+		Arr[0] = Std.int(Arr[0] * Arr[3] / 255.0 + old[0] * (1.0 - Arr[3] / 255.0));
+		Arr[1] = Std.int(Arr[1] * Arr[3] / 255.0 + old[1] * (1.0 - Arr[3] / 255.0));
+		Arr[2] = Std.int(Arr[2] * Arr[3] / 255.0 + old[2] * (1.0 - Arr[3] / 255.0));
+		Arr[3] = Std.int(Arr[3] * Arr[3] / 255.0 + old[3] * (1.0 - Arr[3] / 255.0));
+		
 		setUint8(pixels.buffer, id, Arr[0]);
 		setUint8(pixels.buffer, id + 1, Arr[1]);
 		setUint8(pixels.buffer, id + 2, Arr[2]);
@@ -151,8 +180,7 @@ class Bitmap
 			for (x in 0...cast SourceRect[2])
 			{
 				var p:Array<Int> = Source.getPixel(cast SourceRect[0] + x, cast SourceRect[1] + y);
-				if (p[3] > 0)
-					Dest.setPixel(cast DestPoint.x + x, cast DestPoint.y + y, p);
+				Dest.blitPixel(cast DestPoint.x + x, cast DestPoint.y + y, p);
 			}
 		}
 	}
