@@ -14,7 +14,8 @@
       dependencies : {
 		snow : '*',
 		mint : '*'
-      }
+      },
+	  files_output_list: true
     },
 
     files : {

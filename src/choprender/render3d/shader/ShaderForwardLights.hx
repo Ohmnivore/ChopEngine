@@ -36,9 +36,17 @@ class ShaderForwardLights extends ChopProgram
 		u = Vec3.fromValues(0.0, 0.0, 0.0);
 		v = Vec3.fromValues(0.0, 0.0, 0.0);
 		
+		#if !js
 		var id:String = "assets/shader/forward_light_vertex.glsl";
+		#else
+		var id:String = "assets/shaderweb/forward_light_vertex.glsl";
+		#end
 		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
+		#if !js
 		id = "assets/shader/forward_light_fragment.glsl";
+		#else
+		id = "assets/shaderweb/forward_light_fragment.glsl";
+		#end
 		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		

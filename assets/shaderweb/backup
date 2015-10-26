@@ -1,11 +1,9 @@
-#version 330 core
+precision mediump float;
 
-in vec3 FragPos;
-in vec3 MeanFragPos;
-in vec3 Normal;
-in vec3 UV;
-
-out vec4 color;
+varying vec3 FragPos;
+varying vec3 MeanFragPos;
+varying vec3 Normal;
+varying vec3 UV;
 
 uniform mat4 m;
 uniform mat4 v;
@@ -65,12 +63,12 @@ struct Light
 };
 uniform Light allLights[MAX_LIGHTS];
 
-vec4 getTextureValue(vec2 uv, int tID)
-{
-	if (tID == 0)
-		return texture(texture0, uv);
-	return vec4(1.0, 0.0, 1.0, 1.0);
-}
+// vec4 getTextureValue(vec2 uv, int tID)
+// {
+// 	if (tID == 0)
+// 		return texture(texture0, uv);
+// 	return vec4(1.0, 0.0, 1.0, 1.0);
+// }
 
 void main()
 {
@@ -87,13 +85,6 @@ void main()
 	vec3 Diffuse = material.diffuseColor * material.diffuseIntensity;
 	vec3 Specular = material.specularColor * material.specularIntensity;
 	vec3 Normal = Normal;
-	
-	int textureID = int(UV.z * 16.0);
-	if (textureID >= 0)
-	{
-	   vec4 texDiffuse = getTextureValue(UV.xy, textureID);
-	   Diffuse = vec3(texDiffuse.xyz) * texDiffuse.w + Diffuse.xyz * (1.0 - texDiffuse.w);
-	}
 	
 	// Decode the G Buffer
 	// vec3 FragPos = texture(gPosition, UV).rgb;
@@ -112,7 +103,7 @@ void main()
     {
 		vec3 viewDir = normalize(viewPos - MeanFragPos);
 		
-        for (int i = 0; i < numLights; ++i)
+        for (int i = 0; i < 1; ++i)
         {
 			Light light = allLights[i];
 			
@@ -192,9 +183,9 @@ void main()
 
     // gamma correction
     vec3 gammav = vec3(gamma);
-    color = vec4(pow(linearColor, gammav), material.transparency);
+    gl_FragColor = vec4(pow(linearColor, gammav), material.transparency);
 	
 	// Ugly hack to keep the optimizer from removing supposedly unused uniforms
-	color.x += float(material.shadowsCast) * 0.00001;
-	color.x += float(material.shadowsReceive) * 0.00001;
+	gl_FragColor.x += float(material.shadowsCast) * 0.00001;
+	gl_FragColor.x += float(material.shadowsReceive) * 0.00001;
 }

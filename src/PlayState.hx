@@ -119,10 +119,10 @@ class PlayState extends State
 		m2.scale.z = 2.0;
 		m2.rot.y = 20.0;
 		m2.pos.y = 0.1;
-		m2.pos.x = 5.0;
+		m2.pos.x = 7.0;
 		for (mat in m2.data.materials)
 		{
-			//mat.transparency = 0.75;
+			mat.transparency = 0.75;
 		}
 		add(m2);
 		

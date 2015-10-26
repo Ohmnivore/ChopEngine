@@ -36,7 +36,7 @@ class ChopProgram
 	
 	public function outputToScreenBuffer():Void
 	{
-		frameBuffer = new GLFramebuffer(0);
+		frameBuffer = null;
 		outTextures = [];
 	}
 	
