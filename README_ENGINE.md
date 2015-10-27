@@ -18,8 +18,6 @@
 * Static shadows
 * Dynamic shadows
 
-* Bloom shader
-
 ##### Lights
 * Pass through bool
 * Cast shadow bool

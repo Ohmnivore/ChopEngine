@@ -46,11 +46,15 @@ class ForwardProgramMgr extends ChopProgramMgr
 		////ssaoProgram.outputToScreenBuffer();
 		//
 		//var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
+		//gaussianBlurProgram.blurSize = 16;
+		//gaussianBlurProgram.sigma = 4;
 		//progs.push(gaussianBlurProgram);
 		//gaussianBlurProgram.frameBuffer = buff.buffer;
 		//gaussianBlurProgram.inTextures[0].globalName = "gSSAO";
 		//gaussianBlurProgram.gGaussianBlur.buffer = buff;
 		//var gaussianBlurVerticalProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
+		//gaussianBlurVerticalProgram.blurSize = 16;
+		//gaussianBlurVerticalProgram.sigma = 4;
 		//gaussianBlurVerticalProgram.horizontal = false;
 		//progs.push(gaussianBlurVerticalProgram);
 		//gaussianBlurVerticalProgram.frameBuffer = buff.buffer;
