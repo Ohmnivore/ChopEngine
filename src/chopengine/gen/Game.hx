@@ -3,8 +3,8 @@ package chopengine.gen;
 import chopengine.input.Mouse;
 import choprender.GlobalRender;
 import choprender.render3d.Camera;
-import choprender.render3d.shader.ChopProgram;
-import choprender.render3d.shader.ChopProgramMgr;
+import choprender.render3d.opengl.ChopProgram;
+import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GL;
 
 /**

@@ -1,5 +1,6 @@
-package choprender.render3d.shader;
+package choprender.render3d.opengl;
 
+import choprender.render3d.opengl.ChopBuffer;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.Float32Array;
 

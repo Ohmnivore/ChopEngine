@@ -1,8 +1,8 @@
 package choprender.render3d;
 
 import chop.gen.Basic;
-import choprender.render3d.shader.ChopProgramMgr;
-import choprender.render3d.shader.ChopProgram;
+import choprender.render3d.opengl.ChopProgramMgr;
+import choprender.render3d.opengl.ChopProgram;
 import choprender.render3d.shader.ForwardProgramMgr;
 import chop.math.Mat4;
 import chop.math.Vec2;

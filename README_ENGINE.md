@@ -7,12 +7,12 @@
 * integrate mint
 
 ## Rendering (eventually)
-* integrate iqm model format: https://github.com/snowkit/iqm/
+* Skeletal animation
 * Test multiple cameras setup on other computer
 * Get face normals from chopmesh file
 * Batching
 * Instancing
-* Cubemap sky (lightState)
+* Cubemap sky
 * Particle effects
 
 * Static shadows
@@ -24,8 +24,7 @@
 ##### Lights
 * Pass through bool
 * Cast shadow bool
-* Cone light
- * Add an angle-based falloff to smooth it out
+* Add an angle-based falloff to the cone light to smooth it out
 
 ##### Material support
 * bool shadowsCast
@@ -45,7 +44,7 @@
 * Music tracks
 
 ## UI
-* mint or haxeui2 integration
+* mint integration
 
 ## Misc
 * Game saves

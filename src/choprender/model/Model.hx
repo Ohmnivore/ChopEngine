@@ -3,7 +3,7 @@ package choprender.model;
 import chop.gen.Object;
 import choprender.model.AnimController;
 import choprender.model.Model;
-import choprender.render3d.shader.ChopProgramMgr;
+import choprender.render3d.opengl.ChopProgramMgr;
 import chop.math.Vec3;
 import choprender.model.loader.chop.ChopLoader;
 import choprender.model.data.ModelData;

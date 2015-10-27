@@ -1,6 +1,8 @@
 package choprender.render3d.shader;
 
 import choprender.render3d.Camera;
+import choprender.render3d.opengl.ChopProgram;
+import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GL;
 import choprender.model.Model;
 

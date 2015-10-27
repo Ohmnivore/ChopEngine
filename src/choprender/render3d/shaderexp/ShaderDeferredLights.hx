@@ -1,5 +1,11 @@
 package choprender.render3d.shaderexp;
 
+import choprender.render3d.opengl.ChopProgram;
+import choprender.render3d.opengl.ChopProgramMgr;
+import choprender.render3d.opengl.ChopShader;
+import choprender.render3d.opengl.ChopTexture;
+import choprender.render3d.opengl.ChopTextureDescriptor;
+import choprender.render3d.opengl.ChopTextureParam;
 import choprender.render3d.shader.*;
 import choprender.GlobalRender;
 import choprender.model.data.Face;

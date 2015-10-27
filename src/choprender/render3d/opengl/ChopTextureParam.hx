@@ -1,5 +1,6 @@
-package choprender.render3d.shader;
+package choprender.render3d.opengl;
 
+import choprender.render3d.opengl.ChopTexture;
 import choprender.render3d.opengl.GL;
 
 /**

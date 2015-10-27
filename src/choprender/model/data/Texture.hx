@@ -1,7 +1,7 @@
 package choprender.model.data;
 
-import choprender.render3d.shader.ChopTexture;
-import choprender.render3d.shader.ChopTextureParam;
+import choprender.render3d.opengl.ChopTexture;
+import choprender.render3d.opengl.ChopTextureParam;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.Float32Array;
 

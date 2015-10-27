@@ -1,4 +1,4 @@
-package choprender.render3d.shader;
+package choprender.render3d.opengl;
 
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLBuffer;
