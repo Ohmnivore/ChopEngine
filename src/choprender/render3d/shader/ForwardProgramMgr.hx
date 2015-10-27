@@ -5,6 +5,8 @@ import choprender.render3d.opengl.ChopProgram;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GL;
 import choprender.model.Model;
+import choprender.render3d.shader.ShaderFXAA;
+import choprender.render3d.shader.ShaderRGBAToLuma;
 
 /**
  * ...
@@ -24,24 +26,70 @@ class ForwardProgramMgr extends ChopProgramMgr
 		gLightProgram.frameBuffer = buff.buffer;
 		gLightProgram.outputToScreenBuffer();
 		
+		//var normalOutputProgram:ShaderNormalOutput = new ShaderNormalOutput(cam);
+		//progs.push(normalOutputProgram);
+		//normalOutputProgram.frameBuffer = buff.buffer;
+		//normalOutputProgram.gNormal.buffer = buff;
+		////normalOutputProgram.outputToScreenBuffer();
+		//
+		//var positionOutputProgram:ShaderPositionOutput = new ShaderPositionOutput(cam);
+		//progs.push(positionOutputProgram);
+		//positionOutputProgram.frameBuffer = buff.buffer;
+		//positionOutputProgram.gPosition.buffer = buff;
+		////positionOutputProgram.outputToScreenBuffer();
+		//
+		//var ssaoProgram:ShaderSSAO = new ShaderSSAO(cam);
+		//progs.push(ssaoProgram);
+		//ssaoProgram.frameBuffer = buff.buffer;
+		//ssaoProgram.gSSAO.buffer = buff;
+		//ssaoProgram.texNoise.buffer = buff;
+		////ssaoProgram.outputToScreenBuffer();
+		//
 		//var gaussianBlurProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
 		//progs.push(gaussianBlurProgram);
 		//gaussianBlurProgram.frameBuffer = buff.buffer;
-		//gaussianBlurProgram.inTextures[0].globalName = "gForwardLight";
+		//gaussianBlurProgram.inTextures[0].globalName = "gSSAO";
 		//gaussianBlurProgram.gGaussianBlur.buffer = buff;
 		//var gaussianBlurVerticalProgram:ShaderGaussianBlur = new ShaderGaussianBlur(C);
 		//gaussianBlurVerticalProgram.horizontal = false;
 		//progs.push(gaussianBlurVerticalProgram);
 		//gaussianBlurVerticalProgram.frameBuffer = buff.buffer;
+		//gaussianBlurVerticalProgram.gGaussianBlur.name = "gGaussianBlurV";
 		//gaussianBlurVerticalProgram.inTextures[0].globalName = "gGaussianBlur";
 		//gaussianBlurVerticalProgram.gGaussianBlur.buffer = buff;
-		//gaussianBlurVerticalProgram.outputToScreenBuffer();
+		////gaussianBlurVerticalProgram.outputToScreenBuffer();
+		//
+		//var gSSAOBlendProgram:ShaderSSAOBlend = new ShaderSSAOBlend(cam);
+		//progs.push(gSSAOBlendProgram);
+		//gSSAOBlendProgram.frameBuffer = buff.buffer;
+		//gSSAOBlendProgram.blended.buffer = buff;
+		////gSSAOBlendProgram.outputToScreenBuffer();
+		//
+		//var toLumaProgram:ShaderRGBAToLuma = new ShaderRGBAToLuma(C);
+		//progs.push(toLumaProgram);
+		//toLumaProgram.frameBuffer = buff.buffer;
+		//toLumaProgram.inTextures[0].globalName = "blended";
+		//toLumaProgram.gLuma.buffer = buff;
+		//
+		//var fxaaProgram:ShaderFXAA = new ShaderFXAA(C);
+		//progs.push(fxaaProgram);
+		//fxaaProgram.frameBuffer = buff.buffer;
+		//fxaaProgram.inTextures[0].globalName = "gLuma";
+		//fxaaProgram.gFXAA.buffer = buff;
+		//fxaaProgram.outputToScreenBuffer();
+		
+		//var gSSAOLightProgram:ShaderSSAOForwardLights = new ShaderSSAOForwardLights(C);
+		//progs.push(gSSAOLightProgram);
+		//gSSAOLightProgram.gForwardLight.buffer = buff;
+		//gSSAOLightProgram.frameBuffer = buff.buffer;
+		//gSSAOLightProgram.inTextures[0].globalName = "gGaussianBlurV";
+		//gSSAOLightProgram.outputToScreenBuffer();
 		
 		//var quadTextureProgram:ShaderQuadTexture = new ShaderQuadTexture(C);
 		//progs.push(quadTextureProgram);
 		//quadTextureProgram.frameBuffer = buff.buffer;
+		//quadTextureProgram.inTextures[0].globalName = "gGaussianBlurV";
 		//quadTextureProgram.outputToScreenBuffer();
-		//quadTextureProgram.inTextures[0].globalName = "gForwardLight";
 	}
 	
 	override public function preDraw(Elapsed:Float):Void 
@@ -52,9 +100,6 @@ class ForwardProgramMgr extends ChopProgramMgr
 		GL.enable(GL.DEPTH_TEST);
 		GL.depthFunc(GL.LEQUAL);
 		GL.clearDepth(1.0);
-		
-		GL.enable(GL.BLEND);
-		GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
 		
 		GL.viewport(Std.int(cam.screenPos.x), Std.int(SnowApp._snow.window.height - cam.screenPos.y - cam.height), cam.width, cam.height);
 		GL.clearColor(cam.bgColor.x, cam.bgColor.y, cam.bgColor.z, 1.0);
@@ -94,11 +139,13 @@ class ForwardProgramMgr extends ChopProgramMgr
 				p.preRender(this);
 				p.render(opaque, cam, this);
 				p.render(trans, cam, this);
+				p.postRender(this);
 			}
 			else if (p.type == ChopProgram.ONESHOT)
 			{
 				p.preRender(this);
 				p.render(null, cam, this);
+				p.postRender(this);
 			}
 		}
 		

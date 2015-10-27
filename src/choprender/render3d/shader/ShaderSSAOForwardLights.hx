@@ -7,6 +7,7 @@ import choprender.render3d.Camera;
 import choprender.render3d.opengl.ChopProgram;
 import choprender.render3d.opengl.ChopShader;
 import choprender.render3d.opengl.ChopTexture;
+import choprender.render3d.opengl.ChopTextureDescriptor;
 import choprender.render3d.opengl.ChopTextureParam;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLTexture;
@@ -22,7 +23,7 @@ import choprender.render3d.light.Light;
  * ...
  * @author Ohmnivore
  */
-class ShaderForwardLights extends ChopProgram
+class ShaderSSAOForwardLights extends ChopProgram
 {
 	public var gForwardLight:ChopTexture;
 	
@@ -41,23 +42,25 @@ class ShaderForwardLights extends ChopProgram
 		v = Vec3.fromValues(0.0, 0.0, 0.0);
 		
 		#if !js
-		var id:String = "assets/shader/forward_light_vertex.glsl";
+		var id:String = "assets/shader/ssao_forward_light_vertex.glsl";
 		#else
-		var id:String = "assets/shaderweb/forward_light_vertex.glsl";
+		var id:String = "assets/shaderweb/ssao_forward_light_vertex.glsl";
 		#end
 		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
 		#if !js
-		id = "assets/shader/forward_light_fragment.glsl";
+		id = "assets/shader/ssao_forward_light_fragment.glsl";
 		#else
-		id = "assets/shaderweb/forward_light_fragment.glsl";
+		id = "assets/shaderweb/ssao_forward_light_fragment.glsl";
 		#end
 		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
-		gForwardLight = new ChopTexture("gForwardLight", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGB, GL.FLOAT);
+		gForwardLight = new ChopTexture("gSSAOForwardLight", GL.TEXTURE_2D, 0, GL.RGBA, C.width, C.height, GL.RGB, GL.FLOAT);
 		gForwardLight.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
 		gForwardLight.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.LINEAR));
 		outTextures.push(gForwardLight);
+		
+		inTextures.push(new ChopTextureDescriptor("gGaussianBlurV", "gSSAO"));
 	}
 	
 	override public function preRender(Mgr:ChopProgramMgr):Void 

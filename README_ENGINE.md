@@ -19,7 +19,6 @@
 * Dynamic shadows
 
 * Bloom shader
-* SSAO shader
 
 ##### Lights
 * Pass through bool

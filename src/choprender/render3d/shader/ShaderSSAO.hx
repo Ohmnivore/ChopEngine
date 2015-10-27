@@ -1,6 +1,7 @@
-package choprender.render3d.shaderexp;
+package choprender.render3d.shader;
 
 import choprender.render3d.opengl.ChopProgram;
+import choprender.render3d.opengl.ChopQuadProgram;
 import choprender.render3d.opengl.ChopShader;
 import choprender.render3d.opengl.ChopTexture;
 import choprender.render3d.opengl.ChopTextureDescriptor;
@@ -13,21 +14,17 @@ import choprender.render3d.Camera;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
-import chop.render3d.Program;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GLUtil;
-import hxmath.math.MathUtil;
-import hxmath.math.Matrix4x4;
-import hxmath.math.Vector2;
-import hxmath.math.Vec3;
 import chop.math.Util;
+import chop.math.Vec3;
 import choprender.render3d.opengl.GL.Float32Array;
 
 /**
  * ...
  * @author Ohmnivore
  */
-class ShaderSSAO extends ChopProgram
+class ShaderSSAO extends ChopQuadProgram
 {
 	public var ssaoKernel:Array<Vec3>;
 	public var texNoise:ChopTexture;
@@ -41,14 +38,13 @@ class ShaderSSAO extends ChopProgram
 		type = ChopProgram.ONESHOT;
 		
 		var id:String = "assets/shader/ssao_vertex.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.VERTEX_SHADER).attach(prog);
+		new ChopShader(id, Main.assets.getText(id), GL.VERTEX_SHADER).attach(prog);
 		id = "assets/shader/ssao_fragment.glsl";
-		new ChopShader(id, Assets.loadText(id), GL.FRAGMENT_SHADER).attach(prog);
+		new ChopShader(id, Main.assets.getText(id), GL.FRAGMENT_SHADER).attach(prog);
 		GL.linkProgram(prog);
 		
-		inTextures.push(new ChopTextureDescriptor("gRealPosition", "gPositionDepth"));
+		inTextures.push(new ChopTextureDescriptor("gPosition", "gPositionDepth"));
 		inTextures.push(new ChopTextureDescriptor("gNormal", "gNormal"));
-		//inTextures.push(new ChopTextureDescriptor("texNoise", "texNoise"));
 		
 		gSSAO = new ChopTexture("gSSAO", GL.TEXTURE_2D, 0, ChopGL.RED, C.width, C.height, GL.RGB, GL.FLOAT);
 		gSSAO.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.LINEAR));
@@ -60,7 +56,7 @@ class ShaderSSAO extends ChopProgram
 		for (i in 0...64)
 		{
 			var sample:Vec3 = Vec3.fromValues(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, Math.random());
-			sample = sample.normalize();
+			sample = sample.norm();
 			sample = sample * Math.random();
 			var scale:Float = i / 64.0;
 			
@@ -72,17 +68,12 @@ class ShaderSSAO extends ChopProgram
 		// Noise texture
 		var ssaoNoise:Array<Float> = [];
 		for (i in 0...16)
-		//for (i in 0...(C.width*C.height))
 		{
 			var noise:Vec3 = Vec3.fromValues(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, 0.0);
 			ssaoNoise.push(noise.x);
 			ssaoNoise.push(noise.y);
 			ssaoNoise.push(noise.z);
 		}
-		
-		//texNoise = new ChopTexture("texNoise", GL.TEXTURE_2D, 0, ChopGL.RGB16F, C.width, C.height, GL.RGB, GL.FLOAT, new Float32Array(ssaoNoise));
-		//texNoise.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
-		//texNoise.params.push(new ChopTextureParam(GL.TEXTURE_MAG_FILTER, GL.NEAREST));
 		
 		texNoise = new ChopTexture("texNoise", GL.TEXTURE_2D, 0, ChopGL.RGB16F, 4, 4, GL.RGB, GL.FLOAT, new Float32Array(ssaoNoise));
 		texNoise.params.push(new ChopTextureParam(GL.TEXTURE_MIN_FILTER, GL.NEAREST));
@@ -100,41 +91,25 @@ class ShaderSSAO extends ChopProgram
 		return A + F * (B - A);
 	}
 	
+	override public function preRender(Mgr:ChopProgramMgr):Void 
+	{
+		super.preRender(Mgr);
+		GL.clear(GL.COLOR_BUFFER_BIT);
+	}
+	
 	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
-		super.render(M, C, Mgr);
-		
 		for (i in 0...ssaoKernel.length)
 		{
 			var vec:Vec3 = ssaoKernel[i];
 			GLUtil.setUniformElementSimple(prog, "samples", i, vec);
 		}
 		GLUtil.setUniform(prog, "projection", C.projectionMatrix);
-		GLUtil.setUniform(prog, "view", C.viewMatrix);
 		
 		GL.activeTexture(GL.TEXTURE2);
 		GL.bindTexture(texNoise.target, texNoise.texture);
 		GLUtil.setInt(GLUtil.getLocation(prog, texNoise.name), 2);
 		
-		GL.clear(GL.COLOR_BUFFER_BIT);
-		
-		var vData:Array<Float> = [];
-		vData = [
-			-1.0, -1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    -1.0, 1.0, 0.0,
-		    1.0, -1.0, 0.0,
-		    1.0,  1.0, 0.0
-		];
-		var dataBuffer:GLBuffer = GL.createBuffer();
-		GL.bindBuffer(GL.ARRAY_BUFFER, dataBuffer);
-		GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vData), GL.STATIC_DRAW);
-		
-		GL.enableVertexAttribArray(0);
-		GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 0, 0);
-		
-		GL.drawArrays(GL.TRIANGLES, 0, 6);
-		GL.disableVertexAttribArray(0);
+		super.render(M, C, Mgr);
 	}
 }

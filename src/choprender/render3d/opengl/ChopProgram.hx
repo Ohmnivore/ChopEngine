@@ -60,6 +60,11 @@ class ChopProgram
 		
 	}
 	
+	public function postRender(Mgr:ChopProgramMgr):Void
+	{
+		
+	}
+	
 	private function bindOutTextures(Mgr:ChopProgramMgr):Void
 	{
 		for (t in outTextures)

@@ -1,7 +1,5 @@
 #version 330 core
-
-// out float FragColor;
-out vec4 FragColor;
+out float FragColor;
 in vec2 TexCoords;
 
 uniform sampler2D gPositionDepth;
@@ -18,19 +16,13 @@ float radius = 1.0;
 const vec2 noiseScale = vec2(640.0f/4.0f, 480.0f/4.0f); 
 
 uniform mat4 projection;
-uniform mat4 view;
 
 void main()
 {
     // Get input for SSAO algorithm
     vec3 fragPos = texture(gPositionDepth, TexCoords).xyz;
     vec3 normal = texture(gNormal, TexCoords).rgb;
-	
-	// vec3 fragPos = (view * vec4(texture(gPositionDepth, TexCoords).xyz, 1.0)).xyz;
-    // vec3 normal = (view * vec4(texture(gNormal, TexCoords).rgb, 1.0)).xyz;
-	
     vec3 randomVec = texture(texNoise, TexCoords * noiseScale).xyz;
-    // vec3 randomVec = texture(texNoise, TexCoords).xyz;
     // Create TBN change-of-basis matrix: from tangent-space to view-space
     vec3 tangent = normalize(randomVec - normal * dot(randomVec, normal));
     vec3 bitangent = cross(normal, tangent);
@@ -58,18 +50,5 @@ void main()
     }
     occlusion = 1.0 - (occlusion / kernelSize);
     
-    // FragColor = occlusion;
-    FragColor = vec4(vec3(occlusion), 1.0);
-    // FragColor = vec4(vec3(texture(gPositionDepth, TexCoords).a), 1.0);
-	// FragColor = vec4(texture(gNormal, TexCoords).rgb, 1.0);
-	// FragColor = vec4(texture(gPositionDepth, TexCoords).rgb, 1.0);
-	// FragColor = vec4(texture(texNoise, TexCoords * noiseScale).rgb, 1.0);
-	// FragColor = vec4(vec3(texture(gPositionDepth, TexCoords).a), 1.0);
-	
-	FragColor.x += projection[0][0] * 0.0000000001;
-	FragColor.x += view[0][0] * 0.0000000001;
-	for(int i = 0; i < kernelSize; ++i)
-    {
-		FragColor.x += samples[i].x * 0.0000000001;
-	}
+    FragColor = occlusion;
 }

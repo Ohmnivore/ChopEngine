@@ -6,6 +6,7 @@ import choprender.render3d.shader.*;
 import choprender.render3d.Camera;
 import choprender.render3d.opengl.GL;
 import choprender.model.Model;
+import choprender.render3d.shader.ShaderFXAA;
 
 /**
  * ...
