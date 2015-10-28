@@ -65,9 +65,9 @@ class Parser
 		init();
 		tokens = Tokens;
 		
-		while (LA(1) != Lexer.LEOF)
+		while (p < tokens.length && LA(1) != Lexer.LEOF)
 		{
-			while (LA(1) != Lexer.LNEWLINE)
+			while (LA(1) != Lexer.LNEWLINE && LA(1) != Lexer.LEOF)
 			{
 				if (LA(1) == Lexer.LGEOM)
 				{

@@ -113,7 +113,11 @@ class PlayState extends State
 		//add(mQuad);
 		
 		var m2:Model = new Model();
-		m2.loadChop("assets/mesh/corgi.chopmesh");
+		//m2.loadChop("assets/mesh/corgi.chopmesh");
+		var objLoader:ObjLoader = new ObjLoader();
+		objLoader.loadFile("assets/obj/cube.obj");
+		//objLoader.loadFile("assets/obj/lowpoly.obj");
+		m2.loadData(objLoader.data);
 		m2.scale.x = 2.0;
 		m2.scale.y = 2.0;
 		m2.scale.z = 2.0;
