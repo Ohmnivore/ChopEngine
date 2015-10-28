@@ -4,20 +4,18 @@ package choprender.model.loader.obj;
  * ...
  * @author Ohmnivore
  */
-class Lexer
+class MtlLexer
 {
 	static public var LEOF:Int = 0;
 	static public var LNEWLINE:Int = 1;
-	static public var LVAR:Int = 2;
-	static public var LINT:Int = 3;
-	static public var LFLOAT:Int = 4;
-	static public var LFSLASH:Int = 5;
-	static public var LPOUND:Int = 6;
-	static public var LGEOM:Int = 7;
-	static public var LNORM:Int = 8;
-	static public var LTEX:Int = 9;
-	static public var LPARAM:Int = 10;
-	static public var LFACE:Int = 11;
+	static public var LNEWMTL:Int = 2;
+	static public var LMTLNAME:Int = 3;
+	static public var LAMBIENT:Int = 4;
+	static public var LDIFFUSE:Int = 5;
+	static public var LSPEC:Int = 6;
+	static public var LTRANS:Int = 7;
+	static public var LFLOAT:Int = 8;
+	static public var LINT:Int = 9;
 	
 	public var source:String;
 	public var tokens:Array<Token>;
@@ -80,10 +78,6 @@ class Lexer
 			{
 				return quickConsume(LNEWLINE);
 			}
-			else if (c == "/")
-			{
-				return quickConsume(LFSLASH);
-			}
 			else if (isDigit(c))
 			{
 				return NUM();
@@ -133,7 +127,7 @@ class Lexer
 	{
 		var code:Int = Char.charCodeAt(0);
 		return (code >= "a".charCodeAt(0) && code <= "z".charCodeAt(0)) ||
-			(code >= "A".charCodeAt(0) && code <= "Z".charCodeAt(0));
+			(code >= "A".charCodeAt(0) && code <= "Z".charCodeAt(0)) || Char == ".";
 	}
 	
 	private function PARSELONGSTRING():Token
@@ -146,19 +140,17 @@ class Lexer
 		}
 		while(isLetter(c) || isDigit(c));
 		
-		var ret:Int = LVAR;
-		if (buff == "v")
-			ret = LGEOM;
-		if (buff == "vn")
-			ret = LNORM;
-		if (buff == "vt")
-			ret = LTEX;
-		if (buff == "vp")
-			ret = LPARAM;
-		if (buff == "f")
-			ret = LFACE;
-		if (buff == "#")
-			ret = LPOUND;
+		var ret:Int = LMTLNAME;
+		if (buff == "newmtl")
+			ret = LNEWMTL;
+		if (buff == "Ka")
+			ret = LAMBIENT;
+		if (buff == "Kd")
+			ret = LDIFFUSE;
+		if (buff == "Ks")
+			ret = LSPEC;
+		if (buff == "d" || buff == "Tr")
+			ret = LTRANS;
 		
 		return new Token(ret, buff);
 	}

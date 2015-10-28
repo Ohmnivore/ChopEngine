@@ -46,6 +46,7 @@ class Assets
 				else if (ext == "glsl") loadText(id);
 				else if (ext == "chopmesh") loadText(id);
 				else if (ext == "obj") loadText(id);
+				else if (ext == "mtl") loadText(id);
 			}
 		}).error(
 		function () {
