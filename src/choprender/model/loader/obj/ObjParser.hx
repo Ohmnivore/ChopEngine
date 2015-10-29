@@ -12,24 +12,18 @@ import choprender.model.data.ModelData;
  * ...
  * @author Ohmnivore
  */
-class ObjParser
+class ObjParser extends Parser
 {
-	public var tokens:Array<Token>;
+	public var mats:Array<Material>;
+	
 	public var data:ModelData;
-	
 	private var curMat:Int;
-	private var p:Int;
 	
-	public function new() 
+	override public function init():Void
 	{
-		init();
-	}
-	
-	public function init():Void
-	{
-		p = 0;
+		super.init();
+		
 		data = new ModelData();
-		tokens = [];
 		curMat = 0;
 		
 		var mat:Material = new Material();
@@ -62,15 +56,14 @@ class ObjParser
 		anim.frames.push(frame);
 	}
 	
-	public function parse(Tokens:Array<Token>, Mats:Array<Material>):Void
+	override public function parse(Tokens:Array<Token>):Void
 	{
-		init();
-		data.materials = Mats;
-		tokens = Tokens;
+		super.parse(Tokens);
+		data.materials = mats;
 		
-		while (p < tokens.length && LA(1) != ObjLexer.LEOF)
+		while (p < tokens.length && LA(1) != Lexer.LEOF)
 		{
-			while (LA(1) != ObjLexer.LNEWLINE && LA(1) != ObjLexer.LEOF)
+			while (LA(1) != ObjLexer.LNEWLINE && LA(1) != Lexer.LEOF)
 			{
 				if (LA(1) == ObjLexer.LGEOM)
 				{
@@ -111,28 +104,13 @@ class ObjParser
 		}
 	}
 	
-	public function consume():Void
-	{
-		p++;
-	}
-	
-	public function LT(I:Int):Token
-	{
-		return tokens[p + I - 1];
-	}
-	
-	public function LA(I:Int):Int
-	{
-		return LT(I).type;
-	}
-	
 	public function parseGeom():Void
 	{
 		var pos:Array<Float> = [0.0, 0.0, 0.0, 0.0];
 		var i:Int = 0;
-		while (LA(1) != ObjLexer.LEOF && LA(1) != ObjLexer.LNEWLINE)
+		while (LA(1) != Lexer.LEOF && LA(1) != ObjLexer.LNEWLINE)
 		{
-			pos[i] = Std.parseFloat(LT(1).text);
+			pos[i] = Std.parseFloat(match(Lexer.LFLOAT).text);
 			consume();
 			i++;
 		}
@@ -166,7 +144,7 @@ class ObjParser
 		var f:Face = new Face();
 		f.matID = curMat;
 		
-		while (LA(1) != ObjLexer.LEOF && LA(1) != ObjLexer.LNEWLINE)
+		while (LA(1) != Lexer.LEOF && LA(1) != ObjLexer.LNEWLINE)
 		{
 			parseIdx(f);
 		}
@@ -199,28 +177,28 @@ class ObjParser
 		var texid:Int = 0;
 		var normid:Int = 0;
 		
-		vid = Std.parseInt(LT(1).text);
+		vid = Std.parseInt(match(Lexer.LINT).text);
 		consume();
 		
 		if (LA(1) == ObjLexer.LFSLASH)
 		{
 			consume();
-			if (LA(1) == ObjLexer.LINT)
+			if (LA(1) == Lexer.LINT)
 			{
-				texid = Std.parseInt(LT(1).text);
+				texid = Std.parseInt(match(Lexer.LINT).text);
 				consume();
 				
 				if (LA(1) == ObjLexer.LFSLASH)
 				{
 					consume();
-					normid = Std.parseInt(LT(1).text);
+					normid = Std.parseInt(match(Lexer.LINT).text);
 					consume();
 				}
 			}
 			else if (LA(1) == ObjLexer.LFSLASH)
 			{
 				consume();
-				normid = Std.parseInt(LT(1).text);
+				normid = Std.parseInt(match(Lexer.LINT).text);
 				consume();
 			}
 		}
@@ -232,7 +210,7 @@ class ObjParser
 	
 	public function parseUseMtl():Void
 	{
-		var name:String = LT(1).text;
+		var name:String = match(ObjLexer.LVAR).text;
 		consume();
 		
 		for (mat in data.materials)
@@ -240,7 +218,6 @@ class ObjParser
 			if (mat.name == name)
 			{
 				curMat = mat.id;
-				trace(mat.id);
 				break;
 			}
 		}

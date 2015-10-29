@@ -42,7 +42,8 @@ class ObjLoader
 		var lexer:ObjLexer = new ObjLexer();
 		lexer.tokenize(source);
 		var parser:ObjParser = new ObjParser();
-		parser.parse(lexer.tokens, parserMtl.mats);
+		parser.mats = parserMtl.mats;
+		parser.parse(lexer.tokens);
 		data = parser.data;
 	}
 }

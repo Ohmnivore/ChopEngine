@@ -1,5 +1,6 @@
 package choprender.model.loader.obj;
 
+import chop.util.Color;
 import choprender.model.data.Animation;
 import choprender.model.data.Face;
 import choprender.model.data.Frame;
@@ -12,34 +13,24 @@ import choprender.model.data.ModelData;
  * ...
  * @author Ohmnivore
  */
-class MtlParser
+class MtlParser extends Parser
 {
-	public var tokens:Array<Token>;
 	public var mats:Array<Material>;
-	
 	private var curMat:Material;
-	private var p:Int;
 	
-	public function new() 
+	override public function init():Void
 	{
-		init();
-	}
-	
-	public function init():Void
-	{
-		p = 0;
-		tokens = [];
+		super.init();
 		mats = [];
 	}
 	
-	public function parse(Tokens:Array<Token>):Void
+	override public function parse(Tokens:Array<Token>):Void
 	{
-		init();
-		tokens = Tokens;
+		super.parse(Tokens);
 		
-		while (p < tokens.length && LA(1) != MtlLexer.LEOF)
+		while (p < tokens.length && LA(1) != Lexer.LEOF)
 		{
-			while (LA(1) != MtlLexer.LNEWLINE && LA(1) != MtlLexer.LEOF)
+			while (LA(1) != MtlLexer.LNEWLINE && LA(1) != Lexer.LEOF)
 			{
 				if (LA(1) == MtlLexer.LNEWMTL)
 				{
@@ -70,26 +61,11 @@ class MtlParser
 		}
 	}
 	
-	public function consume():Void
-	{
-		p++;
-	}
-	
-	public function LT(I:Int):Token
-	{
-		return tokens[p + I - 1];
-	}
-	
-	public function LA(I:Int):Int
-	{
-		return LT(I).type;
-	}
-	
-	public function parseNewMtl():Void
+	private function parseNewMtl():Void
 	{
 		curMat = new Material();
 		
-		curMat.name = LT(1).text;
+		curMat.name = match(MtlLexer.LMTLNAME).text;
 		curMat.id = mats.length;
 		curMat.ambientIntensity = 0.3;
 		curMat.diffuseIntensity = 1.0;
@@ -104,35 +80,34 @@ class MtlParser
 		mats.push(curMat);
 	}
 	
-	public function parseDiffuse():Void
+	private function getRGB():Color
 	{
-		var r:Float = Std.parseFloat(LT(1).text);
+		var r:Color = new Color();
+		r.r = Std.parseFloat(match(Lexer.LFLOAT).text);
 		consume();
-		var g:Float = Std.parseFloat(LT(1).text);
+		r.g = Std.parseFloat(match(Lexer.LFLOAT).text);
 		consume();
-		var b:Float = Std.parseFloat(LT(1).text);
+		r.b = Std.parseFloat(match(Lexer.LFLOAT).text);
 		consume();
-		
-		curMat.diffuseColor.set(r, g, b);
+		return r;
 	}
 	
-	public function parseSpecular():Void
+	private function parseDiffuse():Void
 	{
-		var r:Float = Std.parseFloat(LT(1).text);
-		consume();
-		var g:Float = Std.parseFloat(LT(1).text);
-		consume();
-		var b:Float = Std.parseFloat(LT(1).text);
-		consume();
-		
-		curMat.specularColor.set(r, g, b);
+		var rgb:Color = getRGB();
+		curMat.diffuseColor.copy(rgb);
 	}
 	
-	public function parseTrans():Void
+	private function parseSpecular():Void
 	{
-		var trans:Float = Std.parseFloat(LT(1).text);
+		var rgb:Color = getRGB();
+		curMat.specularColor.copy(rgb);
+	}
+	
+	private function parseTrans():Void
+	{
+		var trans:Float = Std.parseFloat(match(Lexer.LFLOAT).text);
 		consume();
-		
 		curMat.transparency = trans;
 	}
 }
