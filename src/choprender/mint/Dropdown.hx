@@ -55,10 +55,10 @@ class Dropdown extends mint.render.Render {
 		visual = new QuadModel();
 		visual.mat.useShading = false;
 		visual.pos.x = Convert.coord(control.x);
-		visual.pos.z = Convert.coordY(control.y);
+		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
-		visual.pos.y = Convert.coordZ(render.options.depth + control.depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		_opt.group.add(visual);
 
@@ -78,10 +78,10 @@ class Dropdown extends mint.render.Render {
 		border = new QuadModel();
 		border.mat.useShading = false;
 		border.pos.x = Convert.coord(control.x);
-		border.pos.z = Convert.coordY(control.y);
+		border.pos.y = Convert.coordY(control.y);
 		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		border.mat.diffuseColor.copy(color);
-		border.pos.y = Convert.coordZ(render.options.depth + control.depth + 0.001);
+		border.pos.z = Convert.coordZ(render.options.depth + control.depth + 0.001);
 		border.visible = control.visible;
 		_opt.group.add(border);
 
@@ -99,11 +99,11 @@ class Dropdown extends mint.render.Render {
         //visual.resize_xy(control.w, control.h);
         //border.set({ x:control.x, y:control.y, w:control.w, h:control.h, color:border.color, visible:control.visible });
 		visual.pos.x = Convert.coord(control.x);
-		visual.pos.z = Convert.coordY(control.y);
+		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		
 		border.pos.x = Convert.coord(control.x);
-		border.pos.z = Convert.coordY(control.y);
+		border.pos.y = Convert.coordY(control.y);
 		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		border.mat.diffuseColor.copy(color);
 		border.visible = control.visible;
@@ -124,7 +124,7 @@ class Dropdown extends mint.render.Render {
     override function ondepth( _depth:Float ) {
         //visual.depth = render.options.depth + _depth;
         //border.depth = visual.depth+0.001;
-		trace("depth", render.options.depth, _depth, render.options.depth + _depth);
+		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		//visual.pos.y = Convert.coordZ(render.options.depth + _depth);
 		//border.pos.y = Convert.coordZ(visual.depth + 0.001);
     }

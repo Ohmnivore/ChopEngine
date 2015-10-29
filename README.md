@@ -1,6 +1,6 @@
 # TODO
 ## Rendering
-* depth for ui
+* handle ondepth for ui
 * text color
 * text size
 * Text line right/center/left align

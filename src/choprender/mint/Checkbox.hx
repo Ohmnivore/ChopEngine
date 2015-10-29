@@ -60,10 +60,10 @@ class Checkbox extends mint.render.Render {
 		visual = new QuadModel();
 		visual.mat.useShading = false;
 		visual.pos.x = Convert.coord(control.x);
-		visual.pos.z = Convert.coordY(control.y);
+		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
-		visual.pos.y = Convert.coordZ(render.options.depth + control.depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		_opt.group.add(visual);
 
@@ -81,10 +81,11 @@ class Checkbox extends mint.render.Render {
 		node_off = new QuadModel();
 		node_off.mat.useShading = false;
 		node_off.pos.x = Convert.coord(control.x + 4);
-		node_off.pos.z = Convert.coordY(control.y + 4);
+		node_off.pos.y = Convert.coordY(control.y + 4);
 		node_off.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node_off.mat.diffuseColor.set(0, 0, 0);
-		node_off.pos.y = Convert.coordZ(render.options.depth + control.depth + 0.001);
+		node_off.mat.transparency = 0.25;
+		node_off.pos.z = Convert.coordZ(render.options.depth + control.depth + 0.001);
 		node_off.visible = control.visible;
 		_opt.group.add(node_off);
 
@@ -102,10 +103,10 @@ class Checkbox extends mint.render.Render {
 		node = new QuadModel();
 		node.mat.useShading = false;
 		node.pos.x = Convert.coord(control.x + 4);
-		node.pos.z = Convert.coordY(control.y + 4);
+		node.pos.y = Convert.coordY(control.y + 4);
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node.mat.diffuseColor.copy(color_node);
-		node.pos.y = Convert.coordZ(render.options.depth + control.depth + 0.002);
+		node.pos.z = Convert.coordZ(render.options.depth + control.depth + 0.002);
 		node.visible = control.visible && checkbox.state;
 		_opt.group.add(node);
 		
@@ -146,13 +147,13 @@ class Checkbox extends mint.render.Render {
         //node.transform.pos.set_xy(control.x+4, control.y+4);
         //node.geometry_quad.resize_xy( control.w-8, control.h-8 );
 		visual.pos.x = Convert.coord(control.x);
-		visual.pos.z = Convert.coordY(control.y);
+		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		node_off.pos.x = Convert.coord(control.x + 4);
-		node_off.pos.z = Convert.coordY(control.y + 4);
+		node_off.pos.y = Convert.coordY(control.y + 4);
 		node_off.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node.pos.x = Convert.coord(control.x + 4);
-		node.pos.z = Convert.coordY(control.y + 4);
+		node.pos.y = Convert.coordY(control.y + 4);
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 
     } //onbounds

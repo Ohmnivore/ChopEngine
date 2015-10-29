@@ -63,11 +63,12 @@ class Label extends mint.render.Render {
 		text = new Text(f.font);
 		text.mat.useShading = false;
 		text.pos.x = Convert.coord(control.x);
-		text.pos.z = Convert.coordY(control.y);
+		text.pos.y = Convert.coordY(control.y);
 		text.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		text.textWidth = cast control.w;
 		//text.mat.diffuseColor.copy(color);
-		text.pos.y = Convert.coordZ(render.options.depth + control.depth);
+		//text.mat.transparency = 0;
+		text.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		text.visible = control.visible;
 		text.setText(label.text);
 		_opt.group.add(text);
@@ -84,7 +85,7 @@ class Label extends mint.render.Render {
     override function onbounds() {
         //text.bounds = new luxe.Rectangle(control.x, control.y, control.w, control.h);
 		text.pos.x = Convert.coord(control.x);
-		text.pos.z = Convert.coordY(control.y);
+		text.pos.y = Convert.coordY(control.y);
 		text.setSize(Convert.coord(control.w), Convert.coord(control.h));
     }
 

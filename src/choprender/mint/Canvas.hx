@@ -54,10 +54,11 @@ class Canvas extends mint.render.Render {
 		visual.mat.useShading = false;
 		
 		visual.pos.x = Convert.coord(control.x);
-		visual.pos.z = Convert.coordY(control.y);
+		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
-		visual.pos.y = -render.options.depth - control.depth;
+		visual.mat.transparency = 0;
+		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		_opt.group.add(visual);
 
@@ -74,7 +75,7 @@ class Canvas extends mint.render.Render {
         //visual.transform.pos.set_xy(control.x, control.y);
         //visual.resize_xy(control.w, control.h);
 		visual.pos.x = Convert.coord(control.x);
-		visual.pos.z = Convert.coordY(control.y);
+		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
     }
 
@@ -93,7 +94,7 @@ class Canvas extends mint.render.Render {
 
     override function ondepth( _depth:Float ) {
         //visual.depth = render.options.depth + _depth;
-		visual.pos.y = Convert.coordZ(render.options.depth + _depth);
+		//visual.pos.y = Convert.coordZ(render.options.depth + _depth);
     } //ondepth
 
 } //Canvas

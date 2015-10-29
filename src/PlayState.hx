@@ -35,13 +35,13 @@ class PlayState extends State
 		GlobalRender.cam.bgColor.y = 1.0;
 		GlobalRender.cam.bgColor.z = 1.0;
 		
-		var m:Model = new Model();
-		m.loadChop("assets/mesh/lowpoly.chopmesh");
-		for (mat in m.data.materials)
-		{
-			//mat.transparency = 0.75;
-		}
-		add(m);
+		//var m:Model = new Model();
+		//m.loadChop("assets/mesh/lowpoly.chopmesh");
+		//for (mat in m.data.materials)
+		//{
+			////mat.transparency = 0.75;
+		//}
+		//add(m);
 		
 		var check:Checkbox = new Checkbox({
 			options: { group: this },
@@ -65,37 +65,37 @@ class PlayState extends State
 		});
 		//var dlist:Array<String> = ["item1", "item2", "item3"];
 		
-		var f:FontBuilderNGL = new FontBuilderNGL();
-		f.loadFile("assets/font/04b03_regular_8.xml");
+		//var f:FontBuilderNGL = new FontBuilderNGL();
+		//f.loadFile("assets/font/04b03_regular_8.xml");
 		
-		var q:QuadModel = new QuadModel();
-		q.mat.useShading = false;
-		q.pos.x = 0;
-		q.pos.z = 2;
-		q.setSize(2.0, 1.0);
-		add(q);
+		//var q:QuadModel = new QuadModel();
+		//q.mat.useShading = false;
+		//q.pos.x = 0;
+		//q.pos.z = 2;
+		//q.setSize(2.0, 1.0);
+		//add(q);
 		
-		var t:Text = new Text(f.font);
-		t.pos.x = 0;
-		t.pos.y = 4;
-		t.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		t.setText("ChopEngine is chopping.\nIt's also far from done.");
-		add(t);
-		
-		var t2:Text = new Text(f.font);
-		t2.textWidth = 64;
-		t2.pos.x = 5;
-		t2.pos.y = 4;
-		t2.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		add(t2);
-		
-		var t3:Text = new Text(f.font);
-		t3.textWidth = 64;
-		t3.wordWrap = true;
-		t3.pos.x = 10;
-		t3.pos.y = 4;
-		t3.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		add(t3);
+		//var t:Text = new Text(f.font);
+		//t.pos.x = 0;
+		//t.pos.y = 4;
+		//t.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		//t.setText("ChopEngine is chopping.\nIt's also far from done.");
+		//add(t);
+		//
+		//var t2:Text = new Text(f.font);
+		//t2.textWidth = 64;
+		//t2.pos.x = 5;
+		//t2.pos.y = 4;
+		//t2.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		//add(t2);
+		//
+		//var t3:Text = new Text(f.font);
+		//t3.textWidth = 64;
+		//t3.wordWrap = true;
+		//t3.pos.x = 10;
+		//t3.pos.y = 4;
+		//t3.setText("ChopEngine is chopping.\nIt's also far from completed.");
+		//add(t3);
 		
 		//var t4:Text = new Text(f.font);
 		//t4.textWidth = 64;
@@ -112,23 +112,23 @@ class PlayState extends State
 		//mQuad.mat.diffuseColor.set(0, 0, 0);
 		//add(mQuad);
 		
-		var m2:Model = new Model();
-		//m2.loadChop("assets/mesh/corgi.chopmesh");
-		var objLoader:ObjLoader = new ObjLoader();
-		objLoader.loadFile("assets/obj/corgi.obj", "assets/obj/corgi.mtl");
-		//objLoader.loadFile("assets/obj/lowpoly.obj", "assets/obj/lowpoly.mtl");
-		m2.loadData(objLoader.data);
-		m2.scale.x = 2.0;
-		m2.scale.y = 2.0;
-		m2.scale.z = 2.0;
-		m2.rot.y = 20.0;
-		m2.pos.y = 0.1;
-		m2.pos.x = 7.0;
-		for (mat in m2.data.materials)
-		{
-			mat.transparency = 0.75;
-		}
-		add(m2);
+		//var m2:Model = new Model();
+		////m2.loadChop("assets/mesh/corgi.chopmesh");
+		//var objLoader:ObjLoader = new ObjLoader();
+		//objLoader.loadFile("assets/obj/corgi.obj", "assets/obj/corgi.mtl");
+		////objLoader.loadFile("assets/obj/lowpoly.obj", "assets/obj/lowpoly.mtl");
+		//m2.loadData(objLoader.data);
+		//m2.scale.x = 2.0;
+		//m2.scale.y = 2.0;
+		//m2.scale.z = 2.0;
+		//m2.rot.y = 20.0;
+		//m2.pos.y = 0.1;
+		//m2.pos.x = 7.0;
+		//for (mat in m2.data.materials)
+		//{
+			//mat.transparency = 0.75;
+		//}
+		//add(m2);
 		
 		var displace:Vec4 = Vec4.fromValues(0, 0, -1, 0);
 		displace.transMat4(Util.eulerDegToMatrix4x4(
