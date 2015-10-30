@@ -1,9 +1,11 @@
 # TODO
 ## Rendering
 * handle ondepth for ui
+* texture blend mode
 * text color
-* text size
 * Text line right/center/left align
+* mint halign text right/center/left
+* mint valign text top/center/bottom
 * integrate mint
 
 ## Rendering (eventually)
@@ -39,9 +41,6 @@
 ## Audio
 * Positional audio
 * Music tracks
-
-## UI
-* mint integration
 
 ## Misc
 * Game saves

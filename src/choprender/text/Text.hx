@@ -16,26 +16,29 @@ import choprender.render3d.opengl.GL.Uint8Array;
  */
 class Text extends QuadModel
 {
+	static public inline var AUTO_WIDTH:Int = -1;
 	static private inline var UNKNOWN_REPLACER:String = " ";
 	
 	public var font:Font;
-	public var textWidth:Int;
 	public var wordWrap:Bool;
-	public var alignment:String;
+	public var textWidth:Int;
+	public var textHeight:Int;
+	public var fontSize:Float;
 	
 	public function new(F:Font) 
 	{
 		super();
 		font = F;
-		textWidth = -1;
+		textWidth = AUTO_WIDTH;
 		wordWrap = false;
-		alignment = "";
 		mat.useShading = false;
 		mat.diffuseColor.set(0, 0, 0);
 	}
 	
-	public function setText(T:String):Void
+	public function setText(T:String, FontSize:Float):Void
 	{
+		fontSize = FontSize;
+		
 		var chars:Array<FontChar> = [];
 		for (i in 0...T.length)
 		{
@@ -53,7 +56,7 @@ class Text extends QuadModel
 	private function setChars(Chars:Array<FontChar>):Void
 	{
 		var b:Bitmap = new Bitmap();
-		if (textWidth == -1)
+		if (textWidth == AUTO_WIDTH)
 			b.setSize(0, 0);
 		else
 			b.setSize(textWidth, 0);
@@ -72,13 +75,13 @@ class Text extends QuadModel
 			var newLine:Bool = false;
 			
 			if ((c == null) || // newline
-				(textWidth != -1 && !wordWrap && nextC != null && b.width < x + c.advance) // char wrap
+				(textWidth != AUTO_WIDTH && !wordWrap && nextC != null && b.width < x + c.advance) // char wrap
 			)
 			{
 				newLine = true;
 				display = c != null;
 			}
-			if (textWidth != -1 && wordWrap && (lastC == null || lastC.id == " ") && c != null && c.id != " ") // word wrap
+			if (textWidth != AUTO_WIDTH && wordWrap && (lastC == null || lastC.id == " ") && c != null && c.id != " ") // word wrap
 			{
 				var curWidth:Int = 0;
 				var j:Int = 0;
@@ -119,9 +122,11 @@ class Text extends QuadModel
 			}
 		}
 		loadTexData(b.pixels, b.width, b.height);
-		scale.x = b.width / b.height;
-		scale.z = b.height / b.width;
 		
 		textWidth = b.width;
+		textHeight = b.height;
+		
+		var d:Float = fontSize / font.size;
+		setSize(textWidth * d, textHeight * d);
 	}
 }

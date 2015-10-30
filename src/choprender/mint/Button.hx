@@ -68,7 +68,8 @@ class Button extends mint.render.Render {
         button.onmouseleave.listen(function(e,c) { visual.mat.diffuseColor.copy(color); });
         button.onmousedown.listen(function(e,c) { visual.mat.diffuseColor.copy(color_down); });
         button.onmouseup.listen(function(e,c) { visual.mat.diffuseColor.copy(color_hover); });
-
+trace("btn", control.x, control.y, control.w, control.h);
+trace("btnd", render.options.depth, control.depth);
     } //new
 
     override function onbounds() {
@@ -109,7 +110,7 @@ class Button extends mint.render.Render {
 
         //visual.depth = render.options.depth + _depth;
 		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
-		//visual.pos.z = Convert.coordZ(render.options.depth + _depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
 
     } //ondepth
 

@@ -56,17 +56,17 @@ class PlayState extends State
 			text: "Test btn",
             x: 64, y: 64, w: 64, h: 32
 		});
-		var ddown:Dropdown = new Dropdown({
-			options: { group: this },
-            parent: canvas,
-            name: "test_ddown",
-			text: "Test ddown",
-			x: 128, y: 128, w: 64, h: 32
-		});
+		//var ddown:Dropdown = new Dropdown({
+			//options: { group: this },
+            //parent: canvas,
+            //name: "test_ddown",
+			//text: "Test ddown",
+			//x: 128, y: 128, w: 64, h: 32
+		//});
 		//var dlist:Array<String> = ["item1", "item2", "item3"];
 		
-		//var f:FontBuilderNGL = new FontBuilderNGL();
-		//f.loadFile("assets/font/04b03_regular_8.xml");
+		var f:FontBuilderNGL = new FontBuilderNGL();
+		f.loadFile("assets/font/04b03_regular_8.xml");
 		
 		//var q:QuadModel = new QuadModel();
 		//q.mat.useShading = false;
@@ -75,36 +75,36 @@ class PlayState extends State
 		//q.setSize(2.0, 1.0);
 		//add(q);
 		
-		//var t:Text = new Text(f.font);
-		//t.pos.x = 0;
-		//t.pos.y = 4;
-		//t.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		//t.setText("ChopEngine is chopping.\nIt's also far from done.");
-		//add(t);
-		//
-		//var t2:Text = new Text(f.font);
-		//t2.textWidth = 64;
-		//t2.pos.x = 5;
-		//t2.pos.y = 4;
-		//t2.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		//add(t2);
-		//
-		//var t3:Text = new Text(f.font);
-		//t3.textWidth = 64;
-		//t3.wordWrap = true;
-		//t3.pos.x = 10;
-		//t3.pos.y = 4;
-		//t3.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		//add(t3);
+		var t:Text = new Text(f.font);
+		t.pos.x = 0;
+		t.pos.y = 4;
+		t.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		t.setText("ChopEngine is chopping.\nIt's also far from done.", 0.02);
+		add(t);
 		
-		//var t4:Text = new Text(f.font);
-		//t4.textWidth = 64;
-		//t4.wordWrap = true;
+		var t2:Text = new Text(f.font);
+		t2.textWidth = 64;
+		t2.pos.x = 5;
+		t2.pos.y = 4;
+		t2.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		add(t2);
+		
+		var t3:Text = new Text(f.font);
+		t3.textWidth = 64;
+		t3.wordWrap = true;
+		t3.pos.x = 10;
+		t3.pos.y = 4;
+		t3.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		add(t3);
+		
+		var t4:Text = new Text(f.font);
+		t4.textWidth = 64;
+		t4.wordWrap = true;
 		//t4.alignment = "right";
-		//t4.pos.x = 0;
-		//t4.pos.z = 5;
-		//t4.setText("ChopEngine is chopping.\nIt's also far from completed.");
-		//add(t4);
+		t4.pos.x = 0;
+		t4.pos.y = 5;
+		t4.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		add(t4);
 		
 		//var mQuad:QuadModel = new QuadModel();
 		//mQuad.loadTexFile("assets/font/04b03_regular_8.png");

@@ -67,8 +67,22 @@ uniform Light allLights[MAX_LIGHTS];
 
 vec4 getTextureValue(vec2 uv, int tID)
 {
-	if (tID == 0)
-		return texture(texture0, uv);
+	if (tID == 0) return texture(texture0, uv);
+	if (tID == 1) return texture(texture1, uv);
+	if (tID == 2) return texture(texture2, uv);
+	if (tID == 3) return texture(texture3, uv);
+	if (tID == 4) return texture(texture4, uv);
+	if (tID == 5) return texture(texture5, uv);
+	if (tID == 6) return texture(texture6, uv);
+	if (tID == 7) return texture(texture7, uv);
+	if (tID == 8) return texture(texture8, uv);
+	if (tID == 9) return texture(texture9, uv);
+	if (tID == 10) return texture(texture10, uv);
+	if (tID == 11) return texture(texture11, uv);
+	if (tID == 12) return texture(texture12, uv);
+	if (tID == 13) return texture(texture13, uv);
+	if (tID == 14) return texture(texture14, uv);
+	if (tID == 15) return texture(texture15, uv);
 	return vec4(1.0, 0.0, 1.0, 1.0);
 }
 
@@ -84,6 +98,7 @@ void main()
 	// 	gDiffuse.w = material.transparency;
 	// }
 	
+	float alpha = material.transparency;
 	vec3 Diffuse = material.diffuseColor * material.diffuseIntensity;
 	vec3 Specular = material.specularColor * material.specularIntensity;
 	vec3 Normal = Normal;
@@ -92,7 +107,8 @@ void main()
 	if (textureID >= 0)
 	{
 	   vec4 texDiffuse = getTextureValue(UV.xy, textureID);
-	   Diffuse = vec3(texDiffuse.xyz) * texDiffuse.w + Diffuse.xyz * (1.0 - texDiffuse.w);
+	   Diffuse = vec3(texDiffuse.xyz) * texDiffuse.w + Diffuse.xyz * (material.transparency - texDiffuse.w);
+	   // alpha = texDiffuse.w;
 	}
 	
 	// Decode the G Buffer
@@ -192,7 +208,7 @@ void main()
 
     // gamma correction
     vec3 gammav = vec3(gamma);
-    color = vec4(pow(linearColor, gammav), material.transparency);
+    color = vec4(pow(linearColor, gammav), alpha);
 	
 	// Ugly hack to keep the optimizer from removing supposedly unused uniforms
 	color.x += float(material.shadowsCast) * 0.00001;
