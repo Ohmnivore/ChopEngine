@@ -1,6 +1,7 @@
 package choprender.model.data;
 
 import chop.math.Vec2;
+import chop.math.Vec3;
 import chop.math.Vec4;
 import choprender.render3d.opengl.GL.ArrayBuffer;
 import choprender.render3d.opengl.GL.Uint8Array;
@@ -118,11 +119,21 @@ class Bitmap
 	{
 		var id:Int = X * 4 + Y * width * 4;
 		
+		// Alpha blending
 		var old:Array<Int> = getPixel(X, Y);
-		Arr[0] = Std.int(Arr[0] * Arr[3] / 255.0 + old[0] * (1.0 - Arr[3] / 255.0));
-		Arr[1] = Std.int(Arr[1] * Arr[3] / 255.0 + old[1] * (1.0 - Arr[3] / 255.0));
-		Arr[2] = Std.int(Arr[2] * Arr[3] / 255.0 + old[2] * (1.0 - Arr[3] / 255.0));
-		Arr[3] = Std.int(Arr[3] * Arr[3] / 255.0 + old[3] * (1.0 - Arr[3] / 255.0));
+		var srca:Float = Arr[3] / 255.0;
+		var dsta:Float = old[3] / 255.0;
+		var srcrgb:Vec3 = Vec3.fromValues(Arr[0] / 255.0, Arr[1] / 255.0, Arr[2] / 255.0);
+		var dstrgb:Vec3 = Vec3.fromValues(old[0] / 255.0, old[1] / 255.0, old[2] / 255.0);
+		
+		var outa:Float = srca + dsta * (1.0 - srca);
+		if (outa == 0)
+			Arr = [0, 0, 0, 0];
+		else
+		{
+			var outrgb:Vec3 = (srcrgb.scale(srca) + dstrgb.scale(dsta).scale(1.0 - srca)).scale(1.0 / outa);
+			Arr = [Std.int(outrgb.x * 255), Std.int(outrgb.y * 255), Std.int(outrgb.z * 255), Std.int(outa * 255)];
+		}
 		
 		setUint8(pixels.buffer, id, Arr[0]);
 		setUint8(pixels.buffer, id + 1, Arr[1]);

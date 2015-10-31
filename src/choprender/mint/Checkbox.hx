@@ -109,17 +109,7 @@ class Checkbox extends mint.render.Render {
 		node.pos.z = Convert.coordZ(render.options.depth + control.depth + 2);
 		node.visible = control.visible && checkbox.state;
 		_opt.group.add(node);
-		
-		//visual.pos.y = -0.1;
-		//node_off.pos.y = -0.1;
-		//node.pos.y = -0.1;
 
-        //visual.clip_rect = Convert.bounds(control.clip_with);
-        //node_off.clip_rect = Convert.bounds(control.clip_with);
-        //node.clip_rect = Convert.bounds(control.clip_with);
-
-        //checkbox.onmouseenter.listen(function(e,c) { node.color = color_node_hover; visual.color = color_hover; });
-        //checkbox.onmouseleave.listen(function(e,c) { node.color = color_node; visual.color = color; });
 		checkbox.onmouseenter.listen(function(e, c) {
 			node.mat.diffuseColor.copy(color_node_hover);
 			visual.mat.diffuseColor.copy(color_hover);
@@ -140,12 +130,6 @@ class Checkbox extends mint.render.Render {
 
     override function onbounds() {
 
-        //visual.transform.pos.set_xy(control.x, control.y);
-        //visual.geometry_quad.resize_xy( control.w, control.h );
-        //node_off.transform.pos.set_xy(control.x+4, control.y+4);
-        //node_off.geometry_quad.resize_xy( control.w-8, control.h-8 );
-        //node.transform.pos.set_xy(control.x+4, control.y+4);
-        //node.geometry_quad.resize_xy( control.w-8, control.h-8 );
 		visual.pos.x = Convert.coord(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
@@ -168,16 +152,6 @@ class Checkbox extends mint.render.Render {
 
     } //ondestroy
 
-    override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
-
-        //if(_disable) {
-            //visual.clip_rect = node_off.clip_rect = node.clip_rect = null;
-        //} else {
-            //visual.clip_rect = node_off.clip_rect = node.clip_rect = new luxe.Rectangle(_x, _y, _w, _h);
-        //}
-
-    } //onclip
-
     override function onvisible( _visible:Bool ) {
 
         visual.visible = node_off.visible = _visible;
@@ -192,10 +166,6 @@ class Checkbox extends mint.render.Render {
 
     override function ondepth( _depth:Float ) {
 
-        //visual.depth = render.options.depth + _depth;
-        //node_off.depth = visual.depth + 0.001;
-        //node.depth = visual.depth + 0.002;
-		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
 		node_off.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
 		node.pos.z = Convert.coordZ(render.options.depth + _depth + 2);

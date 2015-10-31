@@ -1,15 +1,4 @@
 # TODO
-## Rendering
-* texture blend mode
- * blend
- * override
- * mask
- * mask inverse
- * add
- * substract
- * multiply
- * screen
- * overlay
 
 ## Mint rendering
 * mint halign text right/center/left

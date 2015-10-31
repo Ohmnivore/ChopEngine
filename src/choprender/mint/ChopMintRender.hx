@@ -6,10 +6,6 @@ import choprender.mint.Convert;
 
 typedef RenderProperties = {
 
-        /** the batcher to add the geometry to. If not specified, the default batcher is used. */
-    //@:optional var batcher : Batcher;
-        /** if immediate, this geometry is dropped from the batcher at the end of the frame. */
-    //@:optional var immediate : Bool;
         /** the visibility */
     @:optional var visible : Bool;
         /** the geometry depth value (see guides)*/
@@ -26,10 +22,7 @@ class ChopMintRender extends mint.render.Rendering {
         super();
 
         options = Convert.def(_options, {});
-        //def(options.batcher, Luxe.renderer.batcher);
         Convert.def(options.depth, 0);
-        //def(options.group, 0);
-        //def(options.immediate, false);
         Convert.def(options.visible, true);
 
     } //new

@@ -13,6 +13,11 @@ import snow.types.Types.ImageInfo;
  */
 class Texture
 {
+	static public var BLEND_ALPHA_BLEND:Int = 0;
+	static public var BLEND_SRC:Int = 1;
+	static public var BLEND_SRC_OVER:Int = 2;
+	static public var BLEND_DST_IN:Int = 3;
+	
 	public var name:String;
 	public var id:Int;
 	public var filename:String;
@@ -21,6 +26,7 @@ class Texture
 	public var height:Int;
 	public var data:Bitmap;
 	public var choptex:ChopTexture;
+	public var blendMode:Int;
 	
 	public function new()
 	{
@@ -30,7 +36,7 @@ class Texture
 		filepath = "";
 		width = 0;
 		height = 0;
-		data;
+		blendMode = BLEND_ALPHA_BLEND;
 	}
 	
 	public function loadFile(P:String):Void
@@ -65,6 +71,7 @@ class Texture
 		filepath = T.filepath;
 		width = T.width;
 		height = T.height;
+		blendMode = T.blendMode;
 		
 		data.copy(T.data);
 	}

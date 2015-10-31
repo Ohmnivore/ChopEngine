@@ -81,7 +81,7 @@ class Dropdown extends mint.render.Render {
 		border.pos.y = Convert.coordY(control.y);
 		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		border.mat.diffuseColor.copy(color);
-		border.pos.z = Convert.coordZ(render.options.depth + control.depth + 0.001);
+		border.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
 		border.visible = control.visible;
 		_opt.group.add(border);
 
@@ -126,7 +126,7 @@ class Dropdown extends mint.render.Render {
         //border.depth = visual.depth+0.001;
 		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
-		border.pos.z = Convert.coordZ(render.options.depth + 0.001);
+		border.pos.z = Convert.coordZ(render.options.depth + 1);
     }
 
 

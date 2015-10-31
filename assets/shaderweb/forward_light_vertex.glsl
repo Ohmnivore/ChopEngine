@@ -1,12 +1,12 @@
 attribute vec3 position;
 attribute vec3 meanPosition;
 attribute vec3 normal;
-attribute vec3 uv;
+attribute vec4 uv;
 
 varying vec3 FragPos;
 varying vec3 MeanFragPos;
 varying vec3 Normal;
-varying vec3 UV;
+varying vec4 UV;
 
 uniform mat4 m;
 uniform mat4 v;

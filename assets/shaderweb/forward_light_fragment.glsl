@@ -3,7 +3,7 @@ precision mediump float;
 varying vec3 FragPos;
 varying vec3 MeanFragPos;
 varying vec3 Normal;
-varying vec3 UV;
+varying vec4 UV;
 
 uniform vec3 viewPos;
 uniform vec3 ambientColor;

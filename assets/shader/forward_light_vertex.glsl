@@ -2,12 +2,12 @@
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 meanPosition;
 layout (location = 2) in vec3 normal;
-layout (location = 3) in vec3 uv;
+layout (location = 3) in vec4 uv;
 
 out vec3 FragPos;
 out vec3 MeanFragPos;
 out vec3 Normal;
-out vec3 UV;
+out vec4 UV;
 
 uniform mat4 m;
 uniform mat4 v;

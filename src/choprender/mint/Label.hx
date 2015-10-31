@@ -64,17 +64,17 @@ class Label extends mint.render.Render {
 		text.mat.useShading = false;
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
-		text.mat.transparency = 0.99;
 		text.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		text.visible = control.visible;
+		text.mat.diffuseColor.copy(color);
 		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(label.text);
 		_opt.group.add(text);
 
         label.onchange.listen(ontext);
 
-        //control.onmouseenter.listen(function(e,c){ text.color = color_hover; });
-        //control.onmouseleave.listen(function(e,c){ text.color = color; });
+        control.onmouseenter.listen(function(e,c){ text.mat.diffuseColor.copy(color_hover); });
+        control.onmouseleave.listen(function(e,c){ text.mat.diffuseColor.copy(color); });
 
     }
 
@@ -84,7 +84,7 @@ class Label extends mint.render.Render {
     }
 
     function ontext(_text:String) {
-		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), cast control.w);
+		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(_text);
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
@@ -97,21 +97,11 @@ class Label extends mint.render.Render {
         text = null;
     }
 
-    override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
-        //if(_disable) {
-            //text.clip_rect = null;
-        //} else {
-            //text.clip_rect = new luxe.Rectangle(_x, _y, _w, _h);
-        //}
-    } //onclip
-
-
     override function onvisible( _visible:Bool ) {
         text.visible = _visible;
     } //onvisible
 
     override function ondepth( _depth:Float ) {
-        //text.depth = render.options.depth + _depth;
         text.pos.z = Convert.coordZ(render.options.depth + _depth);
     } //ondepth
 

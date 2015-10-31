@@ -1,6 +1,7 @@
 package choprender.render3d.shader;
 
 import choprender.model.data.Face;
+import choprender.model.data.Texture;
 import choprender.model.data.Vertex;
 import choprender.model.Model;
 import choprender.render3d.Camera;
@@ -137,9 +138,14 @@ class ShaderForwardLights extends ChopProgram
 							var v2:Vertex = M.anim.vertices[f.geomIdx[1]];
 							var v3:Vertex = M.anim.vertices[f.geomIdx[2]];
 							
-							pushVert(vData, v1, v1, v2, v3, f, f.uv1, f.textureID);
-							pushVert(vData, v2, v1, v2, v3, f, f.uv2, f.textureID);
-							pushVert(vData, v3, v1, v2, v3, f, f.uv3, f.textureID);
+							var t:Texture = M.data.textures[f.textureID];
+							var blendMode:Int = 0;
+							if (t != null)
+								blendMode = t.blendMode;
+							
+							pushVert(vData, v1, v1, v2, v3, f, f.uv1, f.textureID, blendMode);
+							pushVert(vData, v2, v1, v2, v3, f, f.uv2, f.textureID, blendMode);
+							pushVert(vData, v3, v1, v2, v3, f, f.uv3, f.textureID, blendMode);
 						}
 					}
 					
@@ -150,18 +156,18 @@ class ShaderForwardLights extends ChopProgram
 					var sizeOfFloat:Int = 4;
 					GL.enableVertexAttribArray(0);
 					GL.bindAttribLocation(prog, 0, "position");
-					GL.vertexAttribPointer(0, 3, GL.FLOAT, false, sizeOfFloat * 12, sizeOfFloat * 0);
+					GL.vertexAttribPointer(0, 3, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 0);
 					GL.enableVertexAttribArray(1);
 					GL.bindAttribLocation(prog, 1, "meanPosition");
-					GL.vertexAttribPointer(1, 3, GL.FLOAT, false, sizeOfFloat * 12, sizeOfFloat * 3);
+					GL.vertexAttribPointer(1, 3, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 3);
 					GL.enableVertexAttribArray(2);
 					GL.bindAttribLocation(prog, 2, "normal");
-					GL.vertexAttribPointer(2, 3, GL.FLOAT, false, sizeOfFloat * 12, sizeOfFloat * 6);
+					GL.vertexAttribPointer(2, 3, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 6);
 					GL.enableVertexAttribArray(3);
 					GL.bindAttribLocation(prog, 3, "uv");
-					GL.vertexAttribPointer(3, 3, GL.FLOAT, false, sizeOfFloat * 12, sizeOfFloat * 9);
+					GL.vertexAttribPointer(3, 4, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 9);
 					
-					GL.drawArrays(GL.TRIANGLES, 0, Std.int(vData.length / 12));
+					GL.drawArrays(GL.TRIANGLES, 0, Std.int(vData.length / 13));
 					
 					GL.disableVertexAttribArray(0);
 					GL.disableVertexAttribArray(1);
@@ -192,7 +198,7 @@ class ShaderForwardLights extends ChopProgram
 	{
 		return M * V * P;
 	}
-	private function pushVert(Verts:Array<Float>, Vec:Vertex, V1:Vertex, V2:Vertex, V3:Vertex, F:Face, UV:Array<Float>, TexID:Int):Void
+	private function pushVert(Verts:Array<Float>, Vec:Vertex, V1:Vertex, V2:Vertex, V3:Vertex, F:Face, UV:Array<Float>, TexID:Int, BlendMode:Int):Void
 	{
 		Verts.push(Vec.x);
 		Verts.push(Vec.y);
@@ -225,5 +231,6 @@ class ShaderForwardLights extends ChopProgram
 		Verts.push(UV[0]);
 		Verts.push(1.0 - UV[1]); // Invert y axis
 		Verts.push(TexID / 16.0);
+		Verts.push(BlendMode / 16.0);
 	}
 }

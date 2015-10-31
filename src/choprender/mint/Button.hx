@@ -62,20 +62,14 @@ class Button extends mint.render.Render {
 		visual.visible = control.visible;
 		_opt.group.add(visual);
 
-        //visual.clip_rect = Convert.bounds(control.clip_with);
-
         button.onmouseenter.listen(function(e,c) { visual.mat.diffuseColor.copy(color_hover); });
         button.onmouseleave.listen(function(e,c) { visual.mat.diffuseColor.copy(color); });
         button.onmousedown.listen(function(e,c) { visual.mat.diffuseColor.copy(color_down); });
         button.onmouseup.listen(function(e,c) { visual.mat.diffuseColor.copy(color_hover); });
-trace("btn", control.x, control.y, control.w, control.h);
-trace("btnd", render.options.depth, control.depth);
     } //new
 
     override function onbounds() {
 
-        //visual.transform.pos.set_xy(control.x, control.y);
-        //visual.geometry_quad.resize_xy(control.w, control.h);
 		visual.pos.x = Convert.coord(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
@@ -89,17 +83,6 @@ trace("btnd", render.options.depth, control.depth);
 
     } //ondestroy
 
-    override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
-
-        //if(_disable) {
-            //visual.clip_rect = null;
-        //} else {
-            //visual.clip_rect = new luxe.Rectangle(_x, _y, _w, _h);
-        //}
-
-    } //onclip
-
-
     override function onvisible( _visible:Bool ) {
 
         visual.visible = _visible;
@@ -108,8 +91,6 @@ trace("btnd", render.options.depth, control.depth);
 
     override function ondepth( _depth:Float ) {
 
-        //visual.depth = render.options.depth + _depth;
-		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
 
     } //ondepth

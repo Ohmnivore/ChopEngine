@@ -48,6 +48,7 @@ class Text extends QuadModel
 		text = "";
 		mat.useShading = false;
 		mat.diffuseColor.set(0, 0, 0);
+		mat.transparency = 0.99;
 	}
 	
 	public function setMetrics(Mode:Int, FontSize:Float, MaxWidth:Float = 0):Void
@@ -106,6 +107,7 @@ class Text extends QuadModel
 		}
 		
 		loadTexData(b.pixels, b.width, b.height);
+		tex.blendMode = Texture.BLEND_DST_IN;
 		
 		textWidth = b.width;
 		textHeight = b.height;

@@ -3,7 +3,7 @@
 in vec3 FragPos;
 in vec3 MeanFragPos;
 in vec3 Normal;
-in vec3 UV;
+in vec4 UV;
 
 out vec4 color;
 
@@ -65,6 +65,29 @@ struct Light
 };
 uniform Light allLights[MAX_LIGHTS];
 
+#define BLEND_ALPHA_BLEND 0
+#define BLEND_SRC 1
+#define BLEND_SRC_OVER 2
+#define BLEND_DST_IN 3
+vec4 blendWithMode(int mode, vec4 dst, vec4 src)
+{
+	if (mode == BLEND_ALPHA_BLEND)
+	{
+		float outA = src.a + dst.a * (1.0 - src.a);
+		if (outA == 0)
+			return vec4(0);
+		vec3 col = (vec3(src.rgb) * src.a + vec3(dst.rgb) * dst.a * (1.0 - src.a)) / outA;
+		return vec4(col.rgb, outA);
+	}
+	else if (mode == BLEND_SRC)
+		return src;
+	else if (mode == BLEND_SRC_OVER)
+		return vec4(src.r + dst.r * (1.0 - src.a), src.g + dst.g * (1.0 - src.a), src.b + dst.b * (1.0 - src.a), src.a + dst.a * (1.0 - src.a));
+	else if (mode == BLEND_DST_IN)
+		return vec4(dst.r * src.a, dst.g * src.a, dst.b * src.a, dst.a * src.a);
+	return vec4(1.0, 0.0, 0.0, 1.0);
+}
+
 vec4 getTextureValue(vec2 uv, int tID)
 {
 	if (tID == 0) return texture(texture0, uv);
@@ -107,7 +130,11 @@ void main()
 	if (textureID >= 0)
 	{
 	   vec4 texDiffuse = getTextureValue(UV.xy, textureID);
-	   Diffuse = vec3(texDiffuse.xyz) * texDiffuse.w + Diffuse.xyz * (material.transparency - texDiffuse.w);
+	   int blendMode = int(UV.w * 16.0);
+	   vec4 blended = blendWithMode(blendMode, vec4(material.diffuseColor, material.transparency), texDiffuse);
+	   Diffuse = vec3(blended.xyz);
+	   alpha = blended.w;
+	   // Diffuse = vec3(texDiffuse.xyz) * texDiffuse.w + Diffuse.xyz * (material.transparency - texDiffuse.w);
 	   // alpha = texDiffuse.w;
 	}
 	
