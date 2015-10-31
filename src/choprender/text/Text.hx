@@ -27,7 +27,8 @@ class Text extends QuadModel
 	public var font:Font;
 	
 	public var mode:Int;
-	public var maxWidth:Int;
+	public var maxWidthPixel:Int;
+	public var maxWidth:Float;
 	public var fontSize:Float;
 	
 	public var textWidth:Int;
@@ -43,16 +44,18 @@ class Text extends QuadModel
 		textHeight = 0;
 		mode = AUTO_WIDTH;
 		maxWidth = 0;
+		maxWidthPixel = 0;
 		text = "";
 		mat.useShading = false;
 		mat.diffuseColor.set(0, 0, 0);
 	}
 	
-	public function setMetrics(Mode:Int, FontSize:Float, MaxWidth:Int):Void
+	public function setMetrics(Mode:Int, FontSize:Float, MaxWidth:Float = 0):Void
 	{
 		mode = Mode;
 		fontSize = FontSize;
 		maxWidth = MaxWidth;
+		maxWidthPixel = Std.int(maxWidth * font.size / FontSize);
 	}
 	
 	public function setText(T:String):Void
@@ -60,7 +63,7 @@ class Text extends QuadModel
 		text = T;
 		
 		var b:Bitmap = new Bitmap();
-		b.setSize(maxWidth, 0);
+		b.setSize(maxWidthPixel, 0);
 		
 		var line:Line = new Line(this, b, 0);
 		

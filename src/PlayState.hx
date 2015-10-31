@@ -43,26 +43,26 @@ class PlayState extends State
 		//}
 		//add(m);
 		
-		//var check:Checkbox = new Checkbox({
-			//options: { group: this },
-            //parent: canvas,
-            //name: "test_check",
-            //x: 0, y: 0, w: 32, h: 32
-        //});
-		//var btn:Button = new Button({
-			//options: { group: this },
-            //parent: canvas,
-            //name: "test_btn",
-			//text: "Test btn",
-            //x: 64, y: 64, w: 64, h: 32
-		//});
-		//var ddown:Dropdown = new Dropdown({
-			//options: { group: this },
-            //parent: canvas,
-            //name: "test_ddown",
-			//text: "Test ddown",
-			//x: 128, y: 128, w: 64, h: 32
-		//});
+		var check:Checkbox = new Checkbox({
+			options: { group: this },
+            parent: canvas,
+            name: "test_check",
+            x: 0, y: 0, w: 32, h: 32
+        });
+		var btn:Button = new Button({
+			options: { group: this },
+            parent: canvas,
+            name: "test_btn",
+			text: "Test btn",
+            x: 64, y: 64, w: 64, h: 32
+		});
+		var ddown:Dropdown = new Dropdown({
+			options: { group: this },
+            parent: canvas,
+            name: "test_ddown",
+			text: "Test ddown",
+			x: 128, y: 128, w: 64, h: 32
+		});
 		//var dlist:Array<String> = ["item1", "item2", "item3"];
 		
 		var f:FontBuilderNGL = new FontBuilderNGL();
@@ -77,19 +77,19 @@ class PlayState extends State
 		
 		var text0:Text = new Text(f.font);
 		text0.pos.set(0, 1, 0);
-		text0.setMetrics(Text.AUTO_WIDTH, 0.02, 0);
+		text0.setMetrics(Text.AUTO_WIDTH, 8 / SnowApp._snow.window.width);
 		text0.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text0);
 		
 		var text1:Text = new Text(f.font);
 		text1.pos.set(0, 2, 0);
-		text1.setMetrics(Text.CHAR_WRAP, 0.02, 64);
+		text1.setMetrics(Text.CHAR_WRAP, 8 / SnowApp._snow.window.width, 64 / SnowApp._snow.window.width);
 		text1.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text1);
 		
 		var text2:Text = new Text(f.font);
 		text2.pos.set(0, 3, 0);
-		text2.setMetrics(Text.WORD_WRAP, 0.02, 64);
+		text2.setMetrics(Text.WORD_WRAP, 8 / SnowApp._snow.window.width, 64 / SnowApp._snow.window.width);
 		text2.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text2);
 		

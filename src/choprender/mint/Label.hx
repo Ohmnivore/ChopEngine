@@ -64,18 +64,12 @@ class Label extends mint.render.Render {
 		text.mat.useShading = false;
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
-		//text.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		text.textWidth = cast control.w;
-		//text.mat.diffuseColor.copy(color);
 		text.mat.transparency = 0.99;
 		text.pos.z = Convert.coordZ(render.options.depth + control.depth - 0.999);
 		text.visible = control.visible;
-		//text.setText(label.text, Convert.coord(label.options.text_size));
+		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(label.text);
 		_opt.group.add(text);
-trace("label", control.x, control.y, control.w, control.h);
-trace("labeld", render.options.depth, control.depth, render.options.depth + control.depth);
-        //text.clip_rect = Convert.bounds(control.clip_with);
 
         label.onchange.listen(ontext);
 
@@ -85,19 +79,15 @@ trace("labeld", render.options.depth, control.depth, render.options.depth + cont
     }
 
     override function onbounds() {
-        //text.bounds = new luxe.Rectangle(control.x, control.y, control.w, control.h);
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
-		//text.setSize(Convert.coord(control.w), Convert.coord(control.h));
     }
 
     function ontext(_text:String) {
-        //text.text = _text;
-		//text.setText(_text, Convert.coord(label.options.text_size));
+		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), cast control.w);
 		text.setText(_text);
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
-		//text.setSize(Convert.coord(control.w), Convert.coord(control.h));
     }
 
     override function ondestroy() {
@@ -122,8 +112,7 @@ trace("labeld", render.options.depth, control.depth, render.options.depth + cont
 
     override function ondepth( _depth:Float ) {
         //text.depth = render.options.depth + _depth;
-		trace(render.options.depth, _depth);
-        text.pos.z = Convert.coordZ(render.options.depth + _depth);
+        text.pos.z = Convert.coordZ(render.options.depth + _depth - 0.999);
     } //ondepth
 
 } //Label

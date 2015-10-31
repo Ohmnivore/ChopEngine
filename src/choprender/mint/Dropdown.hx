@@ -125,8 +125,8 @@ class Dropdown extends mint.render.Render {
         //visual.depth = render.options.depth + _depth;
         //border.depth = visual.depth+0.001;
 		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
-		//visual.pos.y = Convert.coordZ(render.options.depth + _depth);
-		//border.pos.y = Convert.coordZ(visual.depth + 0.001);
+		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
+		border.pos.z = Convert.coordZ(render.options.depth + 0.001);
     }
 
 

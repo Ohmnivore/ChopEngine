@@ -42,14 +42,14 @@ class Line
 		}
 		if (char != null)
 			x += char.rectWidth;
-		return curX + x <= t.maxWidth;
+		return curX + x <= t.maxWidthPixel;
 	}
 	
 	public function hasSpaceFor(C:FontChar):Bool
 	{
 		if (t.mode == Text.AUTO_WIDTH)
 			return true;
-		return curX + C.rectWidth <= t.maxWidth;
+		return curX + C.rectWidth <= t.maxWidthPixel;
 	}
 	
 	public function addCharacter(C:FontChar):Void

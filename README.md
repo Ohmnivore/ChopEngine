@@ -11,10 +11,13 @@
  * screen
  * overlay
 
-* handle ondepth for ui
+## Mint rendering
 * mint halign text right/center/left
 * mint valign text top/center/bottom
-* integrate mint
+* Dropdown
+* Image
+* Label
+* List
 
 ## Text rendering
 * Text line right/center/left align
