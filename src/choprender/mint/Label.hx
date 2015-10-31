@@ -70,7 +70,8 @@ class Label extends mint.render.Render {
 		text.mat.transparency = 0.99;
 		text.pos.z = Convert.coordZ(render.options.depth + control.depth - 0.999);
 		text.visible = control.visible;
-		text.setText(label.text, Convert.coord(label.options.text_size));
+		//text.setText(label.text, Convert.coord(label.options.text_size));
+		text.setText(label.text);
 		_opt.group.add(text);
 trace("label", control.x, control.y, control.w, control.h);
 trace("labeld", render.options.depth, control.depth, render.options.depth + control.depth);
@@ -92,7 +93,8 @@ trace("labeld", render.options.depth, control.depth, render.options.depth + cont
 
     function ontext(_text:String) {
         //text.text = _text;
-		text.setText(_text, Convert.coord(label.options.text_size));
+		//text.setText(_text, Convert.coord(label.options.text_size));
+		text.setText(_text);
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
 		//text.setSize(Convert.coord(control.w), Convert.coord(control.h));

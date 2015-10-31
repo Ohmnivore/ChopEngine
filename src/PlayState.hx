@@ -43,19 +43,19 @@ class PlayState extends State
 		//}
 		//add(m);
 		
-		var check:Checkbox = new Checkbox({
-			options: { group: this },
-            parent: canvas,
-            name: "test_check",
-            x: 0, y: 0, w: 32, h: 32
-        });
-		var btn:Button = new Button({
-			options: { group: this },
-            parent: canvas,
-            name: "test_btn",
-			text: "Test btn",
-            x: 64, y: 64, w: 64, h: 32
-		});
+		//var check:Checkbox = new Checkbox({
+			//options: { group: this },
+            //parent: canvas,
+            //name: "test_check",
+            //x: 0, y: 0, w: 32, h: 32
+        //});
+		//var btn:Button = new Button({
+			//options: { group: this },
+            //parent: canvas,
+            //name: "test_btn",
+			//text: "Test btn",
+            //x: 64, y: 64, w: 64, h: 32
+		//});
 		//var ddown:Dropdown = new Dropdown({
 			//options: { group: this },
             //parent: canvas,
@@ -75,36 +75,54 @@ class PlayState extends State
 		//q.setSize(2.0, 1.0);
 		//add(q);
 		
-		var t:Text = new Text(f.font);
-		t.pos.x = 0;
-		t.pos.y = 4;
-		t.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		t.setText("ChopEngine is chopping.\nIt's also far from done.", 0.02);
-		add(t);
+		var text0:Text = new Text(f.font);
+		text0.pos.set(0, 1, 0);
+		text0.setMetrics(Text.AUTO_WIDTH, Text.ALIGN_LEFT, 0.02, 0);
+		text0.setText("Winter is coming, so is ChopEngine. Chop.");
+		add(text0);
 		
-		var t2:Text = new Text(f.font);
-		t2.textWidth = 64;
-		t2.pos.x = 5;
-		t2.pos.y = 4;
-		t2.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		add(t2);
+		var text1:Text = new Text(f.font);
+		text1.pos.set(0, 2, 0);
+		text1.setMetrics(Text.CHAR_WRAP, Text.ALIGN_LEFT, 0.02, 64);
+		text1.setText("Winter is coming,\nso is ChopEngine. Chop.");
+		add(text1);
 		
-		var t3:Text = new Text(f.font);
-		t3.textWidth = 64;
-		t3.wordWrap = true;
-		t3.pos.x = 10;
-		t3.pos.y = 4;
-		t3.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		add(t3);
+		//var text2:Text = new Text(f.font);
+		//text2.pos.set(0, 3, 0);
+		//text2.setMetrics(Text.WORD_WRAP, Text.ALIGN_LEFT, 0.02, 64);
+		//text2.setText("Winter is coming,\nso is ChopEngine. Chop.");
+		//add(text2);
 		
-		var t4:Text = new Text(f.font);
-		t4.textWidth = 64;
-		t4.wordWrap = true;
-		//t4.alignment = "right";
-		t4.pos.x = 0;
-		t4.pos.y = 5;
-		t4.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		add(t4);
+		//var t:Text = new Text(f.font);
+		//t.pos.x = 0;
+		//t.pos.y = 4;
+		//t.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		//t.setText("ChopEngine is chopping.\nIt's also far from done.", 0.02);
+		//add(t);
+		//
+		//var t2:Text = new Text(f.font);
+		//t2.textWidth = 64;
+		//t2.pos.x = 5;
+		//t2.pos.y = 4;
+		//t2.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		//add(t2);
+		//
+		//var t3:Text = new Text(f.font);
+		//t3.textWidth = 64;
+		//t3.wordWrap = true;
+		//t3.pos.x = 10;
+		//t3.pos.y = 4;
+		//t3.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		//add(t3);
+		//
+		//var t4:Text = new Text(f.font);
+		//t4.textWidth = 64;
+		//t4.wordWrap = true;
+		////t4.alignment = "right";
+		//t4.pos.x = 0;
+		//t4.pos.y = 5;
+		//t4.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
+		//add(t4);
 		
 		//var mQuad:QuadModel = new QuadModel();
 		//mQuad.loadTexFile("assets/font/04b03_regular_8.png");
