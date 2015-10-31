@@ -1,6 +1,7 @@
 package choprender.text;
 
 import choprender.model.data.Bitmap;
+import choprender.text.loader.FontBuilderNGL.Font;
 import choprender.text.loader.FontBuilderNGL.FontChar;
 import chop.math.Vec2;
 import chop.math.Vec4;
@@ -24,16 +25,31 @@ class Line
 		curX = 0;
 	}
 	
+	public function hasSpaceForWord(W:String):Bool
+	{
+		var x:Int = 0;
+		var char:FontChar = null;
+		for (i in 0...W.length)
+		{
+			var c:String = W.charAt(i);
+			if (c == "\n" || c == "\t")
+				continue;
+			
+			char = t.font.chars.get(c);
+			if (char == null)
+				char = t.font.chars.get(TextUtil.UNKNOWN_REPLACER);
+			x += char.advance;
+		}
+		if (char != null)
+			x += char.rectWidth;
+		return curX + x <= t.maxWidth;
+	}
+	
 	public function hasSpaceFor(C:FontChar):Bool
 	{
 		if (t.mode == Text.AUTO_WIDTH)
 			return true;
-		else if (t.mode == Text.CHAR_WRAP)
-		{
-			trace("charwrap");
-			return curX + C.rectWidth <= t.maxWidth;
-		}
-		return false;
+		return curX + C.rectWidth <= t.maxWidth;
 	}
 	
 	public function addCharacter(C:FontChar):Void
