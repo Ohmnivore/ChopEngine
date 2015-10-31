@@ -16,9 +16,9 @@ import choprender.render3d.opengl.GL.Uint8Array;
  */
 class Text extends QuadModel
 {
-	static public inline var ALIGN_LEFT:Int = 0;
-	static public inline var ALIGN_CENTER:Int = 1;
-	static public inline var ALIGN_RIGHT:Int = 2;
+	//static public inline var ALIGN_LEFT:Int = 0;
+	//static public inline var ALIGN_CENTER:Int = 1;
+	//static public inline var ALIGN_RIGHT:Int = 2;
 	
 	static public inline var AUTO_WIDTH:Int = 0;
 	static public inline var CHAR_WRAP:Int = 1;
@@ -26,9 +26,8 @@ class Text extends QuadModel
 	
 	public var font:Font;
 	
-	public var alignment:Int;
 	public var mode:Int;
-	public var maxWidth:Float;
+	public var maxWidth:Int;
 	public var fontSize:Float;
 	
 	public var textWidth:Int;
@@ -42,7 +41,6 @@ class Text extends QuadModel
 		font = F;
 		textWidth = 0;
 		textHeight = 0;
-		alignment = ALIGN_LEFT;
 		mode = AUTO_WIDTH;
 		maxWidth = 0;
 		text = "";
@@ -50,10 +48,9 @@ class Text extends QuadModel
 		mat.diffuseColor.set(0, 0, 0);
 	}
 	
-	public function setMetrics(Mode:Int, Alignment:Int, FontSize:Float, MaxWidth:Float):Void
+	public function setMetrics(Mode:Int, FontSize:Float, MaxWidth:Int):Void
 	{
 		mode = Mode;
-		alignment = Alignment;
 		fontSize = FontSize;
 		maxWidth = MaxWidth;
 	}
@@ -63,7 +60,7 @@ class Text extends QuadModel
 		text = T;
 		
 		var b:Bitmap = new Bitmap();
-		b.setSize(cast maxWidth, 0);
+		b.setSize(maxWidth, 0);
 		
 		var line:Line = new Line(this, b, 0);
 		
@@ -74,7 +71,7 @@ class Text extends QuadModel
 			{
 				var w:String = words[i];
 				if (!line.hasSpaceForWord(w))
-					line = new Line(this, b, line.yOffset + line.getHeight());
+					line = line = getNewLine(line, b);
 				if (i < words.length - 1) // Add back the space
 					w += " ";
 				for (i in 0...w.length)
@@ -82,7 +79,7 @@ class Text extends QuadModel
 					var c:String = w.charAt(i);
 					var char:FontChar = TextUtil.getChar(font, c);
 					if (TextUtil.isNewline(c))
-						line = new Line(this, b, line.yOffset + line.getHeight());
+						line = getNewLine(line, b);
 					else if (line.hasSpaceFor(char)) // Check if the added trailing space can actually be rendered
 						line.addCharacter(char);
 				}
@@ -94,12 +91,12 @@ class Text extends QuadModel
 			{
 				var c:String = text.charAt(i);
 				if (TextUtil.isNewline(c))
-					line = new Line(this, b, line.yOffset + line.getHeight());
+					line = getNewLine(line, b);
 				else
 				{
 					var char:FontChar = TextUtil.getChar(font, c);
 					if (!line.hasSpaceFor(char))
-						line = new Line(this, b, line.yOffset + line.getHeight());
+						line = getNewLine(line, b);
 					line.addCharacter(char);
 				}
 			}
@@ -112,5 +109,10 @@ class Text extends QuadModel
 		
 		var d:Float = fontSize / font.size;
 		setSize(textWidth * d, textHeight * d);
+	}
+	
+	private function getNewLine(Old:Line, B:Bitmap):Line
+	{
+		return new Line(this, B, Old.yOffset + Old.getHeight());
 	}
 }

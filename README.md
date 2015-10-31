@@ -1,12 +1,23 @@
 # TODO
 ## Rendering
-* handle ondepth for ui
 * texture blend mode
-* text color
-* Text line right/center/left align
+ * blend
+ * override
+ * mask
+ * mask inverse
+ * add
+ * substract
+ * multiply
+ * screen
+ * overlay
+
+* handle ondepth for ui
 * mint halign text right/center/left
 * mint valign text top/center/bottom
 * integrate mint
+
+## Text rendering
+* Text line right/center/left align
 
 ## Rendering (eventually)
 * Skeletal animation

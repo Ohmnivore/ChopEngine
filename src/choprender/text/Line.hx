@@ -32,7 +32,7 @@ class Line
 		for (i in 0...W.length)
 		{
 			var c:String = W.charAt(i);
-			if (c == "\n" || c == "\t")
+			if (TextUtil.isNewline(c))
 				continue;
 			
 			char = t.font.chars.get(c);

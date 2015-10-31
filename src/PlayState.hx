@@ -77,19 +77,19 @@ class PlayState extends State
 		
 		var text0:Text = new Text(f.font);
 		text0.pos.set(0, 1, 0);
-		text0.setMetrics(Text.AUTO_WIDTH, Text.ALIGN_LEFT, 0.02, 0);
-		text0.setText("Winter is coming, so is ChopEngine. Chop.");
+		text0.setMetrics(Text.AUTO_WIDTH, 0.02, 0);
+		text0.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text0);
 		
 		var text1:Text = new Text(f.font);
 		text1.pos.set(0, 2, 0);
-		text1.setMetrics(Text.CHAR_WRAP, Text.ALIGN_LEFT, 0.02, 64);
+		text1.setMetrics(Text.CHAR_WRAP, 0.02, 64);
 		text1.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text1);
 		
 		var text2:Text = new Text(f.font);
 		text2.pos.set(0, 3, 0);
-		text2.setMetrics(Text.WORD_WRAP, Text.ALIGN_LEFT, 0.02, 64);
+		text2.setMetrics(Text.WORD_WRAP, 0.02, 64);
 		text2.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text2);
 		
