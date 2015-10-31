@@ -1,8 +1,6 @@
 package choprender.text;
 
 import choprender.model.data.Bitmap;
-import choprender.text.loader.FontBuilderNGL.Font;
-import choprender.text.loader.FontBuilderNGL.FontChar;
 import chop.math.Vec2;
 import chop.math.Vec4;
 

@@ -1,8 +1,6 @@
 package choprender.text.loader;
 
 import choprender.model.data.Bitmap;
-import choprender.text.loader.FontBuilderNGL.Font;
-import choprender.text.loader.FontBuilderNGL.FontChar;
 import haxe.xml.Fast;
 import snow.types.Types.AssetImage;
 import haxe.io.Path;
@@ -75,42 +73,5 @@ class FontBuilderNGL
 		font.tex.pixels = img.pixels;
 		font.tex.width = img.width;
 		font.tex.height = img.height;
-	}
-}
-
-class Font
-{
-	public var size:Int;
-	public var family:String;
-	public var ascender:Int;
-	public var height:Int;
-	public var descender:Int;
-	public var texWidth:Int;
-	public var texHeight:Int;
-	public var texFile:String;
-	public var tex:Bitmap;
-	
-	public var chars:Map<String, FontChar>;
-	
-	public function new() 
-	{
-		chars = new Map<String, FontChar>();
-	}
-}
-
-class FontChar
-{
-	public var offsetX:Int;
-	public var offsetY:Int;
-	public var advance:Int;
-	public var rectX:Int;
-	public var rectY:Int;
-	public var rectWidth:Int;
-	public var rectHeight:Int;
-	public var id:String;
-	
-	public function new() 
-	{
-		
 	}
 }

@@ -5,8 +5,6 @@ import chop.math.Vec4;
 import choprender.model.data.Bitmap;
 import choprender.model.data.Texture;
 import choprender.model.QuadModel;
-import choprender.text.loader.FontBuilderNGL.Font;
-import choprender.text.loader.FontBuilderNGL.FontChar;
 import snow.api.buffers.ArrayBuffer;
 import choprender.render3d.opengl.GL.Uint8Array;
 

@@ -1,6 +1,7 @@
 package choprender.mint;
 
 import choprender.text.loader.FontBuilderNGL;
+import choprender.text.Font;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -8,7 +9,6 @@ import choprender.mint.ChopMintRender;
 import choprender.mint.Convert;
 
 import choprender.text.Text;
-import choprender.text.loader.FontBuilderNGL.Font;
 import chop.util.Color;
 import chop.group.Group;
 

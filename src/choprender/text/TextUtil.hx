@@ -1,8 +1,5 @@
 package choprender.text;
 
-import choprender.text.loader.FontBuilderNGL.Font;
-import choprender.text.loader.FontBuilderNGL.FontChar;
-
 /**
  * ...
  * @author Ohmnivore
