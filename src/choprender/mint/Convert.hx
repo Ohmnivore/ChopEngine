@@ -30,9 +30,9 @@ class Convert
 	static public function coordZ(C:Float):Float 
 	{
 		if (SnowApp._snow.window.width > SnowApp._snow.window.height)
-			return C / SnowApp._snow.window.width * 10.0;
+			return C / SnowApp._snow.window.width / 10.0;
 		else
-			return C / SnowApp._snow.window.height * 10.0;
+			return C / SnowApp._snow.window.height / 10.0;
 	}
 	
 	static public function def(V:Dynamic, Def:Dynamic):Dynamic

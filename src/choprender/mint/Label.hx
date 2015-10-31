@@ -65,7 +65,7 @@ class Label extends mint.render.Render {
 		text.pos.x = Convert.coord(control.x);
 		text.pos.y = Convert.coordY(control.y);
 		text.mat.transparency = 0.99;
-		text.pos.z = Convert.coordZ(render.options.depth + control.depth - 0.999);
+		text.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		text.visible = control.visible;
 		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(label.text);
@@ -112,7 +112,7 @@ class Label extends mint.render.Render {
 
     override function ondepth( _depth:Float ) {
         //text.depth = render.options.depth + _depth;
-        text.pos.z = Convert.coordZ(render.options.depth + _depth - 0.999);
+        text.pos.z = Convert.coordZ(render.options.depth + _depth);
     } //ondepth
 
 } //Label

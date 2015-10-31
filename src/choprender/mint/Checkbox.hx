@@ -85,7 +85,7 @@ class Checkbox extends mint.render.Render {
 		node_off.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node_off.mat.diffuseColor.set(0, 0, 0);
 		node_off.mat.transparency = 0.25;
-		node_off.pos.z = Convert.coordZ(render.options.depth + control.depth + 0.001);
+		node_off.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
 		node_off.visible = control.visible;
 		_opt.group.add(node_off);
 
@@ -106,7 +106,7 @@ class Checkbox extends mint.render.Render {
 		node.pos.y = Convert.coordY(control.y + 4);
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node.mat.diffuseColor.copy(color_node);
-		node.pos.z = Convert.coordZ(render.options.depth + control.depth + 0.002);
+		node.pos.z = Convert.coordZ(render.options.depth + control.depth + 2);
 		node.visible = control.visible && checkbox.state;
 		_opt.group.add(node);
 		
@@ -197,8 +197,8 @@ class Checkbox extends mint.render.Render {
         //node.depth = visual.depth + 0.002;
 		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
-		node_off.pos.z = Convert.coordZ(render.options.depth + _depth + 0.001);
-		node.pos.z = Convert.coordZ(render.options.depth + _depth + 0.002);
+		node_off.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
+		node.pos.z = Convert.coordZ(render.options.depth + _depth + 2);
 
     } //ondepth
 
