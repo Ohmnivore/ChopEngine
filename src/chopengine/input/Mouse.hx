@@ -54,4 +54,9 @@ class Mouse
 		else if (button == 3)
 			rightPressed = false;
 	}
+	
+	public function onmousewheel(x:Int):Void
+	{
+		
+	}
 }

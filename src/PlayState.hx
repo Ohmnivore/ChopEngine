@@ -83,7 +83,13 @@ class PlayState extends State
 			options: { group: this },
             parent: window,
             name: "test_textEdit",
-            x: 0, y: 0, w: 256, h: 32
+            x: 0, y: 28, w: 256, h: 32
+        });
+		var check:Checkbox = new Checkbox({
+			options: { group: this },
+            parent: canvas,
+            name: "test_checkbox",
+            x: 0, y: 0, w: 32, h: 32
         });
 		var btn:Button = new Button({
 			options: { group: this },
