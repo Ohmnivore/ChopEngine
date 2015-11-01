@@ -88,16 +88,11 @@ class Dropdown extends mint.render.Render {
     } //new
 
     override function ondestroy() {
-        //visual.drop();
-        //border.drop();
         visual = null;
         border = null;
     }
 
     override function onbounds() {
-        //visual.transform.pos.set_xy(control.x, control.y);
-        //visual.resize_xy(control.w, control.h);
-        //border.set({ x:control.x, y:control.y, w:control.w, h:control.h, color:border.color, visible:control.visible });
 		visual.pos.x = Convert.coord(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
@@ -109,22 +104,11 @@ class Dropdown extends mint.render.Render {
 		border.visible = control.visible;
     }
 
-    override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
-        //if(_disable) {
-            //visual.clip_rect = border.clip_rect = null;
-        //} else {
-            //visual.clip_rect = border.clip_rect = new luxe.Rectangle(_x, _y, _w, _h);
-        //}
-    } //onclip
-
     override function onvisible( _visible:Bool ) {
         visual.visible = border.visible = _visible;
     }
 
     override function ondepth( _depth:Float ) {
-        //visual.depth = render.options.depth + _depth;
-        //border.depth = visual.depth+0.001;
-		//trace("depth", render.options.depth, _depth, render.options.depth + _depth);
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
 		border.pos.z = Convert.coordZ(render.options.depth + 1);
     }

@@ -43,6 +43,12 @@ class PlayState extends State
 		//}
 		//add(m);
 		
+		var panel:Panel = new Panel( {
+			options: { group: this },
+            parent: canvas,
+            name: "test_panel",
+			x: 0, y: 0, w: 256, h: 256
+		});
 		var check:Checkbox = new Checkbox({
 			options: { group: this },
             parent: canvas,
