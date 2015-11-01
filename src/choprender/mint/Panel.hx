@@ -54,7 +54,7 @@ class Panel extends mint.render.Render {
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
-		visual.pos.z = Convert.coordZ(control.depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		_opt.group.add(visual);
 

@@ -3,6 +3,7 @@ package;
 import chop.math.Quat;
 import chop.math.Util;
 import chop.math.Vec4;
+import chop.util.Color;
 import chopengine.input.Mouse;
 import choprender.GlobalRender;
 import chopengine.gen.State;
@@ -43,11 +44,17 @@ class PlayState extends State
 		//}
 		//add(m);
 		
-		var panel:Panel = new Panel( {
+		var panel:Panel = new Panel({
 			options: { group: this },
             parent: canvas,
             name: "test_panel",
 			x: 0, y: 0, w: 256, h: 256
+		});
+		var progress:Progress = new Progress({
+			options: { group: this, progress: 0.5, color: Color.fromValues(1, 1, 1) },
+            parent: canvas,
+            name: "test_panel",
+			x: 64, y: 0, w: 128, h: 12
 		});
 		var check:Checkbox = new Checkbox({
 			options: { group: this },

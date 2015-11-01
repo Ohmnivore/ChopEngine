@@ -36,6 +36,7 @@ class ChopMintRender extends mint.render.Rendering {
             case mint.Checkbox:     new choprender.mint.Checkbox(this, cast control);
             case mint.Dropdown:     new choprender.mint.Dropdown(this, cast control);
             case mint.Panel:        new choprender.mint.Panel(this, cast control);
+            case mint.Progress:     new choprender.mint.Progress(this, cast control);
 			
             //case mint.Canvas:       new mint.render.luxe.Canvas(this, cast control);
             //case mint.Label:        new mint.render.luxe.Label(this, cast control);
