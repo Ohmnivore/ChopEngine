@@ -80,4 +80,21 @@ class Main extends snow.App
 			game.mouse.onmouseup(button);
 		}
 	}
+	override public function onmousewheel(x:Int, y:Int, timestamp:Float, window_id:Int) 
+	{
+		super.onmousewheel(x, y, timestamp, window_id);
+	}
+	
+	override public function onkeydown(keycode:Int, scancode:Int, repeat:Bool, mod:ModState, timestamp:Float, window_id:Int) 
+	{
+		super.onkeydown(keycode, scancode, repeat, mod, timestamp, window_id);
+	}
+	override public function onkeydown(keycode:Int, scancode:Int, repeat:Bool, mod:ModState, timestamp:Float, window_id:Int) 
+	{
+		super.onkeydown(keycode, scancode, repeat, mod, timestamp, window_id);
+	}
+	override public function ontextinput(text:String, start:Int, length:Int, type:TextEventType, timestamp:Float, window_id:Int) 
+	{
+		super.ontextinput(text, start, length, type, timestamp, window_id);
+	}
 }

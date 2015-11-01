@@ -72,11 +72,18 @@ class PlayState extends State
 			x: 266, y: 0, w: 256, h: 256,
 			collapsible: true
 		});
-		var check:Checkbox = new Checkbox({
+		var window:Window = new Window({
 			options: { group: this },
             parent: canvas,
-            name: "test_check",
-            x: 0, y: 0, w: 32, h: 32
+            name: "test_window",
+			x: 266, y: 0, w: 256, h: 256,
+			collapsible: true
+		});
+		var textEdit:TextEdit = new TextEdit({
+			options: { group: this },
+            parent: window,
+            name: "test_textEdit",
+            x: 0, y: 0, w: 256, h: 32
         });
 		var btn:Button = new Button({
 			options: { group: this },

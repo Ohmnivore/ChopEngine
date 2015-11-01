@@ -1,7 +1,10 @@
 # TODO
 
 ## Mint rendering
+* handle mousewheel, textinput
 * handle ondestroy
+* borders for dropdown, window, textedit
+* textedit cursor timer
 * mint halign text right/center/left
 * mint valign text top/center/bottom
 * Dropdown
