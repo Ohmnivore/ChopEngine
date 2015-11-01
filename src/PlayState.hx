@@ -51,10 +51,19 @@ class PlayState extends State
 			x: 0, y: 0, w: 256, h: 256
 		});
 		var progress:Progress = new Progress({
-			options: { group: this, progress: 0.5, color: Color.fromValues(1, 1, 1) },
+			options: { group: this, color: Color.fromValues(1, 1, 1) },
             parent: canvas,
             name: "test_panel",
-			x: 64, y: 0, w: 128, h: 12
+			x: 64, y: 0, w: 128, h: 12,
+			progress: 0.33
+		});
+		var slider:Slider = new Slider({
+			options: { group: this, color: Color.fromValues(1, 1, 1) },
+            parent: canvas,
+            name: "test_slider",
+			x: 244, y: 0, w: 12, h: 128,
+			value: 0.75,
+			vertical: true
 		});
 		var check:Checkbox = new Checkbox({
 			options: { group: this },

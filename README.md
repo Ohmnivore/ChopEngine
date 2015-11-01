@@ -3,7 +3,6 @@
 ## Mint rendering
 * mint halign text right/center/left
 * mint valign text top/center/bottom
-* Slider
 * Window
 * Dropdown
 * Image
