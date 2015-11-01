@@ -65,6 +65,13 @@ class PlayState extends State
 			value: 0.75,
 			vertical: true
 		});
+		var window:Window = new Window({
+			options: { group: this },
+            parent: canvas,
+            name: "test_window",
+			x: 266, y: 0, w: 256, h: 256,
+			collapsible: true
+		});
 		var check:Checkbox = new Checkbox({
 			options: { group: this },
             parent: canvas,
@@ -222,18 +229,18 @@ class PlayState extends State
 		super.update(Elapsed);
 		
 		if (SnowApp._snow.input.keydown(Key.key_a))
-			GlobalRender.cam.pos.x -= 5.0 * Elapsed;
+			GlobalRender.cam.pos.x -= 1.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_d))
-			GlobalRender.cam.pos.x += 5.0 * Elapsed;
+			GlobalRender.cam.pos.x += 1.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_w))
-			GlobalRender.cam.pos.z -= 5.0 * Elapsed;
+			GlobalRender.cam.pos.z -= 1.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_s))
-			GlobalRender.cam.pos.z += 5.0 * Elapsed;
+			GlobalRender.cam.pos.z += 1.0 * Elapsed;
 		
 		if (SnowApp._snow.input.keydown(Key.space))
-			GlobalRender.cam.pos.y += 5.0 * Elapsed;
+			GlobalRender.cam.pos.y += 1.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.lctrl))
-			GlobalRender.cam.pos.y -= 5.0 * Elapsed;
+			GlobalRender.cam.pos.y -= 1.0 * Elapsed;
 		
 		if (Main.game.mouse.rightPressed)
 			GlobalRender.cam.rot.y -= Main.game.mouse.xRel / 2.0;

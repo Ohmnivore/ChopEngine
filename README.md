@@ -1,12 +1,14 @@
 # TODO
 
 ## Mint rendering
+* handle ondestroy
 * mint halign text right/center/left
 * mint valign text top/center/bottom
-* Window
 * Dropdown
 * Image
 * List
+* TextEdit
+* Scroll
 
 ## Text rendering
 * Text line right/center/left align
