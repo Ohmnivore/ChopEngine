@@ -77,7 +77,7 @@ class PlayState extends State
             parent: window,
             name: "test_image",
 			x: 0, y: 64, w: 256, h: 256 - 64,
-			path: "assets/img/squirrel.png"
+			path: "assets/img/haxelogo.png"
 		});
 		var textEdit:TextEdit = new TextEdit({
 			options: { group: this },
