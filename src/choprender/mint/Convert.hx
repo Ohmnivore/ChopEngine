@@ -35,22 +35,22 @@ class Convert
 		return V;
 	}
 	
-	static private function button(Button:Int):mint.types.Types.MouseButton
+	static private function button(B:Int):mint.types.Types.MouseButton
 	{
-		if (Button == 1)
+		if (B == 1)
 			return mint.types.Types.MouseButton.left;
-		else if (Button == 2)
+		else if (B == 2)
 			return mint.types.Types.MouseButton.middle;
-		else if (Button == 3)
+		else if (B == 3)
 			return mint.types.Types.MouseButton.right;
 		else
 			return mint.types.Types.MouseButton.none;
 	}
-	static public function mouseEvent(X:Int, Y:Int, RelX:Int, RelY:Int, Button:Int, Timestamp:Float, State:mint.types.Types.InteractState):mint.types.Types.MouseEvent
+	static public function mouseEvent(X:Int, Y:Int, RelX:Int, RelY:Int, B:Int, Timestamp:Float, State:mint.types.Types.InteractState):mint.types.Types.MouseEvent
 	{
 		return {
             state       : State,
-            button      : button(Button),
+            button      : button(B),
             timestamp   : Timestamp,
             x           : X,
             y           : Y,

@@ -20,7 +20,7 @@ class Dropdown extends mint.render.Render {
 
     public var dropdown : mint.Dropdown;
     public var visual : QuadModel;
-    public var border : QuadModel;
+    //public var border : QuadModel;
 
     public var color: Color;
     public var color_border: Color;
@@ -75,21 +75,21 @@ class Dropdown extends mint.render.Render {
             //visible: control.visible,
             //clip_rect: Convert.bounds(control.clip_with)
         //});
-		border = new QuadModel();
-		border.mat.useShading = false;
-		border.pos.x = Convert.coord(control.x);
-		border.pos.y = Convert.coordY(control.y);
-		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		border.mat.diffuseColor.copy(color);
-		border.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
-		border.visible = control.visible;
-		_opt.group.add(border);
+		//border = new QuadModel();
+		//border.mat.useShading = false;
+		//border.pos.x = Convert.coord(control.x);
+		//border.pos.y = Convert.coordY(control.y);
+		//border.setSize(Convert.coord(control.w), Convert.coord(control.h));
+		//border.mat.diffuseColor.copy(color);
+		//border.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
+		//border.visible = control.visible;
+		//_opt.group.add(border);
 
     } //new
 
     override function ondestroy() {
         visual = null;
-        border = null;
+        //border = null;
     }
 
     override function onbounds() {
@@ -97,20 +97,21 @@ class Dropdown extends mint.render.Render {
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		
-		border.pos.x = Convert.coord(control.x);
-		border.pos.y = Convert.coordY(control.y);
-		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		border.mat.diffuseColor.copy(color);
-		border.visible = control.visible;
+		//border.pos.x = Convert.coord(control.x);
+		//border.pos.y = Convert.coordY(control.y);
+		//border.setSize(Convert.coord(control.w), Convert.coord(control.h));
+		//border.mat.diffuseColor.copy(color);
+		//border.visible = control.visible;
     }
 
     override function onvisible( _visible:Bool ) {
-        visual.visible = border.visible = _visible;
+        //visual.visible = border.visible = _visible;
+        visual.visible = _visible;
     }
 
     override function ondepth( _depth:Float ) {
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
-		border.pos.z = Convert.coordZ(render.options.depth + 1);
+		//border.pos.z = Convert.coordZ(render.options.depth + 1);
     }
 
 

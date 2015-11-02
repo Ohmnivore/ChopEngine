@@ -67,7 +67,7 @@ class Main extends snow.App
 		super.onmousedown(x, y, button, timestamp, window_id);
 		if (assets.isReady())
 		{
-			game.state.canvas.mousedown(Convert.mouseEvent(x, y, 0, 0, 0, timestamp, InteractState.down));
+			game.state.canvas.mousedown(Convert.mouseEvent(x, y, 0, 0, button, timestamp, InteractState.down));
 			game.mouse.onmousedown(button);
 		}
 	}
@@ -76,7 +76,7 @@ class Main extends snow.App
 		super.onmouseup(x, y, button, timestamp, window_id);
 		if (assets.isReady())
 		{
-			game.state.canvas.mouseup(Convert.mouseEvent(x, y, 0, 0, 0, timestamp, InteractState.up));
+			game.state.canvas.mouseup(Convert.mouseEvent(x, y, 0, 0, button, timestamp, InteractState.up));
 			game.mouse.onmouseup(button);
 		}
 	}

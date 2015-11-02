@@ -98,14 +98,40 @@ class PlayState extends State
 			text: "Test btn",
             x: 64, y: 64, w: 64, h: 32
 		});
-		var ddown:Dropdown = new Dropdown({
+		var scroll:Scroll = new Scroll({
 			options: { group: this },
+            parent: canvas,
+            name: "test_scroll",
+            x: 128, y: 128, w: 64, h: 32
+		});
+		var label2:Label = new Label({
+			options: { group: this },
+            parent: scroll,
+            name: "test_label2",
+			text: "Label 2",
+			x: 0, y: 0, w: 128, h: 128
+		});
+		
+		var ddown:Dropdown = new Dropdown({
+			options: { group: this, list: { group: this, view: { group: this } } },
             parent: canvas,
             name: "test_ddown",
 			text: "Test ddown",
-			x: 128, y: 128, w: 64, h: 32
+			x: 0, y: 128, w: 96, h: 32
 		});
-		//var dlist:Array<String> = ["item1", "item2", "item3"];
+		var dlist:Array<String> = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8"];
+		inline function add_plat(name:String) {
+            var first = dlist.indexOf(name) == 0;
+            ddown.add_item(
+                new mint.Label( {
+					options: { group: this },
+                    parent: ddown, text: '$name',
+                    name: 'plat-$name', w:64, h:24, text_size: 14
+                }),
+                10, (first) ? 0 : 10
+            );
+        }
+        for(d in dlist) add_plat(d);
 		
 		var f:FontBuilderNGL = new FontBuilderNGL();
 		f.loadFile("assets/font/04b03_regular_8.xml");
