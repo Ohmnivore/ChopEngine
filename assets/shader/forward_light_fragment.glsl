@@ -234,8 +234,13 @@ void main()
     }
 
     // gamma correction
-    vec3 gammav = vec3(gamma);
-    color = vec4(pow(linearColor, gammav), alpha);
+	if (material.useShading)
+	{
+		vec3 gammav = vec3(gamma);
+		color = vec4(pow(linearColor, gammav), alpha);
+	}
+	else
+		color = vec4(linearColor, alpha);
 	
 	// Ugly hack to keep the optimizer from removing supposedly unused uniforms
 	color.x += float(material.shadowsCast) * 0.00001;

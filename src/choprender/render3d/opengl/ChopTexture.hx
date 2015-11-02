@@ -48,6 +48,11 @@ class ChopTexture
 	{
 		GL.bindTexture(target, texture);
 		GL.texImage2D(target, level, internalFormat, width, height, 0, format, type, pixels);
+		updateParams();
+	}
+	
+	public function updateParams():Void
+	{
 		for (p in params)
 			p.addToTexture(this);
 	}

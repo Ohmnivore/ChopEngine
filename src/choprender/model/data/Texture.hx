@@ -22,8 +22,6 @@ class Texture
 	public var id:Int;
 	public var filename:String;
 	public var filepath:String;
-	public var width:Int;
-	public var height:Int;
 	public var data:Bitmap;
 	public var choptex:ChopTexture;
 	public var blendMode:Int;
@@ -34,8 +32,6 @@ class Texture
 		id = 0;
 		filename = "";
 		filepath = "";
-		width = 0;
-		height = 0;
 		blendMode = BLEND_ALPHA_BLEND;
 	}
 	
@@ -69,8 +65,6 @@ class Texture
 		id = T.id;
 		filename = T.filename;
 		filepath = T.filepath;
-		width = T.width;
-		height = T.height;
 		blendMode = T.blendMode;
 		
 		data.copy(T.data);

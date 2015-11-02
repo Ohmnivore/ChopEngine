@@ -72,12 +72,12 @@ class PlayState extends State
 			x: 266, y: 0, w: 256, h: 256,
 			collapsible: true
 		});
-		var window:Window = new Window({
-			options: { group: this },
-            parent: canvas,
-            name: "test_window",
-			x: 266, y: 0, w: 256, h: 256,
-			collapsible: true
+		var image:Image = new Image({
+			options: { group: this, sizing: "fit" },
+            parent: window,
+            name: "test_image",
+			x: 0, y: 64, w: 256, h: 256 - 64,
+			path: "assets/img/squirrel.png"
 		});
 		var textEdit:TextEdit = new TextEdit({
 			options: { group: this },
@@ -172,23 +172,26 @@ class PlayState extends State
 		//mQuad.mat.diffuseColor.set(0, 0, 0);
 		//add(mQuad);
 		
-		//var m2:Model = new Model();
-		////m2.loadChop("assets/mesh/corgi.chopmesh");
-		//var objLoader:ObjLoader = new ObjLoader();
-		//objLoader.loadFile("assets/obj/corgi.obj", "assets/obj/corgi.mtl");
-		////objLoader.loadFile("assets/obj/lowpoly.obj", "assets/obj/lowpoly.mtl");
-		//m2.loadData(objLoader.data);
-		//m2.scale.x = 2.0;
-		//m2.scale.y = 2.0;
-		//m2.scale.z = 2.0;
+		var m2:Model = new Model();
+		//m2.loadChop("assets/mesh/corgi.chopmesh");
+		var objLoader:ObjLoader = new ObjLoader();
+		objLoader.loadFile("assets/obj/corgi.obj", "assets/obj/corgi.mtl");
+		//objLoader.loadFile("assets/obj/lowpoly.obj", "assets/obj/lowpoly.mtl");
+		m2.loadData(objLoader.data);
+		m2.scale.x = 2.0;
+		m2.scale.y = 2.0;
+		m2.scale.z = 2.0;
 		//m2.rot.y = 20.0;
 		//m2.pos.y = 0.1;
 		//m2.pos.x = 7.0;
+		m2.rot.y = 2.0;
+		m2.pos.y = 0.1;
+		m2.pos.x = 2.0;
 		//for (mat in m2.data.materials)
 		//{
 			//mat.transparency = 0.75;
 		//}
-		//add(m2);
+		add(m2);
 		
 		var displace:Vec4 = Vec4.fromValues(0, 0, -1, 0);
 		displace.transMat4(Util.eulerDegToMatrix4x4(
