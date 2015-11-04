@@ -41,9 +41,6 @@ class Game
 	
 	public function draw(Delta:Float):Void
 	{
-		GL.clear(GL.COLOR_BUFFER_BIT);
-		GL.clear(GL.DEPTH_BUFFER_BIT);
-		
 		state.draw(Delta);
 		for (cam in GlobalRender.cams)
 		{

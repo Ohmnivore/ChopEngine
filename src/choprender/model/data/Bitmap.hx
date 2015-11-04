@@ -144,12 +144,12 @@ class Bitmap
 	public function displace(Rect:Vec4, Delta:Vec2, Clear:Vec4 = null):Void
 	{
 		var arr:Array<Int> = [];
-		for (y in 0...cast Rect[3])
+		for (y in 0...Std.int(Rect[3]))
 		{
-			for (x in 0...cast Rect[2])
+			for (x in 0...Std.int(Rect[2]))
 			{
-				var pX:Int = cast x + Rect[0];
-				var pY:Int = cast y + Rect[1];
+				var pX:Int = x + Std.int(Rect[0]);
+				var pY:Int = y + Std.int(Rect[1]);
 				var p:Array<Int> = getPixel(pX, pY);
 				arr.push(p[0]);
 				arr.push(p[1]);
@@ -157,7 +157,7 @@ class Bitmap
 				arr.push(p[3]);
 				if (Clear != null)
 				{
-					setPixel(pX, pY, [cast Clear[0], cast Clear[1], cast Clear[2], cast Clear[3]]);
+					setPixel(pX, pY, [Std.int(Clear[0]), Std.int(Clear[1]), Std.int(Clear[2]), Std.int(Clear[3])]);
 				}
 			}
 		}
@@ -166,10 +166,10 @@ class Bitmap
 		{
 			for (x in 0...cast Rect[2])
 			{
-				var pX:Int = cast x + Rect[0];
-				var pY:Int = cast y + Rect[1];
-				var npX:Int = cast pX + Delta[0];
-				var npY:Int = cast pY + Delta[1];
+				var pX:Int = x + Std.int(Rect[0]);
+				var pY:Int = y + Std.int(Rect[1]);
+				var npX:Int = pX + Std.int(Delta[0]);
+				var npY:Int = pY + Std.int(Delta[1]);
 				if (npX <= width && npY <= height && npX >= 0 && npY >= 0)
 				{
 					i += 4;
@@ -190,8 +190,8 @@ class Bitmap
 		{
 			for (x in 0...cast SourceRect[2])
 			{
-				var p:Array<Int> = Source.getPixel(cast SourceRect[0] + x, cast SourceRect[1] + y);
-				Dest.blitPixel(cast DestPoint.x + x, cast DestPoint.y + y, p);
+				var p:Array<Int> = Source.getPixel(Std.int(SourceRect[0]) + x, Std.int(SourceRect[1]) + y);
+				Dest.blitPixel(Std.int(DestPoint.x) + x, Std.int(DestPoint.y) + y, p);
 			}
 		}
 	}

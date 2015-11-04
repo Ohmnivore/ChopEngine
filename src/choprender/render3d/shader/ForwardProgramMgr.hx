@@ -106,8 +106,16 @@ class ForwardProgramMgr extends ChopProgramMgr
 		GL.clearDepth(1.0);
 		
 		GL.viewport(Std.int(cam.screenPos.x), Std.int(SnowApp._snow.window.height - cam.screenPos.y - cam.height), cam.width, cam.height);
+		GL.scissor(Std.int(cam.screenPos.x), Std.int(SnowApp._snow.window.height - cam.screenPos.y - cam.height), cam.width, cam.height);
+		GL.enable(GL.SCISSOR_TEST);
 		GL.clearColor(cam.bgColor.x, cam.bgColor.y, cam.bgColor.z, 1.0);
-		GL.clear(GL.DEPTH_BUFFER_BIT);
+		
+		if (cam.shouldClearColor && cam.shouldClearDepth)
+			GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+		else if (cam.shouldClearColor)
+			GL.clear(GL.COLOR_BUFFER_BIT);
+		else if (cam.shouldClearDepth)
+			GL.clear(GL.DEPTH_BUFFER_BIT);
 	}
 	
 	override public function postDraw(Elapsed:Float):Void 
@@ -122,7 +130,7 @@ class ForwardProgramMgr extends ChopProgramMgr
 				var trans:Array<Model> = [];
 				for (basic in GlobalRender.members)
 				{
-					if (Std.is(basic, Model))
+					if (Std.is(basic, Model) && cast(basic, Model).cams.indexOf(cam) >= 0)
 					{
 						var m:Model = cast basic;
 						var isOpaque:Bool = true;

@@ -16,7 +16,6 @@
 
 ## Rendering (eventually)
 * Skeletal animation
-* Test multiple cameras setup on other computer
 * Get face normals from chopmesh file
 * Batching
 * Instancing

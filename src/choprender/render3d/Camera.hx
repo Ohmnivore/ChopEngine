@@ -33,6 +33,8 @@ class Camera extends Basic
 	public var pos:Vec3;
 	public var rot:Vec3;
 	public var bgColor:Vec3;
+	public var shouldClearColor:Bool;
+	public var shouldClearDepth:Bool;
 	
 	public var projectionMatrix:Mat4;
 	public var viewMatrix:Mat4;
@@ -47,7 +49,6 @@ class Camera extends Basic
 			Width = SnowApp._snow.window.width;
 		if (Height == 0)
 			Height = SnowApp._snow.window.height;
-		setView(X, Y, Width, Height);
 		
 		FOV = 40.0;
 		displayMin = 0.1;
@@ -55,16 +56,12 @@ class Camera extends Basic
 		pos = Vec3.fromValues(0.0, 0.0, 0.0);
 		rot = Vec3.fromValues(0.0, 0.0, 0.0);
 		bgColor = Vec3.fromValues(1.0, 1.0, 1.0);
+		shouldClearColor = true;
+		shouldClearDepth = true;
 		projectionMatrix = Mat4.newZero();
 		viewMatrix = Mat4.newZero();
 		
-		createProgramMgrs();
-	}
-	
-	private function createProgramMgrs():Void
-	{
-		mgr = new ForwardProgramMgr(this);
-		mgr.init();
+		setView(X, Y, Width, Height);
 	}
 	
 	public function setView(ScreenX:Int, ScreenY:Int, Width:Int, Height:Int, Ratio:Int = -1):Void
@@ -74,9 +71,16 @@ class Camera extends Basic
 		width = Width;
 		height = Height;
 		if (Ratio == -1)
-			ratio = cast(width, Float) / cast(height, Float);
+			ratio = Std.int(width) / Std.int(height);
 		else
 			ratio = Ratio;
+		createProgramMgrs();
+	}
+	
+	private function createProgramMgrs():Void
+	{
+		mgr = new ForwardProgramMgr(this);
+		mgr.init();
 	}
 	
 	public function preDraw(Elapsed:Float):Void

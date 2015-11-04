@@ -1,8 +1,6 @@
 package chop.gen;
 
 import chop.gen.Basic;
-import choprender.GlobalRender;
-import choprender.render3d.Camera;
 import chop.math.Vec3;
 
 /**
@@ -11,8 +9,6 @@ import chop.math.Vec3;
  */
 class Object extends Basic
 {
-	public var cam:Camera;
-	public var cams:Array<Camera>;
 	public var health:Float;
 	
 	public var pos:Vec3;
@@ -23,8 +19,6 @@ class Object extends Basic
 	{
 		super();
 		
-		cam = GlobalRender.cam;
-		cams = GlobalRender.cams.slice(0, GlobalRender.cams.length);
 		health = 1.0;
 		
 		pos = Vec3.fromValues(0, 0, 0);
@@ -36,10 +30,6 @@ class Object extends Basic
 	{
 		Basic.copy(D, S);
 		
-		D.cam = S.cam;
-		D.cams.splice(0, D.cams.length);
-		for (c in S.cams)
-			D.cams.push(c);
 		D.health = S.health;
 		
 		D.pos.copy(S.pos);

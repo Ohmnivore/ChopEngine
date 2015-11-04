@@ -66,7 +66,6 @@ class ShaderForwardLights extends ChopProgram
 		super.preRender(Mgr);
 		GL.enable(GL.BLEND);
 		GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
-		GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 	}
 	
 	override public function postRender(Mgr:ChopProgramMgr):Void 
