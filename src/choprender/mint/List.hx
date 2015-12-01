@@ -15,8 +15,6 @@ import chop.group.Group;
 private typedef ChopMintListOptions = {
     var color_selected: Color;
     var color_hover: Color;
-	var group: Group;
-	var cam: Camera;
 }
 
 class List extends mint.render.Render {

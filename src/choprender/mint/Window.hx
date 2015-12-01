@@ -17,8 +17,6 @@ private typedef ChopMintWindowOptions = {
     var color_titlebar: Color;
     var color_border: Color;
     var color_collapse: Color;
-	var group: Group;
-	var cam: Camera;
 }
 
 class Window extends mint.render.Render {
@@ -71,8 +69,8 @@ class Window extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + window.depth);
 		visual.visible = window.visible;
-		visual.cams = [_opt.cam];
-		_opt.group.add(visual);
+		visual.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(visual);
 
         //top = Luxe.draw.box({
             //id: control.name+'.top',
@@ -95,8 +93,8 @@ class Window extends mint.render.Render {
 		top.mat.diffuseColor.copy(color_titlebar);
 		top.pos.z = Convert.coordZ(render.options.depth + window.depth + 1);
 		top.visible = window.visible;
-		top.cams = [_opt.cam];
-		_opt.group.add(top);
+		top.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(top);
 
         //border = Luxe.draw.rectangle({
             //id: control.name+'.border',
@@ -131,8 +129,8 @@ class Window extends mint.render.Render {
 		collapse.mat.diffuseColor.copy(color_collapse);
 		collapse.pos.z = Convert.coordZ(render.options.depth + window.depth + 3);
 		collapse.visible = window.collapsible;
-		collapse.cams = [_opt.cam];
-		_opt.group.add(collapse);
+		collapse.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(collapse);
 
         var ch = window.collapse_handle;
 		collapse.pos.x = Convert.coordX(ch.x + (ch.w - 14) / 2);

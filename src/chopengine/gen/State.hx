@@ -24,21 +24,11 @@ class State extends Group
 	public function create():Void
 	{
 		lights = new LightState();
-		layout = new Margins();
-		canvas = new mint.Canvas({
-			name:'canvas',
-			rendering: Main.rendering,
-			options: {
-				group: this
-			},
-			x: 0, y:0, w: SnowApp._snow.window.width, h: SnowApp._snow.window.height
-		});
 	}
 	
 	override public function update(Elapsed:Float):Void 
 	{
 		super.update(Elapsed);
-		
 		canvas.update(Elapsed);
 	}
 }

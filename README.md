@@ -2,7 +2,6 @@
 
 ## Mint rendering
 * draw in immediate mode?
-* load default font only once
 * clipping
 * image cover sizing
 * handle ondestroy

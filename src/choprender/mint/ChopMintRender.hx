@@ -1,14 +1,15 @@
 package choprender.mint;
 
+import chop.group.Group;
 import mint.types.Types;
 import mint.Control;
 import choprender.mint.Convert;
 
 typedef RenderProperties = {
 
-        /** the visibility */
+    /** the visibility */
     @:optional var visible : Bool;
-        /** the geometry depth value (see guides)*/
+    /** the geometry depth value (see guides)*/
     @:optional var depth : Float;
 
 } //RenderProperties

@@ -16,6 +16,7 @@ import choprender.render3d.light.PointLight;
 import choprender.render3d.light.SunLight;
 import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Text;
+import mint.layout.margins.Margins;
 import snow.types.Types.Key;
 
 import mint.*;
@@ -41,6 +42,19 @@ class PlayState extends State
 		uiCam.shouldClearColor = false;
 		uiCam.shouldClearDepth = true;
 		GlobalRender.cams.push(uiCam);
+		var f:FontBuilderNGL = new FontBuilderNGL();
+		f.loadFile("assets/font/04b03_regular_8.xml");
+		layout = new Margins();
+		canvas = new mint.Canvas({
+			name:'canvas',
+			rendering: Main.rendering,
+			options: {
+				group: this,
+				cams: [uiCam],
+				font: f.font
+			},
+			x: 0, y:0, w: SnowApp._snow.window.width, h: SnowApp._snow.window.height
+		});
 		
 		//var m:Model = new Model();
 		//m.loadChop("assets/mesh/lowpoly.chopmesh");
@@ -51,20 +65,20 @@ class PlayState extends State
 		//add(m);
 		
 		var panel:Panel = new Panel({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: canvas,
             name: "test_panel",
 			x: 0, y: 0, w: 256, h: 256
 		});
 		var progress:Progress = new Progress({
-			options: { cam: uiCam, group: this, color: Color.fromValues(1, 1, 1) },
+			options: { color: Color.fromValues(1, 1, 1) },
             parent: canvas,
             name: "test_panel",
 			x: 64, y: 0, w: 128, h: 12,
 			progress: 0.33
 		});
 		var slider:Slider = new Slider({
-			options: { cam: uiCam, group: this, color: Color.fromValues(1, 1, 1) },
+			options: { color: Color.fromValues(1, 1, 1) },
             parent: canvas,
             name: "test_slider",
 			x: 244, y: 0, w: 12, h: 128,
@@ -72,46 +86,46 @@ class PlayState extends State
 			vertical: true
 		});
 		var window:Window = new Window({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: canvas,
             name: "test_window",
 			x: 266, y: 0, w: 256, h: 256,
 			collapsible: true
 		});
 		var image:Image = new Image({
-			options: { cam: uiCam, group: this, sizing: "fit" },
+			options: { sizing: "fit" },
             parent: window,
             name: "test_image",
 			x: 0, y: 64, w: 256, h: 256 - 64,
 			path: "assets/img/haxelogo.png"
 		});
 		var textEdit:TextEdit = new TextEdit({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: window,
             name: "test_textEdit",
             x: 0, y: 28, w: 256, h: 32
         });
 		var check:Checkbox = new Checkbox({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: canvas,
             name: "test_checkbox",
             x: 0, y: 0, w: 32, h: 32
         });
 		var btn:Button = new Button({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: canvas,
             name: "test_btn",
 			text: "Test btn",
             x: 64, y: 64, w: 64, h: 32
 		});
 		var scroll:Scroll = new Scroll({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: canvas,
             name: "test_scroll",
             x: 128, y: 128, w: 64, h: 32
 		});
 		var label2:Label = new Label({
-			options: { cam: uiCam, group: this },
+			options: {},
             parent: scroll,
             name: "test_label2",
 			text: "Label 2",
@@ -119,7 +133,7 @@ class PlayState extends State
 		});
 		
 		var ddown:Dropdown = new Dropdown({
-			options: { cam: uiCam, group: this, list: { cam: uiCam, group: this, view: { cam: uiCam, group: this } } },
+			options: {},
             parent: canvas,
             name: "test_ddown",
 			text: "Test ddown",
@@ -130,7 +144,7 @@ class PlayState extends State
             var first = dlist.indexOf(name) == 0;
             ddown.add_item(
                 new mint.Label( {
-					options: { cam: uiCam, group: this },
+					options: {},
                     parent: ddown, text: '$name',
                     name: 'plat-$name', w:64, h:24, text_size: 14
                 }),
@@ -138,9 +152,6 @@ class PlayState extends State
             );
         }
         for(d in dlist) add_plat(d);
-		
-		var f:FontBuilderNGL = new FontBuilderNGL();
-		f.loadFile("assets/font/04b03_regular_8.xml");
 		
 		//var q:QuadModel = new QuadModel();
 		//q.mat.useShading = false;

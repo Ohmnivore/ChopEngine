@@ -1,7 +1,6 @@
 package choprender.mint;
 
 import choprender.render3d.Camera;
-import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Font;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -16,8 +15,6 @@ import chop.group.Group;
 private typedef ChopMintLabelOptions = {
     var color: Color;
     var color_hover: Color;
-	var group: Group;
-	var cam: Camera;
 	var font: Font;
 }
 
@@ -42,8 +39,7 @@ class Label extends mint.render.Render {
 
         color = Convert.def(_opt.color, Color.fromRGB(0xffffff));
         color_hover = Convert.def(_opt.color_hover, Color.fromRGB(0x9dca63));
-		_opt.group = Convert.def(_opt.group, control.parent._options_.options.group);
-		_opt.cam = Convert.def(_opt.cam, control.parent._options_.options.cam);
+		_opt.font = Convert.def(_opt.font, _control.canvas._options_.options.font);
 
         //text = new luxe.Text({
             //name: control.name+'.text',
@@ -60,10 +56,7 @@ class Label extends mint.render.Render {
             //visible: control.visible,
         //});
 		
-		var f:FontBuilderNGL = new FontBuilderNGL();
-		f.loadFile("assets/font/04b03_regular_8.xml");
-		
-		text = new Text(f.font);
+		text = new Text(_opt.font);
 		text.mat.useShading = false;
 		text.pos.x = Convert.coordX(control.x);
 		text.pos.y = Convert.coordY(control.y);
@@ -72,8 +65,8 @@ class Label extends mint.render.Render {
 		text.mat.diffuseColor.copy(color);
 		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(label.text);
-		text.cams = [_opt.cam];
-		_opt.group.add(text);
+		text.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(text);
 
         label.onchange.listen(ontext);
 

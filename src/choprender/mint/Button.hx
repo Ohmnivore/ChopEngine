@@ -15,8 +15,6 @@ private typedef ChopMintButtonOptions = {
     var color: Color;
     var color_hover: Color;
     var color_down: Color;
-	var group: Group;
-	var cam: Camera;
 }
 
 class Button extends mint.render.Render {
@@ -62,8 +60,8 @@ class Button extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
-		visual.cams = [_opt.cam];
-		_opt.group.add(visual);
+		visual.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(visual);
 
         button.onmouseenter.listen(function(e,c) { visual.mat.diffuseColor.copy(color_hover); });
         button.onmouseleave.listen(function(e,c) { visual.mat.diffuseColor.copy(color); });

@@ -14,8 +14,6 @@ import chop.group.Group;
 private typedef ChopMintScrollOptions = {
     var color: Color;
     var color_handles: Color;
-	var group: Group;
-	var cam: Camera;
 }
 
 class Scroll extends mint.render.Render {
@@ -62,8 +60,8 @@ class Scroll extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
-		visual.cams = [_opt.cam];
-		_opt.group.add(visual);
+		visual.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(visual);
 
         //scrollh = new luxe.Sprite({
             //name: control.name+'.scrollh',
@@ -84,8 +82,8 @@ class Scroll extends mint.render.Render {
 		scrollh.mat.diffuseColor.copy(color_handles);
 		scrollh.pos.z = Convert.coordZ(render.options.depth + scroll.scrollh.depth);
 		scrollh.visible = scroll.visible_h;
-		scrollh.cams = [_opt.cam];
-		_opt.group.add(scrollh);
+		scrollh.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(scrollh);
 
         //scrollv = new luxe.Sprite({
             //name: control.name+'.scrollv',
@@ -106,8 +104,8 @@ class Scroll extends mint.render.Render {
 		scrollv.mat.diffuseColor.copy(color_handles);
 		scrollv.pos.z = Convert.coordZ(render.options.depth + scroll.scrollv.depth);
 		scrollv.visible = scroll.visible_v;
-		scrollv.cams = [_opt.cam];
-		_opt.group.add(scrollv);
+		scrollv.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(scrollv);
 
         //visual.clip_rect = Convert.bounds(control.clip_with);
 

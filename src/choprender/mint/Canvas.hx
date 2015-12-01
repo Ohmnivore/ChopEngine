@@ -10,10 +10,14 @@ import choprender.mint.Convert;
 
 import choprender.model.QuadModel;
 import chop.group.Group;
+import choprender.render3d.Camera;
+import choprender.text.Font;
 
 private typedef ChopMintCanvasOptions = {
     var color: Color;
     var group: Group;
+	var cams: Array<Camera>;
+	var font: Font;
 }
 
 class Canvas extends mint.render.Render {
