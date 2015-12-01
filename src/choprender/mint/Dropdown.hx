@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -14,6 +15,7 @@ private typedef ChopMintDropdownOptions = {
     var color: Color;
     var color_border: Color;
     var group: Group;
+    var cam: Camera;
 }
 
 class Dropdown extends mint.render.Render {
@@ -60,6 +62,7 @@ class Dropdown extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
+		visual.cams = [_opt.cam];
 		_opt.group.add(visual);
 
         //border = Luxe.draw.rectangle({

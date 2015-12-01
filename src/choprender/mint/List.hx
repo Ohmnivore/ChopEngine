@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import choprender.render3d.Camera;
 import mint.Control;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -14,7 +15,8 @@ import chop.group.Group;
 private typedef ChopMintListOptions = {
     var color_selected: Color;
     var color_hover: Color;
-	var group:Group;
+	var group: Group;
+	var cam: Camera;
 }
 
 class List extends mint.render.Render {

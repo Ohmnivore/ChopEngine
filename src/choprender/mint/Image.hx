@@ -1,6 +1,7 @@
 package choprender.mint;
 
 import choprender.model.data.Texture;
+import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -17,7 +18,8 @@ import choprender.render3d.opengl.GL;
 private typedef ChopMintImageOptions = {
     @:optional var uv: Vec4;
     @:optional var sizing: String; //:todo: type
-	var group:Group;
+	var group: Group;
+	var cam: Camera;
 }
 
 class Image extends mint.render.Render {
@@ -95,6 +97,7 @@ class Image extends mint.render.Render {
 		visual.setSize(Convert.coord(ratio_w), Convert.coord(ratio_h));
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
+		visual.cams = [_opt.cam];
 		_opt.group.add(visual);
 		
 		visual.loadTex(texture);

@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -13,7 +14,8 @@ import chop.group.Group;
 private typedef ChopMintProgressOptions = {
     var color: Color;
     var color_bar: Color;
-	var group:Group;
+	var group: Group;
+	var cam: Camera;
 }
 
 class Progress extends mint.render.Render {
@@ -61,6 +63,7 @@ class Progress extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
+		visual.cams = [_opt.cam];
 		_opt.group.add(visual);
 
         //bar = Luxe.draw.box({
@@ -84,6 +87,7 @@ class Progress extends mint.render.Render {
 		bar.mat.diffuseColor.copy(color_bar);
 		bar.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
 		bar.visible = control.visible;
+		bar.cams = [_opt.cam];
 		_opt.group.add(bar);
 
         progress.onchange.listen(function(cur, prev){

@@ -51,20 +51,20 @@ class PlayState extends State
 		//add(m);
 		
 		var panel:Panel = new Panel({
-			options: { group: this },
+			options: { cam: uiCam, group: this },
             parent: canvas,
             name: "test_panel",
 			x: 0, y: 0, w: 256, h: 256
 		});
 		var progress:Progress = new Progress({
-			options: { group: this, color: Color.fromValues(1, 1, 1) },
+			options: { cam: uiCam, group: this, color: Color.fromValues(1, 1, 1) },
             parent: canvas,
             name: "test_panel",
 			x: 64, y: 0, w: 128, h: 12,
 			progress: 0.33
 		});
 		var slider:Slider = new Slider({
-			options: { group: this, color: Color.fromValues(1, 1, 1) },
+			options: { cam: uiCam, group: this, color: Color.fromValues(1, 1, 1) },
             parent: canvas,
             name: "test_slider",
 			x: 244, y: 0, w: 12, h: 128,
@@ -72,21 +72,21 @@ class PlayState extends State
 			vertical: true
 		});
 		var window:Window = new Window({
-			options: { group: this },
+			options: { cam: uiCam, group: this },
             parent: canvas,
             name: "test_window",
 			x: 266, y: 0, w: 256, h: 256,
 			collapsible: true
 		});
 		var image:Image = new Image({
-			options: { group: this, sizing: "fit" },
+			options: { cam: uiCam, group: this, sizing: "fit" },
             parent: window,
             name: "test_image",
 			x: 0, y: 64, w: 256, h: 256 - 64,
 			path: "assets/img/haxelogo.png"
 		});
 		var textEdit:TextEdit = new TextEdit({
-			options: { cam: uiCam, group: this, label: { cam: uiCam, group: this } },
+			options: { cam: uiCam, group: this },
             parent: window,
             name: "test_textEdit",
             x: 0, y: 28, w: 256, h: 32
@@ -105,13 +105,13 @@ class PlayState extends State
             x: 64, y: 64, w: 64, h: 32
 		});
 		var scroll:Scroll = new Scroll({
-			options: { group: this },
+			options: { cam: uiCam, group: this },
             parent: canvas,
             name: "test_scroll",
             x: 128, y: 128, w: 64, h: 32
 		});
 		var label2:Label = new Label({
-			options: { group: this },
+			options: { cam: uiCam, group: this },
             parent: scroll,
             name: "test_label2",
 			text: "Label 2",
@@ -119,7 +119,7 @@ class PlayState extends State
 		});
 		
 		var ddown:Dropdown = new Dropdown({
-			options: { group: this, list: { group: this, view: { group: this } } },
+			options: { cam: uiCam, group: this, list: { cam: uiCam, group: this, view: { cam: uiCam, group: this } } },
             parent: canvas,
             name: "test_ddown",
 			text: "Test ddown",
@@ -130,7 +130,7 @@ class PlayState extends State
             var first = dlist.indexOf(name) == 0;
             ddown.add_item(
                 new mint.Label( {
-					options: { group: this },
+					options: { cam: uiCam, group: this },
                     parent: ddown, text: '$name',
                     name: 'plat-$name', w:64, h:24, text_size: 14
                 }),

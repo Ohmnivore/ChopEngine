@@ -43,6 +43,7 @@ class Label extends mint.render.Render {
         color = Convert.def(_opt.color, Color.fromRGB(0xffffff));
         color_hover = Convert.def(_opt.color_hover, Color.fromRGB(0x9dca63));
 		_opt.group = Convert.def(_opt.group, control.parent._options_.options.group);
+		_opt.cam = Convert.def(_opt.cam, control.parent._options_.options.cam);
 
         //text = new luxe.Text({
             //name: control.name+'.text',

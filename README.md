@@ -3,6 +3,7 @@
 ## Mint rendering
 * load default font only once
 * project mouse coordinates along 3D canvas plane
+* dropdown, list, scroll
 * clipping
 * image cover sizing
 * handle ondestroy

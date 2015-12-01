@@ -1,5 +1,7 @@
 package choprender.mint;
 
+import chop.assets.Assets;
+import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -15,7 +17,8 @@ private typedef ChopMintWindowOptions = {
     var color_titlebar: Color;
     var color_border: Color;
     var color_collapse: Color;
-	var group:Group;
+	var group: Group;
+	var cam: Camera;
 }
 
 class Window extends mint.render.Render {
@@ -68,6 +71,7 @@ class Window extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + window.depth);
 		visual.visible = window.visible;
+		visual.cams = [_opt.cam];
 		_opt.group.add(visual);
 
         //top = Luxe.draw.box({
@@ -91,6 +95,7 @@ class Window extends mint.render.Render {
 		top.mat.diffuseColor.copy(color_titlebar);
 		top.pos.z = Convert.coordZ(render.options.depth + window.depth + 1);
 		top.visible = window.visible;
+		top.cams = [_opt.cam];
 		_opt.group.add(top);
 
         //border = Luxe.draw.rectangle({
@@ -126,6 +131,7 @@ class Window extends mint.render.Render {
 		collapse.mat.diffuseColor.copy(color_collapse);
 		collapse.pos.z = Convert.coordZ(render.options.depth + window.depth + 3);
 		collapse.visible = window.collapsible;
+		collapse.cams = [_opt.cam];
 		_opt.group.add(collapse);
 
         var ch = window.collapse_handle;
