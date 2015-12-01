@@ -65,7 +65,7 @@ class Label extends mint.render.Render {
 		
 		text = new Text(f.font);
 		text.mat.useShading = false;
-		text.pos.x = Convert.coord(control.x);
+		text.pos.x = Convert.coordX(control.x);
 		text.pos.y = Convert.coordY(control.y);
 		text.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		text.visible = control.visible;
@@ -83,14 +83,14 @@ class Label extends mint.render.Render {
     }
 
     override function onbounds() {
-		text.pos.x = Convert.coord(control.x);
+		text.pos.x = Convert.coordX(control.x);
 		text.pos.y = Convert.coordY(control.y);
     }
 
     function ontext(_text:String) {
 		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(_text);
-		text.pos.x = Convert.coord(control.x);
+		text.pos.x = Convert.coordX(control.x);
 		text.pos.y = Convert.coordY(control.y);
     }
 

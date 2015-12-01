@@ -59,7 +59,7 @@ class TextEdit extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
@@ -170,7 +170,7 @@ class TextEdit extends mint.render.Render {
     }
 
     override function onbounds() {
-        visual.pos.x = Convert.coord(control.x);
+        visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
         //if(timer != null) {

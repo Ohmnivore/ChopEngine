@@ -13,12 +13,19 @@ class Convert
 		else
 			return C / SnowApp._snow.window.height;
 	}
+	static public function coordX(C:Float):Float 
+	{
+		if (SnowApp._snow.window.width > SnowApp._snow.window.height)
+			return (C - SnowApp._snow.window.width / 2.0) / SnowApp._snow.window.width;
+		else
+			return (C - SnowApp._snow.window.width / 2.0) / SnowApp._snow.window.height;
+	}
 	static public function coordY(C:Float):Float 
 	{
 		if (SnowApp._snow.window.width > SnowApp._snow.window.height)
-			return -C / SnowApp._snow.window.width;
+			return (-C + SnowApp._snow.window.height / 2.0) / SnowApp._snow.window.width;
 		else
-			return -C / SnowApp._snow.window.height;
+			return (-C + SnowApp._snow.window.height / 2.0) / SnowApp._snow.window.height;
 	}
 	static public function coordZ(C:Float):Float 
 	{

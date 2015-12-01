@@ -57,7 +57,7 @@ class Progress extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
@@ -81,7 +81,7 @@ class Progress extends mint.render.Render {
         //});
 		bar = new QuadModel();
 		bar.mat.useShading = false;
-		bar.pos.x = Convert.coord(control.x+margin);
+		bar.pos.x = Convert.coordX(control.x+margin);
 		bar.pos.y = Convert.coordY(control.y+margin);
 		bar.setSize(Convert.coord(get_bar_width(progress.progress)), Convert.coord(control.h-(margin*2)));
 		bar.mat.diffuseColor.copy(color_bar);
@@ -112,10 +112,10 @@ class Progress extends mint.render.Render {
     }
 
     override function onbounds() {
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		bar.pos.x = Convert.coord(control.x+margin);
+		bar.pos.x = Convert.coordX(control.x+margin);
 		bar.pos.y = Convert.coordY(control.y+margin);
 		bar.setSize(Convert.coord(get_bar_width(progress.progress)), Convert.coord(control.h-(margin*2)));
     }

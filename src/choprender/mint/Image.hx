@@ -92,7 +92,7 @@ class Image extends mint.render.Render {
 		//});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(ratio_w), Convert.coord(ratio_h));
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
@@ -108,7 +108,7 @@ class Image extends mint.render.Render {
     override function onbounds() {
 
         if(visual != null) {
-            visual.pos.x = Convert.coord(control.x);
+            visual.pos.x = Convert.coordX(control.x);
 			visual.pos.y = Convert.coordY(control.y);
 			visual.setSize(Convert.coord(ratio_w), Convert.coord(ratio_h));
         }

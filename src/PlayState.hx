@@ -37,7 +37,7 @@ class PlayState extends State
 		GlobalRender.cam.bgColor.z = 1.0;
 		
 		var uiCam:Camera = new Camera(0, 0, GlobalRender.cam.width, GlobalRender.cam.height);
-		uiCam.pos.z = 0.8;
+		uiCam.pos.z = 0.915;
 		uiCam.shouldClearColor = false;
 		uiCam.shouldClearDepth = true;
 		GlobalRender.cams.push(uiCam);

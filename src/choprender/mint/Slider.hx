@@ -57,7 +57,7 @@ class Slider extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
@@ -81,7 +81,7 @@ class Slider extends mint.render.Render {
         //});
 		bar = new QuadModel();
 		bar.mat.useShading = false;
-		bar.pos.x = Convert.coord(control.x + slider.bar_x);
+		bar.pos.x = Convert.coordX(control.x + slider.bar_x);
 		bar.pos.y = Convert.coordY(control.y + slider.bar_y);
 		bar.setSize(Convert.coord(slider.bar_w), Convert.coord(slider.bar_h));
 		bar.mat.diffuseColor.copy(color_bar);
@@ -96,7 +96,7 @@ class Slider extends mint.render.Render {
 
     function onchange(value:Float, prev_value:Float) {
 
-		bar.pos.x = Convert.coord(control.x + slider.bar_x);
+		bar.pos.x = Convert.coordX(control.x + slider.bar_x);
 		bar.pos.y = Convert.coordY(control.y + slider.bar_y);
 		bar.setSize(Convert.coord(slider.bar_w), Convert.coord(slider.bar_h));
 
@@ -110,10 +110,10 @@ class Slider extends mint.render.Render {
     } //ondestroy
 
     override function onbounds() {
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		bar.pos.x = Convert.coord(control.x + slider.bar_x);
+		bar.pos.x = Convert.coordX(control.x + slider.bar_x);
 		bar.pos.y = Convert.coordY(control.y + slider.bar_y);
 		bar.setSize(Convert.coord(slider.bar_w), Convert.coord(slider.bar_h));
     }

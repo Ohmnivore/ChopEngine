@@ -61,7 +61,7 @@ class Checkbox extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
@@ -83,7 +83,7 @@ class Checkbox extends mint.render.Render {
         //});
 		node_off = new QuadModel();
 		node_off.mat.useShading = false;
-		node_off.pos.x = Convert.coord(control.x + 4);
+		node_off.pos.x = Convert.coordX(control.x + 4);
 		node_off.pos.y = Convert.coordY(control.y + 4);
 		node_off.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node_off.mat.diffuseColor.set(0, 0, 0);
@@ -106,7 +106,7 @@ class Checkbox extends mint.render.Render {
         //});
 		node = new QuadModel();
 		node.mat.useShading = false;
-		node.pos.x = Convert.coord(control.x + 4);
+		node.pos.x = Convert.coordX(control.x + 4);
 		node.pos.y = Convert.coordY(control.y + 4);
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 		node.mat.diffuseColor.copy(color_node);
@@ -135,13 +135,13 @@ class Checkbox extends mint.render.Render {
 
     override function onbounds() {
 
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		node_off.pos.x = Convert.coord(control.x + 4);
+		node_off.pos.x = Convert.coordX(control.x + 4);
 		node_off.pos.y = Convert.coordY(control.y + 4);
 		node_off.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
-		node.pos.x = Convert.coord(control.x + 4);
+		node.pos.x = Convert.coordX(control.x + 4);
 		node.pos.y = Convert.coordY(control.y + 4);
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 

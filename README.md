@@ -1,13 +1,11 @@
 # TODO
 
 ## Mint rendering
+* draw in immediate mode?
 * load default font only once
-* project mouse coordinates along 3D canvas plane
-* dropdown, list, scroll
 * clipping
 * image cover sizing
 * handle ondestroy
-* borders for dropdown, window, textedit
 * textedit cursor
 * mint halign text right/center/left
 * mint valign text top/center/bottom

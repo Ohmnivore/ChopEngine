@@ -65,7 +65,7 @@ class Window extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(window.x);
+		visual.pos.x = Convert.coordX(window.x);
 		visual.pos.y = Convert.coordY(window.y);
 		visual.setSize(Convert.coord(window.w), Convert.coord(window.h));
 		visual.mat.diffuseColor.copy(color);
@@ -89,7 +89,7 @@ class Window extends mint.render.Render {
         //});
 		top = new QuadModel();
 		top.mat.useShading = false;
-		top.pos.x = Convert.coord(window.title.x);
+		top.pos.x = Convert.coordX(window.title.x);
 		top.pos.y = Convert.coordY(window.title.y);
 		top.setSize(Convert.coord(window.title.w), Convert.coord(window.title.h));
 		top.mat.diffuseColor.copy(color_titlebar);
@@ -135,7 +135,7 @@ class Window extends mint.render.Render {
 		_opt.group.add(collapse);
 
         var ch = window.collapse_handle;
-		collapse.pos.x = Convert.coord(ch.x + (ch.w - 14) / 2);
+		collapse.pos.x = Convert.coordX(ch.x + (ch.w - 14) / 2);
 		collapse.pos.y = Convert.coordY(ch.y + (ch.h - 14) / 2);
 
         window.oncollapse.listen(oncollapse);
@@ -152,14 +152,14 @@ class Window extends mint.render.Render {
     } //ondestroy
 
     override function onbounds() {
-		visual.pos.x = Convert.coord(window.x);
+		visual.pos.x = Convert.coordX(window.x);
 		visual.pos.y = Convert.coordY(window.y);
 		visual.setSize(Convert.coord(window.w), Convert.coord(window.h));
-		top.pos.x = Convert.coord(window.title.x);
+		top.pos.x = Convert.coordX(window.title.x);
 		top.pos.y = Convert.coordY(window.title.y);
 		top.setSize(Convert.coord(window.title.w), Convert.coord(window.title.h));
 		var ch = window.collapse_handle;
-		collapse.pos.x = Convert.coord(ch.x + (ch.w - 14) / 2);
+		collapse.pos.x = Convert.coordX(ch.x + (ch.w - 14) / 2);
 		collapse.pos.y = Convert.coordY(ch.y + (ch.h - 14) / 2);
     }
 

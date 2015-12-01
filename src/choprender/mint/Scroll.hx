@@ -56,7 +56,7 @@ class Scroll extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
@@ -78,7 +78,7 @@ class Scroll extends mint.render.Render {
         //});
 		scrollh = new QuadModel();
 		scrollh.mat.useShading = false;
-		scrollh.pos.x = Convert.coord(scroll.scrollh.x);
+		scrollh.pos.x = Convert.coordX(scroll.scrollh.x);
 		scrollh.pos.y = Convert.coordY(scroll.scrollh.y);
 		scrollh.setSize(Convert.coord(scroll.scrollh.w), Convert.coord(scroll.scrollh.h));
 		scrollh.mat.diffuseColor.copy(color_handles);
@@ -100,7 +100,7 @@ class Scroll extends mint.render.Render {
         //});
 		scrollv = new QuadModel();
 		scrollv.mat.useShading = false;
-		scrollv.pos.x = Convert.coord(scroll.scrollv.x);
+		scrollv.pos.x = Convert.coordX(scroll.scrollv.x);
 		scrollv.pos.y = Convert.coordY(scroll.scrollv.y);
 		scrollv.setSize(Convert.coord(scroll.scrollv.w), Convert.coord(scroll.scrollv.h));
 		scrollv.mat.diffuseColor.copy(color_handles);
@@ -128,13 +128,13 @@ class Scroll extends mint.render.Render {
     } //ondestroy
 
     override function onbounds() {
-		visual.pos.x = Convert.coord(control.x);
+		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
         //
-		scrollh.pos.x = Convert.coord(scroll.scrollh.x);
+		scrollh.pos.x = Convert.coordX(scroll.scrollh.x);
 		scrollh.pos.y = Convert.coordY(scroll.scrollh.y);
-		scrollv.pos.x = Convert.coord(scroll.scrollv.x);
+		scrollv.pos.x = Convert.coordX(scroll.scrollv.x);
 		scrollv.pos.y = Convert.coordY(scroll.scrollv.y);
     }
 
@@ -144,7 +144,7 @@ class Scroll extends mint.render.Render {
     }
 
     function onchange() {
-        scrollh.pos.x = Convert.coord(scroll.scrollh.x);
+        scrollh.pos.x = Convert.coordX(scroll.scrollh.x);
         scrollv.pos.y = Convert.coordY(scroll.scrollv.y);
     }
 
