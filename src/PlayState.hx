@@ -16,6 +16,7 @@ import choprender.render3d.light.PointLight;
 import choprender.render3d.light.SunLight;
 import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Text;
+import mint.focus.Focus;
 import mint.layout.margins.Margins;
 import snow.types.Types.Key;
 
@@ -55,6 +56,7 @@ class PlayState extends State
 			},
 			x: 0, y:0, w: SnowApp._snow.window.width, h: SnowApp._snow.window.height
 		});
+		focus = new Focus(canvas);
 		
 		//var m:Model = new Model();
 		//m.loadChop("assets/mesh/lowpoly.chopmesh");

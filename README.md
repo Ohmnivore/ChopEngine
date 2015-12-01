@@ -1,7 +1,7 @@
 # TODO
 
 ## Mint rendering
-* draw in immediate mode?
+* draw ui with identity matrices?
 * clipping
 * image cover sizing
 * handle ondestroy
