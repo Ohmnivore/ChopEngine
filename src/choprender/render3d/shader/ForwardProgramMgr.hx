@@ -163,5 +163,6 @@ class ForwardProgramMgr extends ChopProgramMgr
 		
 		GL.disable(GL.CULL_FACE);
 		GL.disable(GL.DEPTH_TEST);
+		GL.disable(GL.SCISSOR_TEST);
 	}
 }

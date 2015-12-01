@@ -1,6 +1,7 @@
 package choprender.mint;
 
 import chop.group.Group;
+import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -15,7 +16,8 @@ private typedef ChopMintCheckboxOptions = {
     var color_hover: Color;
     var color_node: Color;
     var color_node_hover: Color;
-	var group:Group;
+	var group: Group;
+	var cam: Camera;
 }
 
 class Checkbox extends mint.render.Render {
@@ -65,6 +67,7 @@ class Checkbox extends mint.render.Render {
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
+		visual.cams = [_opt.cam];
 		_opt.group.add(visual);
 
         //node_off = new luxe.Sprite({
@@ -87,6 +90,7 @@ class Checkbox extends mint.render.Render {
 		node_off.mat.transparency = 0.25;
 		node_off.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
 		node_off.visible = control.visible;
+		node_off.cams = [_opt.cam];
 		_opt.group.add(node_off);
 
         //node = new luxe.Sprite({
@@ -108,6 +112,7 @@ class Checkbox extends mint.render.Render {
 		node.mat.diffuseColor.copy(color_node);
 		node.pos.z = Convert.coordZ(render.options.depth + control.depth + 2);
 		node.visible = control.visible && checkbox.state;
+		node.cams = [_opt.cam];
 		_opt.group.add(node);
 
 		checkbox.onmouseenter.listen(function(e, c) {

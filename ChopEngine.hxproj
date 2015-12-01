@@ -17,7 +17,7 @@
   <classpaths>
     <class path="C:\HaxeToolkit\haxe\lib\snow\git" />
     <class path="C:\HaxeToolkit\haxe\lib\mint\git" />
-    <class path="C:\HaxeToolkit\haxe\lib\hxcpp\3,2,102" />
+    <class path="C:\HaxeToolkit\haxe\lib\hxcpp\3,2,193" />
     <class path="src" />
     <class path="bin\windows.build\haxe" />
   </classpaths>

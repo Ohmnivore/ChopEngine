@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import choprender.render3d.Camera;
 import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Font;
 import mint.types.Types;
@@ -16,6 +17,7 @@ private typedef ChopMintLabelOptions = {
     var color: Color;
     var color_hover: Color;
 	var group: Group;
+	var cam: Camera;
 	var font: Font;
 }
 
@@ -69,6 +71,7 @@ class Label extends mint.render.Render {
 		text.mat.diffuseColor.copy(color);
 		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(label.text);
+		text.cams = [_opt.cam];
 		_opt.group.add(text);
 
         label.onchange.listen(ontext);

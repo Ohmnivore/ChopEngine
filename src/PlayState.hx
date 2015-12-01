@@ -37,25 +37,10 @@ class PlayState extends State
 		GlobalRender.cam.bgColor.z = 1.0;
 		
 		var uiCam:Camera = new Camera(0, 0, GlobalRender.cam.width, GlobalRender.cam.height);
+		uiCam.pos.z = 0.8;
 		uiCam.shouldClearColor = false;
+		uiCam.shouldClearDepth = true;
 		GlobalRender.cams.push(uiCam);
-		
-		//var cam2:Camera = new Camera(0, 320, 960, 320);
-		//cam2.pos.z = 3.0;
-		//cam2.pos.y = 0.5;
-		//cam2.bgColor.x = 1.0;
-		//cam2.bgColor.y = 1.0;
-		//cam2.bgColor.z = 0.0;
-		//GlobalRender.cams.push(cam2);
-		//
-		//var cam3:Camera = new Camera(0, 0, 960, 640);
-		//cam3.pos.z = 3.0;
-		//cam3.pos.y = 0.5;
-		//cam3.bgColor.x = 0.0;
-		//cam3.bgColor.y = 0.0;
-		//cam3.bgColor.z = 0.0;
-		//cam3.shouldClearColor = false;
-		//GlobalRender.cams.push(cam3);
 		
 		//var m:Model = new Model();
 		//m.loadChop("assets/mesh/lowpoly.chopmesh");
@@ -101,19 +86,19 @@ class PlayState extends State
 			path: "assets/img/haxelogo.png"
 		});
 		var textEdit:TextEdit = new TextEdit({
-			options: { group: this },
+			options: { cam: uiCam, group: this, label: { cam: uiCam, group: this } },
             parent: window,
             name: "test_textEdit",
             x: 0, y: 28, w: 256, h: 32
         });
 		var check:Checkbox = new Checkbox({
-			options: { group: this },
+			options: { cam: uiCam, group: this },
             parent: canvas,
             name: "test_checkbox",
             x: 0, y: 0, w: 32, h: 32
         });
 		var btn:Button = new Button({
-			options: { group: this },
+			options: { cam: uiCam, group: this },
             parent: canvas,
             name: "test_btn",
 			text: "Test btn",
