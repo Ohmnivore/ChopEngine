@@ -30,6 +30,7 @@ class Camera extends Basic
 	public var ratio:Float;
 	public var displayMin:Float;
 	public var displayMax:Float;
+	public var isOrtho:Bool;
 	public var pos:Vec3;
 	public var rot:Vec3;
 	public var bgColor:Vec3;
@@ -55,6 +56,7 @@ class Camera extends Basic
 		displayMax = 200.0;
 		pos = Vec3.fromValues(0.0, 0.0, 0.0);
 		rot = Vec3.fromValues(0.0, 0.0, 0.0);
+		isOrtho = false;
 		bgColor = Vec3.fromValues(1.0, 1.0, 1.0);
 		shouldClearColor = true;
 		shouldClearDepth = true;
@@ -102,7 +104,10 @@ class Camera extends Basic
 	
 	private function computeProjectionMatrix():Void
 	{
-		projectionMatrix = new Mat4().perspective(Util.degToRad(FOV), ratio, displayMin, displayMax);
+		if (isOrtho)
+			projectionMatrix = new Mat4().ortho(-1, 1, -1 / ratio, 1 / ratio, displayMin, displayMax);
+		else
+			projectionMatrix = new Mat4().perspective(Util.degToRad(FOV), ratio, displayMin, displayMax);
 	}
 	
 	public function computeViewMatrix():Void

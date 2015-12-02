@@ -6,7 +6,6 @@
 # TODO
 
 ## Mint rendering
-* draw ui with identity matrices?
 * clipping
 * image cover sizing
 * handle ondestroy
