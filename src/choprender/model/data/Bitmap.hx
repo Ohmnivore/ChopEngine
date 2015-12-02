@@ -195,4 +195,19 @@ class Bitmap
 			}
 		}
 	}
+	
+	public function getSubRect(X:Int, Y:Int, W:Int, H:Int):Uint8Array
+	{
+		var buff:Array<Int> = [];
+		for (y in 0...H)
+			for (x in 0...W)
+			{
+				var p:Array<Int> = getPixel(X + x, Y + y);
+				buff.push(p[0]);
+				buff.push(p[1]);
+				buff.push(p[2]);
+				buff.push(p[3]);
+			}
+		return new Uint8Array(buff);
+	}
 }

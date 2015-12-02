@@ -20,29 +20,35 @@ class ObjLoader
 		
 	}
 	
-	public function loadFile(P:String, PMtl:String):Void 
+	public function loadFile(P:String, PMtl:String = null):Void 
 	{
 		path = P;
 		var source:String = Main.assets.getText(P);
 		pathMtl = PMtl;
-		var sourceMtl:String = Main.assets.getText(PMtl);
+		var sourceMtl:String = null;
+		if (pathMtl != null)
+			sourceMtl = Main.assets.getText(PMtl);
 		loadSource(source, sourceMtl);
 	}
 	
-	public function loadSource(Source:String, SourceMtl:String):Void
+	public function loadSource(Source:String, SourceMtl:String = null):Void
 	{
 		source = Source;
 		sourceMtl = SourceMtl;
 		
 		var lexerMtl:MtlLexer = new MtlLexer();
-		lexerMtl.tokenize(sourceMtl);
 		var parserMtl:MtlParser = new MtlParser();
-		parserMtl.parse(lexerMtl.tokens);
+		if (sourceMtl != null)
+		{
+			lexerMtl.tokenize(sourceMtl);
+			parserMtl.parse(lexerMtl.tokens);
+		}
 		
 		var lexer:ObjLexer = new ObjLexer();
 		lexer.tokenize(source);
 		var parser:ObjParser = new ObjParser();
-		parser.mats = parserMtl.mats;
+		if (sourceMtl != null)
+			parser.mats = parserMtl.mats;
 		parser.parse(lexer.tokens);
 		data = parser.data;
 	}

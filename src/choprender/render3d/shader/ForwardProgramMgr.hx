@@ -14,11 +14,18 @@ import choprender.render3d.shader.ShaderRGBAToLuma;
  */
 class ForwardProgramMgr extends ChopProgramMgr
 {
+	public var skyBoxLegacyProgram:ShaderSkyBoxLegacy;
 	public var gLightProgram:ShaderForwardLights;
 	
 	public function new(C:Camera)
 	{
 		super(C);
+		
+		skyBoxLegacyProgram = new ShaderSkyBoxLegacy(C);
+		progs.push(skyBoxLegacyProgram);
+		skyBoxLegacyProgram.gSkyBoxLegacy.buffer = buff;
+		skyBoxLegacyProgram.frameBuffer = buff.buffer;
+		skyBoxLegacyProgram.outputToScreenBuffer();
 		
 		gLightProgram = new ShaderForwardLights(C);
 		progs.push(gLightProgram);

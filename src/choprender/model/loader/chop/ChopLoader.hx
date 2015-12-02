@@ -66,9 +66,6 @@ class ChopLoader extends Loader
 			face.geomIdx.push(Std.parseInt(faceNode.att.vertex1_id));
 			face.geomIdx.push(Std.parseInt(faceNode.att.vertex2_id));
 			face.geomIdx.push(Std.parseInt(faceNode.att.vertex3_id));
-			face.normal.push(Std.parseFloat(faceNode.att.normal_x));
-			face.normal.push(Std.parseFloat(faceNode.att.normal_y));
-			face.normal.push(Std.parseFloat(faceNode.att.normal_z));
 			
 			face.uv1.push(Std.parseFloat(faceNode.att.u1));
 			face.uv1.push(Std.parseFloat(faceNode.att.v1));

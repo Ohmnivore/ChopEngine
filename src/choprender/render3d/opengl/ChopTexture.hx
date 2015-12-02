@@ -51,6 +51,11 @@ class ChopTexture
 		updateParams();
 	}
 	
+	public function image2D(Target:Int, Width:Int, Height:Int, Pixels:ArrayBufferView = null)
+	{
+		GL.texImage2D(Target, level, internalFormat, Width, Height, 0, format, type, Pixels);
+	}
+	
 	public function updateParams():Void
 	{
 		for (p in params)

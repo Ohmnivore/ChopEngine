@@ -111,7 +111,7 @@ class Camera extends Basic
 		computeViewMatrix();
 	}
 	
-	private function computeProjectionMatrix():Void
+	public function computeProjectionMatrix():Void
 	{
 		if (isOrtho)
 			projectionMatrix = new Mat4().ortho(-1, 1, -1 / ratio, 1 / ratio, displayMin, displayMax);

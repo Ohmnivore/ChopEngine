@@ -1,5 +1,6 @@
 package choprender.model.loader.obj;
 
+import chop.math.Vec2;
 import choprender.model.data.Animation;
 import choprender.model.data.Face;
 import choprender.model.data.Frame;
@@ -18,6 +19,7 @@ class ObjParser extends Parser
 	
 	public var data:ModelData;
 	private var curMat:Int;
+	private var texCoords:Array<Vec2>;
 	
 	override public function init():Void
 	{
@@ -25,6 +27,7 @@ class ObjParser extends Parser
 		
 		data = new ModelData();
 		curMat = 0;
+		texCoords = [];
 		
 		var mat:Material = new Material();
 		mat.name = "default";
@@ -131,7 +134,12 @@ class ObjParser extends Parser
 	
 	public function parseTex():Void
 	{
-		
+		var x:Float = Std.parseFloat(match(Lexer.LFLOAT).text);
+		consume();
+		var y:Float = Std.parseFloat(match(Lexer.LFLOAT).text);
+		consume();
+		var tex:Vec2 = Vec2.fromValues(x, y);
+		texCoords.push(tex);
 	}
 	
 	public function parseParam():Void
@@ -174,6 +182,7 @@ class ObjParser extends Parser
 	public function parseIdx(F:Face):Void
 	{
 		var vid:Int = 0;
+		var foundTexID:Bool = false;
 		var texid:Int = 0;
 		var normid:Int = 0;
 		
@@ -185,7 +194,8 @@ class ObjParser extends Parser
 			consume();
 			if (LA(1) == Lexer.LINT)
 			{
-				texid = Std.parseInt(match(Lexer.LINT).text);
+				foundTexID = true;
+				texid = Std.parseInt(match(Lexer.LINT).text) - 1;
 				consume();
 				
 				if (LA(1) == ObjLexer.LFSLASH)
@@ -204,7 +214,16 @@ class ObjParser extends Parser
 		}
 		
 		F.geomIdx.push(vid);
-		// f->texIdx.push_back(texid);
+		if (foundTexID)
+		{
+			var texc:Vec2 = texCoords[texid];
+			if (F.uv1.length == 0)
+				F.uv1 = [texc.x, texc.y];
+			else if (F.uv2.length == 0)
+				F.uv2 = [texc.x, texc.y];
+			else if (F.uv3.length == 0)
+				F.uv3 = [texc.x, texc.y];
+		}
 		// f->normIdx.push_back(normid);
 	}
 	

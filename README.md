@@ -19,10 +19,8 @@
 
 ## Rendering (eventually)
 * Skeletal animation
-* Fix broken face normals in chopmesh files
 * Batching
 * Instancing
-* Cubemap sky
 * Particle effects
 * Static shadows -> shadow system
 * Dynamic shadows -> shadow system

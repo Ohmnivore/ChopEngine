@@ -9,7 +9,6 @@ class Face
 	public var matID:Int;
 	public var textureID:Int;
 	public var geomIdx:Array<Int>;
-	public var normal:Array<Float>;
 	public var uv1:Array<Float>;
 	public var uv2:Array<Float>;
 	public var uv3:Array<Float>;
@@ -19,7 +18,6 @@ class Face
 		matID = 0;
 		textureID = -1;
 		geomIdx = [];
-		normal = [];
 		uv1 = [];
 		uv2 = [];
 		uv3 = [];
@@ -32,9 +30,6 @@ class Face
 		geomIdx.splice(0, geomIdx.length);
 		for (i in F.geomIdx)
 			geomIdx.push(i);
-		normal.splice(0, normal.length);
-		for (i in F.normal)
-			normal.push(i);
 		uv1.splice(0, uv1.length);
 		for (i in F.uv1)
 			uv1.push(i);

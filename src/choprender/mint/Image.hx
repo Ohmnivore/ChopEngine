@@ -2,6 +2,7 @@ package choprender.mint;
 
 import choprender.model.data.Texture;
 import choprender.render3d.Camera;
+import choprender.render3d.opengl.ChopTexture;
 import mint.types.Types;
 import mint.render.Rendering;
 
@@ -18,6 +19,7 @@ import choprender.render3d.opengl.GL;
 private typedef ChopMintImageOptions = {
     @:optional var uv: Vec4;
     @:optional var sizing: String; //:todo: type
+	var tex: ChopTexture;
 }
 
 class Image extends mint.render.Render {
@@ -40,11 +42,18 @@ class Image extends mint.render.Render {
         var _opt: ChopMintImageOptions = image.options.options;
 
 		var texture:Texture = new Texture();
-		texture.loadFile(image.options.path);
-		texture.blendMode = Texture.BLEND_SRC;
-		texture.choptex.params[0].param = GL.LINEAR;
-		texture.choptex.params[1].param = GL.LINEAR;
-		texture.choptex.updateParams();
+		if (_opt.tex != null)
+		{
+			texture.loadData(cast _opt.tex.pixels, _opt.tex.width, _opt.tex.height);
+		}
+		else
+		{
+			texture.loadFile(image.options.path);
+			texture.blendMode = Texture.BLEND_SRC;
+			texture.choptex.params[0].param = GL.LINEAR;
+			texture.choptex.params[1].param = GL.LINEAR;
+			texture.choptex.updateParams();
+		}
 
 		if(_opt.sizing != null) {
 

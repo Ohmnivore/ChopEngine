@@ -11,9 +11,11 @@ import choprender.model.loader.obj.ObjLoader;
 import choprender.model.Model;
 import choprender.model.QuadModel;
 import choprender.render3d.Camera;
+import choprender.render3d.cubemap.Cubemap;
 import choprender.render3d.light.ConeLight;
 import choprender.render3d.light.PointLight;
 import choprender.render3d.light.SunLight;
+import choprender.render3d.shader.ForwardProgramMgr;
 import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Text;
 import mint.focus.Focus;
@@ -59,6 +61,9 @@ class PlayState extends State
 			x: 0, y:0, w: SnowApp._snow.window.width, h: SnowApp._snow.window.height
 		});
 		focus = new Focus(canvas);
+		
+		var dMgr:ForwardProgramMgr = cast GlobalRender.cam.mgr;
+		dMgr.skyBoxLegacyProgram.loadSkyBoxFile("assets/img/space_cubemap.png");
 		
 		//var m:Model = new Model();
 		//m.loadChop("assets/mesh/lowpoly.chopmesh");
