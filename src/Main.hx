@@ -44,13 +44,19 @@ class Main extends snow.App
 			app.window.onrender = render;
 		}
 		if (assets.isReady())
+		{
 			game.update(delta);
+			game.state.canvas.update(delta);
+		}
     }
 	
     function render(window:snow.system.window.Window) 
     {
 		if (assets.isReady())
+		{
 			game.draw(delta_time);
+			game.state.canvas.render();
+		}
     }
 	
 	override public function onmousemove(x:Int, y:Int, xrel:Int, yrel:Int, timestamp:Float, window_id:Int) 

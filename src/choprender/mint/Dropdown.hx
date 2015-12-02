@@ -21,7 +21,7 @@ class Dropdown extends mint.render.Render {
 
     public var dropdown : mint.Dropdown;
     public var visual : QuadModel;
-    //public var border : QuadModel;
+    public var border : QuadModel;
 
     public var color: Color;
     public var color_border: Color;
@@ -55,16 +55,14 @@ class Dropdown extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coordX(control.x);
-		visual.pos.y = Convert.coordY(control.y);
-		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
+		visual.pos.x = Convert.coordX(control.x + 1);
+		visual.pos.y = Convert.coordY(control.y + 1);
+		visual.setSize(Convert.coord(control.w - 2), Convert.coord(control.h - 2));
 		visual.mat.diffuseColor.copy(color);
-		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
 		visual.visible = control.visible;
 		visual.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(visual);
-		
-		visual.clip = Convert.bounds(control.clip_with);
 
         //border = Luxe.draw.rectangle({
             //id: control.name+'.border',
@@ -79,51 +77,52 @@ class Dropdown extends mint.render.Render {
             //visible: control.visible,
             //clip_rect: Convert.bounds(control.clip_with)
         //});
-		//border = new QuadModel();
-		//border.mat.useShading = false;
-		//border.pos.x = Convert.coord(control.x);
-		//border.pos.y = Convert.coordY(control.y);
-		//border.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		//border.mat.diffuseColor.copy(color);
-		//border.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
-		//border.visible = control.visible;
-		//_opt.group.add(border);
+		border = new QuadModel();
+		border.mat.useShading = false;
+		border.pos.x = Convert.coordX(control.x);
+		border.pos.y = Convert.coordY(control.y);
+		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
+		border.mat.diffuseColor.copy(color_border);
+		border.pos.z = Convert.coordZ(render.options.depth + control.depth);
+		border.visible = control.visible;
+		border.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(border);
+		
+		visual.clip = Convert.bounds(control.clip_with);
+		border.clip = Convert.bounds(control.clip_with);
 
     } //new
 
     override function ondestroy() {
         visual = null;
-        //border = null;
+        border = null;
     }
 
     override function onbounds() {
-		visual.pos.x = Convert.coordX(control.x);
-		visual.pos.y = Convert.coordY(control.y);
-		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
+		visual.pos.x = Convert.coordX(control.x + 1);
+		visual.pos.y = Convert.coordY(control.y + 1);
+		visual.setSize(Convert.coord(control.w - 2), Convert.coord(control.h - 2));
 		
-		//border.pos.x = Convert.coord(control.x);
-		//border.pos.y = Convert.coordY(control.y);
-		//border.setSize(Convert.coord(control.w), Convert.coord(control.h));
-		//border.mat.diffuseColor.copy(color);
-		//border.visible = control.visible;
+		border.pos.x = Convert.coordX(control.x);
+		border.pos.y = Convert.coordY(control.y);
+		border.setSize(Convert.coord(control.w), Convert.coord(control.h));
     }
 	
 	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
         if(_disable) {
-            visual.clip = null;
+            visual.clip = border.clip = null;
         } else {
-            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = border.clip = Vec4.fromValues(_x, _y, _w, _h);
         }
     } //onclip
 
     override function onvisible( _visible:Bool ) {
-        //visual.visible = border.visible = _visible;
-        visual.visible = _visible;
+        visual.visible = border.visible = _visible;
     }
 
     override function ondepth( _depth:Float ) {
-		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
-		//border.pos.z = Convert.coordZ(render.options.depth + 1);
+		visual.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
+		border.pos.z = Convert.coordZ(render.options.depth + _depth);
     }
 
 

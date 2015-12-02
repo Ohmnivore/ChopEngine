@@ -22,6 +22,7 @@ class TextEdit extends mint.render.Render {
 
     public var textedit : mint.TextEdit;
     public var visual : QuadModel;
+    public var border : QuadModel;
     //public var cursor : QuadModel;
 
     public var color: Color;
@@ -62,12 +63,24 @@ class TextEdit extends mint.render.Render {
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		visual.mat.diffuseColor.copy(color);
-		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + control.depth + 1);
 		visual.visible = control.visible;
 		visual.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(visual);
 		
+		border = new QuadModel();
+		border.mat.useShading = false;
+		border.pos.x = Convert.coordX(control.x - 1);
+		border.pos.y = Convert.coordY(control.y - 1);
+		border.setSize(Convert.coord(control.w + 2), Convert.coord(control.h + 2));
+		border.mat.diffuseColor.copy(color_cursor);
+		border.pos.z = Convert.coordZ(render.options.depth + control.depth);
+		border.visible = false;
+		border.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(border);
+		
 		visual.clip = Convert.bounds(control.clip_with);
+		border.clip = Convert.bounds(control.clip_with);
 
         //cursor = Luxe.draw.line({
             //id: control.name+'.cursor',
@@ -83,36 +96,35 @@ class TextEdit extends mint.render.Render {
 
         textedit.onmouseenter.listen(function(e,c) {
 			visual.mat.diffuseColor.copy(color_hover);
-            start_cursor();
         });
 
         textedit.onmouseleave.listen(function(e,c) {
 			visual.mat.diffuseColor.copy(color);
-            stop_cursor();
         });
 
         textedit.onchangeindex.listen(function(index:Int) {
             update_cursor();
         });
-
-        textedit.onrender.listen(function() {
-
-            //if(textedit.isfocused) {
-                //Luxe.draw.rectangle({
-                    //id: control.name+'.border',
-                    //batcher: render.options.batcher,
-                    //x:textedit.x,
-                    //y:textedit.y,
-                    //w:textedit.w,
-                    //h:textedit.h,
-                    //immediate: true,
-                    //color: color_cursor,
-                    //depth: render.options.depth+textedit.depth+0.001,
-                    //group: render.options.group
-                //});
-            //}
-        });
-
+		
+		textedit.onfocused.listen(function(isFocused:Bool) {
+			if (isFocused)
+			{
+				start_cursor();
+				if (visual.visible)
+					border.visible = true;
+			}
+			else
+			{
+				border.visible = false;
+				stop_cursor();
+			}
+		});
+		
+		control.renderable = true;
+		textedit.onrender.listen(function() {
+			if (visual.visible)
+				border.visible = textedit.isfocused;
+		});
     } //new
 
     //var timer: snow.api.Timer;
@@ -174,6 +186,9 @@ class TextEdit extends mint.render.Render {
         visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
+		border.pos.x = Convert.coordX(control.x - 1);
+		border.pos.y = Convert.coordY(control.y - 1);
+		border.setSize(Convert.coord(control.w + 2), Convert.coord(control.h + 2));
         //if(timer != null) {
             //stop_cursor(); start_cursor();
         //}
@@ -181,15 +196,15 @@ class TextEdit extends mint.render.Render {
 	
 	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
         if(_disable) {
-            visual.clip = null;
+            visual.clip = border.clip = null;
         } else {
-            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = border.clip = Vec4.fromValues(_x, _y, _w, _h);
         }
     } //onclip
 
     override function onvisible( _visible:Bool ) {
 
-        visual.visible = _visible;
+        visual.visible = border.visible = _visible;
 
         if(!_visible) {
             stop_cursor();
@@ -200,7 +215,8 @@ class TextEdit extends mint.render.Render {
     } //onvisible
 
     override function ondepth( _depth:Float ) {
-		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
+		visual.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
+		border.pos.z = Convert.coordZ(render.options.depth + _depth);
     } //ondepth
 
 } //TextEdit

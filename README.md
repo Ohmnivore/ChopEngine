@@ -8,7 +8,6 @@
 # TODO
 
 ## Mint rendering
-* borders for textedit and dropdown
 * image cover sizing
 * handle ondestroy
 * textedit cursor

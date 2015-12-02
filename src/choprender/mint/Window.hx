@@ -25,7 +25,7 @@ class Window extends mint.render.Render {
     public var visual : QuadModel;
     public var top : QuadModel;
     public var collapse : QuadModel;
-    //public var border : QuadModel;
+    public var border : QuadModel;
 
     public var color: Color;
     public var color_titlebar: Color;
@@ -63,9 +63,9 @@ class Window extends mint.render.Render {
         //});
 		visual = new QuadModel();
 		visual.mat.useShading = false;
-		visual.pos.x = Convert.coordX(window.x);
-		visual.pos.y = Convert.coordY(window.y);
-		visual.setSize(Convert.coord(window.w), Convert.coord(window.h));
+		visual.pos.x = Convert.coordX(window.x + 1);
+		visual.pos.y = Convert.coordY(window.y + 1);
+		visual.setSize(Convert.coord(window.w - 2), Convert.coord(window.h - 2));
 		visual.mat.diffuseColor.copy(color);
 		visual.pos.z = Convert.coordZ(render.options.depth + window.depth);
 		visual.visible = window.visible;
@@ -131,6 +131,17 @@ class Window extends mint.render.Render {
 		collapse.visible = window.collapsible;
 		collapse.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(collapse);
+		
+		border = new QuadModel();
+		border.mat.useShading = false;
+		border.pos.x = Convert.coordX(window.x);
+		border.pos.y = Convert.coordY(window.y);
+		border.setSize(Convert.coord(window.w), Convert.coord(window.h));
+		border.mat.diffuseColor.copy(color_border);
+		border.pos.z = Convert.coordZ(render.options.depth + window.depth);
+		border.visible = window.visible;
+		border.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(border);
 
         var ch = window.collapse_handle;
 		collapse.pos.x = Convert.coordX(ch.x + (ch.w - 14) / 2);
@@ -144,42 +155,42 @@ class Window extends mint.render.Render {
 
         visual = null;
         top = null;
-        //border = null;
+        border = null;
         collapse = null;
 
     } //ondestroy
 
     override function onbounds() {
-		visual.pos.x = Convert.coordX(window.x);
-		visual.pos.y = Convert.coordY(window.y);
-		visual.setSize(Convert.coord(window.w), Convert.coord(window.h));
+		visual.pos.x = Convert.coordX(window.x + 1);
+		visual.pos.y = Convert.coordY(window.y + 1);
+		visual.setSize(Convert.coord(window.w - 2), Convert.coord(window.h - 2));
 		top.pos.x = Convert.coordX(window.title.x);
 		top.pos.y = Convert.coordY(window.title.y);
 		top.setSize(Convert.coord(window.title.w), Convert.coord(window.title.h));
+		border.pos.x = Convert.coordX(window.x);
+		border.pos.y = Convert.coordY(window.y);
+		border.setSize(Convert.coord(window.w), Convert.coord(window.h));
 		var ch = window.collapse_handle;
-		collapse.pos.x = Convert.coordX(ch.x + (ch.w - 14) / 2);
-		collapse.pos.y = Convert.coordY(ch.y + (ch.h - 14) / 2);
+		collapse.pos.x = Convert.coordX(ch.x + (ch.w - 14.0) / 2.0);
+		collapse.pos.y = Convert.coordY(ch.y + (ch.h - 14.0) / 2.0);
     }
 
     override function onvisible( _visible:Bool ) {
         visual.visible = _visible;
         top.visible = _visible;
-        //border.visible = _visible;
+        border.visible = _visible;
         collapse.visible = _visible;
     } //onvisible
 
     override function ondepth( _depth:Float ) {
-		visual.pos.z = Convert.coordZ(render.options.depth + _depth);
-		top.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
-		//border.pos.z = Convert.coordZ(render.options.depth + _depth + 2);
+		visual.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
+		top.pos.z = Convert.coordZ(render.options.depth + _depth + 2);
+		border.pos.z = Convert.coordZ(render.options.depth + _depth);
 		collapse.pos.z = Convert.coordZ(render.options.depth + _depth + 3);
     } //ondepth
 
     function oncollapse(state:Bool) {
-
-        //var a = (state) ? -90 : 0;
-        //collapse.transform.rotation.setFromEuler(new Vector(0,0,luxe.utils.Maths.radians(a)));
-
+		
     }
 
 } //Window
