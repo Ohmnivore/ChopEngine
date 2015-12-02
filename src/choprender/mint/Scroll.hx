@@ -107,7 +107,7 @@ class Scroll extends mint.render.Render {
 		scrollv.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(scrollv);
 
-        //visual.clip_rect = Convert.bounds(control.clip_with);
+        //visual.clip = Convert.bounds(control.clip_with);
 
         scroll.onchange.listen(onchange);
         scroll.onhandlevis.listen(onhandlevis);
@@ -135,6 +135,14 @@ class Scroll extends mint.render.Render {
 		scrollv.pos.x = Convert.coordX(scroll.scrollv.x);
 		scrollv.pos.y = Convert.coordY(scroll.scrollv.y);
     }
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            visual.clip = null;
+        } else {
+            //visual.clip = new luxe.Rectangle(_x, _y, _w, _h);
+        }
+    } //onclip
 
     function onhandlevis(_h:Bool, _v:Bool) {
         scrollh.visible = _h && scroll.visible;

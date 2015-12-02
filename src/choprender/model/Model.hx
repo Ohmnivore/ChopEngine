@@ -1,6 +1,7 @@
 package choprender.model;
 
 import chop.gen.Object;
+import chop.math.Vec4;
 import choprender.model.AnimController;
 import choprender.model.Model;
 import choprender.render3d.opengl.ChopProgramMgr;
@@ -18,6 +19,7 @@ class Model extends Object
 	public var data:ModelData;
 	public var anim:AnimController;
 	public var cams:Array<Camera>;
+	public var clip:Vec4;
 	
 	public function new() 
 	{
@@ -27,6 +29,7 @@ class Model extends Object
 		anim = new AnimController();
 		anim.data = data;
 		cams = [GlobalRender.cam];
+		clip = null;
 	}
 	
 	static public function copy(D:Model, S:Model):Void

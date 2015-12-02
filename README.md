@@ -6,6 +6,7 @@
 # TODO
 
 ## Mint rendering
+* borders for textedit
 * clipping
 * image cover sizing
 * handle ondestroy

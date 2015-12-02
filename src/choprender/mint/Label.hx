@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import chop.math.Vec4;
 import choprender.render3d.Camera;
 import choprender.text.Font;
 import mint.types.Types;
@@ -67,6 +68,8 @@ class Label extends mint.render.Render {
 		text.setText(label.text);
 		text.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(text);
+		
+		text.clip = Convert.bounds(control.clip_with);
 
         label.onchange.listen(ontext);
 
@@ -79,6 +82,14 @@ class Label extends mint.render.Render {
 		text.pos.x = Convert.coordX(control.x);
 		text.pos.y = Convert.coordY(control.y);
     }
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            text.clip = null;
+        } else {
+            text.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
+    } //onclip
 
     function ontext(_text:String) {
 		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));

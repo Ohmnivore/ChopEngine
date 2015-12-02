@@ -105,9 +105,9 @@ class ForwardProgramMgr extends ChopProgramMgr
 		GL.depthFunc(GL.LEQUAL);
 		GL.clearDepth(1.0);
 		
-		GL.viewport(Std.int(cam.screenPos.x), Std.int(SnowApp._snow.window.height - cam.screenPos.y - cam.height), cam.width, cam.height);
-		GL.scissor(Std.int(cam.screenPos.x), Std.int(SnowApp._snow.window.height - cam.screenPos.y - cam.height), cam.width, cam.height);
+		cam.setViewport();
 		GL.enable(GL.SCISSOR_TEST);
+		cam.setScissor();
 		GL.clearColor(cam.bgColor.x, cam.bgColor.y, cam.bgColor.z, 1.0);
 		
 		if (cam.shouldClearColor && cam.shouldClearDepth)

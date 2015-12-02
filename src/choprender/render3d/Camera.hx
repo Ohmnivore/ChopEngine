@@ -79,6 +79,15 @@ class Camera extends Basic
 		createProgramMgrs();
 	}
 	
+	public function setViewport():Void
+	{
+		GL.viewport(Std.int(screenPos.x), Std.int(SnowApp._snow.window.height - screenPos.y - height), width, height);
+	}
+	public function setScissor():Void
+	{
+		GL.scissor(Std.int(screenPos.x), Std.int(SnowApp._snow.window.height - screenPos.y - height), width, height);
+	}
+	
 	private function createProgramMgrs():Void
 	{
 		mgr = new ForwardProgramMgr(this);

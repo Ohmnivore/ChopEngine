@@ -95,6 +95,11 @@ class ShaderForwardLights extends ChopProgram
 		{
 			if (M.visible)
 			{
+				if (M.clip == null)
+					Mgr.cam.setScissor();
+				else
+					GL.scissor(Std.int(M.clip.x), Std.int(SnowApp._snow.window.height - M.clip.y - M.clip.w), Std.int(M.clip.z), Std.int(M.clip.w));
+				
 				// Matrix calculations
 				var m:Mat4 = getModelMatrix(getTranslationMatrix(M), getRotationMatrix(M), getScaleMatrix(M));
 				// Transformation matrices
