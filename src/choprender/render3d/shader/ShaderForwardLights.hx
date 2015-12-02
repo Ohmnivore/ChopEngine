@@ -228,9 +228,6 @@ class ShaderForwardLights extends ChopProgram
 		Verts.push(n.x);
 		Verts.push(n.y);
 		Verts.push(n.z);
-		//Verts.push(F.normal[0]);
-		//Verts.push(F.normal[1]);
-		//Verts.push(F.normal[2]);
 		
 		Verts.push(UV[0]);
 		Verts.push(1.0 - UV[1]); // Invert y axis
