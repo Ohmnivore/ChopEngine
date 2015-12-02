@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import chop.math.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -87,6 +88,9 @@ class Progress extends mint.render.Render {
 		bar.visible = control.visible;
 		bar.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(bar);
+		
+		visual.clip = Convert.bounds(control.clip_with);
+		bar.clip = Convert.bounds(control.clip_with);
 
         progress.onchange.listen(function(cur, prev){
 			bar.setSize(Convert.coord(get_bar_width(cur)), Convert.coord(control.h - (margin * 2)));
@@ -117,6 +121,14 @@ class Progress extends mint.render.Render {
 		bar.pos.y = Convert.coordY(control.y+margin);
 		bar.setSize(Convert.coord(get_bar_width(progress.progress)), Convert.coord(control.h-(margin*2)));
     }
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            visual.clip = bar.clip = null;
+        } else {
+            visual.clip = bar.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
+    } //onclip
 
     override function onvisible( _visible:Bool ) {
         visual.visible = bar.visible = _visible;

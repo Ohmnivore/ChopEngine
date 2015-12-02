@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import chop.math.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -87,6 +88,9 @@ class Slider extends mint.render.Render {
 		bar.visible = control.visible;
 		bar.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(bar);
+		
+		visual.clip = Convert.bounds(control.clip_with);
+		bar.clip = Convert.bounds(control.clip_with);
 
         slider.onchange.listen(onchange);
 
@@ -115,6 +119,14 @@ class Slider extends mint.render.Render {
 		bar.pos.y = Convert.coordY(control.y + slider.bar_y);
 		bar.setSize(Convert.coord(slider.bar_w), Convert.coord(slider.bar_h));
     }
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            visual.clip = null;
+        } else {
+            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
+    } //onclip
 
     override function onvisible( _visible:Bool ) {
         visual.visible = _visible;

@@ -1,6 +1,7 @@
 package choprender.mint;
 
 import chop.group.Group;
+import chop.math.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -112,6 +113,10 @@ class Checkbox extends mint.render.Render {
 		node.visible = control.visible && checkbox.state;
 		node.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(node);
+		
+		visual.clip = Convert.bounds(control.clip_with);
+        node_off.clip = Convert.bounds(control.clip_with);
+        node.clip = Convert.bounds(control.clip_with);
 
 		checkbox.onmouseenter.listen(function(e, c) {
 			node.mat.diffuseColor.copy(color_node_hover);
@@ -144,6 +149,14 @@ class Checkbox extends mint.render.Render {
 		node.setSize(Convert.coord(control.w - 8), Convert.coord(control.h - 8));
 
     } //onbounds
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            visual.clip = node_off.clip = node.clip = null;
+        } else {
+            visual.clip = node_off.clip = node.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
+    } //onclip
 
     override function ondestroy() {
 

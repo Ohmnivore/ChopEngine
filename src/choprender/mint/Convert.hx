@@ -12,8 +12,6 @@ class Convert
 	{
 		if (C == null)
 			return null;
-		//return Vec4.fromValues(coordX(C.x), coordY(C.y), coord(C.w), coord(C.h));
-		trace(C.x, C.y, C.w, C.h);
 		return Vec4.fromValues(C.x, C.y, C.w, C.h);
 	}
 	static public function coord(C:Float):Float 

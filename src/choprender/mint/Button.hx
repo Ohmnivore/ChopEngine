@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import chop.math.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -62,6 +63,8 @@ class Button extends mint.render.Render {
 		visual.visible = control.visible;
 		visual.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(visual);
+		
+		visual.clip = Convert.bounds(control.clip_with);
 
         button.onmouseenter.listen(function(e,c) { visual.mat.diffuseColor.copy(color_hover); });
         button.onmouseleave.listen(function(e,c) { visual.mat.diffuseColor.copy(color); });
@@ -76,6 +79,14 @@ class Button extends mint.render.Render {
 		visual.setSize(Convert.coord(control.w), Convert.coord(control.h));
 		
     } //onbounds
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            visual.clip = null;
+        } else {
+            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
+    } //onclip
 
     override function ondestroy() {
 

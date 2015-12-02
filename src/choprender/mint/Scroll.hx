@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import chop.math.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -107,7 +108,7 @@ class Scroll extends mint.render.Render {
 		scrollv.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(scrollv);
 
-        //visual.clip = Convert.bounds(control.clip_with);
+        visual.clip = Convert.bounds(control.clip_with);
 
         scroll.onchange.listen(onchange);
         scroll.onhandlevis.listen(onhandlevis);
@@ -140,7 +141,7 @@ class Scroll extends mint.render.Render {
         if(_disable) {
             visual.clip = null;
         } else {
-            //visual.clip = new luxe.Rectangle(_x, _y, _w, _h);
+            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
         }
     } //onclip
 

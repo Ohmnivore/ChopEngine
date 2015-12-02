@@ -1,6 +1,7 @@
 package choprender.mint;
 
 import chop.math.Vec2;
+import chop.math.Vec4;
 import chop.util.Color;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -65,6 +66,8 @@ class Canvas extends mint.render.Render {
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		_opt.group.add(visual);
+		
+		visual.clip = Convert.bounds(control.clip_with);
 
     } //new
 
@@ -84,13 +87,12 @@ class Canvas extends mint.render.Render {
     }
 
     override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
-        //if(_disable) {
-            //visual.clip_rect = null;
-        //} else {
-            //visual.clip_rect = new luxe.Rectangle(_x, _y, _w, _h);
-        //}
+        if(_disable) {
+            visual.clip = null;
+        } else {
+            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
     } //onclip
-
 
     override function onvisible( _visible:Bool ) {
         visual.visible = _visible;

@@ -98,6 +98,8 @@ class Image extends mint.render.Render {
 		visual.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(visual);
 		
+		visual.clip = Convert.bounds(control.clip_with);
+		
 		visual.loadTex(texture);
 		// TODO: UV coords
 
@@ -112,6 +114,14 @@ class Image extends mint.render.Render {
         }
 
     } //onbounds
+	
+	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
+        if(_disable) {
+            visual.clip = null;
+        } else {
+            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+        }
+    } //onclip
 
     override function ondestroy() {
 
