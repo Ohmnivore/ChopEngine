@@ -10,12 +10,12 @@
 ## Mint rendering
 * image cover sizing
 * handle ondestroy
-* textedit cursor
-* mint halign text right/center/left
-* mint valign text top/center/bottom
+* textedit cursor -> better text metrics
+* mint halign text right/center/left -> better text metrics
+* mint valign text top/center/bottom -> better text metrics
 
 ## Text rendering
-* Text line right/center/left align
+* Text line right/center/left align -> better text metrics
 
 ## Rendering (eventually)
 * Skeletal animation
@@ -24,18 +24,17 @@
 * Instancing
 * Cubemap sky
 * Particle effects
-
-* Static shadows
-* Dynamic shadows
+* Static shadows -> shadow system
+* Dynamic shadows -> shadow system
 
 ##### Lights
-* Pass through bool
-* Cast shadow bool
+* Pass through bool -> shadow system
+* Cast shadow bool -> shadow system
 * Add an angle-based falloff to the cone light to smooth it out
 
 ##### Material support
-* bool shadowsCast
-* bool shadowsReceive
+* bool shadowsCast -> shadow system
+* bool shadowsReceive -> shadow system
 
 ## Physics
 * jiglibhx integration
