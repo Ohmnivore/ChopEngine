@@ -42,7 +42,7 @@ class PlayState extends State
 		
 		var uiCam:Camera = new Camera(0, 0, GlobalRender.cam.width, GlobalRender.cam.height);
 		uiCam.isOrtho = true;
-		uiCam.pos.z = 1.0;
+		uiCam.pos.z = 199.0;
 		uiCam.shouldClearColor = false;
 		uiCam.shouldClearDepth = true;
 		GlobalRender.cams.push(uiCam);
@@ -63,7 +63,7 @@ class PlayState extends State
 		focus = new Focus(canvas);
 		
 		var dMgr:ForwardProgramMgr = cast GlobalRender.cam.mgr;
-		dMgr.skyBoxLegacyProgram.loadSkyBoxFile("assets/img/space_cubemap.png");
+		dMgr.skyBoxLegacyProgram.loadSkyBoxFile("assets/img/cubemap_4k.png");
 		
 		//var m:Model = new Model();
 		//m.loadChop("assets/mesh/lowpoly.chopmesh");

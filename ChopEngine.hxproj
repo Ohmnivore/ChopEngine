@@ -43,7 +43,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>"$(CompilerPath)/haxelib" run flow run $(TargetBuild) --$(BuildConfig)</preBuildCommand>
+  <preBuildCommand>"$(CompilerPath)/haxelib" run flow build $(TargetBuild) --$(BuildConfig)</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

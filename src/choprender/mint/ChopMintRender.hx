@@ -23,7 +23,8 @@ class ChopMintRender extends mint.render.Rendering {
         super();
 
         options = Convert.def(_options, {});
-        Convert.def(options.depth, 0);
+        Convert.def(options.depth, 10);
+		options.depth = 10;
         Convert.def(options.visible, true);
 
     } //new
