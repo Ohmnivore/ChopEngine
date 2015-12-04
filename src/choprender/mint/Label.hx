@@ -64,7 +64,7 @@ class Label extends mint.render.Render {
 		text.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		text.visible = control.visible;
 		text.mat.diffuseColor.copy(color);
-		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
+		text.setMetrics(Text.WORD_WRAP, Text.ALIGN_LEFT, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(label.text);
 		text.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(text);
@@ -92,7 +92,7 @@ class Label extends mint.render.Render {
     } //onclip
 
     function ontext(_text:String) {
-		text.setMetrics(Text.WORD_WRAP, Convert.coord(label.options.text_size), Convert.coord(control.w));
+		text.setMetrics(Text.WORD_WRAP, Text.ALIGN_LEFT, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(_text);
 		text.pos.x = Convert.coordX(control.x);
 		text.pos.y = Convert.coordY(control.y);

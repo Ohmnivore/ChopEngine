@@ -171,19 +171,19 @@ class PlayState extends State
 		
 		var text0:Text = new Text(f.font);
 		text0.pos.set(0, 1, 0);
-		text0.setMetrics(Text.AUTO_WIDTH, 8 / SnowApp._snow.window.width);
+		text0.setMetrics(Text.AUTO_WIDTH, Text.ALIGN_CENTER, 8 / SnowApp._snow.window.width);
 		text0.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text0);
 		
 		var text1:Text = new Text(f.font);
 		text1.pos.set(0, 2, 0);
-		text1.setMetrics(Text.CHAR_WRAP, 8 / SnowApp._snow.window.width, 64 / SnowApp._snow.window.width);
+		text1.setMetrics(Text.CHAR_WRAP, Text.ALIGN_CENTER, 8 / SnowApp._snow.window.width, 64 / SnowApp._snow.window.width);
 		text1.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text1);
 		
 		var text2:Text = new Text(f.font);
 		text2.pos.set(0, 3, 0);
-		text2.setMetrics(Text.WORD_WRAP, 8 / SnowApp._snow.window.width, 64 / SnowApp._snow.window.width);
+		text2.setMetrics(Text.WORD_WRAP, Text.ALIGN_CENTER, 8 / SnowApp._snow.window.width, 64 / SnowApp._snow.window.width);
 		text2.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text2);
 		

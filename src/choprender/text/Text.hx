@@ -14,9 +14,9 @@ import choprender.render3d.opengl.GL.Uint8Array;
  */
 class Text extends QuadModel
 {
-	//static public inline var ALIGN_LEFT:Int = 0;
-	//static public inline var ALIGN_CENTER:Int = 1;
-	//static public inline var ALIGN_RIGHT:Int = 2;
+	static public inline var ALIGN_LEFT:Int = 0;
+	static public inline var ALIGN_CENTER:Int = 1;
+	static public inline var ALIGN_RIGHT:Int = 2;
 	
 	static public inline var AUTO_WIDTH:Int = 0;
 	static public inline var CHAR_WRAP:Int = 1;
@@ -25,6 +25,7 @@ class Text extends QuadModel
 	public var font:Font;
 	
 	public var mode:Int;
+	public var alignment:Int;
 	public var maxWidthPixel:Int;
 	public var maxWidth:Float;
 	public var fontSize:Float;
@@ -41,6 +42,7 @@ class Text extends QuadModel
 		textWidth = 0;
 		textHeight = 0;
 		mode = AUTO_WIDTH;
+		alignment = ALIGN_LEFT;
 		maxWidth = 0;
 		maxWidthPixel = 0;
 		text = "";
@@ -49,9 +51,10 @@ class Text extends QuadModel
 		mat.transparency = 0.99;
 	}
 	
-	public function setMetrics(Mode:Int, FontSize:Float, MaxWidth:Float = 0):Void
+	public function setMetrics(Mode:Int, Alignment:Int, FontSize:Float, MaxWidth:Float = 0):Void
 	{
 		mode = Mode;
+		alignment = Alignment;
 		fontSize = FontSize;
 		maxWidth = MaxWidth;
 		maxWidthPixel = Std.int(maxWidth * font.size / FontSize);
@@ -73,7 +76,7 @@ class Text extends QuadModel
 			{
 				var w:String = words[i];
 				if (!line.hasSpaceForWord(w))
-					line = line = getNewLine(line, b);
+					line = getNewLine(line, b);
 				if (i < words.length - 1) // Add back the space
 					w += " ";
 				for (i in 0...w.length)
@@ -89,16 +92,48 @@ class Text extends QuadModel
 		}
 		else
 		{
+			var fline = new FakeLine(this, maxWidthPixel, 0, 0);
+			var flines:Array<FakeLine> = [fline];
 			for (i in 0...text.length)
 			{
 				var c:String = text.charAt(i);
 				if (TextUtil.isNewline(c))
+				{
+					fline = getNewFLine(fline);
+					flines.push(fline);
+				}
+				else
+				{
+					var char:FontChar = TextUtil.getChar(font, c);
+					if (!fline.hasSpaceFor(char))
+					{
+						fline = getNewFLine(fline);
+						flines.push(fline);
+					}
+					fline.addCharacter(char);
+				}
+			}
+			
+			var maxDrawWidth:Int = fline.width;
+			b.setSize(maxDrawWidth, b.height);
+			var curLineIndex:Int = 0;
+			line.xOffset = flines[curLineIndex++].getXOffset(maxDrawWidth);
+			for (i in 0...text.length)
+			{
+				var c:String = text.charAt(i);
+				if (TextUtil.isNewline(c))
+				{
 					line = getNewLine(line, b);
+					line.xOffset = flines[curLineIndex++].getXOffset(maxDrawWidth);
+				}
 				else
 				{
 					var char:FontChar = TextUtil.getChar(font, c);
 					if (!line.hasSpaceFor(char))
+					{
 						line = getNewLine(line, b);
+						line.xOffset = flines[curLineIndex++].getXOffset(maxDrawWidth);
+					}
 					line.addCharacter(char);
 				}
 			}
@@ -117,5 +152,9 @@ class Text extends QuadModel
 	private function getNewLine(Old:Line, B:Bitmap):Line
 	{
 		return new Line(this, B, Old.yOffset + Old.getHeight());
+	}
+	private function getNewFLine(Old:FakeLine):FakeLine
+	{
+		return new FakeLine(this, Old.width, Old.height, Old.yOffset + Old.getHeight());
 	}
 }
