@@ -10,12 +10,8 @@
 ## Mint rendering
 * image cover sizing
 * handle ondestroy
-* textedit cursor -> better text metrics
-* mint halign text right/center/left -> better text metrics
-* mint valign text top/center/bottom -> better text metrics
-
-## Text rendering
-* Text line right/center/left align -> better text metrics
+* textedit cursor -> get coords of character at index
+* mint valign text
 
 ## Rendering (eventually)
 * Skeletal animation

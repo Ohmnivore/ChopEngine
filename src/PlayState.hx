@@ -125,7 +125,7 @@ class PlayState extends State
             parent: canvas,
             name: "test_btn",
 			text: "Test btn",
-            x: 64, y: 64, w: 64, h: 32
+            x: 64, y: 64, w: 128, h: 32
 		});
 		var scroll:Scroll = new Scroll({
 			options: {},
@@ -145,7 +145,7 @@ class PlayState extends State
 			options: {},
             parent: canvas,
             name: "test_ddown",
-			text: "Test ddown",
+			text: "Testddown",
 			x: 0, y: 128, w: 96, h: 32
 		});
 		var dlist:Array<String> = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8"];

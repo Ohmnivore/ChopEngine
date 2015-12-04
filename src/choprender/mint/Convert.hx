@@ -1,5 +1,6 @@
 package choprender.mint;
 import chop.math.Vec4;
+import choprender.text.Text;
 import mint.Control;
 
 /**
@@ -50,6 +51,21 @@ class Convert
 			V = Def;
 		return V;
 	}
+	
+	static public function textWrap(DoWrap:Bool):Int
+	{
+		if (DoWrap) return Text.WORD_WRAP;
+		else return Text.AUTO_WIDTH;
+	}
+	static public function textAlign(Align:mint.types.Types.TextAlign):Int
+	{
+        return switch(Align) 
+		{
+            case mint.types.Types.TextAlign.right:  Text.ALIGN_RIGHT;
+            case mint.types.Types.TextAlign.center: Text.ALIGN_CENTER;
+            case _:                           		Text.ALIGN_LEFT;
+        }
+    }
 	
 	static private function button(B:Int):mint.types.Types.MouseButton
 	{

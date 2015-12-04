@@ -72,11 +72,17 @@ class Text extends QuadModel
 		if (mode == WORD_WRAP)
 		{
 			var words:Array<String> = text.split(" ");
+			
+			var fline = new FakeLine(this, maxWidthPixel, 0, 0);
+			var flines:Array<FakeLine> = [fline];
 			for (i in 0...words.length)
 			{
 				var w:String = words[i];
-				if (!line.hasSpaceForWord(w))
-					line = getNewLine(line, b);
+				if (!fline.hasSpaceForWord(w))
+				{
+					fline = getNewFLine(fline);
+					flines.push(fline);
+				}
 				if (i < words.length - 1) // Add back the space
 					w += " ";
 				for (i in 0...w.length)
@@ -84,7 +90,38 @@ class Text extends QuadModel
 					var c:String = w.charAt(i);
 					var char:FontChar = TextUtil.getChar(font, c);
 					if (TextUtil.isNewline(c))
+					{
+						fline = getNewFLine(fline);
+						flines.push(fline);
+					}
+					else if (fline.hasSpaceFor(char)) // Check if the added trailing space can actually be rendered
+						fline.addCharacter(char);
+				}
+			}
+			
+			var maxDrawWidth:Int = fline.width;
+			b.setSize(maxDrawWidth, b.height);
+			var curLineIndex:Int = 0;
+			line.xOffset = flines[curLineIndex++].getXOffset(maxDrawWidth);
+			for (i in 0...words.length)
+			{
+				var w:String = words[i];
+				if (!line.hasSpaceForWord(w))
+				{
+					line = getNewLine(line, b);
+					line.xOffset = flines[curLineIndex++].getXOffset(maxDrawWidth);
+				}
+				if (i < words.length - 1) // Add back the space
+					w += " ";
+				for (i in 0...w.length)
+				{
+					var c:String = w.charAt(i);
+					var char:FontChar = TextUtil.getChar(font, c);
+					if (TextUtil.isNewline(c))
+					{
 						line = getNewLine(line, b);
+						line.xOffset = flines[curLineIndex++].getXOffset(maxDrawWidth);
+					}
 					else if (line.hasSpaceFor(char)) // Check if the added trailing space can actually be rendered
 						line.addCharacter(char);
 				}
