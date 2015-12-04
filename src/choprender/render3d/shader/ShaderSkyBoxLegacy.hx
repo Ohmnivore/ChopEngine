@@ -71,7 +71,7 @@ class ShaderSkyBoxLegacy extends ChopProgram
 		super.preRender(Mgr);
 		GL.depthMask(false);
 		fovBackup = Mgr.cam.FOV;
-		Mgr.cam.FOV = 75.0;
+		Mgr.cam.FOV = 60.0;
 		Mgr.cam.computeProjectionMatrix();
 	}
 	
