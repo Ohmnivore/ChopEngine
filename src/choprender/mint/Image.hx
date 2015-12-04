@@ -27,8 +27,8 @@ class Image extends mint.render.Render {
     public var image : mint.Image;
     public var visual : QuadModel;
 
-    var ratio_w : Float = 1.0;
-    var ratio_h : Float = 1.0;
+    var ratio_w : Float;
+    var ratio_h : Float;
 
     var render: ChopMintRender;
 
@@ -54,12 +54,13 @@ class Image extends mint.render.Render {
 			texture.choptex.params[1].param = GL.LINEAR;
 			texture.choptex.updateParams();
 		}
-
+		ratio_w = control.w;
+		ratio_h = control.w;
+		
 		if(_opt.sizing != null) {
-
 			switch(_opt.sizing) {
-					//sets the uv to be the size on the longest edge
-					//possibly leaving whitespace on the sides (pillarbox) or top (letterbox)
+				//sets the uv to be the size on the longest edge
+				//possibly leaving whitespace on the sides (pillarbox) or top (letterbox)
 				case 'fit': {
 					if(texture.data.width > texture.data.height) {
 						ratio_w = control.w;
@@ -69,19 +70,17 @@ class Image extends mint.render.Render {
 						ratio_w = texture.data.width / texture.data.height * control.h;
 					}
 				} //fit
-
-					// cover the viewport with the size (possible cropping)
+				// cover the viewport with the size (possible cropping)
 				case 'cover': {
-					//var _rx = 1.0;
-					//var _ry = 1.0;
-					//if(texture.data.width > texture.data.height) {
-						//_rx = texture.data.height/texture.data.width;
-					//} else {
-						//_ry = texture.data.width/texture.data.height;
-					//}
-					//_opt.uv = Vec4.fromValues(0,0,texture.data.width*_rx,texture.data.height*_ry);
+					var _rx = 1.0;
+					var _ry = 1.0;
+					if(texture.data.width > texture.data.height) {
+						_rx = texture.data.height/texture.data.width;
+					} else {
+						_ry = texture.data.width/texture.data.height;
+					}
+					_opt.uv = Vec4.fromValues(0,0,_rx,_ry);
 				}
-
 			}
 		}
 
@@ -102,6 +101,7 @@ class Image extends mint.render.Render {
 		visual.pos.x = Convert.coordX(control.x);
 		visual.pos.y = Convert.coordY(control.y);
 		visual.setSize(Convert.coord(ratio_w), Convert.coord(ratio_h));
+		visual.setUV(_opt.uv);
 		visual.pos.z = Convert.coordZ(render.options.depth + control.depth);
 		visual.visible = control.visible;
 		visual.cams = _control.canvas._options_.options.cams;
@@ -110,18 +110,14 @@ class Image extends mint.render.Render {
 		visual.clip = Convert.bounds(control.clip_with);
 		
 		visual.loadTex(texture);
-		// TODO: UV coords
-
     } //new
 
     override function onbounds() {
-
         if(visual != null) {
             visual.pos.x = Convert.coordX(control.x);
 			visual.pos.y = Convert.coordY(control.y);
 			visual.setSize(Convert.coord(ratio_w), Convert.coord(ratio_h));
         }
-
     } //onbounds
 	
 	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
@@ -133,28 +129,21 @@ class Image extends mint.render.Render {
     } //onclip
 
     override function ondestroy() {
-
         if(visual != null) {
             visual.destroy();
             visual = null;
         }
-
     } //ondestroy
 
     override function onvisible( _visible:Bool ) {
-
         if(visual != null) {
             visual.visible = _visible;
         }
-
     } //onvisible
 
     override function ondepth( _depth:Float ) {
-
         if(visual != null) {
             visual.pos.z = Convert.coordZ(render.options.depth + _depth);
         }
-
     } //ondepth
-
 } //Image

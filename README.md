@@ -8,7 +8,6 @@
 # TODO
 
 ## Mint rendering
-* image cover sizing
 * handle ondestroy
 * textedit cursor -> get coords of character at index
 * mint valign text

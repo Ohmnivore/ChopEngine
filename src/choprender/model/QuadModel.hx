@@ -1,5 +1,6 @@
 package choprender.model;
 
+import chop.math.Vec4;
 import choprender.model.Model;
 import choprender.model.data.*;
 import choprender.render3d.opengl.GL.Uint8Array;
@@ -111,5 +112,12 @@ class QuadModel extends Model
 		data.textures = [T];
 		face0.textureID = T.id;
 		face1.textureID = T.id;
+	}
+	public function setUV(Rect:Vec4):Void
+	{
+		face0.uv1 = face1.uv3 = [Rect.x, Rect.y];
+		face0.uv2 = [Rect.x + Rect.z, Rect.y];
+		face0.uv3 = face1.uv1 = [Rect.x + Rect.z, Rect.y + Rect.w];
+		face1.uv2 = [Rect.x, Rect.y + Rect.w];
 	}
 }
