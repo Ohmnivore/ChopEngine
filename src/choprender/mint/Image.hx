@@ -54,8 +54,14 @@ class Image extends mint.render.Render {
 			texture.choptex.params[1].param = GL.LINEAR;
 			texture.choptex.updateParams();
 		}
-		ratio_w = control.w;
-		ratio_h = control.w;
+		if (texture.data.width > texture.data.height) {
+			ratio_w = control.h;
+			ratio_h = control.h;
+		}
+		else {
+			ratio_w = control.w;
+			ratio_h = control.w;
+		}
 		
 		if(_opt.sizing != null) {
 			switch(_opt.sizing) {
@@ -74,7 +80,7 @@ class Image extends mint.render.Render {
 				case 'cover': {
 					var _rx = 1.0;
 					var _ry = 1.0;
-					if(texture.data.width > texture.data.height) {
+					if (texture.data.width > texture.data.height) {
 						_rx = texture.data.height/texture.data.width;
 					} else {
 						_ry = texture.data.width/texture.data.height;

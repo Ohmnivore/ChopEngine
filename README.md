@@ -9,7 +9,6 @@
 
 ## Mint rendering
 * textedit cursor -> get coords of character at index
-* mint valign text
 
 ## Rendering
 * destructors for all classes that allocate OpenGL resources

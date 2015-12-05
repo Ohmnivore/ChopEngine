@@ -26,6 +26,8 @@ class Label extends mint.render.Render {
 
     public var color_hover: Color;
     public var color: Color;
+	
+	private var yOffset:Float;
 
     var render: ChopMintRender;
 
@@ -69,6 +71,9 @@ class Label extends mint.render.Render {
 		text.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(text);
 		
+		yOffset = 0;
+		onbounds();
+		
 		text.clip = Convert.bounds(control.clip_with);
 
         label.onchange.listen(ontext);
@@ -79,8 +84,19 @@ class Label extends mint.render.Render {
     }
 
     override function onbounds() {
+		// Vertical align not handled by ChopEngine's Text class
+		if (text.textHeight > 0)
+		{
+			if (label.options.align_vertical == mint.types.Types.TextAlign.center)
+				yOffset = -Convert.coord((label.h - (text.textHeight * label.options.text_size / text.font.size)) / 2.0);
+			else if (label.options.align_vertical == mint.types.Types.TextAlign.bottom)
+				yOffset = -Convert.coord(label.h - (text.textHeight * label.options.text_size / text.font.size));
+		}
+		
 		text.pos.x = Convert.coordX(control.x);
-		text.pos.y = Convert.coordY(control.y);
+		text.pos.y = Convert.coordY(control.y) + yOffset;
+		text.setMetrics(Convert.textWrap(label.options.bounds_wrap), Convert.textAlign(label.options.align), Convert.coord(label.options.text_size), Convert.coord(control.w));
+		text.setText(label.text);
     }
 	
 	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
@@ -92,10 +108,7 @@ class Label extends mint.render.Render {
     } //onclip
 
     function ontext(_text:String) {
-		//text.setMetrics(Text.WORD_WRAP, Text.ALIGN_LEFT, Convert.coord(label.options.text_size), Convert.coord(control.w));
 		text.setText(_text);
-		text.pos.x = Convert.coordX(control.x);
-		text.pos.y = Convert.coordY(control.y);
     }
 
     override function ondestroy() {
