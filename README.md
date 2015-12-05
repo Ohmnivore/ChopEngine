@@ -8,39 +8,33 @@
 # TODO
 
 ## Mint rendering
-* handle ondestroy
 * textedit cursor -> get coords of character at index
 * mint valign text
 
-## Rendering (eventually)
+## Rendering
+* destructors for all classes that allocate OpenGL resources
 * Skeletal animation
 * Batching
 * Instancing
 * Particle effects
-* Static shadows -> shadow system
-* Dynamic shadows -> shadow system
 
-##### Lights
-* Pass through bool -> shadow system
-* Cast shadow bool -> shadow system
-* Add an angle-based falloff to the cone light to smooth it out
-
-##### Material support
-* bool shadowsCast -> shadow system
-* bool shadowsReceive -> shadow system
+##### Shadow system
+* Static shadows
+* Dynamic shadows
+* Light Pass through bool
+* Light Cast shadow bool
+* Material bool shadowsCast
+* Material bool shadowsReceive
 
 ## Physics
 * jiglibhx integration
 
 ## Input
+* mouse
+* pressed
 * justPressed
 * justReleased
-* touch support for mobile
-* controller support
 
 ## Audio
 * Positional audio
 * Music tracks
-
-## Misc
-* Game saves

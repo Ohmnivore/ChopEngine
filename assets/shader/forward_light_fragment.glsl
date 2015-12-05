@@ -62,6 +62,7 @@ struct Light
     bool useSpecular;
     bool useDiffuse;
     float coneAngle;
+    float interiorConeAngle;
 };
 uniform Light allLights[MAX_LIGHTS];
 
@@ -111,16 +112,6 @@ vec4 getTextureValue(vec2 uv, int tID)
 
 void main()
 {
-	// int textureID = int(UV.z * 16.0);
-	// if (textureID < 0)
-		// gDiffuse = vec4(material.diffuseColor * material.diffuseIntensity, material.transparency);
-	// else
-	// {
-	// 	vec4 texDiffuse = getTextureValue(UV.xy, textureID);
-	// 	gDiffuse = texDiffuse * texDiffuse.w + vec4(diffuseColor.xyz, 1.0) * (1.0 - texDiffuse.w);
-	// 	gDiffuse.w = material.transparency;
-	// }
-	
 	float alpha = material.transparency;
 	vec3 Diffuse = material.diffuseColor * material.diffuseIntensity;
 	vec3 Specular = material.specularColor * material.specularIntensity;
@@ -134,23 +125,9 @@ void main()
 	   vec4 blended = blendWithMode(blendMode, vec4(material.diffuseColor, material.transparency), texDiffuse);
 	   Diffuse = vec3(blended.xyz);
 	   alpha = blended.w;
-	   // Diffuse = vec3(texDiffuse.xyz) * texDiffuse.w + Diffuse.xyz * (material.transparency - texDiffuse.w);
-	   // alpha = texDiffuse.w;
 	}
 	
-	// Decode the G Buffer
-	// vec3 FragPos = texture(gPosition, UV).rgb;
-	// vec3 FragRealPos = texture(gRealPosition, UV).rgb;
-    // vec3 Normal = texture(gNormal, UV).rgb;
-    // vec3 Diffuse = texture(gDiffuse, UV).rgb;
-    // vec3 Specular = texture(gSpec, UV).rgb;
-	// float MaterialFlags = texture(gDiffuse, UV).a;
-	// float AmbientIntensity = texture(gNormal, UV).a;
-	// float Emit = texture(gSpec, UV).a;
-	// Material material = createMaterial(MaterialFlags, Diffuse, Specular, AmbientIntensity, Emit);
-	
 	vec3 linearColor = vec3(0);
-
     if (material.useShading)
     {
 		vec3 viewDir = normalize(viewPos - MeanFragPos);
@@ -213,14 +190,16 @@ void main()
 				// 4. Check if the angle is outside of the cone. If so, set the attenuation
 				//    factor to zero, to make the light ray invisible.
 				if (lightToSurfaceAngle > light.coneAngle)
-				{
 					attenuation = 0.0;
+				else if (light.coneAngle > light.interiorConeAngle)
+				{
+					if (lightToSurfaceAngle > light.interiorConeAngle)
+						attenuation *= 1.0 - (lightToSurfaceAngle - light.interiorConeAngle) / (light.coneAngle - light.interiorConeAngle);
 				}
 			}
 			
 			diffuse *= attenuation;
 			specular *= attenuation;
-			
 			linearColor += (diffuse + specular) * light.energy * 100.0;
         }
         // Emit
