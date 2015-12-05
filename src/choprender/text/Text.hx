@@ -186,6 +186,81 @@ class Text extends QuadModel
 		setSize(textWidth * d, textHeight * d);
 	}
 	
+	public function getPos(T:String):Vec2
+	{
+		var text:String = T;
+		var retX:Int = 0;
+		var retY:Int = 0;
+		
+		if (mode == WORD_WRAP)
+		{
+			var words:Array<String> = text.split(" ");
+			
+			var fline = new FakeLine(this, maxWidthPixel, 0, 0);
+			var flines:Array<FakeLine> = [fline];
+			for (i in 0...words.length)
+			{
+				var w:String = words[i];
+				if (!fline.hasSpaceForWord(w))
+				{
+					fline = getNewFLine(fline);
+					flines.push(fline);
+				}
+				if (i < words.length - 1) // Add back the space
+					w += " ";
+				for (i in 0...w.length)
+				{
+					var c:String = w.charAt(i);
+					var char:FontChar = TextUtil.getChar(font, c);
+					if (TextUtil.isNewline(c))
+					{
+						fline = getNewFLine(fline);
+						flines.push(fline);
+					}
+					else if (fline.hasSpaceFor(char)) // Check if the added trailing space can actually be rendered
+						fline.addCharacter(char);
+				}
+			}
+			
+			retX = fline.realWidth;
+			retY = fline.yOffset;
+			//var d:Float = fontSize * font.size;
+			return Vec2.fromValues(retX, retY);
+		}
+		else
+		{
+			var char:FontChar = null;
+			var fline = new FakeLine(this, maxWidthPixel, 0, 0);
+			var flines:Array<FakeLine> = [fline];
+			for (i in 0...text.length)
+			{
+				var c:String = text.charAt(i);
+				if (TextUtil.isNewline(c))
+				{
+					fline = getNewFLine(fline);
+					flines.push(fline);
+				}
+				else
+				{
+					char = TextUtil.getChar(font, c);
+					if (!fline.hasSpaceFor(char))
+					{
+						fline = getNewFLine(fline);
+						flines.push(fline);
+					}
+					fline.addCharacter(char);
+				}
+			}
+			
+			retX = fline.realWidth;
+			if (char != null)
+				retX += char.offsetX;
+			retY = fline.yOffset;
+			var d:Float = 1.0;
+			return Vec2.fromValues(retX / d, retY / d);
+		}
+	}
+	
 	private function getNewLine(Old:Line, B:Bitmap):Line
 	{
 		return new Line(this, B, Old.yOffset + Old.getHeight());

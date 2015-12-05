@@ -1,5 +1,6 @@
 package choprender.mint;
 
+import chop.math.Vec2;
 import chop.math.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
@@ -16,6 +17,7 @@ private typedef ChopMintTextEditOptions = {
     var color: Color;
     var color_hover: Color;
     var color_cursor: Color;
+	@:optional var cursor_blink_rate: Float;
 }
 
 class TextEdit extends mint.render.Render {
@@ -23,11 +25,12 @@ class TextEdit extends mint.render.Render {
     public var textedit : mint.TextEdit;
     public var visual : QuadModel;
     public var border : QuadModel;
-    //public var cursor : QuadModel;
+    public var cursor : QuadModel;
 
     public var color: Color;
     public var color_hover: Color;
     public var color_cursor: Color;
+	public var cursor_blink_rate: Float = 0.5;
 
     var render: ChopMintRender;
 
@@ -43,6 +46,7 @@ class TextEdit extends mint.render.Render {
         color = Convert.def(_opt.color, Color.fromRGB(0x646469));
         color_hover = Convert.def(_opt.color_hover, Color.fromRGB(0x444449));
         color_cursor = Convert.def(_opt.color_cursor, Color.fromRGB(0x9dca63));
+		cursor_blink_rate = Convert.def(_opt.cursor_blink_rate, 0.5);
 
         //visual = Luxe.draw.box({
             //id: control.name+'.visual',
@@ -78,9 +82,6 @@ class TextEdit extends mint.render.Render {
 		border.visible = false;
 		border.cams = _control.canvas._options_.options.cams;
 		_control.canvas._options_.options.group.add(border);
-		
-		visual.clip = Convert.bounds(control.clip_with);
-		border.clip = Convert.bounds(control.clip_with);
 
         //cursor = Luxe.draw.line({
             //id: control.name+'.cursor',
@@ -89,10 +90,23 @@ class TextEdit extends mint.render.Render {
             //p1: new Vector(0,0),
             //color: color_cursor,
             //depth: render.options.depth + control.depth+0.001,
-            //group: render.options.group,
             //visible: false,
             //clip_rect: Convert.bounds(control.clip_with)
         //});
+		cursor = new QuadModel();
+		cursor.mat.useShading = false;
+		cursor.pos.x = 0;
+		cursor.pos.y = 0;
+		cursor.setSize(Convert.coord(2), Convert.coord(textedit.label.options.text_size));
+		cursor.mat.diffuseColor.copy(color_cursor);
+		cursor.pos.z = Convert.coordZ(render.options.depth + control.depth + 3);
+		cursor.visible = false;
+		cursor.cams = _control.canvas._options_.options.cams;
+		_control.canvas._options_.options.group.add(cursor);
+		
+		visual.clip = Convert.bounds(control.clip_with);
+		border.clip = Convert.bounds(control.clip_with);
+		cursor.clip = Convert.bounds(control.clip_with);
 
         textedit.onmouseenter.listen(function(e,c) {
 			visual.mat.diffuseColor.copy(color_hover);
@@ -106,17 +120,27 @@ class TextEdit extends mint.render.Render {
             update_cursor();
         });
 		
+		 textedit.ontextinput.listen(function(_,_) {
+            if(textedit.isfocused || textedit.iscaptured) {
+                SnowApp._snow.input.module.text_input_rect(Std.int(textedit.x),Std.int(textedit.y),Std.int(textedit.w),Std.int(textedit.h));
+            }
+        });
+		
 		textedit.onfocused.listen(function(isFocused:Bool) {
 			if (isFocused)
 			{
 				start_cursor();
 				if (visual.visible)
 					border.visible = true;
+				SnowApp._snow.input.module.text_input_start();
+				SnowApp._snow.input.module.text_input_rect(Std.int(textedit.x),Std.int(textedit.y),Std.int(textedit.w),Std.int(textedit.h));
 			}
 			else
 			{
 				border.visible = false;
 				stop_cursor();
+				SnowApp._snow.input.module.text_input_stop();
+                SnowApp._snow.input.module.text_input_rect(0,0,0,0);
 			}
 		});
 		
@@ -127,59 +151,48 @@ class TextEdit extends mint.render.Render {
 		});
     } //new
 
-    //var timer: snow.api.Timer;
+    var timer: snow.api.Timer;
     function start_cursor() {
-        //cursor.visible = true;
-        //update_cursor();
-        //timer = Luxe.timer.schedule(0.5, blink_cursor, true);
+        cursor.visible = true;
+        update_cursor();
+		timer = new snow.api.Timer(cursor_blink_rate);
+        timer.run = function(){blink_cursor();};
     }
 
     function stop_cursor() {
-        //if(timer != null) timer.stop();
-        //timer = null;
-        //cursor.visible = false;
+        if(timer != null) timer.stop();
+        timer = null;
+        cursor.visible = false;
     }
 
     function blink_cursor() {
-        //if(timer == null) return;
-        //cursor.visible = !cursor.visible;
+        if(timer == null) return;
+        cursor.visible = !cursor.visible;
+    }
+	
+	inline function reset_cursor() {
+        if(timer != null) {
+            cursor.visible = true;
+            timer.fire_at = SnowApp._snow.time + cursor_blink_rate;
+        }
     }
 
     function update_cursor() {
-
-        //var text = (cast textedit.label.renderer:mint.render.luxe.Label).text;
-        //var _t = textedit.before_display(textedit.index);
-//
-        //var _tw = text.font.width_of(textedit.edit, text.point_size, text.letter_spacing);
-        //var _twh = _tw/2.0;
-        //var _w = text.font.width_of(_t, text.point_size, text.letter_spacing);
-//
-        //var _th = text.font.height_of(_t, text.point_size);
-        //var _thh = _th/2.0;
-//
-        //var _x = _w;
-        //var _y = 0.0;
-//
-        //_x -= switch(text.align) {
-            //case luxe.Text.TextAlign.center: _twh;
-            //case luxe.Text.TextAlign.right: _tw;
-            //case _: 0.0;
-        //}
-//
-        //_y += _th * 0.2;
-//
-        //var _xx = textedit.label.x + _x;
-        //var _yy = textedit.label.y + 2;
-//
-        //cursor.p0 = new Vector(_xx, _yy);
-        //cursor.p1 = new Vector(_xx, _yy + textedit.label.h - 4);
-
-    } //
+		var text:choprender.text.Text = (cast textedit.label.renderer:choprender.mint.Label).text;
+        var _t:String = textedit.before_display(textedit.index);
+		var res:Vec2 = text.getPos(_t);
+		res.scale(textedit.label.options.text_size / text.font.size);
+		cursor.pos.x = text.pos.x + Convert.coord(res.x);
+		cursor.pos.y = text.pos.y - Convert.coord(res.y + 2);
+		
+        reset_cursor();
+    }
 
     override function ondestroy() {
         stop_cursor();
         visual = null;
-        //cursor = null;
+		border = null;
+        cursor = null;
     }
 
     override function onbounds() {
@@ -189,9 +202,7 @@ class TextEdit extends mint.render.Render {
 		border.pos.x = Convert.coordX(control.x - 1);
 		border.pos.y = Convert.coordY(control.y - 1);
 		border.setSize(Convert.coord(control.w + 2), Convert.coord(control.h + 2));
-        //if(timer != null) {
-            //stop_cursor(); start_cursor();
-        //}
+        reset_cursor();
     }
 	
 	override function onclip(_disable:Bool, _x:Float, _y:Float, _w:Float, _h:Float) {
@@ -217,6 +228,7 @@ class TextEdit extends mint.render.Render {
     override function ondepth( _depth:Float ) {
 		visual.pos.z = Convert.coordZ(render.options.depth + _depth + 1);
 		border.pos.z = Convert.coordZ(render.options.depth + _depth);
+		cursor.pos.z = Convert.coordZ(render.options.depth + _depth + 2);
     } //ondepth
 
 } //TextEdit
