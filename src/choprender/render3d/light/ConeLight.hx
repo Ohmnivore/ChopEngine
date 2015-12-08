@@ -17,6 +17,10 @@ class ConeLight extends Light
 	public var coneAngle:Float;
 	public var interiorConeAngle:Float;
 	
+	public var constant:Float;
+	public var linear:Float;
+	public var quadratic:Float;
+	
 	public function new() 
 	{
 		super();
@@ -24,6 +28,9 @@ class ConeLight extends Light
 		dir = Vec3.fromValues( -1.0, -1.0, 0.5);
 		coneAngle = 20.0;
 		interiorConeAngle = 15.0;
+		constant = 0.0;
+		linear = 0.0;
+		quadratic = 1.0;
 	}
 	
 	override public function setUniforms(P:GLProgram, I:Int):Void 
@@ -37,5 +44,9 @@ class ConeLight extends Light
 		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].coneAngle"), coneAngle);
 		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].interiorConeAngle"), interiorConeAngle);
 		GLUtil.setInt(GLUtil.getLocation(P, "allLights[" + I + "].type"), 2);
+		
+		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].constant"), constant);
+		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].linear"), linear);
+		GLUtil.setFloat(GLUtil.getLocation(P, "allLights[" + I + "].quadratic"), quadratic);
 	}
 }

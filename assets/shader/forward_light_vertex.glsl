@@ -1,11 +1,9 @@
 #version 330 core
 layout (location = 0) in vec3 position;
-layout (location = 1) in vec3 meanPosition;
-layout (location = 2) in vec3 normal;
-layout (location = 3) in vec4 uv;
+layout (location = 1) in vec3 normal;
+layout (location = 2) in vec4 uv;
 
 out vec3 FragPos;
-out vec3 MeanFragPos;
 out vec3 Normal;
 out vec4 UV;
 
@@ -16,8 +14,7 @@ uniform mat4 p;
 void main()
 {
     vec4 worldPos = m * vec4(position, 1.0f);
-    FragPos = worldPos.xyz; 
-    MeanFragPos = (m * vec4(meanPosition, 1.0f)).xyz; 
+    FragPos = worldPos.xyz;
     gl_Position = p * v * worldPos;
     
     mat3 normalMatrix = transpose(inverse(mat3(m)));

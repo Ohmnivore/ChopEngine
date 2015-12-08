@@ -24,7 +24,7 @@
 * Material bool shadowsReceive
 
 ## Physics
-* jiglibhx integration
+* jiglib or oimo integration
 
 ## Input
 * mouse

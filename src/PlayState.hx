@@ -65,14 +65,6 @@ class PlayState extends State
 		var dMgr:ForwardProgramMgr = cast GlobalRender.cam.mgr;
 		dMgr.skyBoxLegacyProgram.loadSkyBoxFile("assets/img/cubemap_4k.png");
 		
-		//var m:Model = new Model();
-		//m.loadChop("assets/mesh/lowpoly.chopmesh");
-		//for (mat in m.data.materials)
-		//{
-			////mat.transparency = 0.75;
-		//}
-		//add(m);
-		
 		var panel:Panel = new Panel({
 			options: {},
             parent: canvas,
@@ -162,13 +154,6 @@ class PlayState extends State
         }
         for(d in dlist) add_plat(d);
 		
-		//var q:QuadModel = new QuadModel();
-		//q.mat.useShading = false;
-		//q.pos.x = 0;
-		//q.pos.z = 2;
-		//q.setSize(2.0, 1.0);
-		//add(q);
-		
 		var text0:Text = new Text(f.font);
 		text0.pos.set(0, 1, 0);
 		text0.setMetrics(Text.AUTO_WIDTH, Text.ALIGN_CENTER, 8 / SnowApp._snow.window.width);
@@ -187,69 +172,35 @@ class PlayState extends State
 		text2.setText("Winter is coming,\nso is ChopEngine. Chop.");
 		add(text2);
 		
-		//var t:Text = new Text(f.font);
-		//t.pos.x = 0;
-		//t.pos.y = 4;
-		//t.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		//t.setText("ChopEngine is chopping.\nIt's also far from done.", 0.02);
-		//add(t);
-		//
-		//var t2:Text = new Text(f.font);
-		//t2.textWidth = 64;
-		//t2.pos.x = 5;
-		//t2.pos.y = 4;
-		//t2.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		//add(t2);
-		//
-		//var t3:Text = new Text(f.font);
-		//t3.textWidth = 64;
-		//t3.wordWrap = true;
-		//t3.pos.x = 10;
-		//t3.pos.y = 4;
-		//t3.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		//add(t3);
-		//
-		//var t4:Text = new Text(f.font);
-		//t4.textWidth = 64;
-		//t4.wordWrap = true;
-		////t4.alignment = "right";
-		//t4.pos.x = 0;
-		//t4.pos.y = 5;
-		//t4.setText("ChopEngine is chopping.\nIt's also far from completed.", 0.02);
-		//add(t4);
-		
-		//var mQuad:QuadModel = new QuadModel();
-		//mQuad.loadTexFile("assets/font/04b03_regular_8.png");
-		//mQuad.scale.set(1.28, 1.0, 0.64);
-		//mQuad.mat.diffuseColor.set(0, 0, 0);
-		//add(mQuad);
+		var m:Model = new Model();
+		var objLoader:ObjLoader = new ObjLoader();
+		objLoader.loadFile("assets/obj/lowpoly.obj", "assets/obj/lowpoly.mtl");
+		m.loadData(objLoader.data);
+		//m.loadChop("assets/mesh/lowpoly.chopmesh");
+		add(m);
 		
 		var m2:Model = new Model();
-		//m2.loadChop("assets/mesh/corgi.chopmesh");
-		var objLoader:ObjLoader = new ObjLoader();
+		//var objLoader:ObjLoader = new ObjLoader();
 		//objLoader.loadFile("assets/obj/corgi.obj", "assets/obj/corgi.mtl");
-		objLoader.loadFile("assets/obj/lowpoly.obj", "assets/obj/lowpoly.mtl");
-		m2.loadData(objLoader.data);
+		//m2.loadData(objLoader.data);
+		m2.loadChop("assets/mesh/corgi.chopmesh");
 		m2.scale.x = 2.0;
 		m2.scale.y = 2.0;
 		m2.scale.z = 2.0;
-		//m2.rot.y = 20.0;
-		//m2.pos.y = 0.1;
-		//m2.pos.x = 7.0;
 		m2.rot.y = 2.0;
 		m2.pos.y = 0.1;
-		m2.pos.x = 2.0;
-		//for (mat in m2.data.materials)
-		//{
-			//mat.transparency = 0.75;
-		//}
+		m2.pos.x = 5.0;
+		for (mat in m2.data.materials)
+		{
+			mat.transparency = 0.85;
+		}
 		add(m2);
 		
+		// simple sun light
 		var displace:Vec4 = Vec4.fromValues(0, 0, -1, 0);
 		displace.transMat4(Util.eulerDegToMatrix4x4(
 			0, 0, -25
 		));
-		// simple sun light
 		var sun:SunLight = new SunLight();
 		sun.dir.x = displace.x;
 		sun.dir.y = displace.y;
@@ -266,12 +217,15 @@ class PlayState extends State
 		var point:PointLight = new PointLight();
 		point.pos.x = 3.6;
 		point.pos.y = 3.96;
-		point.energy = 0.8;
+		point.energy = 1.0;
 		point.color.x = 1.0;
 		point.color.y = 0.0;
 		point.color.z = 0.0;
-		point.distance = 15.0;
+		point.distance = 25.0;
 		point.useSpecular = false;
+		//point.constant = 1.0;
+		point.quadratic = 2.0;
+		//point.linear = 3.4;
 		lights.lights.push(point);
 		
 		// simple cone light
@@ -289,6 +243,9 @@ class PlayState extends State
 		cone.coneAngle = 35.0;
 		cone.distance = 400;
 		cone.useSpecular = true;
+		//cone.constant = 1.0;
+		cone.quadratic = 3.0;
+		//cone.linear = 3.4;
 		lights.lights.push(cone);
 	}
 	

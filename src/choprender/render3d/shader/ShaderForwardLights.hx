@@ -160,23 +160,19 @@ class ShaderForwardLights extends ChopProgram
 					var sizeOfFloat:Int = 4;
 					GL.enableVertexAttribArray(0);
 					GL.bindAttribLocation(prog, 0, "position");
-					GL.vertexAttribPointer(0, 3, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 0);
+					GL.vertexAttribPointer(0, 3, GL.FLOAT, false, sizeOfFloat * 10, sizeOfFloat * 0);
 					GL.enableVertexAttribArray(1);
-					GL.bindAttribLocation(prog, 1, "meanPosition");
-					GL.vertexAttribPointer(1, 3, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 3);
+					GL.bindAttribLocation(prog, 1, "normal");
+					GL.vertexAttribPointer(1, 3, GL.FLOAT, false, sizeOfFloat * 10, sizeOfFloat * 3);
 					GL.enableVertexAttribArray(2);
-					GL.bindAttribLocation(prog, 2, "normal");
-					GL.vertexAttribPointer(2, 3, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 6);
-					GL.enableVertexAttribArray(3);
-					GL.bindAttribLocation(prog, 3, "uv");
-					GL.vertexAttribPointer(3, 4, GL.FLOAT, false, sizeOfFloat * 13, sizeOfFloat * 9);
+					GL.bindAttribLocation(prog, 2, "uv");
+					GL.vertexAttribPointer(2, 4, GL.FLOAT, false, sizeOfFloat * 10, sizeOfFloat * 6);
 					
-					GL.drawArrays(GL.TRIANGLES, 0, Std.int(vData.length / 13));
+					GL.drawArrays(GL.TRIANGLES, 0, Std.int(vData.length / 10));
 					
 					GL.disableVertexAttribArray(0);
 					GL.disableVertexAttribArray(1);
 					GL.disableVertexAttribArray(2);
-					GL.disableVertexAttribArray(3);
 					GL.deleteBuffer(vertexBuffer);
 				}
 			}
@@ -207,10 +203,6 @@ class ShaderForwardLights extends ChopProgram
 		Verts.push(Vec.x);
 		Verts.push(Vec.y);
 		Verts.push(Vec.z);
-		
-		Verts.push((V1.x + V2.x + V3.x) / 3.0);
-		Verts.push((V1.y + V2.y + V3.y) / 3.0);
-		Verts.push((V1.z + V2.z + V3.z) / 3.0);
 		
 		n.x = 0;
 		n.y = 0;

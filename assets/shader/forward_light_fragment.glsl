@@ -1,7 +1,6 @@
 #version 330 core
 
 in vec3 FragPos;
-in vec3 MeanFragPos;
 in vec3 Normal;
 in vec4 UV;
 
@@ -63,6 +62,9 @@ struct Light
     bool useDiffuse;
     float coneAngle;
     float interiorConeAngle;
+	float constant;
+	float linear;
+	float quadratic;
 };
 uniform Light allLights[MAX_LIGHTS];
 
@@ -130,19 +132,18 @@ void main()
 	vec3 linearColor = vec3(0);
     if (material.useShading)
     {
-		vec3 viewDir = normalize(viewPos - MeanFragPos);
+		vec3 viewDir = normalize(viewPos - FragPos);
 		
         for (int i = 0; i < numLights; ++i)
         {
 			Light light = allLights[i];
 			
 			// Calculate distance between light source and current fragment
-			float distance = length(light.position - MeanFragPos);
-			float realDistance = length(light.position - FragPos);
+			float distance = length(light.position - FragPos);
 			
 			if (light.type != 0)
 				// Don't check distance for sun lights
-				if (realDistance > light.distance)
+				if (distance > light.distance)
 					continue;
 			
 			// Diffuse
@@ -151,7 +152,7 @@ void main()
 				// Sun light direction is constant
 				lightDir = -light.direction;
 			else
-				lightDir = normalize(light.position - MeanFragPos);
+				lightDir = normalize(light.position - FragPos);
 			vec3 diffuse = vec3(0);
 			if (light.useDiffuse)
 				diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * light.color;
@@ -168,7 +169,7 @@ void main()
 			// Attenuation
 			float attenuation = 1.0;
 			if (light.type != 0)
-				attenuation = 1.0 / (distance * distance);
+				attenuation = 1.0 / max(0.0, light.constant + light.linear * distance + light.quadratic * (distance * distance));
 			
 			// Cone light attenuation
 			if (light.type == 2)
