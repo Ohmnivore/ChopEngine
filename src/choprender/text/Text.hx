@@ -1,7 +1,7 @@
 package choprender.text;
 
-import chop.math.Vec2;
-import chop.math.Vec4;
+import glm.Vec2;
+import glm.Vec4;
 import choprender.model.data.Bitmap;
 import choprender.model.data.Texture;
 import choprender.model.QuadModel;
@@ -225,7 +225,7 @@ class Text extends QuadModel
 			retX = fline.realWidth;
 			retY = fline.yOffset;
 			//var d:Float = fontSize * font.size;
-			return Vec2.fromValues(retX, retY);
+			return new Vec2(retX, retY);
 		}
 		else
 		{
@@ -257,7 +257,7 @@ class Text extends QuadModel
 				retX += char.offsetX;
 			retY = fline.yOffset;
 			var d:Float = 1.0;
-			return Vec2.fromValues(retX / d, retY / d);
+			return new Vec2(retX / d, retY / d);
 		}
 	}
 	

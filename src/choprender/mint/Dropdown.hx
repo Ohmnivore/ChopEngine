@@ -1,6 +1,6 @@
 package choprender.mint;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -112,7 +112,7 @@ class Dropdown extends mint.render.Render {
         if(_disable) {
             visual.clip = border.clip = null;
         } else {
-            visual.clip = border.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = border.clip = new Vec4(_x, _y, _w, _h);
         }
     } //onclip
 

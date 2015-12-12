@@ -5,7 +5,7 @@ import chopengine.phys.PhysState;
 import choprender.render3d.light.LightState;
 import mint.focus.Focus;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import mint.layout.margins.Margins;
 
 /**

@@ -1,6 +1,8 @@
 package choprender.render3d.light;
 
-import chop.math.Vec3;
+import choprender.render3d.opengl.GL.GLProgram;
+import choprender.render3d.opengl.GLUtil;
+import glm.Vec3;
 
 /**
  * ...
@@ -17,11 +19,18 @@ class LightState
 	
 	public function new() 
 	{
-		horizonColor = Vec3.fromValues(0.0, 0.0, 0.0);
-		zenithColor = Vec3.fromValues(0.0, 0.0, 0.0);
-		ambientColor = Vec3.fromValues(0.05, 0.05, 0.05);
+		horizonColor = new Vec3(0.0, 0.0, 0.0);
+		zenithColor = new Vec3(0.0, 0.0, 0.0);
+		ambientColor = new Vec3(0.05, 0.05, 0.05);
 		ambientIntensity = 0.1;
 		gamma = 1.0 / 2.2;
 		lights = [];
+	}
+	
+	public function setUniforms(P:GLProgram):Void
+	{
+		GLUtil.setUniformVec(P, "ambientColor", ambientColor);
+		GLUtil.setUniformBasic(P, "ambientIntensity", ambientIntensity);
+		GLUtil.setUniformBasic(P, "gamma", gamma);
 	}
 }

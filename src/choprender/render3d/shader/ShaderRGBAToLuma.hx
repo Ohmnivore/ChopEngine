@@ -14,8 +14,8 @@ import choprender.render3d.Camera;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
-import chop.math.Mat4;
-import chop.math.Vec3;
+import glm.Mat4;
+import glm.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
 

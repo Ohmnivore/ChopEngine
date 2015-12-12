@@ -1,5 +1,5 @@
 # Building
-* Dependencies: flow, snow, mint, snow binaries (http://build.luxeengine.com/snow/), Haxe 3.2.1, hxcpp 3.2.193, (all of these were last updated on December 1 2015)
+* Dependencies: haxe-glm, flow, snow, mint, snow binaries (http://build.luxeengine.com/snow/), Haxe 3.2.1, hxcpp 3.2.193, (all of these were last updated on December 1 2015)
 * You have to change your flow config to **files_output_list: true**, ChopEngine relies on that for its preloader
 * Then build as usual with flow: **flow run [platform]**
 * The prime targets are windows, linux, and mac

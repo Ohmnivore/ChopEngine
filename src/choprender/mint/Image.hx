@@ -13,7 +13,7 @@ import chop.util.Color;
 import choprender.model.QuadModel;
 import chop.group.Group;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.render3d.opengl.GL;
 
 private typedef ChopMintImageOptions = {
@@ -85,7 +85,7 @@ class Image extends mint.render.Render {
 					} else {
 						_ry = texture.data.width/texture.data.height;
 					}
-					_opt.uv = Vec4.fromValues(0,0,_rx,_ry);
+					_opt.uv = new Vec4(0,0,_rx,_ry);
 				}
 			}
 		}
@@ -130,7 +130,7 @@ class Image extends mint.render.Render {
         if(_disable) {
             visual.clip = null;
         } else {
-            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = new Vec4(_x, _y, _w, _h);
         }
     } //onclip
 

@@ -1,8 +1,8 @@
 package choprender.text;
 
 import choprender.model.data.Bitmap;
-import chop.math.Vec2;
-import chop.math.Vec4;
+import glm.Vec2;
+import glm.Vec4;
 import choprender.text.FontChar;
 
 /**
@@ -26,8 +26,8 @@ class Line extends BasicLine
 		b.copyPixels(
 			t.font.tex,
 			b,
-			Vec4.fromValues(C.rectX, C.rectY, C.rectWidth, C.rectHeight),
-			Vec2.fromValues(curX + xOffset, yOffset + COffsY)
+			new Vec4(C.rectX, C.rectY, C.rectWidth, C.rectHeight),
+			new Vec2(curX + xOffset, yOffset + COffsY)
 		);
 	}
 	override function getDrawWidth():Int 

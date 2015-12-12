@@ -1,7 +1,7 @@
 package choprender.mint;
 
-import chop.math.Vec2;
-import chop.math.Vec4;
+import glm.Vec2;
+import glm.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -181,7 +181,7 @@ class TextEdit extends mint.render.Render {
 		var text:choprender.text.Text = (cast textedit.label.renderer:choprender.mint.Label).text;
         var _t:String = textedit.before_display(textedit.index);
 		var res:Vec2 = text.getPos(_t);
-		res.scale(textedit.label.options.text_size / text.font.size);
+		res.multiplyScalar(textedit.label.options.text_size / text.font.size);
 		cursor.pos.x = text.pos.x + Convert.coord(res.x);
 		cursor.pos.y = text.pos.y - Convert.coord(res.y + 2);
 		
@@ -209,7 +209,7 @@ class TextEdit extends mint.render.Render {
         if(_disable) {
             visual.clip = border.clip = null;
         } else {
-            visual.clip = border.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = border.clip = new Vec4(_x, _y, _w, _h);
         }
     } //onclip
 

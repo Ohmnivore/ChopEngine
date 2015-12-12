@@ -17,7 +17,7 @@ import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GLUtil;
 import chop.math.Util;
-import chop.math.Vec3;
+import glm.Vec3;
 import choprender.render3d.opengl.GL.Float32Array;
 
 /**
@@ -55,7 +55,7 @@ class ShaderSSAO extends ChopQuadProgram
 		ssaoKernel = [];
 		for (i in 0...64)
 		{
-			var sample:Vec3 = Vec3.fromValues(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, Math.random());
+			var sample:Vec3 = new Vec3(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, Math.random());
 			sample = sample.norm();
 			sample = sample * Math.random();
 			var scale:Float = i / 64.0;
@@ -69,7 +69,7 @@ class ShaderSSAO extends ChopQuadProgram
 		var ssaoNoise:Array<Float> = [];
 		for (i in 0...16)
 		{
-			var noise:Vec3 = Vec3.fromValues(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, 0.0);
+			var noise:Vec3 = new Vec3(Math.random() * 2.0 - 1.0, Math.random() * 2.0 - 1.0, 0.0);
 			ssaoNoise.push(noise.x);
 			ssaoNoise.push(noise.y);
 			ssaoNoise.push(noise.z);

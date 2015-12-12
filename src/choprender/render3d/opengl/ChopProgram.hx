@@ -7,9 +7,8 @@ import choprender.render3d.opengl.ChopTextureDescriptor;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.GLUtil;
-import chop.math.Mat4;
-import chop.math.Vec3;
-import chop.math.Util;
+import glm.Mat4;
+import glm.Vec3;
 import choprender.render3d.opengl.GL.Float32Array;
 
 /**

@@ -1,5 +1,5 @@
 package choprender.mint;
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.text.Text;
 import mint.Control;
 
@@ -13,7 +13,7 @@ class Convert
 	{
 		if (C == null)
 			return null;
-		return Vec4.fromValues(C.x, C.y, C.w, C.h);
+		return new Vec4(C.x, C.y, C.w, C.h);
 	}
 	static public function coord(C:Float):Float 
 	{

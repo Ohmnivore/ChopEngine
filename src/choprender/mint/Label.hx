@@ -1,6 +1,6 @@
 package choprender.mint;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.render3d.Camera;
 import choprender.text.Font;
 import mint.types.Types;
@@ -103,7 +103,7 @@ class Label extends mint.render.Render {
         if(_disable) {
             text.clip = null;
         } else {
-            text.clip = Vec4.fromValues(_x, _y, _w, _h);
+            text.clip = new Vec4(_x, _y, _w, _h);
         }
     } //onclip
 

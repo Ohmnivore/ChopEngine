@@ -1,7 +1,7 @@
 package choprender.mint;
 
 import chop.group.Group;
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.render3d.Camera;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -154,7 +154,7 @@ class Checkbox extends mint.render.Render {
         if(_disable) {
             visual.clip = node_off.clip = node.clip = null;
         } else {
-            visual.clip = node_off.clip = node.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = node_off.clip = node.clip = new Vec4(_x, _y, _w, _h);
         }
     } //onclip
 

@@ -1,6 +1,6 @@
 package chopengine.phys;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.model.data.Face;
 import jiglib.math.Matrix3D;
 import jiglib.math.Vector3D;

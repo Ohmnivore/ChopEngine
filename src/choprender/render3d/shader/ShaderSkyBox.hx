@@ -1,8 +1,8 @@
 package choprender.render3d.shader;
 
-import chop.math.Mat4;
+import glm.Mat4;
 import chop.math.Util;
-import chop.math.Vec3;
+import glm.Vec3;
 import choprender.model.data.Face;
 import choprender.model.data.Texture;
 import choprender.model.data.Vertex;

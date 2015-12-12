@@ -1,7 +1,7 @@
 package chop.gen;
 
 import chop.gen.Basic;
-import chop.math.Vec3;
+import glm.Vec3;
 
 /**
  * ...
@@ -21,9 +21,9 @@ class Object extends Basic
 		
 		health = 1.0;
 		
-		pos = Vec3.fromValues(0, 0, 0);
-		rot = Vec3.fromValues(0, 0, 0);
-		scale = Vec3.fromValues(1, 1, 1);
+		pos = new Vec3(0, 0, 0);
+		rot = new Vec3(0, 0, 0);
+		scale = new Vec3(1, 1, 1);
 	}
 	
 	static public function copy(D:Object, S:Object):Void 

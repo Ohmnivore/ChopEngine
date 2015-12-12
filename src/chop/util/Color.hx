@@ -1,5 +1,5 @@
 package chop.util;
-import chop.math.Vec4;
+import glm.Vec4;
 
 /**
  * ...

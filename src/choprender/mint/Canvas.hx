@@ -1,7 +1,7 @@
 package choprender.mint;
 
-import chop.math.Vec2;
-import chop.math.Vec4;
+import glm.Vec2;
+import glm.Vec4;
 import chop.util.Color;
 import mint.types.Types;
 import mint.render.Rendering;
@@ -90,7 +90,7 @@ class Canvas extends mint.render.Render {
         if(_disable) {
             visual.clip = null;
         } else {
-            visual.clip = Vec4.fromValues(_x, _y, _w, _h);
+            visual.clip = new Vec4(_x, _y, _w, _h);
         }
     } //onclip
 

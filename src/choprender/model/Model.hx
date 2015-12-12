@@ -1,11 +1,11 @@
 package choprender.model;
 
 import chop.gen.Object;
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.model.AnimController;
 import choprender.model.Model;
 import choprender.render3d.opengl.ChopProgramMgr;
-import chop.math.Vec3;
+import glm.Vec3;
 import choprender.model.loader.chop.ChopLoader;
 import choprender.model.data.ModelData;
 import choprender.render3d.Camera;

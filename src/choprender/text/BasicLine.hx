@@ -1,6 +1,6 @@
 package choprender.text;
 
-import chop.math.Vec2;
+import glm.Vec2;
 
 /**
  * ...

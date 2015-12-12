@@ -13,8 +13,8 @@ import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GLUtil;
-import chop.math.Mat4;
-import chop.math.Vec3;
+import glm.Mat4;
+import glm.Vec3;
 import chop.math.Util;
 import choprender.render3d.opengl.GL.Float32Array;
 import choprender.render3d.light.Light;
@@ -37,9 +37,9 @@ class ShaderSSAOForwardLights extends ChopProgram
 		
 		type = ChopProgram.MULTIPLE;
 		
-		n = Vec3.fromValues(0.0, 0.0, 0.0);
-		u = Vec3.fromValues(0.0, 0.0, 0.0);
-		v = Vec3.fromValues(0.0, 0.0, 0.0);
+		n = new Vec3(0.0, 0.0, 0.0);
+		u = new Vec3(0.0, 0.0, 0.0);
+		v = new Vec3(0.0, 0.0, 0.0);
 		
 		#if !js
 		var id:String = "assets/shader/ssao_forward_light_vertex.glsl";

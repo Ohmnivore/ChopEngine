@@ -1,8 +1,7 @@
 package choprender.render3d.shader;
 
-import chop.math.Mat4;
-import chop.math.Util;
-import chop.math.Vec3;
+import glm.Mat4;
+import glm.Vec3;
 import choprender.model.data.Face;
 import choprender.model.data.ModelData;
 import choprender.model.data.Texture;
@@ -94,8 +93,8 @@ class ShaderSkyBoxLegacy extends ChopProgram
 			GLUtil.setInt(GLUtil.getLocation(prog, "skybox"), 7);
 			
 			// Transformation matrices
-			GLUtil.setUniform(prog, "view", C.viewMatrix);
-			GLUtil.setUniform(prog, "projection", C.projectionMatrix);
+			GLUtil.setUniformMat(prog, "view", C.viewMatrix);
+			GLUtil.setUniformMat(prog, "projection", C.projectionMatrix);
 			
 			var vData:Array<Float> = [];
 			for (f in box.faces)

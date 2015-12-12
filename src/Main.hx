@@ -1,6 +1,6 @@
 package;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import chopengine.gen.Game;
 import chopengine.input.Mouse;
 import choprender.render3d.opengl.GL;

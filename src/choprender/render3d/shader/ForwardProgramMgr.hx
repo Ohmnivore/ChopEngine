@@ -5,8 +5,6 @@ import choprender.render3d.opengl.ChopProgram;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GL;
 import choprender.model.Model;
-import choprender.render3d.shader.ShaderFXAA;
-import choprender.render3d.shader.ShaderRGBAToLuma;
 
 /**
  * ...

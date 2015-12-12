@@ -1,6 +1,6 @@
 package choprender.model;
 
-import chop.math.Vec4;
+import glm.Vec4;
 import choprender.model.Model;
 import choprender.model.data.*;
 import choprender.render3d.opengl.GL.Uint8Array;

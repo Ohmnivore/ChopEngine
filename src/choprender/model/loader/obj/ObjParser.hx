@@ -1,6 +1,6 @@
 package choprender.model.loader.obj;
 
-import chop.math.Vec2;
+import glm.Vec2;
 import choprender.model.data.Animation;
 import choprender.model.data.Face;
 import choprender.model.data.Frame;
@@ -138,7 +138,7 @@ class ObjParser extends Parser
 		consume();
 		var y:Float = Std.parseFloat(match(Lexer.LFLOAT).text);
 		consume();
-		var tex:Vec2 = Vec2.fromValues(x, y);
+		var tex:Vec2 = new Vec2(x, y);
 		texCoords.push(tex);
 	}
 	

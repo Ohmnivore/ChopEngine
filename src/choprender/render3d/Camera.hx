@@ -4,11 +4,12 @@ import chop.gen.Basic;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.ChopProgram;
 import choprender.render3d.shader.ForwardProgramMgr;
-import chop.math.Mat4;
-import chop.math.Vec2;
-import chop.math.Vec3;
-import chop.math.Vec4;
-import chop.math.Util;
+import glm.GLM;
+import glm.Mat4;
+import glm.Projection;
+import glm.Vec2;
+import glm.Vec3;
+import glm.Vec4;
 import choprender.model.Model;
 import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLProgram;
@@ -44,7 +45,7 @@ class Camera extends Basic
 	{
 		super();
 		
-		screenPos = Vec2.fromValues(0, 0);
+		screenPos = new Vec2(0, 0);
 		
 		if (Width == 0)
 			Width = SnowApp._snow.window.width;
@@ -54,14 +55,14 @@ class Camera extends Basic
 		FOV = 40.0;
 		displayMin = 0.1;
 		displayMax = 200.0;
-		pos = Vec3.fromValues(0.0, 0.0, 0.0);
-		rot = Vec3.fromValues(0.0, 0.0, 0.0);
+		pos = new Vec3(0.0, 0.0, 0.0);
+		rot = new Vec3(0.0, 0.0, 0.0);
 		isOrtho = false;
-		bgColor = Vec3.fromValues(1.0, 1.0, 1.0);
+		bgColor = new Vec3(1.0, 1.0, 1.0);
 		shouldClearColor = true;
 		shouldClearDepth = true;
-		projectionMatrix = Mat4.newZero();
-		viewMatrix = Mat4.newZero();
+		projectionMatrix = Mat4.zero();
+		viewMatrix = Mat4.zero();
 		
 		setView(X, Y, Width, Height);
 	}
@@ -114,24 +115,19 @@ class Camera extends Basic
 	public function computeProjectionMatrix():Void
 	{
 		if (isOrtho)
-			projectionMatrix = new Mat4().ortho(-1, 1, -1 / ratio, 1 / ratio, displayMin, displayMax);
+			projectionMatrix = Projection.ortho(-1, 1, -1 / ratio, 1 / ratio, displayMin, displayMax);
 		else
-			projectionMatrix = new Mat4().perspective(Util.degToRad(FOV), ratio, displayMin, displayMax);
+			projectionMatrix = Projection.perspective(FOV*GLM.degToRad, ratio, displayMin, displayMax);
 	}
 	
 	public function computeViewMatrix():Void
 	{
-		var nPos:Vec3 = pos;
-		var nRot:Vec3 = rot;
+		var direction:Vec3 = new Vec3(0.0, 0.0, -1.0);
+		//direction.x = Math.sin(rot.y*GLM.degToRad) * Math.cos(rot.x*GLM.degToRad);
+		//direction.y = Math.sin(rot.x*GLM.degToRad);
+		//direction.z = Math.cos(rot.x*GLM.degToRad) * Math.cos(rot.y*GLM.degToRad);
 		
-		var direction:Vec3 = Vec3.fromValues(0.0, 0.0, 1.0);
-		direction.x = Math.sin(Util.degToRad(nRot.y)) * Math.cos(Util.degToRad(nRot.x));
-		direction.y = Math.sin(Util.degToRad(nRot.x));
-		direction.z = Math.cos(Util.degToRad(nRot.x)) * Math.cos(Util.degToRad(nRot.y));
-		
-		var upVec:Vec4 = Vec4.fromValues(0.0, 1.0, 0.0, 1.0).transMat4(Util.eulerDegToMatrix4x4(nRot.x, nRot.y, nRot.z));
-		
-		//viewMatrix = new Mat4().lookAt(nPos, nPos - direction, Vec3.fromValues(upVec.x, upVec.y, upVec.z));
-		viewMatrix = new Mat4().lookAt(nPos, nPos - direction, Vec3.fromValues(0.0, 1.0, 0.0));
+		viewMatrix = Projection.lookAt(pos, pos - direction, new Vec3(0.0, 1.0, 0.0));
+		//viewMatrix = Mat4.identity();
 	}
 }

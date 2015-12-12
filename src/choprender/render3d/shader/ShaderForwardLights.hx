@@ -13,9 +13,10 @@ import choprender.render3d.opengl.GL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.ChopProgramMgr;
 import choprender.render3d.opengl.GLUtil;
-import chop.math.Mat4;
-import chop.math.Vec3;
-import chop.math.Util;
+import glm.GLM;
+import glm.Mat4;
+import glm.Quat;
+import glm.Vec3;
 import choprender.render3d.opengl.GL.Float32Array;
 import choprender.render3d.light.Light;
 
@@ -37,9 +38,9 @@ class ShaderForwardLights extends ChopProgram
 		
 		type = ChopProgram.MULTIPLE;
 		
-		n = Vec3.fromValues(0.0, 0.0, 0.0);
-		u = Vec3.fromValues(0.0, 0.0, 0.0);
-		v = Vec3.fromValues(0.0, 0.0, 0.0);
+		n = new Vec3(0.0, 0.0, 0.0);
+		u = new Vec3(0.0, 0.0, 0.0);
+		v = new Vec3(0.0, 0.0, 0.0);
 		
 		#if !js
 		var id:String = "assets/shader/forward_light_vertex.glsl";
@@ -79,9 +80,7 @@ class ShaderForwardLights extends ChopProgram
 		super.render(Models, C, Mgr);
 		
 		// LightState globals
-		GLUtil.setUniform(prog, "ambientColor", GlobalRender.lights.ambientColor);
-		GLUtil.setFloat(GLUtil.getLocation(prog, "ambientIntensity"), GlobalRender.lights.ambientIntensity);
-		GLUtil.setFloat(GLUtil.getLocation(prog, "gamma"), GlobalRender.lights.gamma);
+		GlobalRender.lights.setUniforms(prog);
 		
 		// Lights uniforms
 		GLUtil.setInt(GLUtil.getLocation(prog, "numLights"), GlobalRender.lights.lights.length);
@@ -103,10 +102,10 @@ class ShaderForwardLights extends ChopProgram
 				// Matrix calculations
 				var m:Mat4 = getModelMatrix(getTranslationMatrix(M), getRotationMatrix(M), getScaleMatrix(M));
 				// Transformation matrices
-				GLUtil.setUniform(prog, "m", m);
-				GLUtil.setUniform(prog, "v", C.viewMatrix);
-				GLUtil.setUniform(prog, "p", C.projectionMatrix);
-				GLUtil.setUniform(prog, "viewPos", C.pos);
+				GLUtil.setUniformMat(prog, "m", m);
+				GLUtil.setUniformMat(prog, "v", C.viewMatrix);
+				GLUtil.setUniformMat(prog, "p", C.projectionMatrix);
+				GLUtil.setUniformVec(prog, "viewPos", C.pos);
 				
 				var textureID:Int = 0;
 				for (tex in M.data.textures)
@@ -121,16 +120,7 @@ class ShaderForwardLights extends ChopProgram
 				for (mat in M.data.materials)
 				{
 					// Material uniforms
-					GLUtil.setUniform(prog, "material.useShading", mat.useShading);
-					GLUtil.setUniform(prog, "material.shadowsCast", mat.shadowsCast);
-					GLUtil.setUniform(prog, "material.shadowsReceive", mat.shadowsReceive);
-					GLUtil.setUniform(prog, "material.diffuseColor", mat.diffuseColor);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "material.diffuseIntensity"), mat.diffuseIntensity);
-					GLUtil.setUniform(prog, "material.specularColor", mat.specularColor);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "material.specularIntensity"), mat.specularIntensity);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "material.ambientIntensity"), mat.ambientIntensity);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "material.emit"), mat.emit);
-					GLUtil.setFloat(GLUtil.getLocation(prog, "material.transparency"), mat.transparency);
+					mat.setUniforms(prog);
 					
 					var vData:Array<Float> = [];
 					for (i in 0...M.data.faces.length)
@@ -180,15 +170,18 @@ class ShaderForwardLights extends ChopProgram
 	}
 	private function getTranslationMatrix(M:Model):Mat4
 	{
-		return Mat4.newIdent().trans(M.pos);
+		//return GLM.translate(Mat4.identity(), M.pos);
+		return Mat4.identity();
 	}
 	private function getRotationMatrix(M:Model):Mat4
 	{
-		return Util.eulerDegToMatrix4x4(M.rot.x, M.rot.y, M.rot.z);
+		//return Mat4.fromEulerRads(M.rot.x*GLM.degToRad, M.rot.y*GLM.degToRad, M.rot.z*GLM.degToRad);
+		return Mat4.identity();
 	}
 	private function getScaleMatrix(M:Model):Mat4
 	{
-		return Mat4.newIdent().scale(M.scale);
+		//return GLM.scale(Mat4.identity(), M.scale);
+		return Mat4.identity();
 	}
 	private function getModelMatrix(T:Mat4, R:Mat4, S:Mat4):Mat4
 	{

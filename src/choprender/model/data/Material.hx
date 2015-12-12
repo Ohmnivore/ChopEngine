@@ -57,16 +57,16 @@ class Material
 	
 	public function setUniforms(P:GLProgram):Void
 	{
-		GLUtil.setUniform(P, "material.useShading", useShading);
-		GLUtil.setUniform(P, "material.shadowsCast", shadowsCast);
-		GLUtil.setUniform(P, "material.shadowsReceive", shadowsReceive);
-		GLUtil.setUniform(P, "material.diffuseColor", diffuseColor);
-		GLUtil.setUniform(P, "material.diffuseIntensity", diffuseIntensity);
-		GLUtil.setUniform(P, "material.specularColor", specularColor);
-		GLUtil.setUniform(P, "material.specularIntensity", specularIntensity);
-		GLUtil.setUniform(P, "material.ambientIntensity", ambientIntensity);
-		GLUtil.setUniform(P, "material.emit", emit);
-		GLUtil.setUniform(P, "material.transparency", transparency);
+		GLUtil.setUniformBasic(P, "material.useShading", useShading);
+		GLUtil.setUniformBasic(P, "material.shadowsCast", shadowsCast);
+		GLUtil.setUniformBasic(P, "material.shadowsReceive", shadowsReceive);
+		GLUtil.setUniformVec(P, "material.diffuseColor", diffuseColor);
+		GLUtil.setUniformBasic(P, "material.diffuseIntensity", diffuseIntensity);
+		GLUtil.setUniformVec(P, "material.specularColor", specularColor);
+		GLUtil.setUniformBasic(P, "material.specularIntensity", specularIntensity);
+		GLUtil.setUniformBasic(P, "material.ambientIntensity", ambientIntensity);
+		GLUtil.setUniformBasic(P, "material.emit", emit);
+		GLUtil.setUniformBasic(P, "material.transparency", transparency);
 	}
 	
 	public function toFlagInt():Int

@@ -16,10 +16,9 @@ import choprender.render3d.opengl.GL;
 import choprender.render3d.shaderexp.opengl.ChopGL;
 import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.GLUtil;
-import chop.math.Mat4;
-import chop.math.Vec2;
-import chop.math.Vec3;
-import chop.math.Util;
+import glm.Mat4;
+import glm.Vec2;
+import glm.Vec3;
 import choprender.render3d.opengl.GL.Float32Array;
 
 /**
@@ -57,7 +56,7 @@ class ShaderFXAA extends ChopQuadProgram
 	override public function render(M:Array<Model>, C:Camera, Mgr:ChopProgramMgr):Void 
 	{
 		var inpTex:ChopTexture = Mgr.textures.get(inTextures[0].globalName);
-		GLUtil.setUniform(prog, "texOffset", Vec2.fromValues(1.0 / inpTex.width, 1.0 / inpTex.height));
+		GLUtil.setUniform(prog, "texOffset", new Vec2(1.0 / inpTex.width, 1.0 / inpTex.height));
 		GLUtil.setFloat(GLUtil.getLocation(prog, "qualitySubpix"), qualitySubpix);
 		GLUtil.setFloat(GLUtil.getLocation(prog, "edgeThreshold"), edgeThreshold);
 		GLUtil.setFloat(GLUtil.getLocation(prog, "edgeThresholdMin"), edgeThresholdMin);

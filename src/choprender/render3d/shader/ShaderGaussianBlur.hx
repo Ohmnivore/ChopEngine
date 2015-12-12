@@ -17,7 +17,7 @@ import choprender.render3d.opengl.GL.GLTexture;
 import choprender.render3d.opengl.GLUtil;
 import choprender.render3d.opengl.GL.Float32Array;
 import chop.assets.Assets;
-import chop.math.Vec2;
+import glm.Vec2;
 
 /**
  * ...
@@ -60,7 +60,7 @@ class ShaderGaussianBlur extends ChopQuadProgram
 		GLUtil.setInt(GLUtil.getLocation(prog, "horizontalPass"), horizInt);
 		GLUtil.setFloat(GLUtil.getLocation(prog, "sigma"), sigma);
 		var inpTex:ChopTexture = Mgr.textures.get(inTextures[0].globalName);
-		GLUtil.setUniform(prog, "texOffset", Vec2.fromValues(1.0 / inpTex.width, 1.0 / inpTex.height));
+		GLUtil.setUniform(prog, "texOffset", new Vec2(1.0 / inpTex.width, 1.0 / inpTex.height));
 		
 		super.render(M, C, Mgr);
 	}
