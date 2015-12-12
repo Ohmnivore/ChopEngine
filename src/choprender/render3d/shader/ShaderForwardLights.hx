@@ -192,11 +192,11 @@ class ShaderForwardLights extends ChopProgram
 	}
 	private function getModelMatrix(T:Mat4, R:Mat4, S:Mat4):Mat4
 	{
-		return S * R * T;
+		return (T * R) * S;
 	}
 	private function getMVPMatrix(M:Mat4, V:Mat4, P:Mat4):Mat4
 	{
-		return M * V * P;
+		return (M * V) * P;
 	}
 	private function pushVert(Verts:Array<Float>, Vec:Vertex, V1:Vertex, V2:Vertex, V3:Vertex, F:Face, UV:Array<Float>, TexID:Int, BlendMode:Int):Void
 	{

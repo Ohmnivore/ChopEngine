@@ -30,6 +30,8 @@ import mint.*;
  */
 class PlayState extends State
 {
+	private var ground:QuadModel;
+	
 	override public function create():Void 
 	{
 		super.create();
@@ -73,12 +75,11 @@ class PlayState extends State
 		sun.useSpecular = false;
 		lights.lights.push(sun);
 		
-		var ground:QuadModel = new QuadModel();
-		//ground.setSize(2, 2);
-		//ground.pos.z = -12.0;
-		//ground.pos.x = -1.0;
-		//ground.pos.y = 1.0;
-		ground.rot.z = -90;
+		ground = new QuadModel();
+		ground.setSize(64, 64);
+		ground.pos.z = -32;
+		ground.pos.x = -32;
+		ground.rot.x = -90;
 		add(ground);
 	}
 	

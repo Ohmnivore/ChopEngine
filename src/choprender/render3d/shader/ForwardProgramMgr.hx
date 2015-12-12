@@ -107,7 +107,7 @@ class ForwardProgramMgr extends ChopProgramMgr
 	{
 		super.preDraw(Elapsed);
 		
-		GL.enable(GL.CULL_FACE);
+		//GL.enable(GL.CULL_FACE);
 		GL.enable(GL.DEPTH_TEST);
 		GL.depthFunc(GL.LEQUAL);
 		GL.clearDepth(1.0);

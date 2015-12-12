@@ -301,36 +301,36 @@ abstract Quat(Array<Float>) {
   }
 
   public static function fromEuler(x:Float, y:Float, z:Float):Quat {
-    //var q = new Quat();
-    //x *= (Math.PI / 360);
-    //y *= (Math.PI / 360);
-    //z *= (Math.PI / 360);
-    //var sinX = Math.sin(x);
-    //var cosX = Math.cos(x);
-    //var sinY = Math.sin(y);
-    //var cosY = Math.cos(y);
-    //var sinZ = Math.sin(z);
-    //var cosZ = Math.cos(z);
-    //q[0] = cosY * cosX * cosZ + sinY * sinX * sinZ;
-    //q[1] = cosY * sinX * cosZ + sinY * cosX * sinZ;
-    //q[2] = sinY * cosX * cosZ - cosY * sinX * sinZ;
-    //q[3] = cosY * cosX * sinZ - sinY * sinX * cosZ;
-    //return q;
+    var q = new Quat();
+    x *= (Math.PI / 360);
+    y *= (Math.PI / 360);
+    z *= (Math.PI / 360);
+    var sinX = Math.sin(z);
+    var cosX = Math.cos(z);
+    var sinY = Math.sin(y);
+    var cosY = Math.cos(y);
+    var sinZ = Math.sin(x);
+    var cosZ = Math.cos(x);
+    q[0] = cosY * cosX * cosZ + sinY * sinX * sinZ;
+    q[1] = cosY * sinX * cosZ + sinY * cosX * sinZ;
+    q[2] = sinY * cosX * cosZ - cosY * sinX * sinZ;
+    q[3] = cosY * cosX * sinZ - sinY * sinX * cosZ;
+    return q;
 	
-	var q = new Quat();
-	var c1:Float = Math.cos(x/2);
-    var s1:Float = Math.sin(x/2);
-    var c2:Float = Math.cos(y/2);
-    var s2:Float = Math.sin(y/2);
-    var c3:Float = Math.cos(z/2);
-    var s3:Float = Math.sin(z/2);
-    var c1c2 = c1*c2;
-    var s1s2 = s1*s2;
-    q[3] =c1c2*c3 - s1s2*s3;
-  	q[0] =c1c2*s3 + s1s2*c3;
-	q[1] =s1*c2*c3 + c1*s2*s3;
-	q[2] = c1 * s2 * c3 - s1 * c2 * s3;
-	return q;
+	//var q = new Quat();
+	//var c1:Float = Math.cos(x/2);
+    //var s1:Float = Math.sin(x/2);
+    //var c2:Float = Math.cos(y/2);
+    //var s2:Float = Math.sin(y/2);
+    //var c3:Float = Math.cos(z/2);
+    //var s3:Float = Math.sin(z/2);
+    //var c1c2 = c1*c2;
+    //var s1s2 = s1*s2;
+    //q[3] =c1c2*c3 - s1s2*s3;
+  	//q[0] =c1c2*s3 + s1s2*c3;
+	//q[1] =s1*c2*c3 + c1*s2*s3;
+	//q[2] = c1 * s2 * c3 - s1 * c2 * s3;
+	//return q;
   }
 
   @:to public inline function toFloatArray() : Array<Float> {
