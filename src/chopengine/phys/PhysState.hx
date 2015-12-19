@@ -1,5 +1,6 @@
 package chopengine.phys;
 
+import chop.math.Vec4;
 import choprender.model.Model;
 import choprender.model.QuadModel;
 import jiglib.math.Matrix3D;
@@ -39,6 +40,9 @@ class PhysState extends AbstractPhysics
 	public function createCube(Cube:Model, Size:Float):RigidBody
 	{
 		var jBox:JBox = new JBox(new PhysModel(Cube), Size, Size, Size);
+		jBox.currentState.position.x = Cube.pos.x;
+		jBox.currentState.position.y = Cube.pos.y;
+		jBox.currentState.position.z = Cube.pos.z;
 		addBody(jBox);
 		return jBox;
 	}

@@ -22,11 +22,6 @@ class Util
 	
 	static public function eulerDegToMatrix4x4(X:Float, Y:Float, Z:Float):Mat4
 	{
-		//return eulerRadToMatrix4x4(degToRad(X), degToRad(Y), degToRad(Z));
-		return eulerRadToMatrix4x4(X, Y, Z);
-	}
-	static public function eulerRadToMatrix4x4(X:Float, Y:Float, Z:Float):Mat4
-	{
 		return new Mat4().fromQuat(Quat.fromEuler(X, Y, Z));
 	}
 }

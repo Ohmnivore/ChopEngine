@@ -18,6 +18,8 @@ import choprender.render3d.light.SunLight;
 import choprender.render3d.shader.ForwardProgramMgr;
 import choprender.text.loader.FontBuilderNGL;
 import choprender.text.Text;
+import jiglib.math.Vector3D;
+import jiglib.physics.RigidBody;
 import mint.focus.Focus;
 import mint.layout.margins.Margins;
 import snow.types.Types.Key;
@@ -30,7 +32,9 @@ import mint.*;
  */
 class PlayState extends State
 {
-	private var ground:QuadModel;
+	private var groundRB:RigidBody;
+	private var boxRB1:RigidBody;
+	private var boxRB2:RigidBody;
 	
 	override public function create():Void 
 	{
@@ -59,9 +63,9 @@ class PlayState extends State
 		dMgr.skyBoxLegacyProgram.loadSkyBoxFile("assets/img/cubemap_4k.png");
 		
 		// simple sun light
-		var displace:Vec4 = Vec4.fromValues(0, 0, -1, 0);
+		var displace:Vec4 = Vec4.fromValues(0, 0, 1, 1);
 		displace.transMat4(Util.eulerDegToMatrix4x4(
-			0, 0, -25
+			25, 25, 25
 		));
 		var sun:SunLight = new SunLight();
 		sun.dir.x = displace.x;
@@ -75,12 +79,36 @@ class PlayState extends State
 		sun.useSpecular = false;
 		lights.lights.push(sun);
 		
-		ground = new QuadModel();
-		ground.setSize(64, 64);
-		ground.pos.z = -32;
-		ground.pos.x = -32;
+		var ground:QuadModel = new QuadModel();
+		ground.setSize(24, 24);
+		ground.pos.z = -12;
+		ground.pos.x = -12;
 		ground.rot.x = -90;
 		add(ground);
+		groundRB = phys.createGround(ground);
+		
+		var box1:Model = new Model();
+		var objLoader:ObjLoader = new ObjLoader();
+		objLoader.loadFile("assets/obj/cube.obj", "assets/obj/cube.mtl");
+		box1.loadData(objLoader.data);
+		//box1.loadChop("assets/mesh/cube.chopmesh");
+		box1.data.materials[0].diffuseColor.set(0.7, 0.7, 0.3);
+		box1.pos.z = -4;
+		box1.pos.y = 2;
+		add(box1);
+		boxRB1 = phys.createCube(box1, 2);
+		
+		var box2:Model = new Model();
+		var objLoader:ObjLoader = new ObjLoader();
+		objLoader.loadFile("assets/obj/cube.obj", "assets/obj/cube.mtl");
+		box2.loadData(objLoader.data);
+		//box2.loadChop("assets/mesh/cube.chopmesh");
+		box2.data.materials[0].diffuseColor.set(0.3, 0.7, 0.7);
+		box2.pos.z = -4;
+		box2.pos.y = 2;
+		box2.pos.x = 5;
+		add(box2);
+		boxRB2 = phys.createCube(box2, 2);
 	}
 	
 	override public function update(Elapsed:Float):Void 
@@ -88,20 +116,29 @@ class PlayState extends State
 		super.update(Elapsed);
 		
 		if (SnowApp._snow.input.keydown(Key.key_a))
-			GlobalRender.cam.pos.x -= 1.0 * Elapsed;
+			GlobalRender.cam.pos.x -= 2.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_d))
-			GlobalRender.cam.pos.x += 1.0 * Elapsed;
+			GlobalRender.cam.pos.x += 2.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_w))
-			GlobalRender.cam.pos.z -= 1.0 * Elapsed;
+			GlobalRender.cam.pos.z -= 2.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.key_s))
-			GlobalRender.cam.pos.z += 1.0 * Elapsed;
+			GlobalRender.cam.pos.z += 2.0 * Elapsed;
 		
 		if (SnowApp._snow.input.keydown(Key.space))
-			GlobalRender.cam.pos.y += 1.0 * Elapsed;
+			GlobalRender.cam.pos.y += 2.0 * Elapsed;
 		if (SnowApp._snow.input.keydown(Key.lctrl))
-			GlobalRender.cam.pos.y -= 1.0 * Elapsed;
+			GlobalRender.cam.pos.y -= 2.0 * Elapsed;
 		
 		if (Main.game.mouse.rightPressed)
 			GlobalRender.cam.rot.y -= Main.game.mouse.xRel / 2.0;
+		
+		if (SnowApp._snow.input.keydown(Key.left))
+			boxRB2.addWorldForce(new Vector3D(-25, 0, 0), boxRB2.currentState.position);
+		if (SnowApp._snow.input.keydown(Key.right))
+			boxRB1.addWorldForce(new Vector3D(25, 0, 0), boxRB1.currentState.position);
+		//if (SnowApp._snow.input.keydown(Key.up))
+			//GlobalRender.cam.pos.z -= 1.0 * Elapsed;
+		//if (SnowApp._snow.input.keydown(Key.down))
+			//GlobalRender.cam.pos.z += 1.0 * Elapsed;
 	}
 }

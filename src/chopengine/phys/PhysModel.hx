@@ -53,9 +53,9 @@ class PhysModel implements ISkin3D
 		_mesh.pos.x = pos.x;
 		_mesh.pos.y = pos.y;
 		_mesh.pos.z = pos.z;
-		_mesh.rot.x = scale.x;
-		_mesh.rot.y = scale.y;
-		_mesh.rot.z = scale.z;
+		_mesh.rot.x = rot.x;
+		_mesh.rot.y = rot.y;
+		_mesh.rot.z = rot.z;
 		_mesh.scale.x = scale.x;
 		_mesh.scale.y = scale.y;
 		_mesh.scale.z = scale.z;
